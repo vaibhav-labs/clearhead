@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Thank you | Clearhead Mumbai</title>
+<meta name="description" content="Your message has been received. Vaibhav will get back to you within one working day." />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#f7f5f1" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="index.html#sessions">Sessions</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact" class="cta-ghost">Enquire</a>
+  </nav>
+</header>
+
+<main>
+  <div class="post-wrap" style="text-align:center;">
+
+    <p class="post-eyebrow">Message received</p>
+    <h1>Thank you.</h1>
+
+    <div class="post-body">
+      <p>Your message is in. I read every one personally and reply within one working day &mdash; usually sooner.</p>
+
+      <p>If something feels urgent in the meantime &mdash; or you&rsquo;d rather skip the back-and-forth and pick a slot directly &mdash; you can book a session below.</p>
+
+      <div class="quiz-book-grid" style="max-width:420px; margin: 2rem auto;">
+        <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/starter" target="_blank" rel="noopener noreferrer" data-cal-namespace="starter" data-cal-link="vaibhavjain/starter" data-cal-config='{"layout":"month_view"}'>Starter &middot; 4 sessions</a>
+        <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/going-deeper" target="_blank" rel="noopener noreferrer" data-cal-namespace="going-deeper" data-cal-link="vaibhavjain/going-deeper" data-cal-config='{"layout":"month_view"}'>Going Deeper &middot; 6 sessions</a>
+        <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/the-long-game" target="_blank" rel="noopener noreferrer" data-cal-namespace="the-long-game" data-cal-link="vaibhavjain/the-long-game" data-cal-config='{"layout":"month_view"}'>The Long Game &middot; 12 sessions</a>
+      </div>
+
+      <p style="margin-top:2rem;"><a href="index.html">&larr; Back to Clearhead</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching & Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="index.html#sessions">Sessions</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Enquire</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; <span id="yr"></span> Clearhead &middot; Vaibhav Jain &middot; All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<!-- Cal.com Embed (popup booking) -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "starter",        {origin:"https://cal.com"});
+Cal("init", "going-deeper",   {origin:"https://cal.com"});
+Cal("init", "the-long-game",  {origin:"https://cal.com"});
+Cal.ns["starter"]("ui",       {hideEventTypeDetails:false, layout:"month_view"});
+Cal.ns["going-deeper"]("ui",  {hideEventTypeDetails:false, layout:"month_view"});
+Cal.ns["the-long-game"]("ui", {hideEventTypeDetails:false, layout:"month_view"});
+</script>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+(function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
+</script>
+</body>
+</html>

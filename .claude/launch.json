@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "clearhead",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "/Users/jain/Documents/Zen Coaching", "-l", "3456", "--no-clipboard"],
+      "port": 3456
+    }
+  ]
+}

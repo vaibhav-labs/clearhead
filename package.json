@@ -1,0 +1,12 @@
+{
+  "name": "clearhead-site",
+  "version": "1.0.0",
+  "description": "Clearhead — coaching & counselling site with Razorpay payments via Netlify Functions",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "razorpay": "^2.9.4"
+  }
+}

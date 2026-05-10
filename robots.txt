@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+Disallow: /quiz.html
+Disallow: /api/
+Disallow: /.netlify/
+
+Sitemap: https://clearhead.in/sitemap.xml
