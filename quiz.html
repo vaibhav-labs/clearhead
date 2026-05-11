@@ -188,12 +188,10 @@
           </div>
 
           <div class="quiz-book-wrap">
-            <h3>Book a session directly</h3>
-            <p class="quiz-book-sub">If you already know which package fits, pick a slot now. Online or in-person, Lokhandwala.</p>
+            <h3>Pick your package &amp; pay to book</h3>
+            <p class="quiz-book-sub">Choose a package and complete payment &mdash; your booking link appears once payment is confirmed.</p>
             <div class="quiz-book-grid">
-              <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/starter" target="_blank" rel="noopener noreferrer" data-cal-namespace="starter" data-cal-link="vaibhavjain/starter" data-cal-config='{"layout":"month_view"}'>Starter &middot; 4 sessions</a>
-              <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/going-deeper" target="_blank" rel="noopener noreferrer" data-cal-namespace="going-deeper" data-cal-link="vaibhavjain/going-deeper" data-cal-config='{"layout":"month_view"}'>Going Deeper &middot; 6 sessions</a>
-              <a class="btn-primary book-link" href="https://cal.com/vaibhavjain/the-long-game" target="_blank" rel="noopener noreferrer" data-cal-namespace="the-long-game" data-cal-link="vaibhavjain/the-long-game" data-cal-config='{"layout":"month_view"}'>The Long Game &middot; 12 sessions</a>
+              <a class="btn-primary" href="index.html#pay">Choose your package &rarr;</a>
             </div>
             <p class="quiz-book-or">&mdash; or &mdash;</p>
           </div>
@@ -335,17 +333,6 @@
     <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
   </div>
 </footer>
-
-<!-- Cal.com Embed (popup booking) -->
-<script type="text/javascript">
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "starter",        {origin:"https://cal.com"});
-Cal("init", "going-deeper",   {origin:"https://cal.com"});
-Cal("init", "the-long-game",  {origin:"https://cal.com"});
-Cal.ns["starter"]("ui",       {hideEventTypeDetails:false, layout:"month_view"});
-Cal.ns["going-deeper"]("ui",  {hideEventTypeDetails:false, layout:"month_view"});
-Cal.ns["the-long-game"]("ui", {hideEventTypeDetails:false, layout:"month_view"});
-</script>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();

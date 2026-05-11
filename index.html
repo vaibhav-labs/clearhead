@@ -88,7 +88,13 @@
       "url": "https://clearhead.in/",
       "telephone": "+91-90289-02948",
       "openingHours": "Mo-Sa 09:00-19:00",
-      "areaServed": ["Mumbai", "India", "Online India-wide"]
+      "areaServed": ["Mumbai", "India", "Online India-wide"],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.1405612,
+        "longitude": 72.8246929
+      },
+      "hasMap": "https://www.google.com/maps/place/Clearhead/@19.1405612,72.8246929,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b7fd5d83a8e3:0x45bf3d053989dcf3"
     },
     {
       "@type": "FAQPage",
@@ -290,7 +296,7 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block book-link" href="https://cal.com/vaibhavjain/starter" target="_blank" rel="noopener noreferrer" data-cal-namespace="starter" data-cal-link="vaibhavjain/starter" data-cal-config='{"layout":"month_view"}'>Book Starter →</a>
+        <a class="btn-primary btn-block" href="#pay">Get Starter →</a>
       </article>
 
       <article class="plan featured">
@@ -308,7 +314,7 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block book-link" href="https://cal.com/vaibhavjain/going-deeper" target="_blank" rel="noopener noreferrer" data-cal-namespace="going-deeper" data-cal-link="vaibhavjain/going-deeper" data-cal-config='{"layout":"month_view"}'>Book Going Deeper →</a>
+        <a class="btn-primary btn-block" href="#pay">Get Going Deeper →</a>
       </article>
 
       <article class="plan">
@@ -325,7 +331,7 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block book-link" href="https://cal.com/vaibhavjain/the-long-game" target="_blank" rel="noopener noreferrer" data-cal-namespace="the-long-game" data-cal-link="vaibhavjain/the-long-game" data-cal-config='{"layout":"month_view"}'>Book Long Game →</a>
+        <a class="btn-primary btn-block" href="#pay">Get Long Game →</a>
       </article>
 
     </div>
@@ -344,21 +350,18 @@
         <p class="pay-card-desc">4 sessions</p>
         <div class="price">&#8377;26,000</div>
         <button type="button" class="btn-primary btn-block pay-btn" data-plan="starter" data-amount="2600000" data-label="Starter &mdash; 4 sessions">Pay now</button>
-        <a class="btn-text book-link pay-book-link" href="https://cal.com/vaibhavjain/starter" target="_blank" rel="noopener noreferrer" data-cal-namespace="starter" data-cal-link="vaibhavjain/starter" data-cal-config='{"layout":"month_view"}'>Book your first session &rarr;</a>
       </article>
       <article class="pay-card">
         <h3>Going Deeper</h3>
         <p class="pay-card-desc">6 sessions</p>
         <div class="price">&#8377;36,000</div>
         <button type="button" class="btn-primary btn-block pay-btn" data-plan="going-deeper" data-amount="3600000" data-label="Going Deeper &mdash; 6 sessions">Pay now</button>
-        <a class="btn-text book-link pay-book-link" href="https://cal.com/vaibhavjain/going-deeper" target="_blank" rel="noopener noreferrer" data-cal-namespace="going-deeper" data-cal-link="vaibhavjain/going-deeper" data-cal-config='{"layout":"month_view"}'>Book your first session &rarr;</a>
       </article>
       <article class="pay-card">
         <h3>The Long Game</h3>
         <p class="pay-card-desc">12 sessions</p>
         <div class="price">&#8377;66,000</div>
         <button type="button" class="btn-primary btn-block pay-btn" data-plan="long-game" data-amount="6600000" data-label="The Long Game &mdash; 12 sessions">Pay now</button>
-        <a class="btn-text book-link pay-book-link" href="https://cal.com/vaibhavjain/the-long-game" target="_blank" rel="noopener noreferrer" data-cal-namespace="the-long-game" data-cal-link="vaibhavjain/the-long-game" data-cal-config='{"layout":"month_view"}'>Book your first session &rarr;</a>
       </article>
     </div>
 
@@ -609,15 +612,7 @@
       </form>
 
       <aside class="contact-side">
-        <h3>Book directly</h3>
-        <p class="book-direct">Already know which one? Pick a slot — no form, no waiting.</p>
-        <ul class="book-links">
-          <li><a class="book-link" href="https://cal.com/vaibhavjain/starter" target="_blank" rel="noopener noreferrer" data-cal-namespace="starter" data-cal-link="vaibhavjain/starter" data-cal-config='{"layout":"month_view"}'>Starter — 4 sessions →</a></li>
-          <li><a class="book-link" href="https://cal.com/vaibhavjain/going-deeper" target="_blank" rel="noopener noreferrer" data-cal-namespace="going-deeper" data-cal-link="vaibhavjain/going-deeper" data-cal-config='{"layout":"month_view"}'>Going Deeper — 6 sessions →</a></li>
-          <li><a class="book-link" href="https://cal.com/vaibhavjain/the-long-game" target="_blank" rel="noopener noreferrer" data-cal-namespace="the-long-game" data-cal-link="vaibhavjain/the-long-game" data-cal-config='{"layout":"month_view"}'>The Long Game — 12 sessions →</a></li>
-        </ul>
-
-        <h3 style="margin-top:2rem">Or reach out directly</h3>
+        <h3>Reach out directly</h3>
         <p><a href="https://wa.me/919028902948" rel="nofollow">WhatsApp →</a></p>
         <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
         <p class="addr">
@@ -629,6 +624,23 @@
         <p class="contact-note">You don't need to know if you want coaching or counselling before you reach out. Most people don't. That's what the first session is for.</p>
       </aside>
     </div>
+  </section>
+
+  <!-- LOCATION / MAP -->
+  <section class="band map-band" id="location" aria-labelledby="location-h">
+    <h2 id="location-h" class="section-title">Where we meet.</h2>
+    <p class="section-sub">In-person sessions take place in Lokhandwala, Andheri West &mdash; easy to reach from across Mumbai. Online sessions run across India and internationally.</p>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.249310536239!2d72.8246929!3d19.140561200000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b7fd5d83a8e3%3A0x45bf3d053989dcf3!2sClearhead!5e0!3m2!1sen!2sin!4v1778486441021!5m2!1sen!2sin"
+        width="600" height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Clearhead &mdash; Lokhandwala, Andheri West, Mumbai"></iframe>
+    </div>
+    <p class="map-cta"><a href="https://www.google.com/maps/place/Clearhead/@19.1405612,72.8246929,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b7fd5d83a8e3:0x45bf3d053989dcf3" target="_blank" rel="noopener noreferrer">Open in Google Maps &rarr;</a></p>
   </section>
 
 </main>
@@ -749,7 +761,15 @@ Cal.ns["the-long-game"]("ui", {hideEventTypeDetails:false, layout:"month_view"})
               razorpay_signature:  response.razorpay_signature
             }).then(function (vRes) {
               if (vRes.ok && vRes.body && vRes.body.verified) {
-                setStatus('Payment successful. You’ll receive a confirmation email shortly. Payment ID: ' + response.razorpay_payment_id, 'success');
+                var calSlugs = { 'starter': 'starter', 'going-deeper': 'going-deeper', 'long-game': 'the-long-game' };
+                var calSlug = calSlugs[plan] || 'starter';
+                var calUrl = 'https://cal.com/vaibhavjain/' + calSlug;
+                statusEl.innerHTML =
+                  '<strong>Payment received.</strong> Now book your first session: ' +
+                  '<a href="' + calUrl + '" target="_blank" rel="noopener noreferrer" style="font-weight:500;text-decoration:underline;">Pick a slot &rarr;</a>' +
+                  '<br><br><small>Payment ID: ' + response.razorpay_payment_id + ' &middot; A confirmation email will follow.</small>';
+                statusEl.dataset.kind = 'success';
+                try { window.open(calUrl, '_blank', 'noopener,noreferrer'); } catch (e) {}
               } else {
                 setStatus('Payment received but verification failed. Please email us with your Payment ID: ' + response.razorpay_payment_id, 'error');
               }
