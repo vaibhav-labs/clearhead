@@ -898,6 +898,23 @@ main { }
   .footer-inner { flex-direction: column; gap: 1.5rem; }
 }
 
+/* ---------- Blog post images ---------- */
+.post-figure { margin: 2rem 0; }
+.post-hero-figure { margin: 0 0 2.5rem; }
+.post-figure img {
+  width: 100%; height: auto; display: block;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.post-figure figcaption {
+  font-size: 0.78rem; color: var(--ink-soft);
+  margin-top: 0.5rem; text-align: center;
+}
+.post-figure figcaption a {
+  color: var(--ink-soft); text-decoration: underline; text-underline-offset: 2px;
+}
+.post-figure figcaption a:hover { color: var(--accent); }
+
 /* ---------- Location / Map band ---------- */
 .map-band { border-top: 1px solid var(--line); }
 .map-wrap {
