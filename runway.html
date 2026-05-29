@@ -60,8 +60,8 @@
       <h2 id="rw-form-h" class="rw-vh">Tell me about your numbers</h2>
 
       <div class="rw-prog">
-        <div class="rw-prog-bar"><div class="rw-prog-fill" id="rw-prog-fill" style="width:16%"></div></div>
-        <span class="rw-prog-label" id="rw-prog-label">Step 1 of 6</span>
+        <div class="rw-prog-bar"><div class="rw-prog-fill" id="rw-prog-fill" style="width:14%"></div></div>
+        <span class="rw-prog-label" id="rw-prog-label">Step 1 of 7</span>
       </div>
 
       <!-- Step 1: Age -->
@@ -91,51 +91,237 @@
         </div>
       </div>
 
-      <!-- Step 3: Liquid assets -->
+      <!-- Step 3: Liquid assets breakdown -->
       <div class="rw-step" data-step="3">
-        <p class="rw-q">What can you reach quickly?</p>
-        <p class="rw-q-sub">Savings, FDs, mutual funds, liquid equity — money you could move in a week without taking a hit.</p>
-        <div class="rw-input-row">
-          <span class="rw-currency">₹</span>
-          <input type="text" inputmode="numeric" id="f-liquid" class="rw-input" placeholder="e.g. 12,00,000" autocomplete="off" />
-          <span class="rw-input-hint" id="f-liquid-hint">—</span>
+        <p class="rw-q">What can you reach within a week?</p>
+        <p class="rw-q-sub">Add what you have. Skip what you don't — zero is fine for any row. These are assets in your name.</p>
+
+        <div class="rw-asset-list">
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Savings &amp; current account</strong>
+              <small>Money sitting in your bank right now</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-liq-savings" class="rw-input rw-liquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Fixed Deposits (FDs / RDs)</strong>
+              <small>Include even if there's a premature-withdrawal penalty</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-liq-fd" class="rw-input rw-liquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Mutual funds</strong>
+              <small>Liquid, debt, or equity funds — current NAV value</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-liq-mf" class="rw-input rw-liquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Listed stocks &amp; equity</strong>
+              <small>Shares you could sell this week</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-liq-stocks" class="rw-input rw-liquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Other liquid</strong>
+              <small>Bonds, cash at hand, liquid ETFs, anything else accessible fast</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-liq-other" class="rw-input rw-liquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-total">
+            <span>Your liquid total</span>
+            <span id="rw-liquid-total">₹0</span>
+          </div>
+
         </div>
-        <div class="rw-chips" aria-label="Quick fill">
-          <button class="rw-chip" type="button" data-target="f-liquid" data-value="200000">₹2 L</button>
-          <button class="rw-chip" type="button" data-target="f-liquid" data-value="500000">₹5 L</button>
-          <button class="rw-chip" type="button" data-target="f-liquid" data-value="1000000">₹10 L</button>
-          <button class="rw-chip" type="button" data-target="f-liquid" data-value="2500000">₹25 L</button>
-          <button class="rw-chip" type="button" data-target="f-liquid" data-value="5000000">₹50 L</button>
-        </div>
+
         <div class="rw-nav">
           <button class="btn-primary rw-next" type="button">Next →</button>
           <button class="rw-back" type="button">← Back</button>
         </div>
       </div>
 
-      <!-- Step 4: Illiquid assets -->
+      <!-- Step 4: Illiquid assets breakdown -->
       <div class="rw-step" data-step="4">
         <p class="rw-q">What's harder to reach — but still yours?</p>
-        <p class="rw-q-sub">Property equity, PF, ESOPs, retirement accounts. Money you'd take a haircut to unlock fast.</p>
-        <div class="rw-input-row">
-          <span class="rw-currency">₹</span>
-          <input type="text" inputmode="numeric" id="f-illiquid" class="rw-input" placeholder="e.g. 40,00,000" autocomplete="off" />
-          <span class="rw-input-hint" id="f-illiquid-hint">—</span>
+        <p class="rw-q-sub">Assets that take time or carry a penalty to unlock. Rough estimates are fine — we apply a 20% haircut automatically if you choose to liquidate any of this.</p>
+
+        <div class="rw-asset-list">
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Property equity</strong>
+              <small>Current market value of your home(s) minus the outstanding loan</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-property" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>EPF / Provident Fund</strong>
+              <small>Your PF balance — employer + employee contributions</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-epf" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>PPF balance</strong>
+              <small>Public Provident Fund — the long-locked-in one</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-ppf" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>NPS corpus</strong>
+              <small>National Pension Scheme — approximate current balance</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-nps" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>ESOPs &amp; stock options</strong>
+              <small>Vested options at approximate current value</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-esop" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Gold &amp; jewellery</strong>
+              <small>Approximate market value — the kind you'd sell, not heirloom</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-gold" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Other illiquid</strong>
+              <small>Startup equity, unlisted shares, land, anything else hard to exit</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-ill-other" class="rw-input rw-illiquid-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-total">
+            <span>Your illiquid total</span>
+            <span id="rw-illiquid-total">₹0</span>
+          </div>
+
         </div>
-        <div class="rw-chips">
-          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="0">₹0</button>
-          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="1000000">₹10 L</button>
-          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="5000000">₹50 L</button>
-          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="15000000">₹1.5 Cr</button>
-        </div>
+
         <div class="rw-nav">
           <button class="btn-primary rw-next" type="button">Next →</button>
           <button class="rw-back" type="button">← Back</button>
         </div>
       </div>
 
-      <!-- Step 5: Fixed monthly -->
+      <!-- Step 5: Dependent assets (NEW) -->
       <div class="rw-step" data-step="5">
+        <p class="rw-q">Can anyone in your household pitch in?</p>
+        <p class="rw-q-sub">A working partner, a parent with savings, a sibling who could help — if things got hard, is there any household asset that could be pooled? This is about what's actually available, not just what's in your name.</p>
+
+        <div class="rw-dep-toggle">
+          <button class="rw-dep-btn" id="rw-dep-yes" type="button">Yes, there is</button>
+          <button class="rw-dep-btn rw-dep-btn-no active" id="rw-dep-no" type="button">No, it's just me</button>
+        </div>
+
+        <div class="rw-dep-reveal" id="rw-dep-reveal" hidden>
+          <p class="rw-q-sub" style="margin-top:1.25rem;">What's the realistic amount that could be pooled in a real emergency — liquid and accessible?</p>
+          <div class="rw-asset-list" style="margin-top:0;">
+            <div class="rw-asset-row">
+              <div class="rw-asset-label">
+                <strong>Partner's liquid savings</strong>
+                <small>What they could contribute without wiping themselves out</small>
+              </div>
+              <div class="rw-asset-input-wrap">
+                <span class="rw-currency">₹</span>
+                <input type="text" inputmode="numeric" id="f-dep-partner" class="rw-input rw-dep-field" placeholder="0" autocomplete="off" />
+              </div>
+            </div>
+            <div class="rw-asset-row">
+              <div class="rw-asset-label">
+                <strong>Parents / family support</strong>
+                <small>What family could realistically contribute — not what you'd want to ask, what you could</small>
+              </div>
+              <div class="rw-asset-input-wrap">
+                <span class="rw-currency">₹</span>
+                <input type="text" inputmode="numeric" id="f-dep-family" class="rw-input rw-dep-field" placeholder="0" autocomplete="off" />
+              </div>
+            </div>
+            <div class="rw-asset-row">
+              <div class="rw-asset-label">
+                <strong>Other poolable assets</strong>
+                <small>Any other household resource you'd genuinely have access to</small>
+              </div>
+              <div class="rw-asset-input-wrap">
+                <span class="rw-currency">₹</span>
+                <input type="text" inputmode="numeric" id="f-dep-other" class="rw-input rw-dep-field" placeholder="0" autocomplete="off" />
+              </div>
+            </div>
+            <div class="rw-asset-total">
+              <span>Poolable household total</span>
+              <span id="rw-dep-total">₹0</span>
+            </div>
+          </div>
+          <p class="rw-fineprint">This gets added to your liquid total — it's counted as money available to the household, not your personal emergency fund.</p>
+        </div>
+
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Fixed monthly -->
+      <div class="rw-step" data-step="6">
         <p class="rw-q">What goes out every month — no matter what?</p>
         <p class="rw-q-sub">Rent or home EMI, car EMI, school fees, insurance, the basics. The bills that don't ask for permission.</p>
         <div class="rw-input-row">
@@ -155,8 +341,8 @@
         </div>
       </div>
 
-      <!-- Step 6: Variable monthly -->
-      <div class="rw-step" data-step="6">
+      <!-- Step 7: Variable monthly -->
+      <div class="rw-step" data-step="7">
         <p class="rw-q">And what flexes month to month?</p>
         <p class="rw-q-sub">Eating out, travel, groceries, gifts, the small stuff. A rough average is fine — be honest, not aspirational.</p>
         <div class="rw-input-row">
@@ -394,12 +580,25 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     return n.toLocaleString('en-IN');
   }
 
+  function sumFields(cls) {
+    var total = 0;
+    document.querySelectorAll('.' + cls).forEach(function (el) {
+      total += parseRupees(el.value);
+    });
+    return total;
+  }
+
+  var depIncluded = false; // toggled by Yes/No buttons
+
   function readSnapshot() {
+    var liquid   = sumFields('rw-liquid-field');
+    var illiquid = sumFields('rw-illiquid-field');
+    var dep      = depIncluded ? sumFields('rw-dep-field') : 0;
     return {
       age:             parseInt($('f-age').value, 10),
       dependents:      parseInt($('f-deps').value, 10),
-      liquidAssets:    parseRupees($('f-liquid').value),
-      illiquidAssets:  parseRupees($('f-illiquid').value),
+      liquidAssets:    liquid + dep,
+      illiquidAssets:  illiquid,
       fixedMonthly:    parseRupees($('f-fixed').value),
       variableMonthly: parseRupees($('f-variable').value)
     };
@@ -420,8 +619,8 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     el.addEventListener('input', function () { out.textContent = el.value; });
   });
 
-  // ---- rupee inputs: format on input ----------------------------
-  ['f-liquid', 'f-illiquid', 'f-fixed', 'f-variable'].forEach(function (id) {
+  // ---- rupee inputs: format on input (expense fields) ----------
+  ['f-fixed', 'f-variable'].forEach(function (id) {
     var el = $(id);
     var hint = $(id + '-hint');
     el.addEventListener('input', function () {
@@ -431,7 +630,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     });
   });
 
-  // ---- chips: quick-fill amount ---------------------------------
+  // ---- chips: quick-fill for expense fields --------------------
   document.querySelectorAll('.rw-chip').forEach(function (chip) {
     chip.addEventListener('click', function () {
       var target = $(chip.getAttribute('data-target'));
@@ -440,6 +639,36 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       var hint = $(chip.getAttribute('data-target') + '-hint');
       if (hint) hint.textContent = val ? R.formatINR(val) : '—';
     });
+  });
+
+  // ---- asset breakdown fields: format + update running totals --
+  function wireAssetFields(cls, totalId) {
+    document.querySelectorAll('.' + cls).forEach(function (el) {
+      el.addEventListener('input', function () {
+        var raw = parseRupees(el.value);
+        el.value = raw ? formatRupees(raw) : '';
+        var total = sumFields(cls);
+        var totalEl = $(totalId);
+        if (totalEl) totalEl.textContent = R.formatINR(total);
+      });
+    });
+  }
+  wireAssetFields('rw-liquid-field',   'rw-liquid-total');
+  wireAssetFields('rw-illiquid-field', 'rw-illiquid-total');
+  wireAssetFields('rw-dep-field',      'rw-dep-total');
+
+  // ---- dependent assets toggle ---------------------------------
+  $('rw-dep-yes').addEventListener('click', function () {
+    depIncluded = true;
+    $('rw-dep-yes').classList.add('active');
+    $('rw-dep-no').classList.remove('active');
+    $('rw-dep-reveal').hidden = false;
+  });
+  $('rw-dep-no').addEventListener('click', function () {
+    depIncluded = false;
+    $('rw-dep-no').classList.add('active');
+    $('rw-dep-yes').classList.remove('active');
+    $('rw-dep-reveal').hidden = true;
   });
 
   // ---- multi-step nav -------------------------------------------
