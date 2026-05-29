@@ -153,9 +153,24 @@
             </div>
           </div>
 
+          <div class="rw-asset-row rw-deduction-row">
+            <div class="rw-asset-label">
+              <strong>Less: pending tax dues</strong>
+              <small>Outstanding income tax demand, GST arrears, or any lump-sum tax owed right now — deducted immediately from your liquid corpus</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency rw-deduct-sign">−</span>
+              <input type="text" inputmode="numeric" id="f-liq-taxdue" class="rw-input rw-liquid-deduct" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+
+          <div class="rw-asset-subtotal">
+            <span>Gross liquid</span>
+            <span id="rw-liquid-gross">₹0</span>
+          </div>
           <div class="rw-asset-total">
-            <span>Your liquid total</span>
-            <span id="rw-liquid-total">₹0</span>
+            <span>Net liquid available <small style="font-weight:400;font-size:0.82rem;">(after pending tax)</small></span>
+            <span id="rw-liquid-net">₹0</span>
           </div>
 
         </div>
@@ -320,21 +335,169 @@
         </div>
       </div>
 
-      <!-- Step 6: Fixed monthly -->
+      <!-- Step 6: Fixed monthly liabilities (detailed) -->
       <div class="rw-step" data-step="6">
-        <p class="rw-q">What goes out every month — no matter what?</p>
-        <p class="rw-q-sub">Rent or home EMI, car EMI, school fees, insurance, the basics. The bills that don't ask for permission.</p>
-        <div class="rw-input-row">
-          <span class="rw-currency">₹</span>
-          <input type="text" inputmode="numeric" id="f-fixed" class="rw-input" placeholder="e.g. 1,20,000" autocomplete="off" />
-          <span class="rw-input-hint" id="f-fixed-hint">—</span>
+        <p class="rw-q">What leaves every month, no matter what?</p>
+        <p class="rw-q-sub">Enter each obligation separately. Skip rows that don't apply — zero is fine. Convert annual payments (insurance, fees) to a monthly equivalent.</p>
+
+        <p class="rw-section-head">Loans &amp; EMIs</p>
+        <div class="rw-asset-list">
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Home loan EMI</strong>
+              <small>Your current monthly EMI — principal + interest</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-home" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Rent</strong>
+              <small>If you rent instead of own — monthly rent outflow</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-rent" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Car / vehicle loan EMI</strong>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-car" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Personal / consumer / gold loan EMIs</strong>
+              <small>All short-term loans combined</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-personal" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Education loan EMI</strong>
+              <small>Your own or a dependent's</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-edu" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Credit card minimum payment</strong>
+              <small>Minimum due each month on revolving balance — enter actual outstanding ÷ 12 if you carry a balance</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-cc" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
         </div>
-        <div class="rw-chips">
-          <button class="rw-chip" type="button" data-target="f-fixed" data-value="40000">₹40 K</button>
-          <button class="rw-chip" type="button" data-target="f-fixed" data-value="80000">₹80 K</button>
-          <button class="rw-chip" type="button" data-target="f-fixed" data-value="150000">₹1.5 L</button>
-          <button class="rw-chip" type="button" data-target="f-fixed" data-value="250000">₹2.5 L</button>
+
+        <p class="rw-section-head">Household &amp; commitments</p>
+        <div class="rw-asset-list">
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>School / tuition fees</strong>
+              <small>Annual total ÷ 12 if paid once a year</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-school" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Insurance premiums</strong>
+              <small>Life + term + health + vehicle — all policies, monthly equivalent</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-insurance" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Domestic help</strong>
+              <small>Cook, driver, housekeeping — fixed monthly</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-help" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>SIPs &amp; recurring investments</strong>
+              <small>Only include SIPs you'd continue even if income paused. If you'd stop them, leave at 0.</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-sip" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Subscriptions &amp; other fixed</strong>
+              <small>OTT, gym, clubs, software — the auto-debits you wouldn't immediately cancel</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-subs" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
         </div>
+
+        <p class="rw-section-head">Tax obligations — monthly outflow</p>
+        <div class="rw-asset-list">
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Advance / self-assessment income tax</strong>
+              <small>Salaried with full TDS? Leave at 0. Self-employed or with untaxed income? Enter monthly equivalent of quarterly advance tax.</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-advtax" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>GST payments</strong>
+              <small>Net monthly GST outflow if you run a business, consultancy, or freelance practice</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-gst" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+          <div class="rw-asset-row">
+            <div class="rw-asset-label">
+              <strong>Professional tax</strong>
+              <small>₹2,500/year in most states — roughly ₹208/month. Often deducted by employer, but worth checking.</small>
+            </div>
+            <div class="rw-asset-input-wrap">
+              <span class="rw-currency">₹</span>
+              <input type="text" inputmode="numeric" id="f-fix-proftax" class="rw-input rw-fixed-field" placeholder="0" autocomplete="off" />
+            </div>
+          </div>
+        </div>
+
+        <div class="rw-asset-total" style="border-radius: var(--radius-sm); border: 1px solid var(--line); margin-top: 0.5rem;">
+          <span>Total monthly liabilities</span>
+          <span id="rw-fixed-total">₹0</span>
+        </div>
+
+        <p class="rw-fineprint" style="margin-top:1rem;">Capital gains tax when liquidating investments (MFs, stocks, property) is approximated by the 20% haircut already applied to illiquid assets in the lever scenarios.</p>
+
         <div class="rw-nav">
           <button class="btn-primary rw-next" type="button">Next →</button>
           <button class="rw-back" type="button">← Back</button>
@@ -590,17 +753,26 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
   var depIncluded = false; // toggled by Yes/No buttons
 
+  function updateLiquidDisplay() {
+    var gross   = sumFields('rw-liquid-field');
+    var taxDue  = parseRupees($('f-liq-taxdue') ? $('f-liq-taxdue').value : '0');
+    var net     = Math.max(0, gross - taxDue);
+    if ($('rw-liquid-gross')) $('rw-liquid-gross').textContent = R.formatINR(gross);
+    if ($('rw-liquid-net'))   $('rw-liquid-net').textContent   = R.formatINR(net);
+    return { gross: gross, taxDue: taxDue, net: net };
+  }
+
   function readSnapshot() {
-    var liquid   = sumFields('rw-liquid-field');
-    var illiquid = sumFields('rw-illiquid-field');
+    var liq      = updateLiquidDisplay();
     var dep      = depIncluded ? sumFields('rw-dep-field') : 0;
     return {
-      age:             parseInt($('f-age').value, 10),
-      dependents:      parseInt($('f-deps').value, 10),
-      liquidAssets:    liquid + dep,
-      illiquidAssets:  illiquid,
-      fixedMonthly:    parseRupees($('f-fixed').value),
-      variableMonthly: parseRupees($('f-variable').value)
+      age:                 parseInt($('f-age').value, 10),
+      dependents:          parseInt($('f-deps').value, 10),
+      liquidAssets:        liq.net + dep,
+      illiquidAssets:      sumFields('rw-illiquid-field'),
+      fixedMonthly:        sumFields('rw-fixed-field'),
+      variableMonthly:     parseRupees($('f-variable').value),
+      pendingTaxLiability: 0  // already deducted from liquidAssets above via liq.taxDue
     };
   }
 
@@ -619,21 +791,22 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     el.addEventListener('input', function () { out.textContent = el.value; });
   });
 
-  // ---- rupee inputs: format on input (expense fields) ----------
-  ['f-fixed', 'f-variable'].forEach(function (id) {
-    var el = $(id);
-    var hint = $(id + '-hint');
-    el.addEventListener('input', function () {
+  // ---- variable monthly: format on input -----------------------
+  (function () {
+    var el = $('f-variable');
+    var hint = $('f-variable-hint');
+    if (el) el.addEventListener('input', function () {
       var raw = parseRupees(el.value);
       el.value = raw ? formatRupees(raw) : '';
       if (hint) hint.textContent = raw ? R.formatINR(raw) : '—';
     });
-  });
+  })();
 
-  // ---- chips: quick-fill for expense fields --------------------
+  // ---- chips: quick-fill for variable field --------------------
   document.querySelectorAll('.rw-chip').forEach(function (chip) {
     chip.addEventListener('click', function () {
       var target = $(chip.getAttribute('data-target'));
+      if (!target) return;
       var val = parseInt(chip.getAttribute('data-value'), 10) || 0;
       target.value = val ? formatRupees(val) : '';
       var hint = $(chip.getAttribute('data-target') + '-hint');
@@ -641,8 +814,8 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     });
   });
 
-  // ---- asset breakdown fields: format + update running totals --
-  function wireAssetFields(cls, totalId) {
+  // ---- generic asset field wiring: format + update running total
+  function wireAssetFields(cls, totalId, afterUpdate) {
     document.querySelectorAll('.' + cls).forEach(function (el) {
       el.addEventListener('input', function () {
         var raw = parseRupees(el.value);
@@ -650,12 +823,27 @@ document.getElementById('yr').textContent = new Date().getFullYear();
         var total = sumFields(cls);
         var totalEl = $(totalId);
         if (totalEl) totalEl.textContent = R.formatINR(total);
+        if (afterUpdate) afterUpdate();
       });
     });
   }
-  wireAssetFields('rw-liquid-field',   'rw-liquid-total');
+
+  // Liquid fields → update gross + net display
+  wireAssetFields('rw-liquid-field', 'rw-liquid-gross', updateLiquidDisplay);
+
+  // Pending tax due → update net display
+  (function () {
+    var el = $('f-liq-taxdue');
+    if (el) el.addEventListener('input', function () {
+      var raw = parseRupees(el.value);
+      el.value = raw ? formatRupees(raw) : '';
+      updateLiquidDisplay();
+    });
+  })();
+
   wireAssetFields('rw-illiquid-field', 'rw-illiquid-total');
   wireAssetFields('rw-dep-field',      'rw-dep-total');
+  wireAssetFields('rw-fixed-field',    'rw-fixed-total');
 
   // ---- dependent assets toggle ---------------------------------
   $('rw-dep-yes').addEventListener('click', function () {

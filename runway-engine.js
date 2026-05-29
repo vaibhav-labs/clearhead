@@ -64,9 +64,12 @@
     var fixed  = Math.max(0, Number(snapshot.fixedMonthly)   || 0);
     var varbl  = Math.max(0, Number(snapshot.variableMonthly) || 0);
 
-    // Apply medical buffer up-front
+    // Apply medical buffer up-front (emergency reserve)
     var buffer = medicalBuffer(snapshot.age, snapshot.dependents);
-    corpus = Math.max(0, corpus - buffer);
+    // Apply pending tax liability up-front (money already owed, not available)
+    // e.g. outstanding income tax demand, GST arrears
+    var taxLiab = Math.max(0, Number(snapshot.pendingTaxLiability) || 0);
+    corpus = Math.max(0, corpus - buffer - taxLiab);
 
     var months = 0;
     var trajectory = [{ month: 0, corpus: corpus, monthlySpend: fixed + varbl }];
@@ -76,7 +79,7 @@
       return finish(cap, [
         { month: 0,   corpus: corpus, monthlySpend: 0 },
         { month: cap, corpus: corpus, monthlySpend: 0 }
-      ], buffer);
+      ], buffer, taxLiab);
     }
 
     for (var i = 1; i <= cap; i++) {
@@ -94,7 +97,7 @@
         var fraction = (corpus + spend) / spend; // how much of this month we covered
         months = (i - 1) + Math.max(0, Math.min(1, fraction));
         trajectory.push({ month: i, corpus: 0, monthlySpend: spend });
-        return finish(months, trajectory, buffer);
+        return finish(months, trajectory, buffer, taxLiab);
       }
 
       months = i;
@@ -104,15 +107,16 @@
       }
     }
 
-    return finish(months, trajectory, buffer);
+    return finish(months, trajectory, buffer, taxLiab);
   }
 
-  function finish(months, trajectory, buffer) {
+  function finish(months, trajectory, buffer, taxLiab) {
     return {
       months: Math.round(months * 10) / 10,
       monthsWhole: Math.floor(months),
       trajectory: trajectory,
-      medicalBufferApplied: buffer
+      medicalBufferApplied: buffer,
+      taxLiabilityApplied: taxLiab || 0
     };
   }
 
@@ -121,11 +125,12 @@
   function calculateRunway(snapshot, opts) {
     var sim = simulate(snapshot, opts);
     return {
-      months: sim.months,
-      monthsWhole: sim.monthsWhole,
-      capped: sim.months >= (opts && opts.maxMonths ? opts.maxMonths : DEFAULTS.maxMonths) - 1,
-      buffer: sim.medicalBufferApplied,
-      trajectory: sim.trajectory
+      months:               sim.months,
+      monthsWhole:          sim.monthsWhole,
+      capped:               sim.months >= (opts && opts.maxMonths ? opts.maxMonths : DEFAULTS.maxMonths) - 1,
+      buffer:               sim.medicalBufferApplied,
+      taxLiabilityApplied:  sim.taxLiabilityApplied,
+      trajectory:           sim.trajectory
     };
   }
 
@@ -141,12 +146,13 @@
   function applyLevers(snapshot, levers, opts) {
     levers = levers || {};
     var s = {
-      age:             snapshot.age,
-      dependents:      snapshot.dependents,
-      liquidAssets:    Number(snapshot.liquidAssets)   || 0,
-      illiquidAssets:  Number(snapshot.illiquidAssets) || 0,
-      fixedMonthly:    Number(snapshot.fixedMonthly)   || 0,
-      variableMonthly: Number(snapshot.variableMonthly) || 0
+      age:                  snapshot.age,
+      dependents:           snapshot.dependents,
+      liquidAssets:         Number(snapshot.liquidAssets)         || 0,
+      illiquidAssets:       Number(snapshot.illiquidAssets)       || 0,
+      fixedMonthly:         Number(snapshot.fixedMonthly)         || 0,
+      variableMonthly:      Number(snapshot.variableMonthly)      || 0,
+      pendingTaxLiability:  Number(snapshot.pendingTaxLiability)  || 0
     };
 
     if (levers.cutVariablePct) {

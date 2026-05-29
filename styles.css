@@ -1547,6 +1547,40 @@ main { overflow-x: hidden; }
   margin-top: 0.5rem;
 }
 
+/* Sub-total row (lighter than total) */
+.rw-asset-subtotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--bg-alt);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+
+/* Deduction row — tax dues */
+.rw-deduction-row { background: #fff8f6; }
+.rw-deduction-row:focus-within { background: #fff0ec; }
+.rw-deduct-sign {
+  color: #b84040;
+  font-weight: 600;
+}
+.rw-deduction-row strong { color: #b84040; }
+.rw-deduction-row .rw-input { border-color: #e0b0b0; }
+.rw-deduction-row .rw-input:focus { border-color: #b84040; }
+
+/* Section header between asset groups */
+.rw-section-head {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 1.25rem 0 0.4rem;
+}
+.rw-section-head:first-of-type { margin-top: 0.25rem; }
+
 @media (max-width: 520px) {
   .rw-asset-row {
     flex-direction: column;
