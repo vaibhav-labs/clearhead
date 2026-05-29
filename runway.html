@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Abundance Runway Calculator | Clearhead</title>
+<meta name="description" content="If your paycheque stopped today, how long could your life keep running? A two-minute calculator for urban professionals — built to swap scarcity for clarity." />
+<link rel="canonical" href="https://clearhead.in/runway.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Abundance Runway Calculator | Clearhead" />
+<meta property="og:description" content="If your paycheque stopped today, how long could your life keep running? Find your runway in two minutes." />
+<meta property="og:url" content="https://clearhead.in/runway.html" />
+<meta property="og:site_name" content="Clearhead" />
+<meta property="og:locale" content="en_IN" />
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Abundance Runway Calculator | Clearhead" />
+<meta name="twitter:description" content="If your paycheque stopped today, how long could your life keep running?" />
+
+<meta name="theme-color" content="#f7f5f1" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="index.html#sessions">Sessions</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact" class="cta-ghost">Enquire</a>
+  </nav>
+</header>
+
+<main>
+<div class="rw-page">
+  <div class="rw-wrap">
+
+    <!-- ============================ INTRO ============================ -->
+    <header class="rw-header" id="rw-intro">
+      <p class="eyebrow">Two minutes · No login · Numbers stay on your device</p>
+      <h1>If your paycheque stopped today,<br><em>how long could your life keep running?</em></h1>
+      <p class="rw-lede">
+        Most professionals carry a quiet, unnamed scarcity around money — not because they're broke, but because they've never actually done the math. This is a small, honest calculator that gives you your real number, then shows you the levers you already control.
+      </p>
+    </header>
+
+    <!-- ============================ PHASE 1: FORM ============================ -->
+    <section class="rw-phase" id="rw-phase-form" aria-labelledby="rw-form-h" hidden>
+      <h2 id="rw-form-h" class="rw-vh">Tell me about your numbers</h2>
+
+      <div class="rw-prog">
+        <div class="rw-prog-bar"><div class="rw-prog-fill" id="rw-prog-fill" style="width:16%"></div></div>
+        <span class="rw-prog-label" id="rw-prog-label">Step 1 of 6</span>
+      </div>
+
+      <!-- Step 1: Age -->
+      <div class="rw-step active" data-step="1">
+        <p class="rw-q">First — how old are you?</p>
+        <p class="rw-q-sub">This shapes the medical buffer we'll set aside. No judgment, no flags.</p>
+        <div class="rw-slider-row">
+          <input type="range" id="f-age" class="rw-slider" min="22" max="65" value="34" aria-label="Age" />
+          <div class="rw-slider-val"><span id="f-age-val">34</span><small>years</small></div>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Dependents -->
+      <div class="rw-step" data-step="2">
+        <p class="rw-q">How many people depend on your income?</p>
+        <p class="rw-q-sub">Partner, kids, parents — anyone whose life would change if your paycheque paused.</p>
+        <div class="rw-slider-row">
+          <input type="range" id="f-deps" class="rw-slider" min="0" max="6" value="1" aria-label="Dependents" />
+          <div class="rw-slider-val"><span id="f-deps-val">1</span><small>people</small></div>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Liquid assets -->
+      <div class="rw-step" data-step="3">
+        <p class="rw-q">What can you reach quickly?</p>
+        <p class="rw-q-sub">Savings, FDs, mutual funds, liquid equity — money you could move in a week without taking a hit.</p>
+        <div class="rw-input-row">
+          <span class="rw-currency">₹</span>
+          <input type="text" inputmode="numeric" id="f-liquid" class="rw-input" placeholder="e.g. 12,00,000" autocomplete="off" />
+          <span class="rw-input-hint" id="f-liquid-hint">—</span>
+        </div>
+        <div class="rw-chips" aria-label="Quick fill">
+          <button class="rw-chip" type="button" data-target="f-liquid" data-value="200000">₹2 L</button>
+          <button class="rw-chip" type="button" data-target="f-liquid" data-value="500000">₹5 L</button>
+          <button class="rw-chip" type="button" data-target="f-liquid" data-value="1000000">₹10 L</button>
+          <button class="rw-chip" type="button" data-target="f-liquid" data-value="2500000">₹25 L</button>
+          <button class="rw-chip" type="button" data-target="f-liquid" data-value="5000000">₹50 L</button>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Illiquid assets -->
+      <div class="rw-step" data-step="4">
+        <p class="rw-q">What's harder to reach — but still yours?</p>
+        <p class="rw-q-sub">Property equity, PF, ESOPs, retirement accounts. Money you'd take a haircut to unlock fast.</p>
+        <div class="rw-input-row">
+          <span class="rw-currency">₹</span>
+          <input type="text" inputmode="numeric" id="f-illiquid" class="rw-input" placeholder="e.g. 40,00,000" autocomplete="off" />
+          <span class="rw-input-hint" id="f-illiquid-hint">—</span>
+        </div>
+        <div class="rw-chips">
+          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="0">₹0</button>
+          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="1000000">₹10 L</button>
+          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="5000000">₹50 L</button>
+          <button class="rw-chip" type="button" data-target="f-illiquid" data-value="15000000">₹1.5 Cr</button>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Fixed monthly -->
+      <div class="rw-step" data-step="5">
+        <p class="rw-q">What goes out every month — no matter what?</p>
+        <p class="rw-q-sub">Rent or home EMI, car EMI, school fees, insurance, the basics. The bills that don't ask for permission.</p>
+        <div class="rw-input-row">
+          <span class="rw-currency">₹</span>
+          <input type="text" inputmode="numeric" id="f-fixed" class="rw-input" placeholder="e.g. 1,20,000" autocomplete="off" />
+          <span class="rw-input-hint" id="f-fixed-hint">—</span>
+        </div>
+        <div class="rw-chips">
+          <button class="rw-chip" type="button" data-target="f-fixed" data-value="40000">₹40 K</button>
+          <button class="rw-chip" type="button" data-target="f-fixed" data-value="80000">₹80 K</button>
+          <button class="rw-chip" type="button" data-target="f-fixed" data-value="150000">₹1.5 L</button>
+          <button class="rw-chip" type="button" data-target="f-fixed" data-value="250000">₹2.5 L</button>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" type="button">Next →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Variable monthly -->
+      <div class="rw-step" data-step="6">
+        <p class="rw-q">And what flexes month to month?</p>
+        <p class="rw-q-sub">Eating out, travel, groceries, gifts, the small stuff. A rough average is fine — be honest, not aspirational.</p>
+        <div class="rw-input-row">
+          <span class="rw-currency">₹</span>
+          <input type="text" inputmode="numeric" id="f-variable" class="rw-input" placeholder="e.g. 60,000" autocomplete="off" />
+          <span class="rw-input-hint" id="f-variable-hint">—</span>
+        </div>
+        <div class="rw-chips">
+          <button class="rw-chip" type="button" data-target="f-variable" data-value="20000">₹20 K</button>
+          <button class="rw-chip" type="button" data-target="f-variable" data-value="50000">₹50 K</button>
+          <button class="rw-chip" type="button" data-target="f-variable" data-value="100000">₹1 L</button>
+          <button class="rw-chip" type="button" data-target="f-variable" data-value="150000">₹1.5 L</button>
+        </div>
+        <div class="rw-nav">
+          <button class="btn-primary rw-next" id="rw-compute" type="button">See my runway →</button>
+          <button class="rw-back" type="button">← Back</button>
+        </div>
+        <p class="rw-fineprint">Numbers never leave your device until you choose to share them. Inflation assumed 6% p.a., return on liquid corpus 8% p.a. — both editable later.</p>
+      </div>
+
+    </section>
+
+    <!-- ============================ PHASE 2: AHA ============================ -->
+    <section class="rw-phase rw-aha" id="rw-phase-aha" aria-labelledby="rw-aha-h" hidden>
+      <p class="eyebrow" id="rw-aha-eyebrow">Your number</p>
+      <h2 id="rw-aha-h" class="rw-vh">Your runway</h2>
+      <div class="rw-bignum">
+        <span class="rw-bignum-val" id="rw-months-val">—</span>
+        <span class="rw-bignum-unit">months</span>
+      </div>
+      <p class="rw-bignum-sub" id="rw-months-sub">of financial runway if your income paused today.</p>
+      <p class="rw-aha-msg" id="rw-aha-msg"></p>
+      <p class="rw-aha-cta">
+        <button class="btn-text" type="button" id="rw-scroll-gate">Unlock your action plan ↓</button>
+      </p>
+    </section>
+
+    <!-- ============================ PHASE 3: GATE + DASHBOARD ============================ -->
+    <section class="rw-phase rw-gate-wrap" id="rw-phase-gate" aria-labelledby="rw-gate-h" hidden>
+      <div class="rw-gate-card" id="rw-gate-card">
+        <p class="eyebrow">The next step</p>
+        <h2 id="rw-gate-h">Unlock your personalised<br>Scarcity-to-Abundance Action Plan.</h2>
+        <p>The math is only the first half. The other half is the small behavioural shifts that turn a 6-month runway into 18 — without earning a rupee more. See exactly which levers move your number the most, on the live dashboard below.</p>
+
+        <form class="rw-gate-form" id="rw-gate-form" name="runway-leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="runway-leads" />
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="rw-field">
+            <label for="g-name">First name</label>
+            <input type="text" id="g-name" name="name" placeholder="What should I call you?" autocomplete="given-name" required />
+          </div>
+          <div class="rw-field">
+            <label for="g-email">Email</label>
+            <input type="email" id="g-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <input type="hidden" id="g-months" name="runway_months" />
+          <input type="hidden" id="g-snapshot" name="snapshot_json" />
+          <label class="consent-check">
+            <input type="checkbox" name="privacy_consent" required />
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your number stays private.</span>
+          </label>
+          <div class="rw-gate-actions">
+            <button type="submit" class="btn-primary">Unlock dashboard →</button>
+            <span class="rw-or">— or —</span>
+            <a href="quiz.html" class="btn-text">Book a discovery conversation →</a>
+          </div>
+          <p class="rw-fineprint">Submitting reveals the interactive panel below. Your numbers aren't sent until you confirm.</p>
+        </form>
+      </div>
+
+      <!-- Locked / unlocked dashboard -->
+      <div class="rw-dashboard" id="rw-dashboard" aria-live="polite">
+        <div class="rw-dash-lock" id="rw-dash-lock" aria-hidden="false">
+          <div class="rw-lock-icon">🔒</div>
+          <p>Agency Dashboard locked</p>
+          <small>Unlock above to see how small behavioural shifts extend your runway.</small>
+        </div>
+
+        <div class="rw-dash-inner" id="rw-dash-inner">
+          <div class="rw-dash-head">
+            <p class="eyebrow">Agency dashboard · live</p>
+            <h3>Small shifts. Real months.</h3>
+            <p class="rw-dash-sub">Toggle the levers below. Watch your runway change. These aren't projections — they're the same math, with your behaviour as the variable.</p>
+          </div>
+
+          <div class="rw-dash-grid">
+            <div class="rw-levers">
+              <label class="rw-lever">
+                <input type="checkbox" data-lever="cutVariablePct" data-value="0.20" />
+                <span class="rw-lever-text">
+                  <strong>Cut variable expenses by 20%</strong>
+                  <small>Eating out, travel, impulse buys. The 80/20 cut most people barely notice after a month.</small>
+                </span>
+              </label>
+
+              <label class="rw-lever">
+                <input type="checkbox" data-lever="liquidateIlliquidPct" data-value="0.30" />
+                <span class="rw-lever-text">
+                  <strong>Liquidate 30% of illiquid assets</strong>
+                  <small>Hard option, real lever. 20% haircut factored in for the rushed sale.</small>
+                </span>
+              </label>
+
+              <label class="rw-lever">
+                <input type="checkbox" data-lever="eliminateEmi" data-value="25000" />
+                <span class="rw-lever-text">
+                  <strong>Eliminate one EMI (~₹25K / mo)</strong>
+                  <small>Often a car loan. The single highest-ROI fixed cost to retire early.</small>
+                </span>
+              </label>
+
+              <label class="rw-lever">
+                <input type="checkbox" data-lever="cutFixedPct" data-value="0.10" />
+                <span class="rw-lever-text">
+                  <strong>Trim fixed costs by 10%</strong>
+                  <small>Renegotiate rent. Drop subscriptions. Move one tier down on insurance.</small>
+                </span>
+              </label>
+            </div>
+
+            <div class="rw-chart-card">
+              <div class="rw-delta">
+                <div class="rw-delta-row">
+                  <span class="rw-delta-label">Baseline</span>
+                  <span class="rw-delta-num" id="rw-delta-base">— mo</span>
+                </div>
+                <div class="rw-delta-row featured">
+                  <span class="rw-delta-label">With your levers</span>
+                  <span class="rw-delta-num" id="rw-delta-new">— mo</span>
+                </div>
+                <div class="rw-delta-row gain">
+                  <span class="rw-delta-label">You bought yourself</span>
+                  <span class="rw-delta-num" id="rw-delta-gain">+ — months</span>
+                </div>
+              </div>
+              <div class="rw-chart">
+                <svg id="rw-chart" viewBox="0 0 600 220" preserveAspectRatio="none" role="img" aria-label="Runway corpus over time">
+                  <defs>
+                    <linearGradient id="rw-grad-base" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#c8b49a" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#c8b49a" stop-opacity="0"/>
+                    </linearGradient>
+                    <linearGradient id="rw-grad-new" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#2f3e34" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#2f3e34" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <g id="rw-chart-axes"></g>
+                  <path id="rw-chart-base-area" fill="url(#rw-grad-base)" d=""></path>
+                  <path id="rw-chart-base"      fill="none" stroke="#a89072" stroke-width="2" stroke-dasharray="4 4" d=""></path>
+                  <path id="rw-chart-new-area"  fill="url(#rw-grad-new)" d=""></path>
+                  <path id="rw-chart-new"       fill="none" stroke="#2f3e34" stroke-width="2.5" d=""></path>
+                </svg>
+                <div class="rw-chart-legend">
+                  <span><i class="rw-leg base"></i> Today's path</span>
+                  <span><i class="rw-leg new"></i> With your levers</span>
+                </div>
+              </div>
+              <p class="rw-dash-foot">
+                Numbers shift instantly. The point isn't the dashboard — it's that you already have the dials.
+              </p>
+            </div>
+          </div>
+
+          <div class="rw-dash-cta">
+            <p>Want help turning this into a real plan — not just a screen?</p>
+            <a class="btn-primary" href="quiz.html">Book a discovery conversation →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Start button (shown initially) -->
+    <div class="rw-startwrap" id="rw-startwrap">
+      <button class="btn-primary" type="button" id="rw-start">Start the 2-minute calculator →</button>
+      <p class="rw-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+    </div>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching & Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="index.html#sessions">Sessions</a>
+      <a href="blog.html">Blog</a>
+      <a href="runway.html">Runway calculator</a>
+      <a href="index.html#contact">Enquire</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Clearhead · Vaibhav Jain · All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+(function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
+</script>
+
+<!-- Math engine (pure, no DOM) -->
+<script src="runway-engine.js"></script>
+
+<!-- UI controller -->
+<script>
+(function () {
+  'use strict';
+  var R = window.RunwayEngine;
+
+  // ---- helpers --------------------------------------------------
+  function $(id) { return document.getElementById(id); }
+  function show(id) { var el = $(id); if (el) el.hidden = false; }
+  function hide(id) { var el = $(id); if (el) el.hidden = true;  }
+
+  function parseRupees(str) {
+    if (str == null) return 0;
+    var n = String(str).replace(/[^\d]/g, '');
+    return n ? parseInt(n, 10) : 0;
+  }
+
+  function formatRupees(n) {
+    n = parseInt(n, 10) || 0;
+    return n.toLocaleString('en-IN');
+  }
+
+  function readSnapshot() {
+    return {
+      age:             parseInt($('f-age').value, 10),
+      dependents:      parseInt($('f-deps').value, 10),
+      liquidAssets:    parseRupees($('f-liquid').value),
+      illiquidAssets:  parseRupees($('f-illiquid').value),
+      fixedMonthly:    parseRupees($('f-fixed').value),
+      variableMonthly: parseRupees($('f-variable').value)
+    };
+  }
+
+  // ---- intro / start --------------------------------------------
+  $('rw-start').addEventListener('click', function () {
+    hide('rw-intro');
+    hide('rw-startwrap');
+    show('rw-phase-form');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ---- sliders mirror their values ------------------------------
+  ['f-age', 'f-deps'].forEach(function (id) {
+    var el = $(id);
+    var out = $(id + '-val');
+    el.addEventListener('input', function () { out.textContent = el.value; });
+  });
+
+  // ---- rupee inputs: format on input ----------------------------
+  ['f-liquid', 'f-illiquid', 'f-fixed', 'f-variable'].forEach(function (id) {
+    var el = $(id);
+    var hint = $(id + '-hint');
+    el.addEventListener('input', function () {
+      var raw = parseRupees(el.value);
+      el.value = raw ? formatRupees(raw) : '';
+      if (hint) hint.textContent = raw ? R.formatINR(raw) : '—';
+    });
+  });
+
+  // ---- chips: quick-fill amount ---------------------------------
+  document.querySelectorAll('.rw-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      var target = $(chip.getAttribute('data-target'));
+      var val = parseInt(chip.getAttribute('data-value'), 10) || 0;
+      target.value = val ? formatRupees(val) : '';
+      var hint = $(chip.getAttribute('data-target') + '-hint');
+      if (hint) hint.textContent = val ? R.formatINR(val) : '—';
+    });
+  });
+
+  // ---- multi-step nav -------------------------------------------
+  var steps = Array.from(document.querySelectorAll('.rw-step'));
+  var fill  = $('rw-prog-fill');
+  var lbl   = $('rw-prog-label');
+
+  function go(n) {
+    n = Math.max(0, Math.min(steps.length - 1, n));
+    steps.forEach(function (s, i) { s.classList.toggle('active', i === n); });
+    var pct = Math.round(((n + 1) / steps.length) * 100);
+    fill.style.width = pct + '%';
+    lbl.textContent  = 'Step ' + (n + 1) + ' of ' + steps.length;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  steps.forEach(function (step, i) {
+    var next = step.querySelector('.rw-next');
+    var back = step.querySelector('.rw-back');
+    if (next) next.addEventListener('click', function () {
+      if (next.id === 'rw-compute') return computeAndShow();
+      go(i + 1);
+    });
+    if (back) back.addEventListener('click', function () { go(i - 1); });
+  });
+
+  // ---- compute & show aha screen --------------------------------
+  var baselineRunway = null;
+  var baselineSnapshot = null;
+
+  function computeAndShow() {
+    var snap = readSnapshot();
+    baselineSnapshot = snap;
+    baselineRunway   = R.calculateRunway(snap);
+
+    var months = baselineRunway.months;
+    $('rw-months-val').textContent = isFinite(months) ? months.toFixed(1) : '—';
+    var tone = R.tone(months);
+    $('rw-phase-aha').setAttribute('data-tone', tone);
+
+    var sub  = $('rw-months-sub');
+    var msg  = $('rw-aha-msg');
+    var eyebrow = $('rw-aha-eyebrow');
+
+    if (tone === 'critical') {
+      eyebrow.textContent = 'Your number — and a true thing about it';
+      sub.textContent = 'before your liquid corpus runs out, after a small medical buffer.';
+      msg.innerHTML = "If that number feels too small, take a breath. Scarcity isn't a moral failure — it's a math problem with behavioural levers. The first step out of it is doing exactly what you just did: looking at the number instead of away from it. Below, you'll see the dials you already control.";
+    } else if (tone === 'tight') {
+      eyebrow.textContent = 'Your number';
+      sub.textContent = 'of financial runway — tight, but workable, and small shifts move it more than you think.';
+      msg.innerHTML = "This is the band most urban professionals sit in — and almost all of them don't know it. The good news: the four levers below typically double this number without earning a rupee more.";
+    } else if (tone === 'stable') {
+      eyebrow.textContent = 'Your number';
+      sub.textContent = 'of runway — you have real breathing room, but breathing room is not the same as agency.';
+      msg.innerHTML = "Solid. Most people in this band still carry quiet money-anxiety because they've never seen this number written down. Now you have. The dashboard below shows how this becomes years, not months.";
+    } else {
+      eyebrow.textContent = 'Your number';
+      sub.textContent = 'of runway. By any honest measure, you have abundance.';
+      msg.innerHTML = "The math is on your side. The interesting question isn't 'will I be okay' — it's 'what am I actually here for?' Sometimes that's a different kind of conversation.";
+    }
+
+    hide('rw-phase-form');
+    show('rw-phase-aha');
+    show('rw-phase-gate');
+
+    // pre-fill hidden fields for lead form
+    $('g-months').value   = months.toFixed(1);
+    $('g-snapshot').value = JSON.stringify(snap);
+
+    drawDashboard(); // pre-compute so the unlocked view is instant
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  $('rw-scroll-gate').addEventListener('click', function () {
+    $('rw-phase-gate').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // ---- gate -----------------------------------------------------
+  // Simulate the unlock locally so the user gets the reveal instantly,
+  // while Netlify still receives the form submission in the background.
+  $('rw-gate-form').addEventListener('submit', function (e) {
+    var name  = $('g-name').value.trim();
+    var email = $('g-email').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return; // let native validation handle
+    }
+    e.preventDefault();
+    // Fire-and-forget the Netlify form post so we can reveal instantly.
+    try {
+      var fd = new FormData(e.target);
+      fetch('/', { method: 'POST', body: fd }).catch(function(){});
+    } catch (err) { /* noop */ }
+    unlockDashboard();
+  });
+
+  function unlockDashboard() {
+    var card = $('rw-gate-card');
+    card.classList.add('rw-gate-done');
+    $('rw-dash-lock').hidden = true;
+    $('rw-dashboard').classList.add('unlocked');
+    setTimeout(function () {
+      $('rw-dashboard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+  }
+
+  // ---- dashboard ------------------------------------------------
+  var levers = {};
+
+  document.querySelectorAll('.rw-lever input').forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      var key = cb.getAttribute('data-lever');
+      var val = parseFloat(cb.getAttribute('data-value'));
+      if (cb.checked) { levers[key] = val; }
+      else { delete levers[key]; }
+      drawDashboard();
+    });
+  });
+
+  function drawDashboard() {
+    if (!baselineRunway || !baselineSnapshot) return;
+    var withLevers = R.applyLevers(baselineSnapshot, levers);
+
+    var base = baselineRunway.months;
+    var nu   = withLevers.months;
+    var gain = Math.max(0, nu - base);
+
+    $('rw-delta-base').textContent = base.toFixed(1) + ' mo';
+    $('rw-delta-new').textContent  = nu.toFixed(1) + ' mo';
+    $('rw-delta-gain').textContent = '+ ' + gain.toFixed(1) + ' months';
+
+    drawChart(baselineRunway.trajectory, withLevers.trajectory);
+  }
+
+  function drawChart(baseTraj, newTraj) {
+    var W = 600, H = 220, padL = 8, padR = 8, padT = 12, padB = 26;
+    var allMonths = Math.max(
+      baseTraj[baseTraj.length - 1].month,
+      newTraj[newTraj.length - 1].month,
+      6
+    );
+    var allMax = 0;
+    baseTraj.forEach(function (p) { if (p.corpus > allMax) allMax = p.corpus; });
+    newTraj .forEach(function (p) { if (p.corpus > allMax) allMax = p.corpus; });
+    if (allMax === 0) allMax = 1;
+
+    function x(m) { return padL + (m / allMonths) * (W - padL - padR); }
+    function y(v) { return padT + (1 - v / allMax) * (H - padT - padB); }
+
+    function build(traj) {
+      if (!traj.length) return { line: '', area: '' };
+      var line = 'M ' + traj.map(function (p) { return x(p.month) + ' ' + y(p.corpus); }).join(' L ');
+      var last = traj[traj.length - 1];
+      var first = traj[0];
+      var area = line + ' L ' + x(last.month) + ' ' + y(0) + ' L ' + x(first.month) + ' ' + y(0) + ' Z';
+      return { line: line, area: area };
+    }
+
+    var b = build(baseTraj);
+    var n = build(newTraj);
+
+    $('rw-chart-base').setAttribute('d', b.line);
+    $('rw-chart-base-area').setAttribute('d', b.area);
+    $('rw-chart-new').setAttribute('d', n.line);
+    $('rw-chart-new-area').setAttribute('d', n.area);
+
+    // axes — month labels
+    var g = $('rw-chart-axes');
+    g.innerHTML = '';
+    var ticks = [0, Math.round(allMonths / 4), Math.round(allMonths / 2), Math.round(3 * allMonths / 4), allMonths];
+    ticks.forEach(function (t) {
+      var tx = x(t);
+      var ty = H - padB + 16;
+      var lbl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      lbl.setAttribute('x', tx); lbl.setAttribute('y', ty);
+      lbl.setAttribute('text-anchor', 'middle');
+      lbl.setAttribute('font-size', '11');
+      lbl.setAttribute('fill', '#7a807a');
+      lbl.textContent = t + 'mo';
+      g.appendChild(lbl);
+    });
+    // x-axis baseline
+    var ax = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    ax.setAttribute('x1', padL); ax.setAttribute('x2', W - padR);
+    ax.setAttribute('y1', H - padB); ax.setAttribute('y2', H - padB);
+    ax.setAttribute('stroke', '#e4dfd6'); ax.setAttribute('stroke-width', '1');
+    g.appendChild(ax);
+  }
+
+}());
+</script>
+
+</body>
+</html>
