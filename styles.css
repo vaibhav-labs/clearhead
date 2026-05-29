@@ -1594,3 +1594,342 @@ main { overflow-x: hidden; }
     width: 100%;
   }
 }
+
+/* ============================================================
+   TOOL KIT (tk-*)
+   Shared visual language for the Psychological & Career Tool
+   Suite — Cognitive Bandwidth, Career Friction, AI Relevance.
+   Same calming sage palette as the rest of the site.
+   ============================================================ */
+
+.tk-page { background: var(--bg); min-height: 80vh; padding: clamp(2rem, 6vw, 4.5rem) var(--pad); }
+.tk-wrap { max-width: 760px; margin: 0 auto; }
+.tk-vh   { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---- Intro header ---- */
+.tk-header { text-align: left; margin-bottom: 2.5rem; }
+.tk-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.12;
+  margin: 0.75rem 0 1rem;
+  max-width: 22ch;
+}
+.tk-lede { font-size: 1.05rem; max-width: 56ch; color: var(--ink-soft); }
+
+.tk-startwrap { text-align: left; margin-top: 1rem; }
+.tk-startwrap .btn-primary { margin-bottom: 0.6rem; }
+
+/* ---- Progress ---- */
+.tk-prog { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2rem; }
+.tk-prog-bar { flex: 1; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.tk-prog-fill { height: 100%; background: var(--accent); border-radius: 999px; transition: width 0.3s ease; }
+.tk-prog-label { font-size: 0.8rem; color: var(--ink-soft); white-space: nowrap; }
+
+/* ---- Phase / Step ---- */
+.tk-phase { min-height: 320px; } /* reserves vertical space — zero CLS as phases swap */
+.tk-step  { display: none; }
+.tk-step.active { display: block; animation: tkIn 0.25s ease both; }
+@keyframes tkIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+.tk-q     { font-family: var(--serif); font-size: clamp(1.3rem, 3vw, 1.6rem); color: var(--ink); margin: 0 0 0.4rem; line-height: 1.3; }
+.tk-q-sub { color: var(--ink-soft); font-size: 0.97rem; margin-bottom: 1.5rem; max-width: 56ch; }
+
+.tk-nav { display: flex; align-items: center; gap: 1rem; margin-top: 1.75rem; flex-wrap: wrap; }
+.tk-back {
+  background: none; border: none; padding: 0.4rem 0; color: var(--ink-soft);
+  font-size: 0.95rem; cursor: pointer;
+}
+.tk-back:hover { color: var(--accent); }
+.tk-fineprint { font-size: 0.82rem; color: var(--ink-soft); margin-top: 1rem; max-width: 56ch; }
+
+/* ---- Slider input ---- */
+.tk-slider-row {
+  display: flex; align-items: center; gap: 1.25rem;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+}
+.tk-slider {
+  flex: 1; appearance: none; -webkit-appearance: none;
+  height: 4px; background: var(--line); border-radius: 999px; outline: none;
+}
+.tk-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); cursor: pointer; border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(31,36,31,0.18);
+}
+.tk-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--accent);
+  cursor: pointer; border: 3px solid #fff; box-shadow: 0 1px 4px rgba(31,36,31,0.18);
+}
+.tk-slider-val {
+  min-width: 64px; text-align: right;
+  font-family: var(--serif); font-size: 1.5rem; color: var(--ink); line-height: 1;
+}
+.tk-slider-val small { display: block; font-family: var(--font); font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.2rem; }
+
+.tk-slider-scale {
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.5rem;
+  padding: 0 0.2rem;
+}
+
+/* ---- Matrix question (radio row of 5) ---- */
+.tk-matrix {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.1rem 1.2rem;
+}
+.tk-matrix legend { padding: 0; font-size: 0.92rem; color: var(--ink-soft); margin-bottom: 0.6rem; }
+.tk-matrix-row {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+.tk-matrix-opt {
+  position: relative;
+}
+.tk-matrix-opt input {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.tk-matrix-opt span {
+  display: block; text-align: center; padding: 0.7rem 0.3rem;
+  background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  font-size: 0.85rem; color: var(--ink-soft); cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  line-height: 1.2;
+}
+.tk-matrix-opt input:checked + span {
+  background: var(--accent); color: #fdfbf6; border-color: var(--accent);
+}
+.tk-matrix-opt input:focus-visible + span {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.tk-matrix-opt:hover span { border-color: var(--ink-soft); }
+.tk-matrix-anchors {
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.5rem;
+  padding: 0 0.2rem;
+}
+
+/* ---- Aha / Diagnostic banner ---- */
+.tk-aha { text-align: center; padding: 2.5rem 0 1rem; }
+.tk-bignum {
+  font-family: var(--serif); font-size: clamp(3.2rem, 9vw, 4.6rem);
+  line-height: 1; color: var(--accent); margin: 0;
+}
+.tk-bignum small {
+  display: block; font-family: var(--font); font-size: 0.85rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+  margin-top: 0.75rem;
+}
+.tk-aha-msg {
+  color: var(--ink); font-size: 1.05rem; max-width: 56ch; margin: 1.5rem auto 1.5rem;
+  line-height: 1.65;
+}
+.tk-aha[data-tone="critical"] .tk-bignum { color: #7a2a20; }
+.tk-aha[data-tone="tight"]    .tk-bignum { color: #8a5a18; }
+.tk-aha[data-tone="stable"]   .tk-bignum { color: var(--accent); }
+.tk-aha[data-tone="strong"]   .tk-bignum { color: var(--accent); }
+
+.tk-aha-cta { margin: 1rem 0 2rem; }
+.tk-aha-cta button {
+  background: none; border: none; cursor: pointer;
+  color: var(--ink-soft); font-size: 1rem;
+}
+.tk-aha-cta button:hover { color: var(--accent); }
+
+/* ---- Lead-capture gate card ---- */
+.tk-gate-wrap { padding: 2rem 0 4rem; }
+.tk-gate-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.2rem);
+  box-shadow: 0 10px 40px -16px rgba(31,36,31,0.12);
+}
+.tk-gate-card h2 { font-size: clamp(1.4rem, 3.5vw, 1.85rem); margin-bottom: 0.75rem; line-height: 1.25; }
+.tk-gate-card.tk-gate-done {
+  background: var(--accent-soft); box-shadow: none;
+}
+.tk-gate-form { display: grid; gap: 0.85rem; margin-top: 1.25rem; }
+.tk-field { display: flex; flex-direction: column; gap: 0.3rem; }
+.tk-field label { font-size: 0.85rem; color: var(--ink-soft); }
+.tk-field input {
+  padding: 0.75rem 0.9rem; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  font: inherit; color: var(--ink); background: var(--bg);
+}
+.tk-field input:focus { border-color: var(--accent); outline: 2px solid var(--accent-soft); outline-offset: 0; }
+
+.tk-gate-actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 1rem;
+  margin-top: 0.75rem;
+}
+.tk-or { color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---- Locked payload (deep dive) ---- */
+.tk-payload { position: relative; margin-top: 2rem; }
+.tk-payload-lock {
+  position: absolute; inset: 0; z-index: 2;
+  background: linear-gradient(180deg, rgba(247,245,241,0.4) 0%, rgba(247,245,241,0.88) 35%, rgba(247,245,241,0.96) 100%);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  border-radius: var(--radius);
+}
+.tk-payload.unlocked .tk-payload-lock { display: none; }
+.tk-payload.unlocked .tk-payload-inner { filter: none; }
+.tk-lock-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.tk-payload-lock p { font-family: var(--serif); font-size: 1.15rem; color: var(--ink); margin: 0 0 0.25rem; }
+.tk-payload-lock small { color: var(--ink-soft); }
+
+.tk-payload-inner {
+  filter: blur(8px);
+  transition: filter 0.45s ease;
+  pointer-events: none;
+}
+.tk-payload.unlocked .tk-payload-inner { pointer-events: auto; }
+
+/* ---- Generic sections within the payload ---- */
+.tk-section {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.25rem, 3.5vw, 1.75rem);
+  margin-bottom: 1.25rem;
+}
+.tk-section h3 {
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  margin: 0 0 0.85rem;
+}
+.tk-section p { margin: 0 0 0.85rem; }
+.tk-section p:last-child { margin-bottom: 0; }
+
+.tk-callout {
+  background: var(--accent-soft); border-left: 3px solid var(--accent);
+  padding: 1rem 1.1rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.97rem; color: var(--ink);
+  margin: 0.5rem 0 1rem;
+}
+
+/* ---- Leak audit (Tool 1) — ranked bars ---- */
+.tk-leak {
+  display: grid; gap: 0.85rem;
+}
+.tk-leak-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 0.4rem 1rem; align-items: baseline;
+  padding: 0.85rem 0; border-bottom: 1px dashed var(--line);
+}
+.tk-leak-row:last-child { border-bottom: none; }
+.tk-leak-name { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.tk-leak-pct { font-family: var(--serif); color: var(--accent); font-size: 1.05rem; }
+.tk-leak-bar {
+  grid-column: 1 / -1; height: 6px; background: var(--bg-alt); border-radius: 999px; overflow: hidden;
+}
+.tk-leak-fill { height: 100%; background: var(--accent); border-radius: 999px; }
+.tk-leak-row[data-sev="high"] .tk-leak-fill { background: #b84040; }
+.tk-leak-row[data-sev="mid"]  .tk-leak-fill { background: #c78a3d; }
+.tk-leak-row[data-sev="high"] .tk-leak-pct  { color: #b84040; }
+.tk-leak-row[data-sev="mid"]  .tk-leak-pct  { color: #c78a3d; }
+.tk-leak-note { grid-column: 1 / -1; font-size: 0.92rem; color: var(--ink-soft); margin-top: 0.25rem; }
+
+/* ---- Quadrant chart (Tool 2) ---- */
+.tk-quad-wrap {
+  display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.25rem, 3.5vw, 1.75rem);
+}
+.tk-quad-chart { width: 100%; max-width: 460px; margin: 0 auto; }
+.tk-quad-chart svg { width: 100%; height: auto; display: block; }
+.tk-quad-title {
+  font-family: var(--serif); font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+  color: var(--ink); text-align: center; margin: 0.25rem 0 0.5rem; line-height: 1.25;
+}
+.tk-quad-sub { text-align: center; color: var(--ink-soft); max-width: 52ch; margin: 0 auto; }
+
+/* ---- Consequences matrix (Tool 2 unlocked) ---- */
+.tk-cmatrix {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+@media (max-width: 600px) { .tk-cmatrix { grid-template-columns: 1fr; } }
+.tk-cmatrix-cell {
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+}
+.tk-cmatrix-cell h4 {
+  font-family: var(--serif); font-size: 1.02rem; margin: 0 0 0.5rem; color: var(--ink); font-weight: 500;
+}
+.tk-cmatrix-cell ul { margin: 0; padding-left: 1.1rem; }
+.tk-cmatrix-cell li { font-size: 0.94rem; color: var(--ink-soft); margin-bottom: 0.35rem; }
+.tk-cmatrix-cell.stay { border-left: 3px solid #b84040; }
+.tk-cmatrix-cell.move { border-left: 3px solid var(--accent); }
+
+/* ---- Exposure thermometer (Tool 3) ---- */
+.tk-meter {
+  position: relative;
+  height: 14px; background: linear-gradient(90deg, #cfe2cd 0%, #efe2bf 50%, #f0c8b8 100%);
+  border-radius: 999px; max-width: 460px; margin: 0.75rem auto 0.5rem;
+  border: 1px solid var(--line);
+}
+.tk-meter-dot {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent); border: 3px solid #fff;
+  box-shadow: 0 2px 6px rgba(31,36,31,0.22);
+  transition: left 0.4s ease;
+}
+.tk-meter-scale {
+  display: flex; justify-content: space-between; max-width: 460px;
+  margin: 0.4rem auto 0;
+  font-size: 0.78rem; color: var(--ink-soft);
+}
+
+/* ---- Coaching CTA strip ---- */
+.tk-cta-strip {
+  background: var(--dark); color: #e8e5df;
+  border-radius: var(--radius); padding: clamp(1.5rem, 4vw, 2.2rem);
+  text-align: center; margin-top: 1.5rem;
+}
+.tk-cta-strip h3 { color: #fdfbf6; margin-bottom: 0.5rem; }
+.tk-cta-strip p { color: #c6c3bc; max-width: 54ch; margin: 0 auto 1.25rem; }
+.tk-cta-strip .btn-primary {
+  background: #fdfbf6; color: var(--ink) !important;
+}
+.tk-cta-strip .btn-primary:hover { background: #fff; }
+.tk-cta-strip .btn-text {
+  display: inline-block; margin-left: 1rem; color: #c6c3bc !important;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.tk-cta-strip .btn-text:hover { color: #fff !important; }
+
+/* ---- Hub page cards (tools.html) ---- */
+.tk-hub-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+  margin-top: 2rem;
+}
+@media (max-width: 720px) { .tk-hub-grid { grid-template-columns: 1fr; } }
+.tk-hub-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: clamp(1.5rem, 3.5vw, 2rem);
+  display: flex; flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.tk-hub-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px -20px rgba(31,36,31,0.22);
+  border-color: var(--ink-soft);
+}
+.tk-hub-card .eyebrow { margin-bottom: 0.75rem; }
+.tk-hub-card h2 {
+  font-size: clamp(1.3rem, 2.6vw, 1.55rem); margin: 0 0 0.5rem; line-height: 1.25;
+}
+.tk-hub-card p { color: var(--ink-soft); font-size: 0.97rem; margin: 0 0 1.25rem; }
+.tk-hub-card .tk-hub-meta {
+  display: flex; gap: 1.2rem; font-size: 0.82rem; color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+.tk-hub-card a.btn-primary { align-self: flex-start; margin-top: auto; }
+
+/* ---- Responsive tweaks ---- */
+@media (max-width: 520px) {
+  .tk-slider-row { flex-direction: column; align-items: stretch; gap: 0.85rem; }
+  .tk-slider-val { text-align: left; }
+  .tk-matrix-row { grid-template-columns: repeat(5, 1fr); }
+  .tk-matrix-opt span { font-size: 0.78rem; padding: 0.6rem 0.2rem; }
+  .tk-cta-strip .btn-text { display: block; margin: 0.85rem 0 0; }
+}

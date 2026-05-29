@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Cognitive Overload Calculator | Mental Bandwidth | Clearhead</title>
+<meta name="description" content="A two-minute cognitive overload calculator. Score your mental bandwidth across open loops, context switching, system dependency, and recovery." />
+<meta name="keywords" content="cognitive overload calculator, mental bandwidth test, burnout vs fatigue assessment, cognitive load test, mental energy audit" />
+<link rel="canonical" href="https://clearhead.in/bandwidth.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Cognitive Overload Calculator | Mental Bandwidth Test" />
+<meta property="og:description" content="Measure your reserve mental capacity in two minutes. Find your top energy leak and the one workflow that closes it." />
+<meta property="og:url" content="https://clearhead.in/bandwidth.html" />
+<meta property="og:site_name" content="Clearhead" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:image" content="https://clearhead.in/VJ.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="849" />
+<meta property="og:image:alt" content="Clearhead — Cognitive Overload Calculator by Vaibhav Jain, ICF PCC Coach, Mumbai" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Cognitive Overload Calculator | Clearhead" />
+<meta name="twitter:description" content="What % of mental bandwidth do you actually have left today? Two-minute test." />
+<meta name="twitter:image" content="https://clearhead.in/VJ.jpg" />
+
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="geo.region" content="IN-MH" />
+<meta name="geo.placename" content="Lokhandwala, Andheri West, Mumbai" />
+<meta name="author" content="Vaibhav Jain" />
+<meta name="theme-color" content="#f7f5f1" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cognitive Load & Bandwidth Index",
+  "description": "A two-minute cognitive overload calculator that scores your mental bandwidth across open loops, context switching, system dependency, and recovery efficiency, then identifies your top energy leak and prescribes a workflow protocol to close it.",
+  "url": "https://clearhead.in/bandwidth.html",
+  "applicationCategory": "HealthApplication",
+  "applicationSubCategory": "Mental Health Assessment",
+  "operatingSystem": "Web Browser",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Clearhead",
+    "url": "https://clearhead.in/"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://clearhead.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://clearhead.in/tools.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cognitive Bandwidth Index",
+      "item": "https://clearhead.in/bandwidth.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="index.html#sessions">Sessions</a>
+    <a href="tools.html">Tools</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact" class="cta-ghost">Enquire</a>
+  </nav>
+</header>
+
+<main>
+<div class="tk-page">
+  <div class="tk-wrap">
+
+    <!-- ============================ INTRO ============================ -->
+    <header class="tk-header" id="cb-intro">
+      <p class="eyebrow">Two minutes · No login · Numbers stay on your device</p>
+      <h1>How much mental bandwidth do you <em>actually</em> have left today?</h1>
+      <p class="tk-lede">
+        Burnout doesn't arrive with a warning. It accumulates as quiet drain — open loops you carry, interruptions you absorb, systems you've outsourced to your own memory, and rest that never quite restores. This is a small, honest calculator that gives you a single number for your reserve capacity, then shows you which leak to close first.
+      </p>
+      <div class="tk-startwrap" id="cb-startwrap">
+        <button class="btn-primary" type="button" id="cb-start">Start the 2-minute audit →</button>
+        <p class="tk-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+      </div>
+    </header>
+
+    <!-- ============================ PHASE 1: INTAKE ============================ -->
+    <section class="tk-phase" id="cb-phase-form" aria-labelledby="cb-form-h" hidden>
+      <h2 id="cb-form-h" class="tk-vh">Tell me how your week feels</h2>
+
+      <div class="tk-prog">
+        <div class="tk-prog-bar"><div class="tk-prog-fill" id="cb-prog-fill" style="width:25%"></div></div>
+        <span class="tk-prog-label" id="cb-prog-label">Step 1 of 4</span>
+      </div>
+
+      <!-- Step 1: Open Loops -->
+      <div class="tk-step active" data-step="1">
+        <p class="tk-q">How many unmade decisions and open loops are you carrying right now?</p>
+        <p class="tk-q-sub">Pending tasks you haven't scheduled, boundaries you haven't drawn, conversations you haven't had. Slide to where it honestly sits.</p>
+        <div class="tk-slider-row">
+          <input type="range" id="cb-openLoops" class="tk-slider" min="0" max="100" value="50"
+                 aria-label="Open loops — 0 means few or none, 100 means many, weighing on me" />
+          <div class="tk-slider-val"><span id="cb-openLoops-val">50</span><small>/ 100</small></div>
+        </div>
+        <div class="tk-slider-scale">
+          <span>Few / none</span>
+          <span>Many, weighing on me</span>
+        </div>
+        <div class="tk-nav">
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Context Switching -->
+      <div class="tk-step" data-step="2">
+        <p class="tk-q">How often does your attention get interrupted?</p>
+        <p class="tk-q-sub">Pings, tabs, slack/email/whatsapp, walk-ins, the urge to check. Think of an average working hour.</p>
+        <div class="tk-slider-row">
+          <input type="range" id="cb-contextSwitching" class="tk-slider" min="0" max="100" value="50"
+                 aria-label="Context switching — 0 means protected focus, 100 means constant interruptions" />
+          <div class="tk-slider-val"><span id="cb-contextSwitching-val">50</span><small>/ 100</small></div>
+        </div>
+        <div class="tk-slider-scale">
+          <span>Protected focus</span>
+          <span>Constant interruptions</span>
+        </div>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: System Dependency -->
+      <div class="tk-step" data-step="3">
+        <p class="tk-q">How much of your work and life lives inside your own head?</p>
+        <p class="tk-q-sub">vs. inside trusted external systems — a single inbox, a single calendar, a single task list you actually believe.</p>
+        <div class="tk-slider-row">
+          <input type="range" id="cb-systemDependency" class="tk-slider" min="0" max="100" value="50"
+                 aria-label="System dependency — 0 means I trust my external systems, 100 means most things live in my head" />
+          <div class="tk-slider-val"><span id="cb-systemDependency-val">50</span><small>/ 100</small></div>
+        </div>
+        <div class="tk-slider-scale">
+          <span>Trusted external systems</span>
+          <span>Mostly in my head</span>
+        </div>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Recovery Efficiency -->
+      <div class="tk-step" data-step="4">
+        <p class="tk-q">When you rest, do you actually feel restored?</p>
+        <p class="tk-q-sub">Sleep quality, true rest (walks, conversation, stillness) — not passive consumption (scrolling, streaming, "decompressing" with a screen).</p>
+        <div class="tk-slider-row">
+          <input type="range" id="cb-recoveryEfficiency" class="tk-slider" min="0" max="100" value="50"
+                 aria-label="Recovery efficiency — 0 means drained even after rest, 100 means genuinely restored" />
+          <div class="tk-slider-val"><span id="cb-recoveryEfficiency-val">50</span><small>/ 100</small></div>
+        </div>
+        <div class="tk-slider-scale">
+          <span>Drained even after rest</span>
+          <span>Genuinely restored</span>
+        </div>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary" type="button" id="cb-compute">See my bandwidth →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PHASE 2: DIAGNOSTIC ============================ -->
+    <section class="tk-phase tk-aha" id="cb-phase-aha" aria-labelledby="cb-aha-h" data-tone="stable" hidden>
+      <h2 id="cb-aha-h" class="tk-vh">Your bandwidth</h2>
+      <p class="tk-bignum"><span id="cb-bignum">—</span>%<small>Reserve mental bandwidth</small></p>
+      <p class="tk-aha-msg" id="cb-aha-msg"></p>
+      <p class="tk-aha-cta">
+        <button class="btn-text" type="button" id="cb-scroll-gate">Unlock your leak audit ↓</button>
+      </p>
+    </section>
+
+    <!-- ============================ PHASE 3: GATE + PAYLOAD ============================ -->
+    <section class="tk-phase tk-gate-wrap" id="cb-phase-gate" aria-labelledby="cb-gate-h" hidden>
+      <div class="tk-gate-card" id="cb-gate-card">
+        <p class="eyebrow">The next step</p>
+        <h2 id="cb-gate-h">Unlock your personalised Leak Audit & Workflow Protocol.</h2>
+        <p>The number is the first half. The second half is knowing <em>which specific leak</em> is taking the most off your day — and the one workflow shift that actually closes it. I'll send your protocol straight to your inbox.</p>
+
+        <form class="tk-gate-form" id="cb-gate-form" name="bandwidth-leads" method="POST"
+              data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="bandwidth-leads" />
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="tk-field">
+            <label for="cb-g-name">First name</label>
+            <input type="text" id="cb-g-name" name="name" placeholder="What should I call you?" autocomplete="given-name" required />
+          </div>
+          <div class="tk-field">
+            <label for="cb-g-email">Email</label>
+            <input type="email" id="cb-g-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <input type="hidden" id="cb-g-bandwidth" name="bandwidth_pct" />
+          <input type="hidden" id="cb-g-snapshot" name="snapshot_json" />
+          <label class="consent-check">
+            <input type="checkbox" name="privacy_consent" required />
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your scores stay private.</span>
+          </label>
+          <div class="tk-gate-actions">
+            <button type="submit" class="btn-primary">Unlock my Leak Audit →</button>
+            <span class="tk-or">— or —</span>
+            <a href="index.html#contact" class="btn-text">Book a discovery conversation →</a>
+          </div>
+          <p class="tk-fineprint">Submitting reveals the audit below. Your scores aren't sent until you confirm.</p>
+        </form>
+      </div>
+
+      <!-- Locked / unlocked payload -->
+      <div class="tk-payload" id="cb-payload" aria-live="polite">
+        <div class="tk-payload-lock" id="cb-payload-lock">
+          <div class="tk-lock-icon" aria-hidden="true">🔒</div>
+          <p>Your Leak Audit is locked</p>
+          <small>Unlock above to see your ranked energy leaks and the workflow protocol for each.</small>
+        </div>
+
+        <div class="tk-payload-inner">
+          <div class="tk-section">
+            <h3>Your Leak Audit — ranked by where your bandwidth is actually going</h3>
+            <p>Each leak is shown as a share of your total cognitive drain, not your raw score. Close the top leak first; the others almost always shrink once it does.</p>
+            <div class="tk-leak" id="cb-leak-list">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <div class="tk-section">
+            <h3>Your Workflow Protocol — start with the top leak</h3>
+            <p id="cb-protocol-intro">Pick one. Run it for two weeks. Re-test.</p>
+            <div class="tk-callout" id="cb-protocol-callout"></div>
+            <p>The pattern is always the same: <em>your bandwidth is not a personality trait — it is an output of your operating system</em>. Change the system, the number changes.</p>
+          </div>
+
+          <div class="tk-cta-strip">
+            <h3>Want to install the system, not just read about it?</h3>
+            <p>1:1 coaching is where this becomes structural — a thinking partner, weekly accountability, and the design work to rebuild the loops you've outgrown. The audit tells you the leak. Coaching helps you close it permanently.</p>
+            <a class="btn-primary" href="index.html#sessions">See coaching sessions →</a>
+            <a class="btn-text" href="index.html#contact">Or send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching & Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="index.html#sessions">Sessions</a>
+      <a href="blog.html">Blog</a>
+      <a href="tools.html">Tools</a>
+      <a href="index.html#contact">Enquire</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Clearhead · Vaibhav Jain · All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script src="bandwidth-engine.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var E = window.BandwidthEngine;
+  var current = 1, totalSteps = 4;
+  var snapshot = { openLoops: 50, contextSwitching: 50, systemDependency: 50, recoveryEfficiency: 50 };
+
+  // Year
+  $('yr').textContent = new Date().getFullYear();
+
+  // Email obfuscation
+  (function () {
+    var els = document.querySelectorAll('.js-email');
+    els.forEach(function (el) {
+      var u = el.getAttribute('data-u'), d = el.getAttribute('data-d'), addr = u + '@' + d;
+      var a = document.createElement('a');
+      a.href = 'mai' + 'lto:' + addr; a.textContent = addr;
+      el.replaceWith(a);
+    });
+  })();
+
+  // ---- Slider live values ---------------------------------------
+  ['openLoops', 'contextSwitching', 'systemDependency', 'recoveryEfficiency'].forEach(function (k) {
+    var input = $('cb-' + k), val = $('cb-' + k + '-val');
+    if (!input || !val) return;
+    input.addEventListener('input', function () {
+      val.textContent = input.value;
+      snapshot[k] = Number(input.value);
+    });
+  });
+
+  // ---- Step navigation ------------------------------------------
+  function show(phaseId) {
+    ['cb-phase-form', 'cb-phase-aha', 'cb-phase-gate'].forEach(function (id) {
+      var el = $(id); if (el) el.hidden = (id !== phaseId);
+    });
+  }
+  function goStep(n) {
+    current = Math.max(1, Math.min(totalSteps, n));
+    document.querySelectorAll('.tk-step').forEach(function (s) {
+      s.classList.toggle('active', Number(s.dataset.step) === current);
+    });
+    $('cb-prog-fill').style.width = (current / totalSteps * 100) + '%';
+    $('cb-prog-label').textContent = 'Step ' + current + ' of ' + totalSteps;
+  }
+  $('cb-start').addEventListener('click', function () {
+    $('cb-startwrap').hidden = true;
+    show('cb-phase-form');
+    goStep(1);
+  });
+  document.querySelectorAll('.tk-next').forEach(function (b) {
+    b.addEventListener('click', function () { goStep(current + 1); });
+  });
+  document.querySelectorAll('.tk-back').forEach(function (b) {
+    b.addEventListener('click', function () { goStep(current - 1); });
+  });
+
+  // ---- Compute --------------------------------------------------
+  $('cb-compute').addEventListener('click', function () {
+    var result = E.compute(snapshot);
+    $('cb-bignum').textContent = result.bandwidth;
+    $('cb-aha-msg').textContent = result.diagnosis;
+    $('cb-phase-aha').setAttribute('data-tone', result.tone);
+
+    // Pre-fill hidden form fields
+    $('cb-g-bandwidth').value = result.bandwidth;
+    $('cb-g-snapshot').value = JSON.stringify(snapshot);
+
+    // Pre-render the (locked) payload so unlock is instant + zero CLS
+    renderPayload(result);
+
+    show('cb-phase-aha');
+    // Also reveal the gate phase below so user can scroll to it
+    $('cb-phase-gate').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  $('cb-scroll-gate').addEventListener('click', function () {
+    $('cb-phase-gate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ---- Render payload (leak audit + protocol) -------------------
+  function renderPayload(result) {
+    var list = $('cb-leak-list');
+    list.innerHTML = '';
+    result.leaks.forEach(function (leak) {
+      var row = document.createElement('div');
+      row.className = 'tk-leak-row';
+      row.setAttribute('data-sev', leak.severity);
+      row.innerHTML =
+        '<span class="tk-leak-name">' + leak.name + '</span>' +
+        '<span class="tk-leak-pct">' + leak.sharePct + '%</span>' +
+        '<div class="tk-leak-bar"><div class="tk-leak-fill" style="width:' + leak.sharePct + '%"></div></div>' +
+        '<p class="tk-leak-note">' + leak.protocol + '</p>';
+      list.appendChild(row);
+    });
+    // Top leak gets featured in the callout
+    var top = result.leaks[0];
+    $('cb-protocol-callout').innerHTML =
+      '<strong>Start here: ' + top.name + '.</strong> ' + top.protocol;
+  }
+
+  // ---- Gate: simulate unlock locally for instant reveal ---------
+  $('cb-gate-form').addEventListener('submit', function (e) {
+    // Let Netlify Forms also capture the POST — but unlock immediately for UX.
+    var name = $('cb-g-name').value.trim();
+    var email = $('cb-g-email').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return; // browser validates too
+    e.preventDefault();
+
+    // Submit to Netlify in background
+    var fd = new FormData(e.target);
+    fetch('/', { method: 'POST', body: new URLSearchParams(fd).toString(),
+                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+      .catch(function(){ /* fall through silently — unlock UX should not be blocked */ });
+
+    unlockPayload();
+  });
+
+  function unlockPayload() {
+    $('cb-gate-card').classList.add('tk-gate-done');
+    $('cb-payload').classList.add('unlocked');
+    setTimeout(function () {
+      $('cb-payload').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+});
+</script>
+
+</body>
+</html>

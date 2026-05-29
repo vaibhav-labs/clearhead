@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Should I Change Careers? Career Alignment Test | Clearhead</title>
+<meta name="description" content="A two-minute career friction &amp; alignment audit. Plot your spot on the grid — Aligned, Hard but Right, Drift, or Golden Handcuffs — and see what staying costs." />
+<meta name="keywords" content="should I change careers calculator, career misalignment signs, workplace friction test, career alignment audit, golden handcuffs test" />
+<link rel="canonical" href="https://clearhead.in/career-friction.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Should I Change Careers? Career Friction &amp; Alignment Audit" />
+<meta property="og:description" content="Plot your exact position on the Alignment vs. Friction grid. See the hidden cost of staying — in two minutes." />
+<meta property="og:url" content="https://clearhead.in/career-friction.html" />
+<meta property="og:site_name" content="Clearhead" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:image" content="https://clearhead.in/VJ.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="849" />
+<meta property="og:image:alt" content="Clearhead — Career Friction &amp; Alignment Audit by Vaibhav Jain, ICF PCC Coach, Mumbai" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Should I Change Careers? Career Alignment Test | Clearhead" />
+<meta name="twitter:description" content="Aligned, Hard-but-Right, Drift, or Golden Handcuffs? Plot it in two minutes." />
+<meta name="twitter:image" content="https://clearhead.in/VJ.jpg" />
+
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="geo.region" content="IN-MH" />
+<meta name="geo.placename" content="Lokhandwala, Andheri West, Mumbai" />
+<meta name="author" content="Vaibhav Jain" />
+<meta name="theme-color" content="#f7f5f1" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Career Friction & Alignment Audit",
+  "description": "An interactive career change calculator that plots your position on a 2D grid of Alignment (skill autonomy + 3-year outlook) vs. Friction (values conflict + energy ROI), identifies your quadrant (Aligned & Flowing, Hard but Right, Comfortable Drift, or Golden Handcuffs), and surfaces the second-order consequences of staying vs. the systemic runway required to transition.",
+  "url": "https://clearhead.in/career-friction.html",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Career Assessment",
+  "operatingSystem": "Web Browser",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Clearhead",
+    "url": "https://clearhead.in/"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://clearhead.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://clearhead.in/tools.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Career Friction Audit",
+      "item": "https://clearhead.in/career-friction.html"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="index.html#sessions">Sessions</a>
+    <a href="tools.html">Tools</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact" class="cta-ghost">Enquire</a>
+  </nav>
+</header>
+
+<main>
+<div class="tk-page">
+  <div class="tk-wrap">
+
+    <header class="tk-header" id="cf-intro">
+      <p class="eyebrow">Two minutes · No login · Answers stay on your device</p>
+      <h1>Should you change careers — or is the friction telling you something <em>different</em>?</h1>
+      <p class="tk-lede">
+        "Should I leave?" is usually the wrong first question. The right first question is: where am I, exactly, on the grid of Alignment and Friction? This is a small, honest audit that plots your position and shows you the second-order cost of staying — the cost most people don't add up until it's already paid.
+      </p>
+      <div class="tk-startwrap" id="cf-startwrap">
+        <button class="btn-primary" type="button" id="cf-start">Start the 2-minute audit →</button>
+        <p class="tk-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+      </div>
+    </header>
+
+    <!-- ============================ PHASE 1: INTAKE ============================ -->
+    <section class="tk-phase" id="cf-phase-form" aria-labelledby="cf-form-h" hidden>
+      <h2 id="cf-form-h" class="tk-vh">Four honest questions</h2>
+
+      <div class="tk-prog">
+        <div class="tk-prog-bar"><div class="tk-prog-fill" id="cf-prog-fill" style="width:25%"></div></div>
+        <span class="tk-prog-label" id="cf-prog-label">Step 1 of 4</span>
+      </div>
+
+      <!-- Step 1: Core values conflict -->
+      <div class="tk-step active" data-step="1">
+        <p class="tk-q">How often does your role ask you to suppress your personal ethics for corporate goals?</p>
+        <p class="tk-q-sub">Small daily compromises count. So does the bigger stuff you've stopped naming.</p>
+        <fieldset class="tk-matrix">
+          <legend>Pick the option that fits this week, not your best week.</legend>
+          <div class="tk-matrix-row" role="radiogroup" aria-labelledby="cf-form-h">
+            <label class="tk-matrix-opt"><input type="radio" name="cf-values" value="0"  /><span>Never</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-values" value="25" /><span>Rarely</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-values" value="50" /><span>Sometimes</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-values" value="75" /><span>Often</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-values" value="100"/><span>Constantly</span></label>
+          </div>
+          <div class="tk-matrix-anchors"><span>Aligned</span><span>Daily suppression</span></div>
+        </fieldset>
+        <div class="tk-nav">
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Energy ROI -->
+      <div class="tk-step" data-step="2">
+        <p class="tk-q">What is your energy ROI from this work?</p>
+        <p class="tk-q-sub">Compare the emotional energy you spend with the fulfillment you actually receive. Money doesn't count here — only energy.</p>
+        <fieldset class="tk-matrix">
+          <legend>Where on the spectrum, this season?</legend>
+          <div class="tk-matrix-row" role="radiogroup">
+            <label class="tk-matrix-opt"><input type="radio" name="cf-roi" value="0"  /><span>Pure drain</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-roi" value="25" /><span>Net negative</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-roi" value="50" /><span>Neutral</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-roi" value="75" /><span>Net positive</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-roi" value="100"/><span>Energising</span></label>
+          </div>
+          <div class="tk-matrix-anchors"><span>Empties me</span><span>Fills me</span></div>
+        </fieldset>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Skill autonomy -->
+      <div class="tk-step" data-step="3">
+        <p class="tk-q">How much real control do you have over how you execute?</p>
+        <p class="tk-q-sub">Not titles or perks — the daily creative leverage to decide what gets built, how, and when.</p>
+        <fieldset class="tk-matrix">
+          <legend>Honest read on your current autonomy.</legend>
+          <div class="tk-matrix-row" role="radiogroup">
+            <label class="tk-matrix-opt"><input type="radio" name="cf-autonomy" value="0"  /><span>None</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-autonomy" value="25" /><span>Little</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-autonomy" value="50" /><span>Some</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-autonomy" value="75" /><span>A lot</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-autonomy" value="100"/><span>Full leverage</span></label>
+          </div>
+          <div class="tk-matrix-anchors"><span>Execution monkey</span><span>I run the play</span></div>
+        </fieldset>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary tk-next" type="button">Next →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Second-order outlook -->
+      <div class="tk-step" data-step="4">
+        <p class="tk-q">If you stayed in this role for three more years, where would it realistically take you?</p>
+        <p class="tk-q-sub">Not best-case, not worst-case. Honest projection from current trajectory.</p>
+        <fieldset class="tk-matrix">
+          <legend>Be the most honest read you can.</legend>
+          <div class="tk-matrix-row" role="radiogroup">
+            <label class="tk-matrix-opt"><input type="radio" name="cf-outlook" value="0"  /><span>Worse off</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-outlook" value="25" /><span>Stuck</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-outlook" value="50" /><span>Slight gains</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-outlook" value="75" /><span>Real growth</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="cf-outlook" value="100"/><span>Exciting</span></label>
+          </div>
+          <div class="tk-matrix-anchors"><span>Grim</span><span>Exciting</span></div>
+        </fieldset>
+        <div class="tk-nav">
+          <button class="tk-back" type="button">← Back</button>
+          <button class="btn-primary" type="button" id="cf-compute">Plot my position →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ PHASE 2: DIAGNOSTIC ============================ -->
+    <section class="tk-phase tk-aha" id="cf-phase-aha" aria-labelledby="cf-aha-h" data-tone="stable" hidden>
+      <h2 id="cf-aha-h" class="tk-vh">Your position</h2>
+      <div class="tk-quad-wrap">
+        <div class="tk-quad-chart">
+          <svg viewBox="0 0 360 360" role="img" aria-labelledby="cf-quad-title">
+            <title id="cf-quad-title">Career Alignment vs. Friction grid</title>
+            <!-- Background panes (subtle quadrant tint) -->
+            <rect x="10"  y="10"  width="170" height="170" fill="#efece6" rx="6"/>   <!-- top-left: low align high friction = golden handcuffs -->
+            <rect x="180" y="10"  width="170" height="170" fill="#e6ebe4" rx="6"/>   <!-- top-right: high align high friction = hard but right -->
+            <rect x="10"  y="180" width="170" height="170" fill="#efece6" rx="6"/>   <!-- bottom-left: low align low friction = drift -->
+            <rect x="180" y="180" width="170" height="170" fill="#e6ebe4" rx="6"/>   <!-- bottom-right: high align low friction = aligned & flowing -->
+            <!-- Axes -->
+            <line x1="180" y1="10" x2="180" y2="350" stroke="#1f241f" stroke-width="1" stroke-dasharray="3 4" opacity="0.45"/>
+            <line x1="10" y1="180" x2="350" y2="180" stroke="#1f241f" stroke-width="1" stroke-dasharray="3 4" opacity="0.45"/>
+            <!-- Quadrant titles -->
+            <text x="95"  y="40"  text-anchor="middle" font-family="serif" font-size="14" fill="#1f241f" font-weight="500">Golden Handcuffs</text>
+            <text x="265" y="40"  text-anchor="middle" font-family="serif" font-size="14" fill="#1f241f" font-weight="500">Hard but Right</text>
+            <text x="95"  y="335" text-anchor="middle" font-family="serif" font-size="14" fill="#1f241f" font-weight="500">Comfortable Drift</text>
+            <text x="265" y="335" text-anchor="middle" font-family="serif" font-size="14" fill="#1f241f" font-weight="500">Aligned &amp; Flowing</text>
+            <!-- Axis labels -->
+            <text x="180" y="358" text-anchor="middle" font-size="10" fill="#4a514a">Alignment →</text>
+            <text x="6"   y="180" text-anchor="middle" font-size="10" fill="#4a514a" transform="rotate(-90 6 180)">Friction →</text>
+            <!-- User dot (positioned via JS) -->
+            <circle id="cf-dot" cx="180" cy="180" r="10" fill="#2f3e34" stroke="#fdfbf6" stroke-width="3"/>
+            <circle id="cf-dot-ring" cx="180" cy="180" r="18" fill="none" stroke="#2f3e34" stroke-width="1" opacity="0.35"/>
+          </svg>
+        </div>
+        <h3 class="tk-quad-title" id="cf-quad-title-text">—</h3>
+        <p class="tk-quad-sub" id="cf-quad-sub">—</p>
+      </div>
+      <p class="tk-aha-cta">
+        <button class="btn-text" type="button" id="cf-scroll-gate">Unlock your decisional framework ↓</button>
+      </p>
+    </section>
+
+    <!-- ============================ PHASE 3: GATE + PAYLOAD ============================ -->
+    <section class="tk-phase tk-gate-wrap" id="cf-phase-gate" aria-labelledby="cf-gate-h" hidden>
+      <div class="tk-gate-card" id="cf-gate-card">
+        <p class="eyebrow">The next step</p>
+        <h2 id="cf-gate-h">Unlock the Decisional Framework for your quadrant.</h2>
+        <p>The grid placement is the diagnosis. The framework below is the prescription — the second-order consequences of staying vs. the systemic runway you'd need to transition. Built specifically for the quadrant you landed in.</p>
+
+        <form class="tk-gate-form" id="cf-gate-form" name="career-leads" method="POST"
+              data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
+          <input type="hidden" name="form-name" value="career-leads" />
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field" /></label></p>
+          <div class="tk-field">
+            <label for="cf-g-name">First name</label>
+            <input type="text" id="cf-g-name" name="name" placeholder="What should I call you?" autocomplete="given-name" required />
+          </div>
+          <div class="tk-field">
+            <label for="cf-g-email">Email</label>
+            <input type="email" id="cf-g-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+          </div>
+          <input type="hidden" id="cf-g-quadrant" name="quadrant" />
+          <input type="hidden" id="cf-g-alignment" name="alignment_score" />
+          <input type="hidden" id="cf-g-friction" name="friction_score" />
+          <input type="hidden" id="cf-g-snapshot" name="snapshot_json" />
+          <label class="consent-check">
+            <input type="checkbox" name="privacy_consent" required />
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your scores stay private.</span>
+          </label>
+          <div class="tk-gate-actions">
+            <button type="submit" class="btn-primary">Unlock my Framework →</button>
+            <span class="tk-or">— or —</span>
+            <a href="index.html#contact" class="btn-text">Book a discovery conversation →</a>
+          </div>
+          <p class="tk-fineprint">Submitting reveals the framework below. Your scores aren't sent until you confirm.</p>
+        </form>
+      </div>
+
+      <div class="tk-payload" id="cf-payload" aria-live="polite">
+        <div class="tk-payload-lock" id="cf-payload-lock">
+          <div class="tk-lock-icon" aria-hidden="true">🔒</div>
+          <p>Your Decisional Framework is locked</p>
+          <small>Unlock above to see the second-order consequences matrix for your quadrant.</small>
+        </div>
+
+        <div class="tk-payload-inner">
+          <div class="tk-section">
+            <h3 id="cf-payload-title">Your quadrant: —</h3>
+            <p id="cf-payload-sub"></p>
+          </div>
+
+          <div class="tk-section">
+            <h3>The Second-Order Consequences Matrix</h3>
+            <p>Most people only audit first-order costs (income, comfort, status). The hidden costs are second-order — they compound silently and arrive late. Read both columns honestly.</p>
+            <div class="tk-cmatrix">
+              <div class="tk-cmatrix-cell stay">
+                <h4>If you stay 3 more years — hidden emotional costs</h4>
+                <ul id="cf-staying-costs"></ul>
+              </div>
+              <div class="tk-cmatrix-cell move">
+                <h4>If you transition — systemic runway required</h4>
+                <ul id="cf-runway-required"></ul>
+              </div>
+            </div>
+            <div class="tk-callout">
+              <strong>The framework, not the answer.</strong> This isn't a "leave" vs. "stay" verdict — it's the actual cost structure of either choice, made visible. The decision is still yours.
+            </div>
+          </div>
+
+          <div class="tk-cta-strip">
+            <h3>The hardest part isn't seeing the framework. It's choosing inside it.</h3>
+            <p>1:1 coaching is where these decisions get made well. A structured space, a thinking partner, weekly accountability — and the operating model to turn a quadrant insight into a real, sequenced move.</p>
+            <a class="btn-primary" href="index.html#sessions">See coaching sessions →</a>
+            <a class="btn-text" href="index.html#contact">Or send an enquiry</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching & Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="index.html#sessions">Sessions</a>
+      <a href="blog.html">Blog</a>
+      <a href="tools.html">Tools</a>
+      <a href="index.html#contact">Enquire</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Clearhead · Vaibhav Jain · All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script src="career-friction-engine.js" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var E = window.CareerFrictionEngine;
+  var current = 1, totalSteps = 4;
+  var snapshot = { coreValuesConflict: 50, energyROI: 50, skillAutonomy: 50, secondOrderOutlook: 50 };
+
+  $('yr').textContent = new Date().getFullYear();
+
+  (function () {
+    var els = document.querySelectorAll('.js-email');
+    els.forEach(function (el) {
+      var u = el.getAttribute('data-u'), d = el.getAttribute('data-d'), addr = u + '@' + d;
+      var a = document.createElement('a'); a.href = 'mai' + 'lto:' + addr; a.textContent = addr;
+      el.replaceWith(a);
+    });
+  })();
+
+  // Map radio names → snapshot keys
+  var radioMap = {
+    'cf-values':  'coreValuesConflict',
+    'cf-roi':     'energyROI',
+    'cf-autonomy':'skillAutonomy',
+    'cf-outlook': 'secondOrderOutlook'
+  };
+  Object.keys(radioMap).forEach(function (name) {
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        if (input.checked) snapshot[radioMap[name]] = Number(input.value);
+      });
+    });
+  });
+
+  function show(phaseId) {
+    ['cf-phase-form', 'cf-phase-aha', 'cf-phase-gate'].forEach(function (id) {
+      var el = $(id); if (el) el.hidden = (id !== phaseId);
+    });
+  }
+  function goStep(n) {
+    current = Math.max(1, Math.min(totalSteps, n));
+    document.querySelectorAll('.tk-step').forEach(function (s) {
+      s.classList.toggle('active', Number(s.dataset.step) === current);
+    });
+    $('cf-prog-fill').style.width = (current / totalSteps * 100) + '%';
+    $('cf-prog-label').textContent = 'Step ' + current + ' of ' + totalSteps;
+  }
+  $('cf-start').addEventListener('click', function () {
+    $('cf-startwrap').hidden = true;
+    show('cf-phase-form');
+    goStep(1);
+  });
+  document.querySelectorAll('.tk-next').forEach(function (b) {
+    b.addEventListener('click', function () { goStep(current + 1); });
+  });
+  document.querySelectorAll('.tk-back').forEach(function (b) {
+    b.addEventListener('click', function () { goStep(current - 1); });
+  });
+
+  $('cf-compute').addEventListener('click', function () {
+    var result = E.compute(snapshot);
+
+    // Plot dot: x = alignment 0..100 → 10..350; y = friction 0..100 → 350..10 (flipped)
+    var px = 10 + (result.alignment / 100) * 340;
+    var py = 350 - (result.friction  / 100) * 340;
+    $('cf-dot').setAttribute('cx', px);
+    $('cf-dot').setAttribute('cy', py);
+    $('cf-dot-ring').setAttribute('cx', px);
+    $('cf-dot-ring').setAttribute('cy', py);
+
+    $('cf-quad-title-text').textContent = result.quadrant.title;
+    $('cf-quad-sub').textContent = result.quadrant.headline + ' · Alignment ' + result.alignment + ' / 100 · Friction ' + result.friction + ' / 100';
+    $('cf-phase-aha').setAttribute('data-tone', result.tone);
+
+    // Pre-render payload so unlock is instant
+    renderPayload(result);
+
+    // Pre-fill hidden fields
+    $('cf-g-quadrant').value  = result.quadrant.id;
+    $('cf-g-alignment').value = result.alignment;
+    $('cf-g-friction').value  = result.friction;
+    $('cf-g-snapshot').value  = JSON.stringify(snapshot);
+
+    show('cf-phase-aha');
+    $('cf-phase-gate').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  $('cf-scroll-gate').addEventListener('click', function () {
+    $('cf-phase-gate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  function renderPayload(result) {
+    $('cf-payload-title').textContent = 'Your quadrant: ' + result.quadrant.title;
+    $('cf-payload-sub').textContent = result.quadrant.subhead;
+
+    var fill = function (id, items) {
+      var ul = $(id); ul.innerHTML = '';
+      items.forEach(function (text) {
+        var li = document.createElement('li'); li.textContent = text;
+        ul.appendChild(li);
+      });
+    };
+    fill('cf-staying-costs', result.quadrant.stayingCosts);
+    fill('cf-runway-required', result.quadrant.runwayRequired);
+  }
+
+  $('cf-gate-form').addEventListener('submit', function (e) {
+    var name  = $('cf-g-name').value.trim();
+    var email = $('cf-g-email').value.trim();
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    e.preventDefault();
+
+    var fd = new FormData(e.target);
+    fetch('/', { method: 'POST', body: new URLSearchParams(fd).toString(),
+                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+      .catch(function(){});
+
+    $('cf-gate-card').classList.add('tk-gate-done');
+    $('cf-payload').classList.add('unlocked');
+    setTimeout(function () {
+      $('cf-payload').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  });
+});
+</script>
+
+</body>
+</html>

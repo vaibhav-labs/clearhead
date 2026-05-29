@@ -74,12 +74,28 @@
     var months = 0;
     var trajectory = [{ month: 0, corpus: corpus, monthlySpend: fixed + varbl }];
 
-    // Degenerate case: no spend at all → runway is effectively infinite.
+    // Degenerate case: spend wasn't entered. Earlier versions returned
+    // the cap (600 months) here, which made a half-filled form look like
+    // "abundance" — a real bug. Now we flag it so the UI can ask the user
+    // to fill in the spend question instead of celebrating phantom runway.
+    // If a caller genuinely wants "no spend = infinite", they can opt in
+    // via opts.allowZeroSpend = true.
     if (fixed + varbl <= 0) {
-      return finish(cap, [
-        { month: 0,   corpus: corpus, monthlySpend: 0 },
-        { month: cap, corpus: corpus, monthlySpend: 0 }
-      ], buffer, taxLiab);
+      if (opts.allowZeroSpend) {
+        return finish(cap, [
+          { month: 0,   corpus: corpus, monthlySpend: 0 },
+          { month: cap, corpus: corpus, monthlySpend: 0 }
+        ], buffer, taxLiab);
+      }
+      return {
+        months: 0,
+        monthsWhole: 0,
+        trajectory: [{ month: 0, corpus: corpus, monthlySpend: 0 }],
+        medicalBufferApplied: buffer,
+        taxLiabilityApplied: taxLiab || 0,
+        requiresInput: true,
+        missing: ['monthlySpend']
+      };
     }
 
     for (var i = 1; i <= cap; i++) {
@@ -130,7 +146,9 @@
       capped:               sim.months >= (opts && opts.maxMonths ? opts.maxMonths : DEFAULTS.maxMonths) - 1,
       buffer:               sim.medicalBufferApplied,
       taxLiabilityApplied:  sim.taxLiabilityApplied,
-      trajectory:           sim.trajectory
+      trajectory:           sim.trajectory,
+      requiresInput:        !!sim.requiresInput,
+      missing:              sim.missing || []
     };
   }
 

@@ -52,6 +52,26 @@
   status = 301
 
 [[redirects]]
+  from = "/tools"
+  to = "/tools.html"
+  status = 301
+
+[[redirects]]
+  from = "/bandwidth"
+  to = "/bandwidth.html"
+  status = 301
+
+[[redirects]]
+  from = "/career-friction"
+  to = "/career-friction.html"
+  status = 301
+
+[[redirects]]
+  from = "/ai-relevance"
+  to = "/ai-relevance.html"
+  status = 301
+
+[[redirects]]
   from = "/privacy-policy"
   to = "/privacy-policy.html"
   status = 301
