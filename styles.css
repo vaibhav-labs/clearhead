@@ -1933,3 +1933,74 @@ main { overflow-x: hidden; }
   .tk-matrix-opt span { font-size: 0.78rem; padding: 0.6rem 0.2rem; }
   .tk-cta-strip .btn-text { display: block; margin: 0.85rem 0 0; }
 }
+
+/* ---------- Free exploratory conversation (homepage) ---------- */
+.explore-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+.explore-wrap .eyebrow {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-bottom: 0.85rem;
+  font-weight: 500;
+}
+.explore-wrap .section-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.4vw, 2.1rem);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+.explore-lede {
+  font-size: 1.04rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin: 0 auto 1.5rem;
+}
+.explore-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 0.5rem;
+  max-width: 540px;
+  text-align: left;
+  display: grid;
+  gap: 0.65rem;
+}
+.explore-points li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.explore-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.65;
+}
+.explore-foot {
+  margin-top: 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+.explore-foot a {
+  border-bottom: 1px dotted var(--accent);
+  color: var(--accent);
+}
+.explore-foot a:hover { border-bottom-style: solid; }
+@media (max-width: 640px) {
+  .explore-wrap { padding: 0 0.25rem; }
+  .explore-points { text-align: left; padding: 0 0.5rem; }
+}
