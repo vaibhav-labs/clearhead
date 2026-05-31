@@ -253,7 +253,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
         return;
       }
       if (!amount || amount < 100) {
-        setStatus('Invalid amount for this plan. Please contact us.', 'error');
+        setStatus('Invalid amount for this plan. Please email hello@clearhead.in.', 'error');
         return;
       }
 
@@ -294,14 +294,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
                 statusEl.innerHTML =
                   '<strong>Payment received.</strong> Now book your first session: ' +
                   '<a href="' + calUrl + '" target="_blank" rel="noopener noreferrer" style="font-weight:500;text-decoration:underline;">Pick a slot &rarr;</a>' +
-                  '<br><br><small>Payment ID: ' + response.razorpay_payment_id + ' &middot; A confirmation email will follow.</small>';
+                  '<br><br><small>Payment ID: ' + response.razorpay_payment_id + ' &middot; A confirmation email will follow from hello@clearhead.in.</small>';
                 statusEl.dataset.kind = 'success';
                 try { window.open(calUrl, '_blank', 'noopener,noreferrer'); } catch (e) {}
               } else {
-                setStatus('Payment received but verification failed. Please email us with your Payment ID: ' + response.razorpay_payment_id, 'error');
+                setStatus('Payment received but verification failed. Please email hello@clearhead.in with your Payment ID: ' + response.razorpay_payment_id, 'error');
               }
             }).catch(function () {
-              setStatus('Payment received but verification could not be completed. Please email us with your Payment ID: ' + response.razorpay_payment_id, 'error');
+              setStatus('Payment received but verification could not be completed. Please email hello@clearhead.in with your Payment ID: ' + response.razorpay_payment_id, 'error');
             }).then(function () {
               btn.disabled = false;
             });
@@ -318,7 +318,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
         var rzp = new Razorpay(options);
 
         rzp.on('payment.failed', function (resp) {
-          var desc = (resp && resp.error && resp.error.description) || 'Please try a different method or contact us.';
+          var desc = (resp && resp.error && resp.error.description) || 'Please try a different method, or email hello@clearhead.in.';
           setStatus('Payment failed: ' + desc, 'error');
           btn.disabled = false;
         });
