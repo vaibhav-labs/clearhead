@@ -47,6 +47,16 @@
   status = 301
 
 [[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 301
+
+[[redirects]]
+  from = "/post-new-city-loneliness"
+  to = "/post-new-city-loneliness.html"
+  status = 301
+
+[[redirects]]
   from = "/runway"
   to = "/runway.html"
   status = 301
