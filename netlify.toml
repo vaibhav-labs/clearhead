@@ -82,6 +82,11 @@
   status = 301
 
 [[redirects]]
+  from = "/readiness"
+  to = "/readiness.html"
+  status = 301
+
+[[redirects]]
   from = "/privacy-policy"
   to = "/privacy-policy.html"
   status = 301
