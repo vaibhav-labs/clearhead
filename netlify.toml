@@ -32,6 +32,11 @@
   status = 301
 
 [[redirects]]
+  from = "/post-ai-replacement-dysfunction"
+  to = "/post-ai-replacement-dysfunction.html"
+  status = 301
+
+[[redirects]]
   from = "/post-unheard"
   to = "/post-unheard.html"
   status = 301

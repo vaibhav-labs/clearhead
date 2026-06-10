@@ -24,7 +24,10 @@
       "Bash(git push --force-with-lease)",
       "Bash(rm -f VJ.png)",
       "Bash(git add -A)",
-      "Bash(git commit -m \"SEO: compress VJ.png 3.8MB→127KB; expand homepage FAQ schema; FAQ + breadcrumbs on all blog posts; feature loneliness post on homepage\")"
+      "Bash(git commit -m \"SEO: compress VJ.png 3.8MB→127KB; expand homepage FAQ schema; FAQ + breadcrumbs on all blog posts; feature loneliness post on homepage\")",
+      "Bash(git push origin main)",
+      "Bash(find ~/Documents/Zen/.git -name \"*.lock\" -delete)",
+      "Bash(git commit -m \"SEO: BreadcrumbList on blog, noreferrer, Article keywords, article:author fix, sitemap lastmod\")"
     ],
     "deny": [],
     "ask": []
