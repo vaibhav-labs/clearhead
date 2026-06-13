@@ -1,34 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git init)",
-      "Bash(git add .)",
-      "Bash(git commit -m \"initial commit\")",
-      "Bash(git branch -M main)",
-      "Bash(git remote add origin https://github.com/vaibhav-labs/clearhead.git)",
-      "Bash(git push -u origin main)",
-      "Bash(node --version)",
-      "Bash(npm install)",
-      "Bash(npm install -g netlify-cli)",
-      "Bash(netlify deploy)",
-      "Bash(npx netlify deploy)",
-      "Bash(npx netlify login)",
-      "Bash(npx netlify link --name effervescent-meerkat-1f9826)",
-      "Bash(npx netlify unlink)",
-      "Bash(npx netlify deploy --prod)",
-      "Bash(git push)",
-      "Bash(rm -f .git/index.lock .git/HEAD.lock .git/objects/maintenance.lock)",
-      "Bash(git config user.name \"vaibhav-labs\")",
-      "Bash(git config user.email \"vaibhavjain137@gmail.com\")",
-      "Bash(git commit --amend --author=\"vaibhav-labs <vaibhavjain137@gmail.com>\" --no-edit)",
-      "Bash(git push --force-with-lease)",
-      "Bash(rm -f VJ.png)",
-      "Bash(git add -A)",
-      "Bash(git commit -m \"SEO: compress VJ.png 3.8MB→127KB; expand homepage FAQ schema; FAQ + breadcrumbs on all blog posts; feature loneliness post on homepage\")",
-      "Bash(git push origin main)",
-      "Bash(find ~/Documents/Zen/.git -name \"*.lock\" -delete)",
-      "Bash(git commit -m \"SEO: BreadcrumbList on blog, noreferrer, Article keywords, article:author fix, sitemap lastmod\")",
-      "Bash(find .git -name \"*.lock\" -delete)"
+      "Bash(git add netlify.toml)",
+      "Bash(git commit -m \"Remove clean URL redirects\")",
+      "Bash(rm -f /Users/jain/Documents/Zen/.git/index.lock)",
+      "Bash(rm -f /Users/jain/Documents/Zen/.git/index.lock /Users/jain/Documents/Zen/.git/HEAD.lock /Users/jain/Documents/Zen/.git/objects/maintenance.lock)"
     ],
     "deny": [],
     "ask": []
