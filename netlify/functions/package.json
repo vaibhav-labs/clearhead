@@ -1,0 +1,9 @@
+{
+  "name": "clearhead-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for clearhead.in",
+  "main": "create-order.js",
+  "dependencies": {
+    "razorpay": "^2.8.2"
+  }
+}
