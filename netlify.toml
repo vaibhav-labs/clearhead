@@ -15,12 +15,6 @@
   status = 301
   force = true
 
-# Trailing slash normalization (exclude API routes)
-[[redirects]]
-  from = "/*/"
-  to = "/:splat"
-  status = 301
-  conditions = {path = "!\/api\/*"}
 
 # Friendly /api/* paths -> serverless functions
 [[redirects]]
