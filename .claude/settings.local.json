@@ -1,11 +1,7 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -X POST https://clearhead.in/.netlify/functions/create-order -H \"Content-Type: application/json\" -d '{}' -w \"\\nStatus: %{http_code}\\n\")",
-      "Bash(git commit -m \"Fix API redirect loop: exclude /api/* from trailing slash removal\")",
-      "Bash(curl -X POST https://clearhead.in/api/create-order -H \"Content-Type: application/json\" -d '{}' -w \"\\nStatus: %{http_code}\\n\")",
-      "Bash(git commit -m \"Remove trailing slash redirect to fix API endpoints\")",
-      "Bash(python3 -c \"\nimport http.client, ssl, json\nctx = ssl.create_default_context()\nconn = http.client.HTTPSConnection(''clearhead.in'', context=ctx)\nconn.request(''POST'', ''/api/create-order'', body=''{}'', headers={''Content-Type'':''application/json''})\nr = conn.getresponse()\nbody = r.read().decode()\nprint(''HTTP'', r.status, ''—'', (''✅ credentials OK'' if r.status==400 else ''❌ CREDENTIALS MISSING'' if ''credentials'' in body.lower() else body[:80]))\n\")"
+      "Bash(git commit -m \"Add reflection tool: The list you''ve been quietly carrying (still-on-your-list.html)\")"
     ],
     "deny": [],
     "ask": []

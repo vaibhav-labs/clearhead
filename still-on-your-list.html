@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>What Are You Still Putting Off? A Reflection Tool | Clearhead Mumbai</title>
+<meta name="description" content="A six-minute reflection on the things you've been quietly carrying — and why they've stayed on the list. A no-judgment thinking tool from ICF PCC certified coach Vaibhav Jain, Mumbai." />
+<link rel="canonical" href="https://clearhead.in/still-on-your-list.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The list you've been quietly carrying." />
+<meta property="og:description" content="A six-minute reflection on the things you've been quietly carrying — and why they've stayed on the list." />
+<meta property="og:url" content="https://clearhead.in/still-on-your-list.html" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:site_name" content="Clearhead" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1646157446640-5987eadd37f5?w=1200&q=80&auto=format&fit=crop" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The list you've been quietly carrying." />
+<meta name="twitter:description" content="A six-minute reflection on the things you've been quietly carrying — and why they've stayed on the list." />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1646157446640-5987eadd37f5?w=1200&q=80&auto=format&fit=crop" />
+
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#f7f5f1" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "The list you've been quietly carrying — a reflection tool",
+  "description": "A six-minute interactive reflection on the things you've been quietly putting off, what's stopping you, and where you sit with each of them now.",
+  "url": "https://clearhead.in/still-on-your-list.html",
+  "isPartOf": { "@type": "WebSite", "name": "Clearhead", "url": "https://clearhead.in/" },
+  "about": {
+    "@type": "Thing",
+    "name": "Self-reflection and coaching"
+  },
+  "author": { "@type": "Person", "name": "Vaibhav Jain", "url": "https://clearhead.in/" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://clearhead.in/" },
+    { "@type": "ListItem", "position": 2, "name": "What are you still putting off?" }
+  ]
+}
+</script>
+
+<style>
+/* Bucket-list reflection tool — local styles */
+.bucket-page { padding: 3rem 1.25rem 4rem; max-width: 720px; margin: 0 auto; }
+.bucket-header { margin-bottom: 1.5rem; }
+.bucket-header h1 { margin: 0.5rem 0 0.75rem; font-size: clamp(1.8rem, 4.5vw, 2.6rem); line-height: 1.18; }
+.bucket-header p.lede { color: var(--ink-soft); font-size: 1.02rem; line-height: 1.6; margin: 0; }
+.bucket-hero { margin: 1.75rem 0 2rem; }
+.bucket-hero img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
+.bucket-hero figcaption { font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.5rem; text-align: center; }
+.bucket-hero figcaption a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 2px; }
+
+.bucket-step-q { font-size: 1.05rem; font-weight: 500; margin: 0 0 1rem; line-height: 1.45; }
+.bucket-step-sub { font-size: 0.95rem; color: var(--ink-soft); margin: 1.75rem 0 0.75rem; font-weight: 500; }
+.bucket-step-sub:first-of-type { margin-top: 0.5rem; }
+.bucket-item-label { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.85rem 1rem; font-size: 0.92rem; color: var(--ink); margin-bottom: 1.25rem; }
+.bucket-item-label strong { font-weight: 500; }
+
+.bucket-pick-hint { text-align: center; font-size: 0.82rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+.bucket-pick-hint.at-cap { color: var(--accent); }
+
+.bucket-intro-body { color: var(--ink-soft); line-height: 1.7; font-size: 0.98rem; }
+.bucket-intro-body p { margin: 0 0 0.85rem; }
+
+.synthesis-card { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.5rem; margin-bottom: 1rem; }
+.synthesis-card h3 { font-size: 1.08rem; font-weight: 500; margin: 0 0 0.6rem; line-height: 1.35; }
+.synthesis-card p { font-size: 0.97rem; color: var(--ink-soft); line-height: 1.7; margin: 0; }
+
+.result-cta-block { margin: 2.5rem 0 0; }
+.result-cta-block h3 { font-size: 1.15rem; font-weight: 500; margin: 0 0 0.6rem; }
+.result-cta-block p { font-size: 0.97rem; color: var(--ink-soft); line-height: 1.7; margin: 0 0 1rem; }
+.result-cta-block .btn-primary { display: inline-block; margin: 0.5rem 0 1.5rem; }
+.result-soft { font-size: 0.88rem; color: var(--ink-soft); font-style: italic; line-height: 1.65; }
+
+.bucket-mid-img { margin: 2rem 0; }
+.bucket-mid-img img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
+.bucket-mid-img figcaption { font-size: 0.78rem; color: var(--ink-soft); margin-top: 0.5rem; text-align: center; }
+.bucket-mid-img figcaption a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="tools.html">Free tools</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact" class="cta-ghost">Say hello</a>
+  </nav>
+</header>
+
+<main>
+  <div class="bucket-page">
+
+    <div class="bucket-header">
+      <p class="eyebrow">A reflection &middot; 6 minutes &middot; no scores, no signup</p>
+      <h1>The list you've been quietly carrying.</h1>
+      <p class="lede">A few honest questions about the things you'd say yes to, if you said yes.</p>
+    </div>
+
+    <figure class="bucket-hero">
+      <img src="https://images.unsplash.com/photo-1646157446640-5987eadd37f5?w=1400&q=80&auto=format&fit=crop" alt="A quiet morning by a window — the kind of slow pause this reflection asks for" width="1400" height="933" loading="eager" decoding="async" />
+      <figcaption>Photo by <a href="https://unsplash.com/@hannahcsmithcurio" target="_blank" rel="noopener noreferrer">Hannah Smith</a> on <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>
+    </figure>
+
+    <!-- Progress -->
+    <div class="quiz-prog" id="quiz-prog-wrap">
+      <div class="quiz-prog-bar">
+        <div class="quiz-prog-fill" id="prog-fill" style="width:14%"></div>
+      </div>
+      <span class="quiz-prog-label" id="prog-label">1 of 7</span>
+    </div>
+
+    <div id="bucket-steps-wrap">
+
+      <!-- Step 1: Intro framing -->
+      <div class="quiz-step active" id="step-intro">
+        <p class="bucket-step-q">Before you start &mdash;</p>
+        <div class="bucket-intro-body">
+          <p>This isn&rsquo;t a quiz with a score. It&rsquo;s a few slow, honest questions about the things you&rsquo;d quietly hoped for and somehow haven&rsquo;t done.</p>
+          <p>You&rsquo;ll pick up to three of them. Then for each, you&rsquo;ll answer three short things &mdash; how long it&rsquo;s been with you, what&rsquo;s actually stopping you, and where you sit with it right now.</p>
+          <p>There are no wrong answers. The whole point is to say a few things out loud, even if just to yourself, for the first time in a while. You can stop at any point.</p>
+        </div>
+        <div class="quiz-nav">
+          <button class="btn-primary quiz-btn-next" id="intro-next">Begin &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Pick items -->
+      <div class="quiz-step" id="step-pick">
+        <p class="bucket-step-q">Of these, which are quietly on your list? Pick up to three.</p>
+        <div class="quiz-options" id="pick-options">
+          <label class="quiz-opt" data-item="career_pivot"><input type="checkbox" name="pick" value="career_pivot"><span>A career pivot I keep almost making</span></label>
+          <label class="quiz-opt" data-item="learn_thing"><input type="checkbox" name="pick" value="learn_thing"><span>Learning something I&rsquo;ve meant to learn &mdash; an instrument, a language, a craft</span></label>
+          <label class="quiz-opt" data-item="creative_project"><input type="checkbox" name="pick" value="creative_project"><span>A creative project I&rsquo;ve been carrying for years</span></label>
+          <label class="quiz-opt" data-item="hard_conversation"><input type="checkbox" name="pick" value="hard_conversation"><span>A difficult conversation I&rsquo;ve been avoiding</span></label>
+          <label class="quiz-opt" data-item="place_to_live"><input type="checkbox" name="pick" value="place_to_live"><span>A place I&rsquo;ve meant to live, or spend real time</span></label>
+          <label class="quiz-opt" data-item="get_healthier"><input type="checkbox" name="pick" value="get_healthier"><span>Getting genuinely healthier &mdash; body, sleep, energy</span></label>
+          <label class="quiz-opt" data-item="leave_something"><input type="checkbox" name="pick" value="leave_something"><span>Leaving a job, role, or relationship that&rsquo;s stopped fitting</span></label>
+          <label class="quiz-opt" data-item="start_something"><input type="checkbox" name="pick" value="start_something"><span>Starting something &mdash; a business, a project, a thing of my own</span></label>
+          <label class="quiz-opt" data-item="heal_relationship"><input type="checkbox" name="pick" value="heal_relationship"><span>A relationship to heal &mdash; parent, sibling, old friend, partner</span></label>
+          <label class="quiz-opt" data-item="make_peace"><input type="checkbox" name="pick" value="make_peace"><span>Something I want to make peace with &mdash; about myself, my past, my choices</span></label>
+          <label class="quiz-opt" data-item="not_in_words"><input type="checkbox" name="pick" value="not_in_words"><span>Something else I&rsquo;m not putting in words yet</span></label>
+        </div>
+        <p class="bucket-pick-hint" id="pick-hint">Pick at least one (up to three).</p>
+        <div class="quiz-nav">
+          <button class="btn-primary quiz-btn-next" id="pick-next" disabled>Continue &rarr;</button>
+          <button class="quiz-btn-back" type="button" id="pick-back">&larr; Back</button>
+        </div>
+      </div>
+
+      <!-- Dynamic per-item steps inserted here -->
+      <div id="dynamic-steps"></div>
+
+      <!-- Final: synthesis + CTA -->
+      <div class="quiz-step" id="step-result">
+        <div id="result-synthesis"></div>
+
+        <figure class="bucket-mid-img">
+          <img src="https://images.unsplash.com/photo-1759593047536-5258c3c6a527?w=1200&q=80&auto=format&fit=crop" alt="Two people in real conversation on a bench &mdash; the kind of slow, mutual listening this reflection points toward" width="1200" height="800" loading="lazy" decoding="async" />
+          <figcaption>Photo by <a href="https://unsplash.com/@asnanya" target="_blank" rel="noopener noreferrer">Amari Shutters</a> on <a href="https://unsplash.com/" target="_blank" rel="noopener noreferrer">Unsplash</a></figcaption>
+        </figure>
+
+        <div class="result-cta-block">
+          <h3>If sitting with this with someone would be useful</h3>
+          <p>Not all of these answers need to be talked about. Some will. There&rsquo;s usually a difference between the quiet items and the loud ones &mdash; and you probably noticed which is which while answering.</p>
+          <p>If having one of these conversations with someone whose job is to listen properly (not to advise, not to fix) would be useful, here&rsquo;s a short screening question to see if this kind of work is the right fit for you.</p>
+          <a class="btn-primary" href="quiz.html">Take the fit quiz &rarr;</a>
+          <p class="result-soft">Or: leave this open. Some of these answers will keep talking to you over the next few days. That&rsquo;s often the point.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching & Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="tools.html">Free tools</a>
+      <a href="index.html#contact">Say hello</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Clearhead · Vaibhav Jain · All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+(function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
+
+(function () {
+  'use strict';
+
+  // ----- Data -----
+  var ITEM_LABELS = {
+    career_pivot: 'the career pivot you keep almost making',
+    learn_thing: 'the thing you&rsquo;ve meant to learn',
+    creative_project: 'the creative project you&rsquo;ve been carrying',
+    hard_conversation: 'the difficult conversation you&rsquo;ve been avoiding',
+    place_to_live: 'the place you&rsquo;ve meant to live or spend real time',
+    get_healthier: 'getting genuinely healthier',
+    leave_something: 'leaving a job, role, or relationship that&rsquo;s stopped fitting',
+    start_something: 'starting something of your own',
+    heal_relationship: 'the relationship you want to heal',
+    make_peace: 'the thing you want to make peace with',
+    not_in_words: 'the thing you&rsquo;re not yet putting in words'
+  };
+
+  var DURATION_OPTS = [
+    { v: 'months',         t: 'A few months' },
+    { v: 'about_year',     t: 'About a year' },
+    { v: '2to5',           t: '2 to 5 years' },
+    { v: '5plus',          t: '5 years or more' },
+    { v: 'cant_remember',  t: 'I can&rsquo;t remember when it started' }
+  ];
+
+  var BLOCKER_OPTS = [
+    { v: 'time',          t: 'Time' },
+    { v: 'money',         t: 'Money' },
+    { v: 'fear_failure',  t: 'Fear of failure' },
+    { v: 'fear_judgment', t: 'Fear of judgment from people I know' },
+    { v: 'where_start',   t: 'I don&rsquo;t know where to start' },
+    { v: 'not_sure_want', t: 'I&rsquo;m not sure I really want it anymore' },
+    { v: 'someone_else',  t: 'Someone else&rsquo;s expectations' },
+    { v: 'too_late',      t: 'It feels too late' },
+    { v: 'selfish',       t: 'It feels selfish' },
+    { v: 'dont_know',     t: 'I don&rsquo;t actually know' }
+  ];
+
+  var SITTING_OPTS = [
+    { v: 'daily',     t: 'I think about it almost every day' },
+    { v: 'stress',    t: 'It comes up when I&rsquo;m stressed or it&rsquo;s quiet' },
+    { v: 'avoid',     t: 'I avoid thinking about it' },
+    { v: 'told_self', t: 'I&rsquo;ve told myself I&rsquo;ve made peace with it' },
+    { v: 'closer',   t: 'I&rsquo;m closer than I think &mdash; I just haven&rsquo;t named it' },
+    { v: 'regret',    t: 'It&rsquo;s quietly become a regret' }
+  ];
+
+  var OBSERVATIONS = {
+    long_avoided: {
+      title: 'You&rsquo;ve been carrying it &mdash; and also avoiding it.',
+      text: 'One of the items you picked has been with you for five years or more, and you also said you avoid thinking about it. That combination usually means it matters more than you&rsquo;re letting it, not less. The longer something stays unspoken, the more weight it quietly accumulates &mdash; and the more it costs you to keep ignoring it. It&rsquo;s often the thing that, when finally said out loud to someone, surprises the person saying it the most.'
+    },
+    fear_throughline: {
+      title: 'Fear shows up in more than one place.',
+      text: 'You marked fear of failure or fear of judgment as the blocker for more than one item. That&rsquo;s worth noticing. Often what looks like &ldquo;I don&rsquo;t have time&rdquo; or &ldquo;it&rsquo;s not the right moment&rdquo; is actually a different conversation underneath &mdash; one about being seen trying, and possibly not succeeding. Naming the specific fear, and the specific person whose judgment you&rsquo;re imagining, tends to shrink it considerably.'
+    },
+    expiry: {
+      title: 'Some of this might be past its expiry date.',
+      text: 'You marked at least one item as something you&rsquo;re no longer sure you want, or that you don&rsquo;t actually know about anymore. That isn&rsquo;t failure &mdash; it&rsquo;s actually a useful signal. Some things stay on the list past their expiry date; some are still alive but we&rsquo;ve stopped letting ourselves feel them. The real work is telling those two apart, because they need very different next steps.'
+    },
+    too_late: {
+      title: '&ldquo;Too late&rdquo; is almost always something else.',
+      text: 'You said &ldquo;it feels too late&rdquo; about at least one item. It almost never actually is. But the feeling is real and worth taking seriously, because it usually masks something more specific &mdash; often a fear of starting visibly behind others, or of being judged by a younger version of yourself who wanted this earlier. The fear is the thing to look at, not the timing.'
+    },
+    stress_long: {
+      title: 'It surfaces when you stop being busy.',
+      text: 'You picked an item that&rsquo;s been with you for years, and that surfaces when you&rsquo;re stressed or things get quiet. What rises in the gaps is almost never random. It tends to be the thing you&rsquo;ve been outrunning &mdash; the one your full schedule was, in part, keeping at a distance.'
+    },
+    regret_named: {
+      title: 'You used the word &ldquo;regret.&rdquo;',
+      text: 'You marked at least one item as something that&rsquo;s quietly become a regret. That&rsquo;s a hard word to type, and most people who type it have been carrying it for a long time. Regrets don&rsquo;t usually resolve through more thinking; they tend to ease through being said out loud to someone, and through one small honest action toward the thing &mdash; not a complete plan, just a single move.'
+    },
+    closer_than_think: {
+      title: 'You&rsquo;re closer than you think on at least one.',
+      text: 'You said about one of these items that you&rsquo;re closer than you think &mdash; you just haven&rsquo;t named it. That&rsquo;s worth pulling on. Usually when people have that sense, they&rsquo;re right. Whatever needs naming is probably one honest conversation away from being clear.'
+    },
+    money_time: {
+      title: 'Some of these blockers might be standing in for others.',
+      text: 'Time and money are the most common blockers people name &mdash; and often the most honest-feeling. They&rsquo;re also the ones that often turn out to be standing in for something less comfortable to say: fear, ambivalence, someone else&rsquo;s expectations. If the blocker softened tomorrow, would you actually start? The answer to that is often the real blocker.'
+    },
+    someone_else: {
+      title: 'You&rsquo;re carrying someone else&rsquo;s expectations.',
+      text: 'You said at least one of these is blocked by someone else&rsquo;s expectations. That&rsquo;s a particular kind of stuck &mdash; the kind where the cost of acting isn&rsquo;t the act itself but the conversation that&rsquo;d follow. Sometimes that conversation turns out to be easier than imagined; sometimes it&rsquo;s exactly as hard as feared. Either way, the work is usually figuring out whether the expectation is still actually being held, or whether you&rsquo;ve been holding it for them.'
+    },
+    default_obs: {
+      title: 'Most of what you said has stayed on the list for the same reason.',
+      text: 'There&rsquo;s no diagnosis at the end of this &mdash; just a few things you said almost out loud for the first time in a while. The items people pick here tend to share one thing in common: they&rsquo;ve stayed on the list because nobody has asked the right question about them, in the right kind of silence. The list shrinks once the questions get better and the listening gets slower.'
+    }
+  };
+
+  // ----- State -----
+  var selectedItems = [];
+  var MAX_PICKS = 3;
+  var answers = {}; // { itemId: { duration: x, blocker: x, sitting: x } }
+  var currentStepIndex = 0;
+  var stepOrder = []; // computed after picks: ['intro','pick','item-0','item-1',...,'result']
+
+  // ----- Helpers -----
+  function $(id) { return document.getElementById(id); }
+  function showStep(stepId) {
+    document.querySelectorAll('.quiz-step').forEach(function(s) {
+      s.classList.toggle('active', s.id === stepId);
+    });
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function updateProgress() {
+    var total = Math.max(stepOrder.length, 3);
+    var pct = Math.round(((currentStepIndex + 1) / total) * 100);
+    $('prog-fill').style.width = pct + '%';
+    $('prog-label').textContent = (currentStepIndex + 1) + ' of ' + total;
+  }
+  function goNext() {
+    if (currentStepIndex < stepOrder.length - 1) {
+      currentStepIndex++;
+      showStep(stepOrder[currentStepIndex]);
+    }
+  }
+  function goBack() {
+    if (currentStepIndex > 0) {
+      currentStepIndex--;
+      showStep(stepOrder[currentStepIndex]);
+    }
+  }
+
+  // ----- Step 1: Intro -----
+  $('intro-next').addEventListener('click', function() {
+    goNext();
+  });
+
+  // ----- Step 2: Pick items -----
+  var pickOpts = Array.from(document.querySelectorAll('#pick-options .quiz-opt'));
+  var pickNext = $('pick-next');
+  var pickBack = $('pick-back');
+  var pickHint = $('pick-hint');
+
+  pickOpts.forEach(function(opt) {
+    opt.addEventListener('click', function(e) {
+      // Prevent double-trigger from clicking on the input itself
+      if (e.target.tagName === 'INPUT') return;
+      var input = opt.querySelector('input');
+      var val = input.value;
+      var idx = selectedItems.indexOf(val);
+      if (idx > -1) {
+        selectedItems.splice(idx, 1);
+        opt.classList.remove('selected');
+        input.checked = false;
+      } else {
+        if (selectedItems.length >= MAX_PICKS) {
+          // Brief flash on hint
+          pickHint.classList.add('at-cap');
+          pickHint.textContent = 'That&rsquo;s the limit &mdash; three is plenty. Deselect one to swap.';
+          setTimeout(function() {
+            pickHint.classList.remove('at-cap');
+            pickHint.textContent = 'Pick at least one (up to three).';
+          }, 2200);
+          return;
+        }
+        selectedItems.push(val);
+        opt.classList.add('selected');
+        input.checked = true;
+      }
+      pickNext.disabled = selectedItems.length === 0;
+    });
+  });
+
+  pickBack.addEventListener('click', function() { goBack(); });
+
+  pickNext.addEventListener('click', function() {
+    if (selectedItems.length === 0) return;
+    buildDynamicSteps();
+    rebuildStepOrder();
+    goNext();
+  });
+
+  // ----- Dynamic per-item steps -----
+  function buildDynamicSteps() {
+    var container = $('dynamic-steps');
+    container.innerHTML = '';
+    answers = {};
+
+    selectedItems.forEach(function(itemId, idx) {
+      answers[itemId] = { duration: null, blocker: null, sitting: null };
+      var step = document.createElement('div');
+      step.className = 'quiz-step';
+      step.id = 'step-item-' + idx;
+
+      var nameSuffix = '__' + itemId;
+
+      var html = '';
+      html += '<p class="bucket-step-q">Tell me about &mdash;</p>';
+      html += '<div class="bucket-item-label"><strong>' + ITEM_LABELS[itemId] + '</strong></div>';
+
+      html += '<p class="bucket-step-sub">How long has this been on your mind?</p>';
+      html += '<div class="quiz-options">';
+      DURATION_OPTS.forEach(function(o) {
+        html += '<label class="quiz-opt"><input type="radio" name="duration' + nameSuffix + '" value="' + o.v + '"><span>' + o.t + '</span></label>';
+      });
+      html += '</div>';
+
+      html += '<p class="bucket-step-sub">What&rsquo;s actually stopping you?</p>';
+      html += '<div class="quiz-options">';
+      BLOCKER_OPTS.forEach(function(o) {
+        html += '<label class="quiz-opt"><input type="radio" name="blocker' + nameSuffix + '" value="' + o.v + '"><span>' + o.t + '</span></label>';
+      });
+      html += '</div>';
+
+      html += '<p class="bucket-step-sub">Where do you sit with it right now?</p>';
+      html += '<div class="quiz-options">';
+      SITTING_OPTS.forEach(function(o) {
+        html += '<label class="quiz-opt"><input type="radio" name="sitting' + nameSuffix + '" value="' + o.v + '"><span>' + o.t + '</span></label>';
+      });
+      html += '</div>';
+
+      html += '<div class="quiz-nav">';
+      html += '<button class="btn-primary quiz-btn-next" disabled>Continue &rarr;</button>';
+      html += '<button class="quiz-btn-back" type="button">&larr; Back</button>';
+      html += '</div>';
+
+      step.innerHTML = html;
+      container.appendChild(step);
+
+      // Wire up option clicks
+      var opts = Array.from(step.querySelectorAll('.quiz-opt'));
+      var nextBtn = step.querySelector('.quiz-btn-next');
+      var backBtn = step.querySelector('.quiz-btn-back');
+
+      opts.forEach(function(opt) {
+        opt.addEventListener('click', function(e) {
+          if (e.target.tagName === 'INPUT') return;
+          var input = opt.querySelector('input');
+          var groupName = input.name;
+          // Deselect siblings in same group
+          step.querySelectorAll('input[name="' + groupName + '"]').forEach(function(sib) {
+            sib.checked = false;
+            sib.parentElement.classList.remove('selected');
+          });
+          input.checked = true;
+          opt.classList.add('selected');
+
+          // Record answer
+          var kind = groupName.split('__')[0]; // 'duration' | 'blocker' | 'sitting'
+          answers[itemId][kind] = input.value;
+
+          // Enable next when all three answered
+          var allAnswered = answers[itemId].duration && answers[itemId].blocker && answers[itemId].sitting;
+          nextBtn.disabled = !allAnswered;
+        });
+      });
+
+      nextBtn.addEventListener('click', function() {
+        if (currentStepIndex === stepOrder.length - 2) {
+          // About to enter the result step — render synthesis
+          renderSynthesis();
+        }
+        goNext();
+      });
+      backBtn.addEventListener('click', function() { goBack(); });
+    });
+  }
+
+  function rebuildStepOrder() {
+    stepOrder = ['step-intro', 'step-pick'];
+    selectedItems.forEach(function(_, idx) {
+      stepOrder.push('step-item-' + idx);
+    });
+    stepOrder.push('step-result');
+  }
+
+  // ----- Synthesis -----
+  function renderSynthesis() {
+    var observations = [];
+    var allAnswers = selectedItems.map(function(itemId) {
+      return Object.assign({ itemId: itemId }, answers[itemId]);
+    });
+
+    // Pattern: 5+ years + avoidance
+    if (allAnswers.some(function(a) { return (a.duration === '5plus' || a.duration === 'cant_remember') && a.sitting === 'avoid'; })) {
+      observations.push(OBSERVATIONS.long_avoided);
+    }
+    // Pattern: regret named
+    if (allAnswers.some(function(a) { return a.sitting === 'regret'; })) {
+      observations.push(OBSERVATIONS.regret_named);
+    }
+    // Pattern: fear in 2+ items
+    var fearCount = allAnswers.filter(function(a) {
+      return a.blocker === 'fear_failure' || a.blocker === 'fear_judgment';
+    }).length;
+    if (fearCount >= 2) {
+      observations.push(OBSERVATIONS.fear_throughline);
+    }
+    // Pattern: expiry-style blockers
+    if (allAnswers.some(function(a) { return a.blocker === 'not_sure_want' || a.blocker === 'dont_know'; })) {
+      observations.push(OBSERVATIONS.expiry);
+    }
+    // Pattern: too late
+    if (allAnswers.some(function(a) { return a.blocker === 'too_late'; })) {
+      observations.push(OBSERVATIONS.too_late);
+    }
+    // Pattern: surfaces under stress + long duration
+    if (allAnswers.some(function(a) { return a.sitting === 'stress' && (a.duration === '5plus' || a.duration === '2to5' || a.duration === 'cant_remember'); })) {
+      observations.push(OBSERVATIONS.stress_long);
+    }
+    // Pattern: someone else's expectations
+    if (allAnswers.some(function(a) { return a.blocker === 'someone_else'; })) {
+      observations.push(OBSERVATIONS.someone_else);
+    }
+    // Pattern: closer than think
+    if (allAnswers.some(function(a) { return a.sitting === 'closer'; })) {
+      observations.push(OBSERVATIONS.closer_than_think);
+    }
+    // Pattern: only time/money blockers
+    var allTimeMoney = allAnswers.length > 0 && allAnswers.every(function(a) {
+      return a.blocker === 'time' || a.blocker === 'money';
+    });
+    if (allTimeMoney) {
+      observations.push(OBSERVATIONS.money_time);
+    }
+
+    // Fallback
+    if (observations.length === 0) {
+      observations.push(OBSERVATIONS.default_obs);
+    }
+
+    // Max 2 observations to keep it focused
+    observations = observations.slice(0, 2);
+
+    var html = '<h2 style="font-family:var(--serif);font-size:1.6rem;font-weight:500;margin:0 0 1.25rem;line-height:1.3;">Here&rsquo;s what your answers said.</h2>';
+    observations.forEach(function(o) {
+      html += '<div class="synthesis-card"><h3>' + o.title + '</h3><p>' + o.text + '</p></div>';
+    });
+
+    $('result-synthesis').innerHTML = html;
+  }
+
+  // ----- Init -----
+  rebuildStepOrder(); // Initial order without per-item steps
+  showStep('step-intro');
+
+})();
+</script>
+</body>
+</html>
