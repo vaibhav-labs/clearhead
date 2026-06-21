@@ -1,0 +1,20 @@
+# Clearhead
+
+> 1:1 coaching and counselling with Vaibhav Jain, an ICF PCC certified coach based in Mumbai. Clearhead helps professionals navigate AI-driven career anxiety, mid-career identity shifts, overwork, burnout, and loneliness — through clear, confidential conversation.
+
+Clearhead is the private coaching practice of Vaibhav Jain (ICF PCC). Sessions are 1:1, online or in Mumbai, and focused on thinking clearly, being genuinely heard, and finding direction. Payments via Razorpay; booking via Cal.com.
+
+## Core pages
+- [Home — Clearhead coaching with Vaibhav Jain](https://clearhead.in/): Overview of the practice, approach, and how coaching works.
+- [Pricing](https://clearhead.in/pricing.html): Session packages and rates.
+- [Blog](https://clearhead.in/blog.html): Writing on clarity, identity, loneliness, and being heard.
+
+## Articles
+- [Your job title is changing — don't lose yourself](https://clearhead.in/post-ai.html): AI as an identity story for professionals, not just a career story.
+- [Can AI cure loneliness? A 2026 study](https://clearhead.in/post-ai-loneliness.html): A 2026 study where an AI chatbot was more empathetic than a human peer yet still didn't reduce loneliness.
+- [You're not confused. You're just unheard.](https://clearhead.in/post-unheard.html): Why most people who feel confused actually know what they want once they say it out loud.
+- [The loneliest generation has the most followers](https://clearhead.in/post-lonely.html): The most connected and most lonely generation — more ways to be heard, fewer people who listen.
+- [What one good conversation can do](https://clearhead.in/post-conversation.html): How a single real conversation surfaces thoughts you didn't know you had.
+
+## Contact & booking
+- Book a session and contact details are on the [home page](https://clearhead.in/).
