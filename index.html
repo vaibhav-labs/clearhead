@@ -507,13 +507,15 @@
   <!-- DISCLAIMER -->
   <section class="band disclaimer-band" id="disclaimer" aria-labelledby="disclaimer-h">
     <div class="disclaimer-inner">
-      <h2 id="disclaimer-h">A note — please read this.</h2>
-      <p>
-        This is <strong>not a substitute for clinical mental health care</strong>. If you may be experiencing a diagnosed condition — depression, anxiety disorders, OCD, PTSD, psychosis — please see a licensed psychiatrist or clinical psychologist.
-      </p>
-      <p>
-        This practice is for people who are fundamentally okay but want to think better. Unsure which you are? Ask — I'll be honest about fit.
-      </p>
+      <div class="disclaimer-text">
+        <h2 id="disclaimer-h">A note — please read this.</h2>
+        <p>
+          This is <strong>not a substitute for clinical mental health care</strong>. If you may be experiencing a diagnosed condition — depression, anxiety disorders, OCD, PTSD, psychosis — please see a licensed psychiatrist or clinical psychologist.
+        </p>
+        <p>
+          This practice is for people who are fundamentally okay but want to think better. Unsure which you are? Ask — I'll be honest about fit.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -635,17 +637,6 @@
 document.getElementById('yr').textContent = new Date().getFullYear();
 /* Email obfuscation */
 (function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
-</script>
-
-<!-- Cal.com Embed (popup booking) -->
-<script type="text/javascript">
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "starter",        {origin:"https://cal.com"});
-Cal("init", "going-deeper",   {origin:"https://cal.com"});
-Cal("init", "the-long-game",  {origin:"https://cal.com"});
-Cal.ns["starter"]("ui",       {hideEventTypeDetails:false, layout:"month_view"});
-Cal.ns["going-deeper"]("ui",  {hideEventTypeDetails:false, layout:"month_view"});
-Cal.ns["the-long-game"]("ui", {hideEventTypeDetails:false, layout:"month_view"});
 </script>
 
 <script src="anim.js" defer></script>
