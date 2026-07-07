@@ -130,12 +130,12 @@ All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-y
 
 ```
 --bg #f2f6f8 (cool mist) · --bg-alt #e8eff3 · --ink #101d26 · --ink-soft #3d4f5c · --line #d9e2e8
---accent #0e6e64 (deep teal) · --accent-deep #0a5049 · --accent-soft #dcecea
+--accent #3053c4 (indigo blue) · --accent-deep #23409e · --accent-soft #e0e7f9
 --ember #c2410c (warm CTA) · --ember-deep #9a3412 · --deep #081826 (night-navy bands)
---radius 14px · --maxw 1040px · body: system sans · display: "Sora" (Google Fonts @import in styles.css)
+--radius 14px · --maxw 1040px · body: "Figtree" · display: "Bricolage Grotesque" (Google Fonts @import in styles.css)
 ```
-No beige anywhere; all stray hexes migrated 2026-07-07. Primary CTAs are ember; hero/safe/trust bands are `--deep` navy. Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
-Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, now used as blog thumbnails + in-post figures + homepage cards — Unsplash fully removed from pages; og:image metas still point to Unsplash pending an owned OG template); photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
+No beige or green anywhere (v2.1 removed all teal). Primary CTAs are ember. Free-flowing layout: striped bands dissolved, hero navy has rounded bottom + gradient, contact band rounded top; safe-band is light with a navy quote card. Homepage "session" section is a 3-panel SVG comic strip (coach + client characters, tangled-thread story). Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
+Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, currently UNUSED — peep thumbnails were rejected; thumbnails are curated Unsplash photos again, fully de-duplicated, topic-matched); comic characters are inline SVG on index.html; photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
 
 ---
 
