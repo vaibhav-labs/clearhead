@@ -561,6 +561,17 @@ main { }
 }
 .post-footer p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
 
+/* ---------- Post exploratory-call invite ---------- */
+.post-invite {
+  margin: 3rem 0 0; padding: 1.75rem 1.5rem;
+  background: var(--accent-soft); border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.post-invite p { margin: 0 0 1rem; color: var(--ink); }
+.post-invite p:first-child { font-family: var(--serif); font-size: 1.18rem; line-height: 1.45; }
+.post-invite .btn-primary { margin-bottom: 0.9rem; }
+.post-invite .post-invite-note { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
 /* ---------- Blog index ---------- */
 .blog-index-hero {
   max-width: var(--maxw); margin: 0 auto;
