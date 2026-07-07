@@ -29,9 +29,9 @@
 <meta name="geo.region" content="IN-MH" />
 <meta name="geo.placename" content="Lokhandwala, Andheri West, Mumbai" />
 <meta name="author" content="Vaibhav Jain" />
-<meta name="theme-color" content="#f7f5f1" />
+<meta name="theme-color" content="#f2f6f8" />
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%232f3e34'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f7f5f1' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%230e6e64'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -713,15 +713,15 @@
                       <stop offset="100%" stop-color="#c8b49a" stop-opacity="0"/>
                     </linearGradient>
                     <linearGradient id="rw-grad-new" x1="0" x2="0" y1="0" y2="1">
-                      <stop offset="0%" stop-color="#2f3e34" stop-opacity="0.45"/>
-                      <stop offset="100%" stop-color="#2f3e34" stop-opacity="0"/>
+                      <stop offset="0%" stop-color="#0e6e64" stop-opacity="0.45"/>
+                      <stop offset="100%" stop-color="#0e6e64" stop-opacity="0"/>
                     </linearGradient>
                   </defs>
                   <g id="rw-chart-axes"></g>
                   <path id="rw-chart-base-area" fill="url(#rw-grad-base)" d=""></path>
                   <path id="rw-chart-base"      fill="none" stroke="#a89072" stroke-width="2" stroke-dasharray="4 4" d=""></path>
                   <path id="rw-chart-new-area"  fill="url(#rw-grad-new)" d=""></path>
-                  <path id="rw-chart-new"       fill="none" stroke="#2f3e34" stroke-width="2.5" d=""></path>
+                  <path id="rw-chart-new"       fill="none" stroke="#0e6e64" stroke-width="2.5" d=""></path>
                 </svg>
                 <div class="rw-chart-legend">
                   <span><i class="rw-leg base"></i> Today's path</span>
@@ -1146,12 +1146,13 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     var ax = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     ax.setAttribute('x1', padL); ax.setAttribute('x2', W - padR);
     ax.setAttribute('y1', H - padB); ax.setAttribute('y2', H - padB);
-    ax.setAttribute('stroke', '#e4dfd6'); ax.setAttribute('stroke-width', '1');
+    ax.setAttribute('stroke', '#d9e2e8'); ax.setAttribute('stroke-width', '1');
     g.appendChild(ax);
   }
 
 }());
 </script>
 
+<script src="anim.js" defer></script>
 </body>
 </html>

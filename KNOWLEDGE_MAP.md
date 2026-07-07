@@ -126,14 +126,16 @@ All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-y
 
 ---
 
-## 9. Design tokens (`styles.css`)
+## 9. Design tokens (`styles.css`) — v2 "deep-water" theme (2026-07-07)
 
 ```
---bg #f7f5f1 · --bg-alt #efece6 · --ink #1f241f · --ink-soft #4a514a · --line #e4dfd6
---accent #2f3e34 (forest green, primary) · --accent-soft #e6ebe4
---radius 14px · --maxw 1040px · font: system/Inter · serif: Iowan/Palatino/Georgia
+--bg #f2f6f8 (cool mist) · --bg-alt #e8eff3 · --ink #101d26 · --ink-soft #3d4f5c · --line #d9e2e8
+--accent #0e6e64 (deep teal) · --accent-deep #0a5049 · --accent-soft #dcecea
+--ember #c2410c (warm CTA) · --ember-deep #9a3412 · --deep #081826 (night-navy bands)
+--radius 14px · --maxw 1040px · body: system sans · display: "Sora" (Google Fonts @import in styles.css)
 ```
-Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg`; photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
+No beige anywhere; all stray hexes migrated 2026-07-07. Primary CTAs are ember; hero/safe/trust bands are `--deep` navy. Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
+Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, now used as blog thumbnails + in-post figures + homepage cards — Unsplash fully removed from pages; og:image metas still point to Unsplash pending an owned OG template); photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
 
 ---
 
