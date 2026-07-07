@@ -1,6 +1,6 @@
 /* ---------- Clearhead · deep-water calm, mobile-first ---------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap');
 
 :root {
   --bg: #f2f6f8;          /* cool mist — no beige anywhere */
@@ -2242,13 +2242,76 @@ figure.tile { aspect-ratio: 2 / 1; border-radius: var(--radius); }
 .card-illus.tile { aspect-ratio: 3 / 2; }
 figure.tile img { margin: 0 auto; }
 
-/* --- Session comic strip --- */
-.comic-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-  margin-top: 2.5rem;
+/* --- Comic book page --- */
+.comic-page {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem;
+  margin: 2.5rem auto 0; max-width: 860px;
+  background: #fffdf8; border: 3px solid var(--ink); border-radius: 6px;
+  padding: 1.1rem; box-shadow: 6px 6px 0 rgba(16,29,38,0.18);
 }
-.comic-panel { margin: 0; }
-.comic-panel svg { width: 100%; height: auto; display: block; border-radius: 20px; }
-.comic-panel figcaption { font-size: 0.95rem; color: var(--ink-soft); margin-top: 0.8rem; line-height: 1.5; }
-.comic-panel figcaption strong { color: var(--ink); font-family: var(--serif); font-weight: 600; }
-@media (max-width: 820px) { .comic-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+.comic-cell svg { width: 100%; height: auto; display: block; }
+.comic-cell:nth-child(1) svg { transform: rotate(-0.4deg); }
+.comic-cell:nth-child(2) svg { transform: rotate(0.5deg); }
+.comic-cell:nth-child(3) svg { transform: rotate(0.3deg); }
+.comic-cell:nth-child(4) svg { transform: rotate(-0.5deg); }
+.draw-thread { stroke-dasharray: 520; stroke-dashoffset: 520; }
+.comic-cell.in .draw-thread, .no-anim .draw-thread { animation: threaddraw 1.6s cubic-bezier(0.3,0.6,0.3,1) 0.3s forwards; }
+@keyframes threaddraw { to { stroke-dashoffset: 0; } }
+@media (max-width: 700px) { .comic-page { grid-template-columns: 1fr; max-width: 460px; } }
+@media (prefers-reduced-motion: reduce) { .draw-thread { stroke-dashoffset: 0; animation: none; } }
+
+/* --- Disclaimer: compact card, no dead space --- */
+.disclaimer-band { padding-top: 0 !important; }
+.disclaimer-inner {
+  max-width: 660px !important; margin: 0 auto;
+  background: #fbfdfe; border: 1px solid var(--line); border-radius: 20px;
+  padding: 2rem 2.25rem !important;
+  display: grid; grid-template-columns: 44px 1fr; gap: 1.25rem; align-items: start;
+}
+.disclaimer-inner::before {
+  content: ""; width: 44px; height: 44px; border-radius: 12px;
+  background: var(--accent-soft);
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%233053c4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Cpath d="M12 21C7 17 3 13.5 3 9.5 3 7 5 5 7.5 5c1.7 0 3.2 1 4.5 2.5C13.3 6 14.8 5 16.5 5 19 5 21 7 21 9.5c0 4-4 7.5-9 11.5z"/%3E%3C/svg%3E');
+  background-repeat: no-repeat; background-position: center; background-size: 24px;
+}
+.disclaimer-inner h2 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.disclaimer-inner p { font-size: 0.95rem; margin-bottom: 0.6rem; }
+.disclaimer-inner p:last-child { margin-bottom: 0; }
+@media (max-width: 560px) { .disclaimer-inner { grid-template-columns: 1fr; } }
+
+/* --- Credential chips --- */
+.cred-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; padding: 0; list-style: none; }
+.cred-chips li {
+  font-size: 0.86rem; color: var(--ink-soft);
+  border: 1px solid var(--line); background: #fbfdfe;
+  border-radius: 999px; padding: 0.35rem 0.85rem;
+}
+
+/* --- Ambient hero drift --- */
+.hero-band { position: relative; }
+.hero-band::before, .hero-band::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(60px); opacity: 0.35;
+}
+.hero-band::before {
+  width: 420px; height: 420px; left: -120px; top: -80px;
+  background: radial-gradient(circle, #23409e, transparent 70%);
+  animation: drift1 16s ease-in-out infinite alternate;
+}
+.hero-band::after {
+  width: 360px; height: 360px; right: -100px; bottom: -120px;
+  background: radial-gradient(circle, #9a3412, transparent 70%);
+  animation: drift2 20s ease-in-out infinite alternate;
+}
+@keyframes drift1 { to { transform: translate(70px, 50px) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-60px, -40px) scale(1.1); } }
+.hero, .trust-strip { position: relative; z-index: 1; }
+
+/* --- Hero headline word reveal --- */
+.hero h1 .w { display: inline-block; animation: rise 0.6s cubic-bezier(0.2,0.6,0.2,1) backwards; }
+.hero-content h1:has(.w) { animation: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-band::before, .hero-band::after { animation: none; }
+  .hero h1 .w { animation: none; }
+}
