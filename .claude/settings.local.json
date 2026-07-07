@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git commit -m \"Add reflection tool: The list you''ve been quietly carrying (still-on-your-list.html)\")"
+      "Bash(git commit -m \"Add reflection tool: The list you''ve been quietly carrying (still-on-your-list.html)\")",
+      "Bash(git commit -m \"design: Phase 0 — fix 4 WCAG Major contrast/focus fails (hero-band, caption, focus rings)\")"
     ],
     "deny": [],
     "ask": []
