@@ -37,8 +37,8 @@
 ## 3. Site map (18 HTML pages)
 
 **Core**
-- `index.html` — homepage (hero, services, about, FAQ, contact form). Pricing now lives on its own page.
-- `pricing.html` — coaching packages + Razorpay pay buttons.
+- `index.html` — homepage, restructured 2026-07-08 (v2.3): hero with real VJ photo (shown on mobile too) → "You might recognise this" + inline ChatGPT-note → free-conversation CTA with testimonial beside it → "How it works" 3-step strip + `how-conversation.jpg` (replaced the 4-panel comic) → safe space → blog preview (3 cards) → about → 2 testimonials → disclaimer → FAQ → contact (WhatsApp button + Google Maps link; map iframe removed). AI band, runway widget band, and Cal.com embed script removed. Nav CTA on all pages: "Book a free call" → cal.com/vaibhavjain/30min.
+- `pricing.html` — coaching packages; Razorpay pay buttons live directly on the three package cards (duplicate "Pay for your package" section removed).
 - `blog.html` — blog index (3 categories, thumbnails).
 - `tools.html` — free-tools hub linking the 4 calculators.
 
@@ -134,7 +134,7 @@ All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-y
 --ember #c2410c (warm CTA) · --ember-deep #9a3412 · --deep #081826 (night-navy bands)
 --radius 14px · --maxw 1040px · body: "Figtree" · display: "Bricolage Grotesque" (Google Fonts @import in styles.css)
 ```
-No beige or green anywhere (v2.1 removed all teal). Primary CTAs are ember. Free-flowing layout: striped bands dissolved, hero navy has rounded bottom + gradient, contact band rounded top; safe-band is light with a navy quote card. Homepage "session" section is a 3-panel SVG comic strip (coach + client characters, tangled-thread story). Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
+No beige or green anywhere (v2.1 removed all teal; exception: WhatsApp-green `.wa-btn` in contact). Primary CTAs are ember. Free-flowing layout: striped bands dissolved, hero navy has rounded bottom + gradient, contact band rounded top; safe-band is light with a navy quote card. v2.3 (2026-07-08): comic strip removed — "How it works" is now a numbered 3-step strip beside `how-conversation.jpg` (self-hosted); band padding tightened to `clamp(2.25rem, 5vw, 3.5rem)`; hero shows `VJ.jpg` (desktop + mobile). Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
 Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, currently UNUSED — peep thumbnails were rejected; thumbnails are curated Unsplash photos again, fully de-duplicated, topic-matched); comic characters are inline SVG on index.html; photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
 
 ---

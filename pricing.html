@@ -75,7 +75,7 @@
     <a href="pricing.html">Pricing</a>
     <a href="tools.html">Free tools</a>
     <a href="blog.html">Blog</a>
-    <a href="index.html#contact" class="cta-ghost">Say hello</a>
+    <a href="https://cal.com/vaibhavjain/30min" target="_blank" rel="noopener noreferrer" class="cta-ghost">Book a free call</a>
   </nav>
 </header>
 
@@ -117,7 +117,7 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block" href="#pay">Choose Starter</a>
+        <button type="button" class="btn-primary btn-block pay-btn" data-plan="starter" data-amount="2600000" data-label="Starter, 4 sessions">Pay for Starter — ₹26,000</button>
       </article>
 
       <article class="plan featured" id="going-deeper">
@@ -134,7 +134,7 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block" href="#pay">Choose Going Deeper</a>
+        <button type="button" class="btn-primary btn-block pay-btn" data-plan="going-deeper" data-amount="3600000" data-label="Going Deeper, 6 sessions">Pay for Going Deeper — ₹36,000</button>
       </article>
 
       <article class="plan" id="long-game">
@@ -150,40 +150,16 @@
           <li>Online or in-person, Lokhandwala</li>
           <li>Written notes if you want them</li>
         </ul>
-        <a class="btn-primary btn-block" href="#pay">Choose The Long Game</a>
+        <button type="button" class="btn-primary btn-block pay-btn" data-plan="long-game" data-amount="6600000" data-label="The Long Game, 12 sessions">Pay for The Long Game — ₹66,000</button>
       </article>
 
     </div>
 
-    <p class="pricing-note">Payment in full at the start of the package, or in two halves (50% upfront, 50% at the midway point). All packages can be paused once for up to 30 days. Cancellations before the second session are refunded in full. <br><br><strong>Not sure yet?</strong> Start with the <a href="#explore">free 30-minute conversation</a>, or <a href="quiz.html">take the 4-question fit quiz</a>.</p>
-  </section>
-
-  <!-- PAY NOW (Razorpay) -->
-  <section class="band" id="pay" aria-labelledby="pay-h">
-    <h2 id="pay-h" class="section-title">Pay for your package</h2>
-    <p class="section-sub">For clients who have already had the free conversation. Payments are handled securely by Razorpay. UPI, cards, netbanking, and wallets are accepted.</p>
-
-    <div class="pay-grid">
-      <article class="pay-card">
-        <h3>Starter</h3>
-        <p class="pay-card-desc">4 sessions</p>
-        <button type="button" class="btn-primary btn-block pay-btn" data-plan="starter" data-amount="2600000" data-label="Starter, 4 sessions">Pay for Starter</button>
-      </article>
-      <article class="pay-card">
-        <h3>Going Deeper</h3>
-        <p class="pay-card-desc">6 sessions</p>
-        <button type="button" class="btn-primary btn-block pay-btn" data-plan="going-deeper" data-amount="3600000" data-label="Going Deeper, 6 sessions">Pay for Going Deeper</button>
-      </article>
-      <article class="pay-card">
-        <h3>The Long Game</h3>
-        <p class="pay-card-desc">12 sessions</p>
-        <button type="button" class="btn-primary btn-block pay-btn" data-plan="long-game" data-amount="6600000" data-label="The Long Game, 12 sessions">Pay for The Long Game</button>
-      </article>
-    </div>
-
+    <p class="pricing-note">Payments are handled securely by Razorpay — UPI, cards, netbanking, and wallets. Pay in full, or in two halves (50% upfront, 50% at the midway point). All packages can be paused once for up to 30 days. Cancellations before the second session are refunded in full. <strong>After payment, you'll pick your first slot on the calendar right away.</strong> <br><br><strong>Not sure yet?</strong> Start with the <a href="#explore">free 30-minute conversation</a>, or <a href="quiz.html">take the 4-question fit quiz</a>.</p>
     <p class="pay-terms">By paying, you agree to the <a href="terms.html">Terms of Service</a> (including the no-refund policy after the second session) and <a href="privacy-policy.html">Privacy Policy</a>.</p>
     <p class="pay-status" id="pay-status" role="status" aria-live="polite"></p>
   </section>
+
 
 </main>
 
