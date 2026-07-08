@@ -32,6 +32,9 @@
 <meta name="theme-color" content="#f2f6f8" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%233053c4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -115,7 +118,7 @@
       <p class="eyebrow">Two minutes · No login · Numbers stay on your device</p>
       <h1>How much mental bandwidth do you <em>actually</em> have left today?</h1>
       <p class="tk-lede">
-        Burnout doesn't arrive with a warning. It accumulates as quiet drain — open loops you carry, interruptions you absorb, systems you've outsourced to your own memory, and rest that never quite restores. This is a small, honest calculator that gives you a single number for your reserve capacity, then shows you which leak to close first.
+        Burnout doesn't arrive with a warning. It builds slowly. Open loops you carry. Interruptions. Things you remember instead of writing down. Rest that doesn't actually restore. This is a short, honest test that gives you a number for how much mental energy you have left, then shows you which leak to fix first.
       </p>
       <div class="tk-startwrap" id="cb-startwrap">
         <button class="btn-primary" type="button" id="cb-start">Start the 2-minute audit →</button>
@@ -172,7 +175,7 @@
       <!-- Step 3: System Dependency -->
       <div class="tk-step" data-step="3">
         <p class="tk-q">How much of your work and life lives inside your own head?</p>
-        <p class="tk-q-sub">vs. inside trusted external systems — a single inbox, a single calendar, a single task list you actually believe.</p>
+        <p class="tk-q-sub">vs. inside trusted external systems. A single inbox. A single calendar. A single task list you actually believe in.</p>
         <div class="tk-slider-row">
           <input type="range" id="cb-systemDependency" class="tk-slider" min="0" max="100" value="50"
                  aria-label="System dependency — 0 means I trust my external systems, 100 means most things live in my head" />
@@ -191,7 +194,7 @@
       <!-- Step 4: Recovery Efficiency -->
       <div class="tk-step" data-step="4">
         <p class="tk-q">When you rest, do you actually feel restored?</p>
-        <p class="tk-q-sub">Sleep quality, true rest (walks, conversation, stillness) — not passive consumption (scrolling, streaming, "decompressing" with a screen).</p>
+        <p class="tk-q-sub">Sleep quality, true rest (walks, conversation, stillness). Not passive consumption (scrolling, streaming, "decompressing" with a screen).</p>
         <div class="tk-slider-row">
           <input type="range" id="cb-recoveryEfficiency" class="tk-slider" min="0" max="100" value="50"
                  aria-label="Recovery efficiency — 0 means drained even after rest, 100 means genuinely restored" />
@@ -223,7 +226,7 @@
       <div class="tk-gate-card" id="cb-gate-card">
         <p class="eyebrow">The next step</p>
         <h2 id="cb-gate-h">Unlock your personalised Leak Audit & Workflow Protocol.</h2>
-        <p>The number is the first half. The second half is knowing <em>which specific leak</em> is taking the most off your day — and the one workflow shift that actually closes it. I'll send your protocol straight to your inbox.</p>
+        <p>The number is the first half. The second half is knowing <em>which specific leak</em> is taking the most off your day. The one workflow shift that actually closes it. I'll send your protocol straight to your inbox.</p>
 
         <form class="tk-gate-form" id="cb-gate-form" name="bandwidth-leads" method="POST"
               data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
@@ -241,11 +244,11 @@
           <input type="hidden" id="cb-g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your scores stay private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your scores stay private.</span>
           </label>
           <div class="tk-gate-actions">
             <button type="submit" class="btn-primary">Unlock my Leak Audit →</button>
-            <span class="tk-or">— or —</span>
+            <span class="tk-or">or</span>
             <a href="index.html#contact" class="btn-text">Book a discovery conversation →</a>
           </div>
           <p class="tk-fineprint">Submitting reveals the audit below. Your scores aren't sent until you confirm.</p>
@@ -262,7 +265,7 @@
 
         <div class="tk-payload-inner">
           <div class="tk-section">
-            <h3>Your Leak Audit — ranked by where your bandwidth is actually going</h3>
+            <h3>Your Leak Audit. Ranked by where your bandwidth is actually going.</h3>
             <p>Each leak is shown as a share of your total cognitive drain, not your raw score. Close the top leak first; the others almost always shrink once it does.</p>
             <div class="tk-leak" id="cb-leak-list">
               <!-- populated by JS -->
@@ -270,15 +273,15 @@
           </div>
 
           <div class="tk-section">
-            <h3>Your Workflow Protocol — start with the top leak</h3>
+            <h3>Your Workflow Protocol. Start with the top leak.</h3>
             <p id="cb-protocol-intro">Pick one. Run it for two weeks. Re-test.</p>
             <div class="tk-callout" id="cb-protocol-callout"></div>
-            <p>The pattern is always the same: <em>your bandwidth is not a personality trait — it is an output of your operating system</em>. Change the system, the number changes.</p>
+            <p>The pattern is always the same: <em>your bandwidth is not a personality trait. It is an output of your operating system</em>. Change the system, the number changes.</p>
           </div>
 
           <div class="tk-cta-strip">
             <h3>Want to install the system, not just read about it?</h3>
-            <p>1:1 coaching is where this becomes structural — a thinking partner, weekly accountability, and the design work to rebuild the loops you've outgrown. The audit tells you the leak. Coaching helps you close it permanently.</p>
+            <p>1:1 coaching is where this becomes structural. A thinking partner. Weekly accountability. The design work to rebuild the loops you've outgrown. The audit tells you the leak. Coaching helps you close it permanently.</p>
             <a class="btn-primary" href="pricing.html">See coaching sessions →</a>
             <a class="btn-text" href="index.html#contact">Send an enquiry</a>
             <a class="btn-text" href="mailto:hello@clearhead.in?subject=Bandwidth%20audit%20%E2%80%94%20follow-up">Or email directly</a>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <title>Abundance Runway Calculator | Clearhead</title>
-<meta name="description" content="If your paycheque stopped today, how long could your life keep running? A two-minute calculator for urban professionals — built to swap scarcity for clarity." />
+<meta name="description" content="If your paycheque stopped today, how long could your life keep running? A two-minute calculator for urban professionals, built to swap scarcity for clarity." />
 <link rel="canonical" href="https://clearhead.in/runway.html" />
 
 <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://clearhead.in/VJ.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="849" />
-<meta property="og:image:alt" content="Clearhead — Abundance Runway Calculator by Vaibhav Jain, ICF PCC Coach, Mumbai" />
+<meta property="og:image:alt" content="Clearhead Abundance Runway Calculator by Vaibhav Jain, ICF PCC Coach, Mumbai" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Abundance Runway Calculator | Clearhead" />
@@ -32,6 +32,9 @@
 <meta name="theme-color" content="#f2f6f8" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%233053c4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -39,7 +42,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Abundance Runway Calculator",
-  "description": "A two-minute financial runway calculator for urban professionals. Models month-by-month how long your liquid corpus, illiquid assets, and dependent assets can sustain your real cost of living — then reveals four levers that extend it.",
+  "description": "A two-minute financial runway calculator for urban professionals. Models month-by-month how long your liquid corpus, illiquid assets, and dependent assets can sustain your real cost of living, then reveals four levers that extend it.",
   "url": "https://clearhead.in/runway.html",
   "applicationCategory": "FinanceApplication",
   "applicationSubCategory": "Personal Finance Calculator",
@@ -115,7 +118,7 @@
       <p class="eyebrow">Two minutes · No login · Numbers stay on your device</p>
       <h1>If your paycheque stopped today,<br><em>how long could your life keep running?</em></h1>
       <p class="rw-lede">
-        Most professionals carry a quiet, unnamed scarcity around money — not because they're broke, but because they've never actually done the math. This is a small, honest calculator that gives you your real number, then shows you the levers you already control.
+        Most professionals carry a quiet, unnamed scarcity around money. Not because they're broke, but because they've never actually done the math. This is a small, honest calculator that gives you your real number, then shows you the levers you already control.
       </p>
     </header>
 
@@ -130,7 +133,7 @@
 
       <!-- Step 1: Age -->
       <div class="rw-step active" data-step="1">
-        <p class="rw-q">First — how old are you?</p>
+        <p class="rw-q">First, how old are you?</p>
         <p class="rw-q-sub">This shapes the medical buffer we'll set aside. No judgment, no flags.</p>
         <div class="rw-slider-row">
           <input type="range" id="f-age" class="rw-slider" min="22" max="65" value="34" aria-label="Age" />
@@ -144,7 +147,7 @@
       <!-- Step 2: Dependents -->
       <div class="rw-step" data-step="2">
         <p class="rw-q">How many people depend on your income?</p>
-        <p class="rw-q-sub">Partner, kids, parents — anyone whose life would change if your paycheque paused.</p>
+        <p class="rw-q-sub">Partner, kids, parents: anyone whose life would change if your paycheque paused.</p>
         <div class="rw-slider-row">
           <input type="range" id="f-deps" class="rw-slider" min="0" max="6" value="1" aria-label="Dependents" />
           <div class="rw-slider-val"><span id="f-deps-val">1</span><small>people</small></div>
@@ -158,7 +161,7 @@
       <!-- Step 3: Liquid assets breakdown -->
       <div class="rw-step" data-step="3">
         <p class="rw-q">What can you reach within a week?</p>
-        <p class="rw-q-sub">Add what you have. Skip what you don't — zero is fine for any row. These are assets in your name.</p>
+        <p class="rw-q-sub">Add what you have. Skip what you don't; zero is fine for any row. These are assets in your name.</p>
 
         <div class="rw-asset-list">
 
@@ -187,7 +190,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Mutual funds</strong>
-              <small>Liquid, debt, or equity funds — current NAV value</small>
+              <small>Liquid, debt, or equity funds at current NAV value</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -220,7 +223,7 @@
           <div class="rw-asset-row rw-deduction-row">
             <div class="rw-asset-label">
               <strong>Less: pending tax dues</strong>
-              <small>Outstanding income tax demand, GST arrears, or any lump-sum tax owed right now — deducted immediately from your liquid corpus</small>
+              <small>Outstanding income tax demand, GST arrears, or any lump-sum tax owed right now. Deducted immediately from your liquid corpus</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency rw-deduct-sign">−</span>
@@ -247,8 +250,8 @@
 
       <!-- Step 4: Illiquid assets breakdown -->
       <div class="rw-step" data-step="4">
-        <p class="rw-q">What's harder to reach — but still yours?</p>
-        <p class="rw-q-sub">Assets that take time or carry a penalty to unlock. Rough estimates are fine — we apply a 20% haircut automatically if you choose to liquidate any of this.</p>
+        <p class="rw-q">What's harder to reach, but still yours?</p>
+        <p class="rw-q-sub">Assets that take time or carry a penalty to access. Rough estimates are fine. We apply a 20% haircut automatically if you choose to liquidate any of this.</p>
 
         <div class="rw-asset-list">
 
@@ -266,7 +269,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>EPF / Provident Fund</strong>
-              <small>Your PF balance — employer + employee contributions</small>
+              <small>Your PF balance: employer + employee contributions</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -277,7 +280,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>PPF balance</strong>
-              <small>Public Provident Fund — the long-locked-in one</small>
+              <small>Public Provident Fund, the long-locked-in one</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -288,7 +291,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>NPS corpus</strong>
-              <small>National Pension Scheme — approximate current balance</small>
+              <small>National Pension Scheme, approximate current balance</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -310,7 +313,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Gold &amp; jewellery</strong>
-              <small>Approximate market value — the kind you'd sell, not heirloom</small>
+              <small>Approximate market value. The kind you'd sell, not heirloom</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -345,7 +348,7 @@
       <!-- Step 5: Dependent assets (NEW) -->
       <div class="rw-step" data-step="5">
         <p class="rw-q">Can anyone in your household pitch in?</p>
-        <p class="rw-q-sub">A working partner, a parent with savings, a sibling who could help — if things got hard, is there any household asset that could be pooled? This is about what's actually available, not just what's in your name.</p>
+        <p class="rw-q-sub">A working partner, a parent with savings, a sibling who could help. If things got hard, is there any household asset that could be pooled? This is about what's actually available, not just what's in your name.</p>
 
         <div class="rw-dep-toggle">
           <button class="rw-dep-btn" id="rw-dep-yes" type="button">Yes, there is</button>
@@ -353,7 +356,7 @@
         </div>
 
         <div class="rw-dep-reveal" id="rw-dep-reveal" hidden>
-          <p class="rw-q-sub" style="margin-top:1.25rem;">What's the realistic amount that could be pooled in a real emergency — liquid and accessible?</p>
+          <p class="rw-q-sub" style="margin-top:1.25rem;">What's the realistic amount that could be pooled in a real emergency, liquid and accessible?</p>
           <div class="rw-asset-list" style="margin-top:0;">
             <div class="rw-asset-row">
               <div class="rw-asset-label">
@@ -368,7 +371,7 @@
             <div class="rw-asset-row">
               <div class="rw-asset-label">
                 <strong>Parents / family support</strong>
-                <small>What family could realistically contribute — not what you'd want to ask, what you could</small>
+                <small>What family could realistically contribute. Not what you'd want to ask, what you could</small>
               </div>
               <div class="rw-asset-input-wrap">
                 <span class="rw-currency">₹</span>
@@ -390,7 +393,7 @@
               <span id="rw-dep-total">₹0</span>
             </div>
           </div>
-          <p class="rw-fineprint">This gets added to your liquid total — it's counted as money available to the household, not your personal emergency fund.</p>
+          <p class="rw-fineprint">This gets added to your liquid total. It's counted as money available to the household, not your personal emergency fund.</p>
         </div>
 
         <div class="rw-nav">
@@ -402,14 +405,14 @@
       <!-- Step 6: Fixed monthly liabilities (detailed) -->
       <div class="rw-step" data-step="6">
         <p class="rw-q">What leaves every month, no matter what?</p>
-        <p class="rw-q-sub">Enter each obligation separately. Skip rows that don't apply — zero is fine. Convert annual payments (insurance, fees) to a monthly equivalent.</p>
+        <p class="rw-q-sub">Enter each obligation separately. Skip rows that don't apply; zero is fine. Convert annual payments (insurance, fees) to a monthly equivalent.</p>
 
         <p class="rw-section-head">Loans &amp; EMIs</p>
         <div class="rw-asset-list">
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Home loan EMI</strong>
-              <small>Your current monthly EMI — principal + interest</small>
+              <small>Your current monthly EMI: principal + interest</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -419,7 +422,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Rent</strong>
-              <small>If you rent instead of own — monthly rent outflow</small>
+              <small>Monthly rent outflow, if you rent instead of own</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -458,7 +461,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Credit card minimum payment</strong>
-              <small>Minimum due each month on revolving balance — enter actual outstanding ÷ 12 if you carry a balance</small>
+              <small>Minimum due each month on revolving balance. Enter actual outstanding ÷ 12 if you carry a balance</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -482,7 +485,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Insurance premiums</strong>
-              <small>Life + term + health + vehicle — all policies, monthly equivalent</small>
+              <small>Life + term + health + vehicle: all policies, monthly equivalent</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -492,7 +495,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Domestic help</strong>
-              <small>Cook, driver, housekeeping — fixed monthly</small>
+              <small>Cook, driver, housekeeping: fixed monthly</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -512,7 +515,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Subscriptions &amp; other fixed</strong>
-              <small>OTT, gym, clubs, software — the auto-debits you wouldn't immediately cancel</small>
+              <small>OTT, gym, clubs, software: the auto-debits you wouldn't immediately cancel</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -521,7 +524,7 @@
           </div>
         </div>
 
-        <p class="rw-section-head">Tax obligations — monthly outflow</p>
+        <p class="rw-section-head">Tax obligations (monthly outflow)</p>
         <div class="rw-asset-list">
           <div class="rw-asset-row">
             <div class="rw-asset-label">
@@ -546,7 +549,7 @@
           <div class="rw-asset-row">
             <div class="rw-asset-label">
               <strong>Professional tax</strong>
-              <small>₹2,500/year in most states — roughly ₹208/month. Often deducted by employer, but worth checking.</small>
+              <small>₹2,500/year in most states, roughly ₹208/month. Often deducted by employer, but worth checking.</small>
             </div>
             <div class="rw-asset-input-wrap">
               <span class="rw-currency">₹</span>
@@ -571,11 +574,11 @@
       <!-- Step 7: Variable monthly -->
       <div class="rw-step" data-step="7">
         <p class="rw-q">And what flexes month to month?</p>
-        <p class="rw-q-sub">Eating out, travel, groceries, gifts, the small stuff. A rough average is fine — be honest, not aspirational.</p>
+        <p class="rw-q-sub">Eating out, travel, groceries, gifts, the small stuff. A rough average is fine. Be honest, not aspirational.</p>
         <div class="rw-input-row">
           <span class="rw-currency">₹</span>
           <input type="text" inputmode="numeric" id="f-variable" class="rw-input" placeholder="e.g. 60,000" autocomplete="off" />
-          <span class="rw-input-hint" id="f-variable-hint">—</span>
+          <span class="rw-input-hint" id="f-variable-hint">–</span>
         </div>
         <div class="rw-chips">
           <button class="rw-chip" type="button" data-target="f-variable" data-value="20000">₹20 K</button>
@@ -587,7 +590,7 @@
           <button class="btn-primary rw-next" id="rw-compute" type="button">See my runway →</button>
           <button class="rw-back" type="button">← Back</button>
         </div>
-        <p class="rw-fineprint">Numbers never leave your device until you choose to share them. Inflation assumed 6% p.a., return on liquid corpus 8% p.a. — both editable later.</p>
+        <p class="rw-fineprint">Numbers never leave your device until you choose to share them. Inflation assumed 6% p.a., return on liquid corpus 8% p.a. Both editable later.</p>
       </div>
 
     </section>
@@ -597,7 +600,7 @@
       <p class="eyebrow" id="rw-aha-eyebrow">Your number</p>
       <h2 id="rw-aha-h" class="rw-vh">Your runway</h2>
       <div class="rw-bignum">
-        <span class="rw-bignum-val" id="rw-months-val">—</span>
+        <span class="rw-bignum-val" id="rw-months-val">–</span>
         <span class="rw-bignum-unit">months</span>
       </div>
       <p class="rw-bignum-sub" id="rw-months-sub">of financial runway if your income paused today.</p>
@@ -612,7 +615,7 @@
       <div class="rw-gate-card" id="rw-gate-card">
         <p class="eyebrow">The next step</p>
         <h2 id="rw-gate-h">Unlock your personalised<br>Scarcity-to-Abundance Action Plan.</h2>
-        <p>The math is only the first half. The other half is the small behavioural shifts that turn a 6-month runway into 18 — without earning a rupee more. See exactly which levers move your number the most, on the live dashboard below.</p>
+        <p>The math is only the first half. The other half is the small behavioral shifts that turn a 6-month runway into 18. Without earning more. See exactly which levers move your number the most, on the live dashboard below.</p>
 
         <form class="rw-gate-form" id="rw-gate-form" name="runway-leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
           <input type="hidden" name="form-name" value="runway-leads" />
@@ -629,11 +632,11 @@
           <input type="hidden" id="g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your number stays private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your number stays private.</span>
           </label>
           <div class="rw-gate-actions">
             <button type="submit" class="btn-primary">Unlock dashboard →</button>
-            <span class="rw-or">— or —</span>
+            <span class="rw-or">or</span>
             <a href="quiz.html" class="btn-text">Book a discovery conversation →</a>
           </div>
           <p class="rw-fineprint">Submitting reveals the interactive panel below. Your numbers aren't sent until you confirm.</p>
@@ -652,7 +655,7 @@
           <div class="rw-dash-head">
             <p class="eyebrow">Agency dashboard · live</p>
             <h3>Small shifts. Real months.</h3>
-            <p class="rw-dash-sub">Toggle the levers below. Watch your runway change. These aren't projections — they're the same math, with your behaviour as the variable.</p>
+            <p class="rw-dash-sub">Toggle the levers below. Watch your runway change. These aren't projections. They're the same math, with your behavior as the variable.</p>
           </div>
 
           <div class="rw-dash-grid">

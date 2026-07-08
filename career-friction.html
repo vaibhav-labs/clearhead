@@ -11,7 +11,7 @@
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Should I Change Careers? Career Friction &amp; Alignment Audit" />
-<meta property="og:description" content="Plot your exact position on the Alignment vs. Friction grid. See the hidden cost of staying — in two minutes." />
+<meta property="og:description" content="Map your position on alignment and friction. See what staying actually costs in two minutes." />
 <meta property="og:url" content="https://clearhead.in/career-friction.html" />
 <meta property="og:site_name" content="Clearhead" />
 <meta property="og:locale" content="en_IN" />
@@ -32,6 +32,9 @@
 <meta name="theme-color" content="#f2f6f8" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%233053c4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -39,7 +42,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Career Friction & Alignment Audit",
-  "description": "An interactive career change calculator that plots your position on a 2D grid of Alignment (skill autonomy + 3-year outlook) vs. Friction (values conflict + energy ROI), identifies your quadrant (Aligned & Flowing, Hard but Right, Comfortable Drift, or Golden Handcuffs), and surfaces the second-order consequences of staying vs. the systemic runway required to transition.",
+  "description": "An interactive career test that maps your position across two dimensions: alignment and friction. Shows you your quadrant and the real cost of staying vs. what it takes to move.",
   "url": "https://clearhead.in/career-friction.html",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Career Assessment",
@@ -112,9 +115,9 @@
 
     <header class="tk-header" id="cf-intro">
       <p class="eyebrow">Two minutes · No login · Answers stay on your device</p>
-      <h1>Should you change careers — or is the friction telling you something <em>different</em>?</h1>
+      <h1>Should you change careers. Or is the friction telling you something different?</h1>
       <p class="tk-lede">
-        "Should I leave?" is usually the wrong first question. The right first question is: where am I, exactly, on the grid of Alignment and Friction? This is a small, honest audit that plots your position and shows you the second-order cost of staying — the cost most people don't add up until it's already paid.
+        "Should I leave?" is usually the wrong first question. The real question is: where am I, exactly? This is a short, honest test that maps your position and shows you what staying actually costs - the hidden costs most people don't think about until they're paying them.
       </p>
       <div class="tk-startwrap" id="cf-startwrap">
         <button class="btn-primary" type="button" id="cf-start">Start the 2-minute audit →</button>
@@ -154,7 +157,7 @@
       <!-- Step 2: Energy ROI -->
       <div class="tk-step" data-step="2">
         <p class="tk-q">What is your energy ROI from this work?</p>
-        <p class="tk-q-sub">Compare the emotional energy you spend with the fulfillment you actually receive. Money doesn't count here — only energy.</p>
+        <p class="tk-q-sub">Compare the emotional energy you spend with the fulfillment you actually receive. Money doesn't count here. Only energy.</p>
         <fieldset class="tk-matrix">
           <legend>Where on the spectrum, this season?</legend>
           <div class="tk-matrix-row" role="radiogroup">
@@ -175,7 +178,7 @@
       <!-- Step 3: Skill autonomy -->
       <div class="tk-step" data-step="3">
         <p class="tk-q">How much real control do you have over how you execute?</p>
-        <p class="tk-q-sub">Not titles or perks — the daily creative leverage to decide what gets built, how, and when.</p>
+        <p class="tk-q-sub">Not titles or perks. The daily creative leverage to decide what gets built, how, and when.</p>
         <fieldset class="tk-matrix">
           <legend>Honest read on your current autonomy.</legend>
           <div class="tk-matrix-row" role="radiogroup">
@@ -256,7 +259,7 @@
       <div class="tk-gate-card" id="cf-gate-card">
         <p class="eyebrow">The next step</p>
         <h2 id="cf-gate-h">Unlock the Decisional Framework for your quadrant.</h2>
-        <p>The grid placement is the diagnosis. The framework below is the prescription — the second-order consequences of staying vs. the systemic runway you'd need to transition. Built specifically for the quadrant you landed in.</p>
+        <p>The grid placement is the diagnosis. The framework below shows you both sides: what it actually costs to stay vs. what you'd need to move. Built for the quadrant you landed in.</p>
 
         <form class="tk-gate-form" id="cf-gate-form" name="career-leads" method="POST"
               data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
@@ -276,11 +279,11 @@
           <input type="hidden" id="cf-g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your scores stay private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your scores stay private.</span>
           </label>
           <div class="tk-gate-actions">
             <button type="submit" class="btn-primary">Unlock my Framework →</button>
-            <span class="tk-or">— or —</span>
+            <span class="tk-or">or</span>
             <a href="index.html#contact" class="btn-text">Book a discovery conversation →</a>
           </div>
           <p class="tk-fineprint">Submitting reveals the framework below. Your scores aren't sent until you confirm.</p>
@@ -302,25 +305,25 @@
 
           <div class="tk-section">
             <h3>The Second-Order Consequences Matrix</h3>
-            <p>Most people only audit first-order costs (income, comfort, status). The hidden costs are second-order — they compound silently and arrive late. Read both columns honestly.</p>
+            <p>Most people only count obvious costs (income, comfort, status). The real costs are hidden. They compound silently and arrive late. Read both columns honestly.</p>
             <div class="tk-cmatrix">
               <div class="tk-cmatrix-cell stay">
-                <h4>If you stay 3 more years — hidden emotional costs</h4>
+                <h4>If you stay 3 more years. Hidden emotional costs.</h4>
                 <ul id="cf-staying-costs"></ul>
               </div>
               <div class="tk-cmatrix-cell move">
-                <h4>If you transition — systemic runway required</h4>
+                <h4>If you transition. What you'd need.</h4>
                 <ul id="cf-runway-required"></ul>
               </div>
             </div>
             <div class="tk-callout">
-              <strong>The framework, not the answer.</strong> This isn't a "leave" vs. "stay" verdict — it's the actual cost structure of either choice, made visible. The decision is still yours.
+              <strong>The framework, not the answer.</strong> This isn't a "leave" vs. "stay" judgment. It's the actual cost structure of either choice, made visible. The decision is still yours.
             </div>
           </div>
 
           <div class="tk-cta-strip">
             <h3>The hardest part isn't seeing the framework. It's choosing inside it.</h3>
-            <p>1:1 coaching is where these decisions get made well. A structured space, a thinking partner, weekly accountability — and the operating model to turn a quadrant insight into a real, sequenced move.</p>
+            <p>1:1 coaching is where these decisions get made well. A structured space. A thinking partner. Weekly accountability. The work to turn a quadrant insight into a real, sequenced move.</p>
             <a class="btn-primary" href="pricing.html">See coaching sessions →</a>
             <a class="btn-text" href="index.html#contact">Send an enquiry</a>
             <a class="btn-text" href="mailto:hello@clearhead.in?subject=Career%20friction%20audit%20%E2%80%94%20follow-up">Or email directly</a>

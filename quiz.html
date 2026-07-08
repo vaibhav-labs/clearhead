@@ -23,6 +23,9 @@
 <meta name="theme-color" content="#f2f6f8" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%233053c4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -52,7 +55,7 @@
       <div class="quiz-header">
         <p class="eyebrow" style="display:inline-flex;margin-bottom:1rem;">Before you book</p>
         <h1>Is this the right fit?</h1>
-        <p>Four honest questions — not to screen you out, but to help you figure out if this is what you're actually looking for right now. Take your time. There are no wrong answers — only honest ones.</p>
+        <p>Four honest questions. They aren't here to screen you out; they're here to help you figure out if this is what you're actually looking for right now. Take your time. There are no wrong answers, only honest ones.</p>
       </div>
 
       <!-- Progress -->
@@ -72,11 +75,11 @@
           <div class="quiz-options">
             <label class="quiz-opt">
               <input type="radio" name="q1" value="a">
-              <span>Someone to think with — I want to find my own answers, not be told what to do</span>
+              <span>Someone to think with. I want to find my own answers, not be told what to do</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q1" value="b">
-              <span>Honest advice on what I should do — clear direction from someone experienced</span>
+              <span>Honest advice on what I should do: clear direction from someone experienced</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q1" value="c">
@@ -84,7 +87,7 @@
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q1" value="d">
-              <span>I'm not entirely sure — I just know something needs to shift</span>
+              <span>I'm not entirely sure. I just know something needs to shift</span>
             </label>
           </div>
           <div class="quiz-nav">
@@ -94,11 +97,11 @@
 
         <!-- Q2 -->
         <div class="quiz-step" id="step-2">
-          <p class="quiz-q">If something unexpected comes up mid-session — something you didn't plan to say — how do you feel about that?</p>
+          <p class="quiz-q">If something unexpected comes up mid-session, something you didn't plan to say, how do you feel about that?</p>
           <div class="quiz-options">
             <label class="quiz-opt">
               <input type="radio" name="q2" value="a">
-              <span>That's exactly why I'm here — I want to follow where the conversation goes</span>
+              <span>That's exactly why I'm here. I want to follow where the conversation goes</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q2" value="b">
@@ -106,11 +109,11 @@
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q2" value="c">
-              <span>I'd rather stay in control of what I discuss — I'm not ready to go deep</span>
+              <span>I'd rather stay in control of what I discuss. I'm not ready to go deep</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q2" value="d">
-              <span>Not sure — I've never done anything like this before</span>
+              <span>Not sure. I've never done anything like this before</span>
             </label>
           </div>
           <div class="quiz-nav">
@@ -125,7 +128,7 @@
           <div class="quiz-options">
             <label class="quiz-opt">
               <input type="radio" name="q3" value="a">
-              <span>Online — a private video call from wherever I am</span>
+              <span>Online: a private video call from wherever I am</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q3" value="b">
@@ -133,11 +136,11 @@
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q3" value="c">
-              <span>Somewhere informal — a café, a park, a public space</span>
+              <span>Somewhere informal: a café, a park, a public space</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q3" value="d">
-              <span>No preference — I'm flexible on this</span>
+              <span>No preference. I'm flexible on this</span>
             </label>
           </div>
           <div class="quiz-nav">
@@ -152,7 +155,7 @@
           <div class="quiz-options">
             <label class="quiz-opt">
               <input type="radio" name="q4" value="a">
-              <span>I'm managing fine — but there's something I want to think through properly</span>
+              <span>I'm managing fine, but there's something I want to think through properly</span>
             </label>
             <label class="quiz-opt">
               <input type="radio" name="q4" value="b">
@@ -183,26 +186,26 @@
           <div class="result-card good">
             <div class="result-icon">✓</div>
             <h2>You sound like a good fit.</h2>
-            <p>Based on what you've shared, this is likely the kind of space that would be useful for you — a quiet, confidential conversation that goes somewhere real.</p>
+            <p>Based on what you've shared, this is likely the kind of space that would be useful for you: a quiet, confidential conversation that goes somewhere real.</p>
             <p id="advice-note" hidden>
-              <strong>One thing worth knowing:</strong> this isn't advice-giving. But most people who come looking for answers find they already have them — they just needed to hear themselves clearly. You may not need to be told what to do as much as you think.
+              <strong>One thing worth knowing:</strong> this isn't advice-giving. But most people who come looking for answers find they already have them. They just needed to hear themselves clearly. You may not need to be told what to do as much as you think.
             </p>
           </div>
 
           <div class="quiz-book-wrap">
             <h3>Pick your package &amp; pay to book</h3>
-            <p class="quiz-book-sub">Choose a package and complete payment &mdash; your booking link appears once payment is confirmed.</p>
+            <p class="quiz-book-sub">Choose a package and complete payment. Your booking link appears once payment is confirmed.</p>
             <div class="quiz-book-grid">
               <a class="btn-primary" href="index.html#pay">Choose your package &rarr;</a>
             </div>
-            <p class="quiz-book-or">&mdash; or &mdash;</p>
+            <p class="quiz-book-or">or</p>
           </div>
 
           <div class="quiz-contact-wrap">
             <h3>Prefer to talk first? Leave your details and I'll be in touch.</h3>
             <p class="no-spam">
               <span class="no-spam-lock">🔒</span>
-              No spam. Ever. Your details are only used to reply to this enquiry — no newsletters, no follow-up marketing, nothing else. This form exists only to make sure you're ready for this kind of work.
+              No spam. Ever. Your details are only used to reply to this enquiry: no newsletters, no follow-up marketing, nothing else. This form exists only to make sure you're ready for this kind of work.
             </p>
 
             <form class="quiz-contact-form" id="quiz-form" name="quiz-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
@@ -269,14 +272,14 @@
           <div class="result-card caution">
             <div class="result-icon">◎</div>
             <h2>This might not be the right fit right now.</h2>
-            <p>Based on what you've shared, it sounds like you might benefit most from clinical or psychiatric care — and that's not something this practice offers. That's not a judgment; it's just an honest answer.</p>
+            <p>Based on what you've shared, it sounds like you might benefit most from clinical or psychiatric care, and that's not something this practice offers. That's not a judgment, just an honest answer.</p>
             <p>Coaching and counselling at Clearhead are for people who are fundamentally okay but want a confidential space to think. For clinical conditions or psychiatric needs, a licensed professional will be far better placed to help you.</p>
             <p><strong>A few places to start in India:</strong></p>
             <ul class="result-list">
               <li>Your GP or a hospital psychiatry department</li>
-              <li><strong>iCall</strong> (Tata Institute of Social Sciences) — <a href="tel:9152987821">9152987821</a></li>
-              <li><strong>Vandrevala Foundation</strong> (24/7) — <a href="tel:18602662345">1860-2662-345</a></li>
-              <li><strong>NIMHANS</strong> — <a href="https://nimhans.ac.in" target="_blank" rel="noopener noreferrer">nimhans.ac.in</a></li>
+              <li><strong>iCall</strong> (Tata Institute of Social Sciences): <a href="tel:9152987821">9152987821</a></li>
+              <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
+              <li><strong>NIMHANS</strong>: <a href="https://nimhans.ac.in" target="_blank" rel="noopener noreferrer">nimhans.ac.in</a></li>
             </ul>
             <p style="margin-top:0.75rem;">If your situation changes and you feel this kind of space might be useful alongside your care, you're welcome to come back.</p>
           </div>
@@ -288,8 +291,8 @@
           <div class="result-card warm">
             <div class="result-icon">◎</div>
             <h2>This kind of conversation needs a private space.</h2>
-            <p>Sessions at Clearhead are fully confidential — and that only works in a space where nobody can overhear. A café or public setting makes real confidentiality impossible, and it matters more than you might think.</p>
-            <p>If you're open to an online session (a private video call from wherever you are) or coming in-person to Lokhandwala, Mumbai — you're very welcome. Come back and go through this again with that in mind.</p>
+            <p>Sessions at Clearhead are fully confidential, and that only works in a space where nobody can overhear. A café or public setting makes real confidentiality impossible, and it matters more than you might think.</p>
+            <p>If you're open to an online session (a private video call from wherever you are) or coming in-person to Lokhandwala, Mumbai, you're very welcome. Come back and go through this again with that in mind.</p>
           </div>
           <p class="result-nav-links"><a href="quiz.html">← Try again</a> &nbsp;·&nbsp; <a href="index.html">Back to Clearhead</a></p>
         </div>
@@ -299,8 +302,8 @@
           <div class="result-card warm">
             <div class="result-icon">◎</div>
             <h2>It sounds like the timing might not be quite right.</h2>
-            <p>That's a completely honest answer — and honesty is exactly what this work requires. This space works best when you're willing to sit with what comes up, even when it surprises you.</p>
-            <p>You don't need to be ready for everything. But a small degree of openness — the willingness to hear yourself — makes the difference between a session that goes somewhere and one that doesn't.</p>
+            <p>That's a completely honest answer, and honesty is exactly what this work requires. This space works best when you're willing to sit with what comes up, even when it surprises you.</p>
+            <p>You don't need to be ready for everything. But a small degree of openness, the willingness to hear yourself, makes the difference between a session that goes somewhere and one that doesn't.</p>
             <p>When the time feels right, come back. There's no rush, and the door isn't closing.</p>
           </div>
           <p class="result-nav-links"><a href="quiz.html">← Try again</a> &nbsp;·&nbsp; <a href="index.html">Back to Clearhead</a></p>

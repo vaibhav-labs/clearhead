@@ -32,6 +32,9 @@
 <meta name="theme-color" content="#f2f6f8" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%233053c4'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23f2f6f8' stroke-width='2'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap" />
 <link rel="stylesheet" href="styles.css" />
 
 <script type="application/ld+json">
@@ -39,7 +42,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Quit-to-Solo Readiness Index",
-  "description": "An interactive readiness audit for anyone considering self-employment, consulting, freelancing, agency work, indie product, or solo practice. Scores Clarity of idea, Financial stability, and Gut to face failure across six micro-questions, and surfaces the dominant gap with a 90-day prep prescription.",
+  "description": "A readiness test for anyone thinking about leaving employment to start something. Scores your clarity, financial stability, and willingness to face failure.",
   "url": "https://clearhead.in/readiness.html",
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Career Assessment",
@@ -97,9 +100,9 @@
 
     <header class="tk-header" id="re-intro">
       <p class="eyebrow">Three minutes · No login · Answers stay on your device</p>
-      <h1>Should you quit your job for self-employment — or do you just <em>want to want to</em>?</h1>
+      <h1>Should you quit your job for self-employment. Or do you just want the idea of it?</h1>
       <p class="tk-lede">
-        Self-employment, consulting, freelancing, agency, indie product, solo practice — whichever shape it takes for you. The decision is rarely about the job you'd leave. It's about three things people quietly skip thinking about: do you have a working hypothesis (not just a feeling), can you actually fund the transition, and can you face the version of yourself that has to walk back? This is a small, honest readiness audit. Six micro-questions. One clear read.
+        Self-employment, consulting, freelancing, starting something - whichever shape. The real question isn't about leaving your job. It's three things most people avoid thinking about: do you actually have an idea or just a feeling. Can you pay for the transition. And can you handle it if it doesn't work. This is a short, honest test. Six questions. Real clarity.
       </p>
       <div class="tk-startwrap" id="re-startwrap">
         <button class="btn-primary" type="button" id="re-start">Start the 3-minute audit →</button>
@@ -119,7 +122,7 @@
       <!-- Q1 · Clarity / Articulation -->
       <div class="tk-step active" data-step="1">
         <p class="tk-q">Can you state, in one sentence today, exactly what you'd be selling and who would buy it?</p>
-        <p class="tk-q-sub">No "consulting" — that's a category, not an offer. The test: would a specific person reading the sentence know whether to write you a cheque?</p>
+        <p class="tk-q-sub">No "consulting". That's a category, not an offer. The test: would a specific person reading the sentence know whether to write you a check?</p>
         <fieldset class="tk-matrix">
           <legend>Where are you, honestly?</legend>
           <div class="tk-matrix-row" role="radiogroup">
@@ -138,12 +141,12 @@
 
       <!-- Q2 · Clarity / Paid validation -->
       <div class="tk-step" data-step="2">
-        <p class="tk-q">In the last 90 days, how many people have actually paid you — or signed a written commitment to pay — for something close to this offer?</p>
+        <p class="tk-q">In the last 90 days, how many people have actually paid you or signed a written commitment to pay for something close to this offer?</p>
         <p class="tk-q-sub">Token amounts count. Free pilots don't. Encouragement from your network doesn't. The wallet is the only honest signal.</p>
         <fieldset class="tk-matrix">
           <legend>Count actual paid signal in the last 90 days.</legend>
           <div class="tk-matrix-row" role="radiogroup">
-            <label class="tk-matrix-opt"><input type="radio" name="re-paidValidation" value="0"  /><span>0 — only ideas</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="re-paidValidation" value="0"  /><span>0. Only ideas</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-paidValidation" value="25" /><span>0–1 favours</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-paidValidation" value="50" /><span>2–5 paid pilots</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-paidValidation" value="75" /><span>5+ incl. one cold buyer</span></label>
@@ -181,10 +184,10 @@
 
       <!-- Q4 · Financial / Bridge plan -->
       <div class="tk-step" data-step="4">
-        <p class="tk-q">If your venture produces zero revenue for 18 months, do you have a named, realistic bridge — <em>not</em> "I'll figure it out"?</p>
+        <p class="tk-q">If your venture produces zero revenue for 18 months, do you have a named, realistic bridge? Not "I'll figure it out"?</p>
         <p class="tk-q-sub">Examples of real bridges: 12 months of saved expenses + a half-day-a-week consulting pipeline; a confirmed angel commitment with a written term; a working partner whose income holds household fixed. Examples that don't count: "I might do some freelance work", "my family will help if needed", "I'll dip into PPF."</p>
         <fieldset class="tk-matrix">
-          <legend>What does the bridge actually look like — on paper?</legend>
+          <legend>What does the bridge actually look like? On paper?</legend>
           <div class="tk-matrix-row" role="radiogroup">
             <label class="tk-matrix-opt"><input type="radio" name="re-bridgePlan" value="0"  /><span>No bridge</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-bridgePlan" value="25" /><span>"I'll figure it out"</span></label>
@@ -202,7 +205,7 @@
 
       <!-- Q5 · Gut / Walk-back narrative -->
       <div class="tk-step" data-step="5">
-        <p class="tk-q">If this didn't work and you had to walk back into employment in 18 months, do you have a frank sentence — one you'd actually say out loud to a peer — for what happened?</p>
+        <p class="tk-q">If this didn't work and you had to go back to employment in 18 months, do you have a frank sentence. One you'd actually say out loud to a peer. For what happened?</p>
         <p class="tk-q-sub">Not "things didn't work out." A real sentence. Most people who quit successfully had this sentence before they quit. Most who unravel didn't.</p>
         <fieldset class="tk-matrix">
           <legend>Have you tried saying it out loud?</legend>
@@ -223,13 +226,13 @@
 
       <!-- Q6 · Gut / Named first call -->
       <div class="tk-step" data-step="6">
-        <p class="tk-q">The week your first major bet fails publicly — a launch that flops, a client that walks, a number you publicly missed — do you know which <em>specific named person</em> you'd call before midnight?</p>
+        <p class="tk-q">The week your first major bet fails publicly. A launch that flops, a client that walks, a number you publicly missed. Do you know which <em>specific named person</em> you'd call before midnight?</p>
         <p class="tk-q-sub">Not "supportive friends" generically. One actual name. Bonus if you've already told them they'll be that person.</p>
         <fieldset class="tk-matrix">
-          <legend>Honest read — name the person, or don't.</legend>
+          <legend>Honest read. Name the person, or don't.</legend>
           <div class="tk-matrix-row" role="radiogroup">
             <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="0"  /><span>No one specific</span></label>
-            <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="25" /><span>Family — wouldn't get it</span></label>
+            <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="25" /><span>Family. Wouldn't get it.</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="50" /><span>Friends, none named</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="75" /><span>One named, but unspoken</span></label>
             <label class="tk-matrix-opt"><input type="radio" name="re-namedFirstCall" value="100"/><span>One named, already agreed</span></label>
@@ -277,9 +280,9 @@
     <!-- ============================ PHASE 3: DUAL GATE + PAYLOAD ============================ -->
     <section class="tk-phase tk-gate-wrap" id="re-phase-gate" aria-labelledby="re-gate-h" hidden>
       <div class="tk-gate-card" id="re-gate-card">
-        <p class="eyebrow">Two ways forward — pick the one that fits</p>
+        <p class="eyebrow">Two ways forward. Pick the one that fits.</p>
         <h2 id="re-gate-h">Unlock your Readiness Audit &amp; 90-day prep prescription.</h2>
-        <p>The score is the diagnosis. The audit tells you which one axis is doing the most damage — and the specific 90-day work to close it before you make a decision you can't unmake. If you'd rather just talk, the second button starts a 1:1 conversation directly.</p>
+        <p>The score is the diagnosis. The audit tells you which axis is hurting most. The specific 90-day work to close it before you make a decision you can't unmake. If you'd rather just talk, the second button starts a 1:1 conversation directly.</p>
 
         <form class="tk-gate-form" id="re-gate-form" name="readiness-leads" method="POST"
               data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
@@ -299,11 +302,11 @@
           <input type="hidden" id="re-g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam — your scores stay private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your scores stay private.</span>
           </label>
           <div class="tk-gate-actions">
             <button type="submit" class="btn-primary">Unlock with email →</button>
-            <span class="tk-or">— or —</span>
+            <span class="tk-or">or</span>
             <a id="re-book-call" class="btn-primary" style="background:#10222e"
                href="https://wa.me/919028902948?text=Hi%20Vaibhav%20%E2%80%94%20I%20just%20took%20the%20Quit-to-Solo%20Readiness%20Index%20on%20clearhead.in%20and%20I%27d%20like%20to%20book%20a%20discovery%20call%20about%20whether%20to%20quit%20my%20job."
                target="_blank" rel="noopener">Book a discovery call →</a>

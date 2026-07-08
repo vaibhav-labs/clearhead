@@ -1,6 +1,6 @@
 /* ---------- Clearhead · deep-water calm, mobile-first ---------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&family=Patrick+Hand&display=swap');
+/* Fonts are loaded via <link> in each page's <head> (parallel, non-blocking) — not @import, which would block CSS parsing. */
 
 :root {
   --bg: #f2f6f8;          /* cool mist — no beige anywhere */
@@ -11,8 +11,9 @@
   --accent: #3053c4;      /* deep teal · 5.6:1 on bg, 6.0:1 under white text */
   --accent-deep: #23409e; /* hover · 8.6:1 on bg */
   --accent-soft: #e0e7f9;
-  --ember: #c2410c;       /* warm ember · white text 5.1:1 */
-  --ember-deep: #9a3412;  /* ember hover / ember text on bg 6.7:1 */
+  --dawn: #e8b04b;        /* dawn gold · ink text 8.8:1 — the hope accent */
+  --dawn-press: #d99b2e;  /* hover · ink text 7.1:1 */
+  --dawn-deep: #8a5416;   /* dawn as text on bg 5.8:1 / bg-alt 5.4:1 */
   --deep: #081826;        /* night-navy band */
   --dark: #101d26;
   --radius: 14px;
@@ -44,7 +45,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02e
 
 p { margin: 0 0 1rem; color: var(--ink-soft); }
 
-em { font-style: normal; color: var(--ember-deep); }
+em { font-style: normal; color: var(--dawn-deep); }
 
 /* ---------- Nav ---------- */
 .nav {
@@ -150,7 +151,7 @@ main { }
 /* Buttons */
 .btn-primary {
   display: inline-block;
-  background: var(--ember); color: #fbfdfe !important;
+  background: var(--dawn); color: var(--ink) !important;
   padding: 0.8rem 1.3rem; border-radius: 999px;
   font-weight: 600; font-size: 0.98rem;
   transition: transform 0.15s ease, background 0.15s ease;
@@ -158,7 +159,7 @@ main { }
   border: 0; appearance: none; -webkit-appearance: none;
   font-family: inherit; line-height: inherit; cursor: pointer;
 }
-.btn-primary:hover { background: var(--ember-deep); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--dawn-press); transform: translateY(-1px); }
 .btn-block { display: block; text-align: center; width: 100%; }
 .btn-text { color: var(--ink-soft); font-size: 0.98rem; }
 .btn-text:hover { color: var(--accent); }
@@ -2223,7 +2224,7 @@ main { overflow-x: hidden; }
 .section-title::after {
   content: ""; position: absolute; left: 0; bottom: 0;
   width: 56px; height: 3px; border-radius: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--ember));
+  background: linear-gradient(90deg, var(--accent), var(--dawn));
   transform: scaleX(0); transform-origin: left;
   transition: transform 0.7s cubic-bezier(0.2,0.6,0.2,1) 0.25s;
 }
@@ -2307,7 +2308,7 @@ figure.tile img { margin: 0 auto; }
 }
 .hero-band::after {
   width: 360px; height: 360px; right: -100px; bottom: -120px;
-  background: radial-gradient(circle, #9a3412, transparent 70%);
+  background: radial-gradient(circle, rgba(232,176,75,0.55), transparent 70%);
   animation: drift2 20s ease-in-out infinite alternate;
 }
 @keyframes drift1 { to { transform: translate(70px, 50px) scale(1.15); } }
