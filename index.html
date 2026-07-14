@@ -54,10 +54,7 @@
         "@id": "https://clearhead.in/#business"
       },
       "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Lokhandwala, Andheri West",
-        "addressRegion": "Maharashtra",
-        "addressCountry": "IN"
+        "@id": "https://clearhead.in/#business-address"
       },
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
@@ -71,41 +68,26 @@
       }
     },
     {
-      "@type": "ProfessionalService",
-      "@id": "https://clearhead.in/#service",
-      "name": "Clearhead — Coaching & Counselling",
-      "provider": {
-        "@id": "https://clearhead.in/#vaibhav"
-      },
-      "serviceType": [
-        "Life Coaching",
-        "Executive Coaching",
-        "Career Counselling"
-      ],
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Mumbai"
-        },
-        {
-          "@type": "Country",
-          "name": "India"
-        }
-      ],
-      "url": "https://clearhead.in/",
-      "email": "hello@clearhead.in"
-    },
-    {
-      "@type": "LocalBusiness",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://clearhead.in/#business",
       "name": "Clearhead",
       "founder": {
         "@id": "https://clearhead.in/#vaibhav"
       },
+      "provider": {
+        "@id": "https://clearhead.in/#vaibhav"
+      },
       "description": "ICF PCC certified coaching and counselling for working professionals navigating AI anxiety, mid-career identity, and loneliness. 1:1 only. Online across India and internationally.",
+      "serviceType": [
+        "Life Coaching",
+        "Executive Coaching",
+        "Career Counselling"
+      ],
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Lokhandwala, Andheri West",
+        "@id": "https://clearhead.in/#business-address",
+        "streetAddress": "Lokhandwala Complex",
+        "addressLocality": "Andheri West, Mumbai",
         "addressRegion": "Maharashtra",
         "postalCode": "400053",
         "addressCountry": "IN"
@@ -114,10 +96,21 @@
       "email": "hello@clearhead.in",
       "telephone": "+91-90289-02948",
       "priceRange": "₹₹₹",
-      "openingHours": "Mo-Sa 09:00-19:00",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
       "areaServed": [
-        "Mumbai",
-        "India",
+        {
+          "@type": "City",
+          "name": "Mumbai"
+        },
+        {
+          "@type": "Country",
+          "name": "India"
+        },
         "Online India-wide"
       ],
       "geo": {
@@ -128,6 +121,14 @@
       "hasMap": "https://www.google.com/maps/place/Clearhead/@19.1405612,72.8246929,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b7fd5d83a8e3:0x45bf3d053989dcf3"
     },
     {
+      "@type": "WebSite",
+      "@id": "https://clearhead.in/#website",
+      "name": "Clearhead",
+      "url": "https://clearhead.in/",
+      "publisher": { "@id": "https://clearhead.in/#business" },
+      "inLanguage": "en-IN"
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -135,7 +136,7 @@
           "name": "What's the difference between coaching and counselling?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Coaching is about where you're going; counselling is about how you're feeling. Most people need both - you don't have to choose before you come."
+            "text": "Coaching is about where you're going. Counselling is about how you're feeling. Most people need both - you don't have to choose before you come."
           }
         },
         {
@@ -143,7 +144,7 @@
           "name": "Is this therapy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. This is coaching and counselling - rigorous, confidential support. It's not suited for diagnosed mental health conditions."
+            "text": "No. This is coaching and counselling. It's rigorous, confidential support. It's not meant for diagnosed mental health conditions."
           }
         },
         {
@@ -167,7 +168,7 @@
           "name": "Can coaching help me navigate the AI wave?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. It comes up a lot. The real AI conversation is about identity: who you are when your skills shift, and what you want before the market decides."
+            "text": "Yes. It comes up a lot. The real AI conversation is about identity. Who you are when your skills shift, and what you want before the market decides."
           }
         }
       ]
