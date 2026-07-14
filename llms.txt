@@ -7,6 +7,7 @@ Clearhead is the private coaching practice of Vaibhav Jain (ICF PCC). Sessions a
 ## Core pages
 - [Home — Clearhead coaching with Vaibhav Jain](https://clearhead.in/): Overview of the practice, approach, and how coaching works.
 - [Pricing](https://clearhead.in/pricing.html): Session packages and rates.
+- [In-Person Coaching, Andheri West](https://clearhead.in/coaching-andheri-west.html): Details on in-person sessions at Lokhandwala Complex, Andheri West, Mumbai — for Andheri, Versova, Oshiwara, and nearby.
 - [Blog](https://clearhead.in/blog.html): Writing on clarity, identity, loneliness, burnout, and being heard, organized into 5 themes.
 
 ## Free interactive tools

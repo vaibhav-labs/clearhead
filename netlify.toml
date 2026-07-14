@@ -22,6 +22,12 @@
   status = 301
   force = true
 
+# Clean URL for the local-intent landing page
+[[redirects]]
+  from = "/coaching-andheri-west"
+  to = "/coaching-andheri-west.html"
+  status = 200
+
 # Friendly /api/* paths -> serverless functions
 [[redirects]]
   from = "/api/create-order"
