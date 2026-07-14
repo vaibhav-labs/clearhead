@@ -567,11 +567,24 @@ main { }
 }
 .post-body blockquote p { color: var(--ink); margin: 0; font-size: inherit; }
 .post-footer {
-  border-top: 1px solid var(--line); margin-top: 3rem; padding-top: 2rem;
+  margin-top: 1.5rem; padding-top: 0;
   display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
   justify-content: space-between;
 }
 .post-footer p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+
+/* ---------- Post author card ---------- */
+.post-author {
+  display: flex; gap: 1rem; align-items: flex-start;
+  margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.post-author img {
+  width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+}
+.post-author-name { margin: 0 0 0.35rem; font-weight: 600; color: var(--ink); }
+.post-author-name a { color: inherit; }
+.post-author-bio { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
+.post-author-bio a { color: var(--ink); }
 
 /* ---------- Post exploratory-call invite ---------- */
 .post-invite {
