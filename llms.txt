@@ -2,21 +2,58 @@
 
 > 1:1 coaching and counselling with Vaibhav Jain, an ICF PCC certified coach based in Mumbai. Clearhead helps professionals navigate AI-driven career anxiety, mid-career identity shifts, overwork, burnout, and loneliness — through clear, confidential conversation.
 
-Clearhead is the private coaching practice of Vaibhav Jain (ICF PCC). Sessions are 1:1, online or in Mumbai, and focused on thinking clearly, being genuinely heard, and finding direction. Payments via Razorpay; booking via Cal.com.
+Clearhead is the private coaching practice of Vaibhav Jain (ICF PCC). Sessions are 1:1, online or in Lokhandwala, Andheri West, Mumbai, and focused on thinking clearly, being genuinely heard, and finding direction. Payments via Razorpay; booking via Cal.com.
 
 ## Core pages
 - [Home — Clearhead coaching with Vaibhav Jain](https://clearhead.in/): Overview of the practice, approach, and how coaching works.
 - [Pricing](https://clearhead.in/pricing.html): Session packages and rates.
-- [Blog](https://clearhead.in/blog.html): Writing on clarity, identity, loneliness, and being heard.
+- [Blog](https://clearhead.in/blog.html): Writing on clarity, identity, loneliness, burnout, and being heard, organized into 5 themes.
 
-## Articles
-- [Your job title is changing — don't lose yourself](https://clearhead.in/post-ai.html): AI as an identity story for professionals, not just a career story.
-- [Can AI cure loneliness? A 2026 study](https://clearhead.in/post-ai-loneliness.html): A 2026 study where an AI chatbot was more empathetic than a human peer yet still didn't reduce loneliness.
-- [You're not confused. You're just unheard.](https://clearhead.in/post-unheard.html): Why most people who feel confused actually know what they want once they say it out loud.
-- [The loneliest generation has the most followers](https://clearhead.in/post-lonely.html): The most connected and most lonely generation — more ways to be heard, fewer people who listen.
-- [What one good conversation can do](https://clearhead.in/post-conversation.html): How a single real conversation surfaces thoughts you didn't know you had.
-- [You hold the whole team together. Who holds you?](https://clearhead.in/post-manager-burnout.html): Gallup 2025 and a 125-study review show managers burn out faster than their teams, and what helps.
-- [Everyone depends on you. Why do you still feel invisible?](https://clearhead.in/post-mattering-at-work.html): A 2025 meta-analysis and a 2026 workplace study on mattering show that feeling you don't count, separate from overwork, predicts anxiety and depression. Close to a third of workers feel invisible at work.
+## Free interactive tools
+Self-contained two-to-six-minute assessments, free, no signup required — each a standalone answer to a specific question.
+- [Abundance Runway Calculator](https://clearhead.in/runway.html): How long your finances could sustain you if income stopped today.
+- [Cognitive Overload / Mental Bandwidth Calculator](https://clearhead.in/bandwidth.html): Scores mental bandwidth across open loops, context switching, system dependency, and recovery.
+- [Career Alignment Test](https://clearhead.in/career-friction.html): Plots where you sit — Aligned, Hard but Right, Drift, or Golden Handcuffs — and what staying costs.
+- [AI Exposure / Job Replacement Calculator](https://clearhead.in/ai-relevance.html): Scores how much of your work AI can automate and what to strengthen next.
+- [Self-Employment Readiness Index](https://clearhead.in/readiness.html): A six-question audit of clarity, financial stability, and risk tolerance before quitting to go solo/freelance.
+- [Still On Your List](https://clearhead.in/still-on-your-list.html): A six-minute reflection on the things you've been quietly carrying and why.
+
+## Articles — AI, work & identity
+- [Your job title is changing. You don't have to lose yourself with it.](https://clearhead.in/post-ai.html): The AI wave is an identity story as much as a career story.
+- [The fear isn't losing the job. It's losing who you are.](https://clearhead.in/post-ai-job-fear.html): A 2025 Delphi-validated study mapped the psychological impact of AI-induced job displacement on Indian IT professionals across six stages.
+- [Fear of being replaced by AI now has a clinical name.](https://clearhead.in/post-ai-replacement-dysfunction.html): A 2026 paper proposed "AI Replacement Dysfunction" (AIRD) to describe the psychological distress of facing professional obsolescence.
+- [The AI you race at work follows you home.](https://clearhead.in/post-ai-work-family-exhaustion.html): A 2025 study traced a path from AI job fear to emotional exhaustion, through job insecurity, into family life.
+- [Keeping up with AI is quietly exhausting you.](https://clearhead.in/post-technostress.html): A 2025 study tied AI-related technostress to measurable anxiety and depression symptoms.
+- [AI listens perfectly. It still won't cure your loneliness.](https://clearhead.in/post-ai-loneliness.html): A 2026 study found an AI chatbot rated more empathetic than a human peer — and it still didn't reduce loneliness.
+
+## Articles — Loneliness & connection
+- [The loneliest generation has the most followers.](https://clearhead.in/post-lonely.html): The most connected and most lonely generation — more ways to be heard, fewer people who listen.
+- [You run the room. So why do you feel so alone in it?](https://clearhead.in/post-lonely-at-work.html): A 2025 prospective study found workplace loneliness predicted which employees left their jobs six months later.
+- [Moved cities for a job? The loneliness is real.](https://clearhead.in/post-new-city-loneliness.html): The quiet loneliness that arrives six months after relocating for work.
+- [You can be indispensable and still feel invisible.](https://clearhead.in/post-mattering-at-work.html): New research on "mattering" finds feeling uncounted at work, separate from overwork, predicts anxiety and depression.
+
+## Articles — Clarity & being heard
+- [What one good conversation can do.](https://clearhead.in/post-conversation.html): You say something, and somewhere in the middle of it, you hear yourself say something you didn't know you thought.
+- [You're not confused. You're just unheard.](https://clearhead.in/post-unheard.html): Most people who think they don't know what they want actually do — they just haven't said it out loud to someone listening.
+
+## Articles — Pressure & burnout
+- [The quietest burnout is the one nobody can see.](https://clearhead.in/post-quiet-cracking.html): A 2025 TalentLMS study found over half of employees are quietly cracking — delivering on the outside, eroding underneath.
+- [You hold the whole team together. Who holds you?](https://clearhead.in/post-manager-burnout.html): Gallup 2025 data and a 125-study review found managers burning out faster than the people they lead.
+- [You're the one who holds it together. Who holds you?](https://clearhead.in/post-holding-it-together.html): Emotional suppression and surface acting at work are linked to burnout and genuine distress.
+- [You've done the work. So why do you still feel like a fraud?](https://clearhead.in/post-impostor-syndrome.html): Impostor syndrome hits high achievers hardest and doesn't respond to evidence of competence.
+- [You're not burned out. You're not depressed. You're languishing.](https://clearhead.in/post-languishing.html): A 2026 national study found 61% of workers languishing in the flat, joyless middle between thriving and breaking down.
+- [You hit every target. So why does it never feel like enough?](https://clearhead.in/post-perfectionism.html): New research splits perfectionism in two — high standards help, fear of falling short quietly harms.
+- [It isn't the stress that breaks high performers. It's how they talk to themselves under it.](https://clearhead.in/post-self-compassion-work-stress.html): A 2025 longitudinal study found the same work stress predicted anxiety and depression only when self-compassion was low.
+- [You rested. The exhaustion came back. Here is why.](https://clearhead.in/post-rest-burnout.html): A 2026 model argues knowledge-worker burnout is a trained mental habit, not an empty battery.
+- [Your long hours have a cost your brain is quietly paying.](https://clearhead.in/post-overwork-brain.html): A 2025 brain-imaging study linked 52+ hour work weeks to structural changes in executive-function and emotion-regulation brain regions.
+- [You call it juggling. Your brain is quietly paying the tax.](https://clearhead.in/post-multitasking.html): A 2025 study found multitasking raises job stress and lowers workplace wellbeing.
+- [You left work hours ago. Your mind never did.](https://clearhead.in/post-cant-switch-off.html): A 2025 study tracked the mental-health cost of being unable to psychologically detach from work.
+- [You are exhausted. So why are you still awake at midnight?](https://clearhead.in/post-bedtime-procrastination.html): "Revenge bedtime procrastination" — delaying sleep to reclaim time the day swallowed — and why it grips high performers.
+- [That Monday dread isn't in your head. It's in your body.](https://clearhead.in/post-monday-dread.html): A 2025 study linked Monday anxiety to elevated stress hormones up to two months later.
+
+## Articles — Money & mental health
+- [You earn well. So why does money still feel unsafe?](https://clearhead.in/post-money-anxiety.html): A 2025 longitudinal study found economic insecurity harms mental health through perceived stress, not just objective numbers.
 
 ## Contact & booking
-- Book a session and contact details are on the [home page](https://clearhead.in/).
+- Book a free 30-minute conversation via [Cal.com](https://cal.com/vaibhavjain/30min).
+- Full contact details, address (Lokhandwala Complex, Andheri West, Mumbai 400053), and hours are on the [home page](https://clearhead.in/).
