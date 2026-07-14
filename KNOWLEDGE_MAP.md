@@ -80,9 +80,9 @@ All 5 scored tools carry a scoring-methodology + "no data stored" fine-print lin
 |---|---|---|
 | `create-order.js` | `POST /api/create-order` | Creates Razorpay order server-side. In: `{amount(paise), currency=INR, receipt?, notes?}`. Out: `{order_id, amount, currency, key_id}`. `405` non-POST · `400` invalid/low amount · `500` if creds missing. |
 | `verify-payment.js` | `POST /api/verify-payment` | HMAC-SHA256 signature verify, timing-safe. In: `{razorpay_order_id, razorpay_payment_id, razorpay_signature}`. Out: `{verified:true}` or `400`. |
-| `razorpay-webhook.js` | `POST /api/razorpay-webhook` | Verifies webhook secret, **logs only** (no email yet — see TODOs). |
+| `razorpay-webhook.js` | `POST /api/razorpay-webhook` | Verifies webhook secret, then on `payment.captured` sends a customer confirmation + internal (`hello@clearhead.in`) notification email via the Resend REST API (native `fetch`, zero new deps). Gracefully no-ops (logs, doesn't throw) if `RESEND_API_KEY`/`RAZORPAY_WEBHOOK_SECRET` aren't set yet — **dashboard setup required, see `SETUP-DASHBOARD-STEPS.md`.** |
 
-**Flow:** pricing button → `create-order` → Razorpay modal → success → `verify-payment` → Cal.com booking shown.
+**Flow:** pricing button → `create-order` → Razorpay modal → success → `verify-payment` → Cal.com booking shown → (once webhook secret + Resend key are set) confirmation email.
 
 **Packages** (per-session rate shown on pricing.html; `data-amount` is the full package total in paise):
 
@@ -157,11 +157,11 @@ npx netlify dev          # local run incl. functions (reads .env)
 
 | Issue | Severity | Status |
 |---|---|---|
-| No payment-confirmation email | High | Webhook only logs — wire Resend/Postmark in `razorpay-webhook.js`. |
-| Form email notifications off (all 6 forms) | High | Configure in Netlify → Forms → notifications. |
-| Pages not yet indexed by Google | Medium | Requested 2026-05-29; needs backlinks + LinkedIn promotion. |
-| Zero backlinks | Medium | None yet. |
-| `RAZORPAY_WEBHOOK_SECRET` may be unset | Low | Webhook 500s on events until set. |
+| No payment-confirmation email | Done (code) / **needs dashboard action** | `razorpay-webhook.js` now sends a customer confirmation + internal notification via Resend on `payment.captured` (native `fetch`, no new npm dep). Inert until `RESEND_API_KEY` is set — see **`SETUP-DASHBOARD-STEPS.md`** §1. |
+| Form email notifications off (all 6 forms) | **Needs dashboard action** | Netlify-side setting, not fixable in code — see `SETUP-DASHBOARD-STEPS.md` §3 for the exact 6-form checklist. |
+| `RAZORPAY_WEBHOOK_SECRET` may be unset | **Needs dashboard action** | Confirmed unset locally as of 2026-07-14. Webhook fails closed (500) until set — see `SETUP-DASHBOARD-STEPS.md` §2 for the Razorpay-side steps. |
+| Pages not yet indexed by Google | Medium | Requested 2026-05-29; needs backlinks + mentions (LinkedIn is a forbidden channel for this practice — see `growth/` visibility-OS skill). |
+| Zero backlinks | Medium | First `clearhead-authority-engine` run (2026-07-14) drafted 2 pitches to `growth/outbox/` (a direct pitch to a CNBC India correspondent already covering the AI/IT-jobs beat, and a guest-essay pitch to YourStory built on the new golden-handcuffs post) — both awaiting a human send. Also surfaced two unclaimed directory profiles (Board Infinity, ICF Mumbai Coach Directory) worth confirming in a future run. `growth/` is gitignored by design; check it locally, not in the repo. |
 | Pressure & Burnout pillar page | Medium | Cluster audit (2026-07-14) suggested a standalone hub page for this 13-post cluster instead of everything being flat blog posts. Deliberately deferred this session to protect quality — flagged as follow-up. |
 | Mid-career-identity content | Medium | Cluster audit flagged this as a real, underserved search intent with no dedicated content yet. Deferred, follow-up. |
 | Money & mental health cluster | Low | Now has 2 posts (was 1, effectively orphaned) as of 2026-07-14. Audit suggested a 3rd angle (e.g. "money as scorekeeping/status" or dual-income-household anxiety) — optional next addition. |
