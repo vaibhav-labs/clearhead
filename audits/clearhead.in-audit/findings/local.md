@@ -1,0 +1,55 @@
+# Local SEO Findings — clearhead.in
+
+**Audited:** 2026-07-14 · **Business type:** Hybrid (brick-and-mortar office + online/international clients) · **Vertical:** Professional coaching & counselling (closest schema.org fit: `ProfessionalService`; does not map cleanly to any of the six reference verticals — no dedicated "life coach" subtype exists in schema.org)
+
+**Method:** Audited from the local repo source (`/Users/jain/Documents/Zen/index.html` plus footer templates in `pricing.html`, `blog.html`, `tools.html`, `post-ai.html`). No browser/fetch/API tool was available in this session to render or query the live `https://clearhead.in` directly — see "Not checked" below. Per `KNOWLEDGE_MAP.md`, the repo auto-deploys on push and should mirror production, but this was not independently re-verified against the live DOM.
+
+---
+
+## Summary
+
+NAP fundamentals are present and mostly accurate: the homepage carries a `LocalBusiness` JSON-LD block with correct geo coordinates, a genuine Google Maps place link (with a real CID, suggesting a live GBP listing), opening hours, and a WhatsApp contact path that's digit-consistent everywhere it appears. The two biggest gaps are structural rather than typos: (1) the sitewide footer — reused on every one of the ~38 pages — is missing the phone number and state/country on every page except the homepage, and (2) neither JSON-LD address block (`Person` or `LocalBusiness`) contains a `streetAddress` field, so "Lokhandwala Complex" exists in visible HTML but not in structured data. There's also no dedicated local-intent landing/service page — everything local lives in the homepage's contact section, which works for a single-practitioner business but leaves the site's strongest local-organic lever (per Whitespark 2026, dedicated service pages are the #1 local organic ranking factor) unused. Reviews, GBP profile health, and citation presence could not be assessed at all — none of that data exists on-site, and no API/live-fetch access was available in this session.
+
+---
+
+## Findings
+
+| Issue | Severity | Evidence | Recommendation |
+|---|---|---|---|
+| Footer NAP incomplete & inconsistent across the site | High | Homepage footer (`index.html:556-559`) shows address + WhatsApp number. `pricing.html:182-184`, `blog.html:668-670`, `tools.html:247-250`, `post-ai.html:317-320` footers show **only** the address line (`"Lokhandwala Complex, Andheri West, Mumbai 400053"`) — no phone/WhatsApp number, no "Maharashtra, India". Since the footer template repeats on every one of the ~38 indexed pages, this is a sitewide inconsistency, not a one-off. | Standardize the footer partial so address (incl. state/country) + WhatsApp number appear identically on every page. |
+| JSON-LD address blocks omit `streetAddress` entirely | High | `index.html:56-61` (Person) and `:106-112` (LocalBusiness) both use only `addressLocality: "Lokhandwala, Andheri West"`, `addressRegion`, `addressCountry` (+`postalCode` on LocalBusiness only). Neither has a `streetAddress` property — "Lokhandwala Complex" (the actual building name shown in visible HTML at `:528`) never appears in structured data. | Add `"streetAddress": "Lokhandwala Complex"` to both address objects; keep `addressLocality` as `"Andheri West"` or `"Mumbai"` (a locality name, not a compound street+area string) per PostalAddress spec. |
+| No dedicated local-intent service page | High | Site map (`sitemap.xml`, `KNOWLEDGE_MAP.md` §3) has no page like "Executive Coaching, Mumbai" or "In-Person Counselling, Andheri West" — all local signals are folded into the homepage `#contact` section. | Whitespark 2026 flags dedicated service pages as the #1 local-organic and #2 AI-visibility ranking factor. Consider a short, genuinely unique page (or homepage section with its own indexable anchor + internal links) targeting "in-person coaching Andheri West / Lokhandwala" distinct from the general homepage copy. |
+| No click-to-call `tel:` link anywhere on the site | Medium | Grep for `tel:` across `index.html` returns zero matches. All phone contact points are `wa.me` deep links (`index.html:298,525,559`), which require WhatsApp installed and don't work as a standard phone-number citation signal. | Add a `tel:+919028902948` link alongside (not instead of) the WhatsApp CTA, e.g. in the contact aside and footer. |
+| Google Maps embed removed; text link only | Medium | Per `KNOWLEDGE_MAP.md` §3: "map iframe removed" in the v2.3 (2026-07-08) restructure. Current page has only an anchor to Maps (`index.html:533`), no `<iframe>` (confirmed via grep, zero matches). | An embedded map is a stronger on-page GBP corroboration signal than a text link and costs little load time if lazy-loaded. Consider re-adding a lightweight embed near the contact section. |
+| Two disconnected business-like schema entities | Medium | `@graph` has both `ProfessionalService` (`@id #service`, `index.html:74-97`) and `LocalBusiness` (`@id #business`, `:99-129`) as separate nodes. They're linked only indirectly via `Person.worksFor → #business` and `ProfessionalService.provider → #vaibhav`; the two business nodes never reference each other. | Consolidate into a single canonical business entity (e.g., `"@type": ["LocalBusiness","ProfessionalService"]` on one `@id`) to avoid diluting/splitting the local entity signal Google associates with the practice. |
+| No `aggregateRating`/`Review` schema or on-page review evidence | Medium | No matches for `review`/`aggregateRating` anywhere in `index.html`. The two testimonials referenced in `KNOWLEDGE_MAP.md` are plain text, not schema-marked, and not sourced from/linked to Google reviews. | If real reviews exist on GBP, surface a small review count/rating snippet on-site with matching `Review`/`AggregateRating` markup — but only once ratings are genuinely verifiable (see Reviews dimension caveat below). |
+| `sameAs` is minimal — no GBP/social profile links | Medium | `Person.sameAs` (`index.html:50-52`) contains only `https://www.vj9.org/human`. No link to the Google Business Profile/Maps listing, LinkedIn, Instagram, or other verifiable profiles. | Add the GBP listing URL and any active social profiles to `sameAs` on the Person and/or business entity to strengthen entity confirmation. |
+| Phone number formatting inconsistent across sources | Low | Schema: `+91-90289-02948` (`:115`); visible footer text: `+91 90289 02948` (`:559`); `wa.me` links: raw `919028902948` (no `+`, no separators, e.g. `:298`). Same digits everywhere — no transcription error — but three different formats. | Pick one display format (e.g., `+91 90289 02948`) and use it consistently in visible text and schema; `wa.me` URLs are exempt (protocol requires digits-only). |
+| `openingHours` uses plain string, not `openingHoursSpecification` | Low | `"openingHours": "Mo-Sa 09:00-19:00"` (`index.html:117`) — valid but the older/looser format. | Migrate to `openingHoursSpecification` (array of `OpeningHoursSpecification` objects with `dayOfWeek`/`opens`/`closes`) for Google's more robust parsing. |
+| `Person` schema address missing `postalCode` (present on `LocalBusiness`) | Low | Compare `index.html:56-61` (no postalCode) vs `:106-112` (`postalCode: "400053"`). Internal inconsistency within the same JSON-LD document. | Add `postalCode: "400053"` to the Person address block too, or better, have Person reference the business address by `@id` instead of duplicating it. |
+| `geo.region`/`geo.placename` meta tags only on 2 of ~38 pages | Low | Present on `index.html:27-28` and `pricing.html:28-29`; absent on `blog.html`, `post-ai.html`, and (by inference from template reuse) other blog/tool pages. | Low-impact signal, but for consistency add to the shared `<head>` template if one exists, or drop entirely — partial coverage looks unintentional. |
+
+---
+
+## What's already strong
+
+- `LocalBusiness` JSON-LD is present with 7-decimal-precision `geo` coordinates (19.1405612, 72.8246929) — exceeds the 5-decimal recommendation.
+- `hasMap` points to a real Google Maps place URL containing a CID (`0x45bf3d053989dcf3`), which is strong evidence an actual GBP listing exists for "Clearhead" at this address — not just a generic maps search link.
+- City name ("Mumbai") is present in both `<title>` and meta description — solid local on-page targeting at the title-tag level.
+- Neighborhood-level keywords ("Lokhandwala", "Andheri West") appear organically in body copy in multiple places beyond the footer — hero eyebrow (`:204`), service list (`:325`), pricing lede (`pricing.html:90`), about section (`index.html:409`) — good local-keyword hygiene, not just boilerplate.
+- Hybrid positioning is handled cleanly: in-person address is clearly stated alongside explicit remote-service language ("Online across India and internationally," "international clients, all time zones"), so the site doesn't read as a pure SAB or pure brick-and-mortar mismatch.
+- WhatsApp number is digit-identical (919028902948) everywhere it's used — no transcription drift on the actual phone digits, only formatting-style drift (see Low finding above).
+- Only one page (`index.html`) carries `LocalBusiness` schema — no duplicate/competing location schema blocks across the other ~37 pages, which avoids diluting or confusing the local entity signal.
+- `FAQPage` schema is present and well-formed, which can win additional SERP real estate adjacent to local results.
+- Clean canonical URL structure (forced `www → non-www`, canonical tags on every page) removes a common NAP/URL-consistency failure mode.
+
+---
+
+## Not checked (no API/live-fetch access in this session)
+
+- **Google Business Profile itself** — verification status, primary/secondary category selection (the #1 local ranking factor per Whitespark 2026 — wrong category is the #1 *negative* factor), profile completeness, Q&A, Posts activity, photo count/recency. None of this is visible on-site.
+- **Reviews & reputation** — actual star rating, review count, review velocity (the "18-day rule" freshness cliff), and response rate. The site itself surfaces no `aggregateRating`, no review widget, and no linked review source, so there is nothing on-page to sample from.
+- **Citation presence** — could not query Google, Justdial, Sulekha, Practo, or other India-relevant directories (Yelp/BBB are largely not applicable to this market/niche) for NAP-match or mismatch. Directory checks require live search/fetch access not available here.
+- **Live rendered DOM** — this audit read the static repo source directly rather than fetching `https://clearhead.in` (no fetch/browser tool was available in this session). Per `KNOWLEDGE_MAP.md` the repo auto-deploys and should match production, but that 1:1 match was not independently confirmed.
+- **Local pack / map pack rankings** for relevant queries, and proximity-driven ranking variance (per Search Atlas, proximity alone accounts for ~55% of ranking variance and is outside the site's control regardless).
+- **Backlink/citation authority signals** to the domain — `KNOWLEDGE_MAP.md` §11 already flags "zero backlinks" as a known open item, but this could not be independently re-verified here.
