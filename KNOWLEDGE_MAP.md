@@ -1,8 +1,8 @@
 # Clearhead — Project Knowledge Map
 
 > **Read this first in every session.** Single source of truth for a 360° view of the project.
-> Verified against the repo on **2026-06-09**. If the repo and this file disagree, trust the repo and update this file.
-> Companion files: `CLAUDE.md` (legacy/long-form context — partly stale), `audits/` (daily reports).
+> Verified against the repo on **2026-07-14**. If the repo and this file disagree, trust the repo and update this file.
+> Companion files: `CLAUDE.md` (legacy/long-form context — partly stale), `audits/` (daily reports + `audits/clearhead.in-audit/FULL-AUDIT-REPORT.md`, the 2026-07-14 full SEO/GEO/schema/content audit that most of this session's changes came from).
 
 ---
 
@@ -34,36 +34,34 @@
 
 ---
 
-## 3. Site map (18 HTML pages)
+## 3. Site map (~42 HTML pages)
 
 **Core**
-- `index.html` — homepage, restructured 2026-07-08 (v2.3): hero with real VJ photo (shown on mobile too) → "You might recognise this" + inline ChatGPT-note → free-conversation CTA with testimonial beside it → "How it works" 3-step strip + `how-conversation.jpg` (replaced the 4-panel comic) → safe space → blog preview (3 cards) → about → 2 testimonials → disclaimer → FAQ → contact (WhatsApp button + Google Maps link; map iframe removed). AI band, runway widget band, and Cal.com embed script removed. Nav CTA on all pages: "Book a free call" → cal.com/vaibhavjain/30min.
-- `pricing.html` — coaching packages; Razorpay pay buttons live directly on the three package cards (duplicate "Pay for your package" section removed).
-- `blog.html` — blog index (3 categories, thumbnails).
-- `tools.html` — free-tools hub linking the 4 calculators.
+- `index.html` — homepage. Hero (VJ photo, shown on mobile too) → "You might recognise this" → free-conversation CTA with testimonial → "How it works" 3-step strip → safe space → blog preview → about → testimonials → disclaimer → FAQ → contact (address, Maps iframe embed, WhatsApp, tel: link). Nav CTA on all pages: "Book a free call" → cal.com/vaibhavjain/30min. JSON-LD merges `Person` (`#vaibhav`), `LocalBusiness`/`ProfessionalService` (`#business`), and `WebSite` as cross-referenced `@id` entities to avoid duplicate/unlinked schema.
+- `pricing.html` — coaching packages; Razorpay pay buttons on the three package cards; `Service.provider` references `#business` by `@id`.
+- `coaching-andheri-west.html` — dedicated local-intent landing page (in-person sessions, Lokhandwala/Andheri West/Versova/Oshiwara), `BreadcrumbList`+`Service`+`FAQPage` schema, Maps embed. Added 2026-07-14 to close the "everything local is folded into the homepage" gap.
+- `blog.html` — blog index, 5 category sections (AI & identity, loneliness & connection, clarity & being heard, pressure & burnout, money & mental health) + external cross-posts from vj9.org.
+- `tools.html` — free-tools hub linking the 6 calculators.
 
-**Blog posts (6, all indexed)**
-- `post-ai.html` — "Your Job Title Is Changing. Don't Lose Yourself."
-- `post-ai-loneliness.html` — "Can AI Cure Loneliness? What a 2026 Study Found."
-- `post-unheard.html` — "You're not confused. You're just unheard."
-- `post-lonely.html` — "The Loneliest Generation Has the Most Followers."
-- `post-conversation.html` — "What One Good Conversation Can Do."
-- `post-new-city-loneliness.html` — "Moved Cities for a Job? The Loneliness Is Real."
+**Blog posts (27, all indexed)** — organized into 5 clusters on `blog.html`. Notable/recent additions: `post-golden-handcuffs.html` (Nov 2025 Harris Poll Income Paradox Survey — high earners, golden-handcuffs/lifestyle-inflation mechanism, added 2026-07-14), `post-perfectionism.html`, `post-languishing.html`, `post-rest-burnout.html`, `post-overwork-brain.html`, `post-mattering-at-work.html`, `post-self-compassion-work-stress.html`. Every post has a `.post-author` bio card linking to `index.html#about`, an `Article`/`BreadcrumbList`/`FAQPage` JSON-LD set (author/publisher as `@id` references), a References section, and (where the underlying research supports it) an `Article.citation` array of real, dated, DOI-linked sources — never fabricated. See `blog.html` for the full list per cluster; the **Money & mental health** cluster currently has 2 posts (`post-money-anxiety.html`, `post-golden-handcuffs.html`), cross-linked to each other.
 
-**Interactive tools (4 — each = `*.html` view + `*-engine.js` pure-math engine, DOM-decoupled, gated by a Netlify Form)**
+**Interactive tools (6 — each = `*.html` view + `*-engine.js` pure-math engine, DOM-decoupled, gated by a Netlify Form)**
 - `runway.html` + `runway-engine.js` — **Abundance Runway Calculator** (7-step financial-runway sim).
 - `bandwidth.html` + `bandwidth-engine.js` — **Cognitive Load & Bandwidth Index**.
-- `career-friction.html` + `career-friction-engine.js` — **Career Friction & Alignment Audit**.
+- `career-friction.html` + `career-friction-engine.js` — **Career Friction & Alignment Audit** (surfaces "golden handcuffs" as one of 4 outcome quadrants — linked from `post-golden-handcuffs.html`).
 - `ai-relevance.html` + `ai-relevance-engine.js` — **AI Automation & Relevance Index** ("will AI replace my job").
+- `readiness.html` — **Self-Employment Readiness Index**.
+- `still-on-your-list.html` — reflection tool (things you've been quietly carrying).
+All 5 scored tools carry a scoring-methodology + "no data stored" fine-print line (added in the 2026-07-14 audit pass).
 
 **Utility (not indexed)**
-- `quiz.html` — fit quiz (disallowed in robots.txt).
-- `thank-you.html` — post-form redirect (disallowed in robots.txt).
-- `privacy-policy.html`, `terms.html` — legal (excluded from sitemap).
+- `quiz.html` — fit quiz (disallowed in `robots.txt`, also carries `noindex`).
+- `thank-you.html` — post-form redirect (disallowed in `robots.txt`, also carries `noindex`).
+- `privacy-policy.html`, `terms.html` — legal (`noindex`, excluded from sitemap, not disallowed in `robots.txt` — deliberately crawlable-but-noindex so the tag is actually seen).
 
-**Indexed in `sitemap.xml` (14):** `/`, pricing, blog, the 6 posts, runway, tools, bandwidth, career-friction, ai-relevance.
+**Indexed in `sitemap.xml`:** all pages above except the 4 utility pages — currently 32 URLs, `lastmod` genuinely synced to edit dates.
 
-> The old CLAUDE.md lists the 3 non-runway tools as "planned/not built" and pricing as on-home — **both are now done.** This file is current.
+> Run `ls post-*.html | wc -l` and diff against `blog.html`/`sitemap.xml`/`llms.txt` whenever adding a post — these three plus this file are the four places a new post must be wired into.
 
 ---
 
@@ -112,9 +110,11 @@ All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-y
 ## 7. SEO
 
 - All titles ≤ 60 chars; meta descriptions 120–160; canonical + full OG tags (incl. `og:image:width/height/alt`) on every indexable page.
-- **JSON-LD:** homepage has `FAQPage` + `LocalBusiness` (telephone, geo, hasMap) + `ProfessionalService` + `Person` (ICF PCC). Each blog post has `Article` + `BreadcrumbList`. Tools carry `SoftwareApplication`.
-- Self-hosted OG images: `og-ai-loneliness.jpg`, `og-new-city-loneliness.jpg` (plus `VJ.jpg` default).
-- `robots.txt` disallows `/thank-you.html`, `/quiz.html`, `/api/`, `/.netlify/`.
+- **JSON-LD:** homepage merges `LocalBusiness`/`ProfessionalService` + `Person` (`#vaibhav`) + `WebSite` as cross-referenced `@id` entities (avoids duplicate/unlinked schema entities, which AI crawlers and Google penalize). Every blog post has `Article` (author/publisher as `@id` refs to the homepage entities, `publisher.logo`) + `BreadcrumbList` + `FAQPage` matching a visible on-page FAQ. Tools carry `SoftwareApplication`. `coaching-andheri-west.html` carries `Service` + `FAQPage`.
+- **Citations:** where a post makes a research claim, it's backed by a real, dated, DOI/URL-linked source in `Article.citation` + a visible References section — verified via WebSearch/web_fetch before writing, never fabricated. Most recent: The Harris Poll's Nov 2025 Income Paradox Survey (`post-golden-handcuffs.html`).
+- Self-hosted OG images: `og-ai-loneliness.jpg`, `og-new-city-loneliness.jpg` (plus `VJ.jpg` default); most posts use topic-matched Unsplash hero images (see `blog.html` for the full de-duplicated set of ~36 photo IDs in rotation — check for reuse before picking a new hero image for a new post).
+- `robots.txt` disallows `/thank-you.html`, `/quiz.html`, `/api/`, `/.netlify/`. `llms.txt` lists all core pages, all 6 tools, and all posts by cluster — refresh it whenever a page is added.
+- `netlify.toml` sets HSTS, a report-only CSP (verify clean in-browser before promoting to enforced `Content-Security-Policy`), and cache-control headers for CSS/JS/JPG/SVG.
 - **GSC (sc-domain:clearhead.in):** new low-authority domain; pages were "Discovered — not indexed", manual indexing requested **2026-05-29**. Key lever: LinkedIn shares + 2–3 backlinks. Escalation timeline tracked by the monitor.
 
 ---
@@ -136,6 +136,7 @@ All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-y
 ```
 No beige or green anywhere (v2.1 removed all teal; exception: WhatsApp-green `.wa-btn` in contact). Primary CTAs are ember. Free-flowing layout: striped bands dissolved, hero navy has rounded bottom + gradient, contact band rounded top; safe-band is light with a navy quote card. v2.3 (2026-07-08): comic strip removed — "How it works" is now a numbered 3-step strip beside `how-conversation.jpg` (self-hosted); band padding tightened to `clamp(2.25rem, 5vw, 3.5rem)`; hero shows `VJ.jpg` (desktop + mobile). Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
 Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, currently UNUSED — peep thumbnails were rejected; thumbnails are curated Unsplash photos again, fully de-duplicated, topic-matched); comic characters are inline SVG on index.html; photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
+`.post-author` bio-card and mobile touch-target CSS for `.cta-ghost` were added to `styles.css` in the 2026-07-14 audit pass.
 
 ---
 
@@ -145,11 +146,10 @@ Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, currently
 cd ~/Documents/Zen
 git add -A && git commit -m "msg" && git push origin main   # auto-deploys in ~30s
 
-# If push fails with a stale lock (Cowork sandbox leftover):
-find ~/Documents/Zen/.git -name "*.lock" -delete && git push origin main
-
 npx netlify dev          # local run incl. functions (reads .env)
 ```
+
+**Working from a Cowork sandbox session:** git commits work fine (stale `.git/*.lock` files from the mounted-folder delete restriction are resolved once per session via the `mcp__cowork__allow_cowork_file_delete` tool — no need to ask the user to manually clear locks). **`git push` does not work from the sandbox** — there's no `git-credentials` available outside the mounted project folder, so pushes fail with `could not read Username for 'https://github.com'`. The correct pattern for a Cowork session: commit locally as you go, and tell the user at the end (or when a good batch is ready) that they need to run `git push origin main` themselves from their own machine to actually publish.
 
 ---
 
@@ -162,6 +162,12 @@ npx netlify dev          # local run incl. functions (reads .env)
 | Pages not yet indexed by Google | Medium | Requested 2026-05-29; needs backlinks + LinkedIn promotion. |
 | Zero backlinks | Medium | None yet. |
 | `RAZORPAY_WEBHOOK_SECRET` may be unset | Low | Webhook 500s on events until set. |
+| Pressure & Burnout pillar page | Medium | Cluster audit (2026-07-14) suggested a standalone hub page for this 13-post cluster instead of everything being flat blog posts. Deliberately deferred this session to protect quality — flagged as follow-up. |
+| Mid-career-identity content | Medium | Cluster audit flagged this as a real, underserved search intent with no dedicated content yet. Deferred, follow-up. |
+| Money & mental health cluster | Low | Now has 2 posts (was 1, effectively orphaned) as of 2026-07-14. Audit suggested a 3rd angle (e.g. "money as scorekeeping/status" or dual-income-household anxiety) — optional next addition. |
+| `quiz.html` / `thank-you.html` both `Disallow` in robots.txt AND carry `noindex` | Low | Redundant (a robots.txt disallow prevents Googlebot from ever seeing the noindex tag), not broken. Both pages are correctly kept out of the index either way. Not worth "fixing" without deciding which single mechanism to standardize on — flag to user if it matters. |
+| Razorpay checkout script not deferred | Low (intentional) | Left as-is for payment-flow reliability; skipped in the 2026-07-14 performance pass on purpose. |
+| CSS minification | Low | Skipped — single global stylesheet, low payoff for the added build complexity on a no-build-step site. |
 
 ---
 
