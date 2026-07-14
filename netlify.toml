@@ -15,6 +15,12 @@
   status = 301
   force = true
 
+# /index.html -> / canonical consolidation (defense-in-depth alongside the <link rel=canonical> tags)
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
 
 # Friendly /api/* paths -> serverless functions
 [[redirects]]
@@ -40,3 +46,30 @@
     X-Frame-Options = "DENY"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    # Report-only for now so nothing breaks silently (checkout/fonts/images are all allow-listed below).
+    # Once confirmed clean in the browser console over a few days, rename to Content-Security-Policy to enforce.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://checkout.razorpay.com; frame-src https://checkout.razorpay.com; base-uri 'self'; form-action 'self'"
+
+# Long-lived caching for static assets that don't change on every deploy without a filename change.
+# Netlify still checks freshness via ETag on each deploy, so this is safe: it speeds up repeat visits
+# without risking stale content between deploys.
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, must-revalidate"
