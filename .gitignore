@@ -1,6 +1,10 @@
 # Growth-skill working state — Netlify publishes the repo root, so this must never deploy
 growth/
 
+# Legacy audit/monitor reports — internal working files, same reason as growth/.
+# These were tracked and therefore publicly readable at clearhead.in/audits/ until 2026-08-06.
+audits/
+
 # Environment variables — never commit real credentials
 .env
 .env.local
