@@ -28,6 +28,65 @@
   to = "/coaching-andheri-west.html"
   status = 200
 
+# Internal working files must never be publicly readable.
+# Netlify publishes the repo root, so anything committed here is fetchable by default.
+# Netlify only supports a trailing splat, so extension globs like "/*.md" do NOT work —
+# these are enumerated deliberately. force = true is required, otherwise the static file wins.
+# Defence in depth: the .skill files are also untracked in git, and audits/ is gitignored.
+[[redirects]]
+  from = "/audits/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/KNOWLEDGE_MAP.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/AUDIT_CHANGES.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/MANUAL_PUSH_INSTRUCTIONS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/PAYMENT_FIX_SUMMARY.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/SETUP-DASHBOARD-STEPS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/package-lock.json"
+  to = "/404.html"
+  status = 404
+  force = true
+
 # Friendly /api/* paths -> serverless functions
 [[redirects]]
   from = "/api/create-order"

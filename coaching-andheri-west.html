@@ -49,6 +49,87 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://clearhead.in/#vaibhav",
+      "name": "Vaibhav Jain",
+      "jobTitle": "ICF PCC Certified Coach & Counsellor",
+      "url": "https://clearhead.in/",
+      "email": "hello@clearhead.in",
+      "sameAs": [
+        "https://www.vj9.org/human"
+      ],
+      "worksFor": { "@id": "https://clearhead.in/#business" },
+      "address": { "@id": "https://clearhead.in/#business-address" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "Professional Certification",
+        "name": "Professional Certified Coach (PCC)",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "International Coaching Federation",
+          "url": "https://coachingfederation.org/"
+        }
+      }
+    },
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://clearhead.in/#business",
+      "name": "Clearhead",
+      "founder": { "@id": "https://clearhead.in/#vaibhav" },
+      "provider": { "@id": "https://clearhead.in/#vaibhav" },
+      "description": "ICF PCC certified coaching and counselling for working professionals navigating AI anxiety, mid-career identity, and loneliness. 1:1 only. In-person in Andheri West, Mumbai, and online across India and internationally.",
+      "serviceType": [
+        "Life Coaching",
+        "Executive Coaching",
+        "Career Counselling"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "@id": "https://clearhead.in/#business-address",
+        "streetAddress": "Lokhandwala Complex",
+        "addressLocality": "Andheri West, Mumbai",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400053",
+        "addressCountry": "IN"
+      },
+      "url": "https://clearhead.in/",
+      "email": "hello@clearhead.in",
+      "telephone": "+91 90289 02948",
+      "priceRange": "₹₹₹",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Mumbai" },
+        { "@type": "Country", "name": "India" },
+        "Online India-wide"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.1405612,
+        "longitude": 72.8246929
+      },
+      "hasMap": "https://www.google.com/maps/place/Clearhead/@19.1405612,72.8246929,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7b7fd5d83a8e3:0x45bf3d053989dcf3"
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
   "@type": "Service",
   "name": "In-Person Coaching & Counselling, Andheri West",
   "provider": { "@id": "https://clearhead.in/#business" },

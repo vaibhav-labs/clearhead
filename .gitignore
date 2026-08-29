@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Growth-skill source copies — strategy docs, must never deploy (Netlify publishes the repo root)
+*.skill

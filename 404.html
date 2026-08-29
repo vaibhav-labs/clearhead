@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Page not found | Clearhead</title>
+<meta name="description" content="That page isn't here. Find your way back to the writing, the free tools, or a conversation with Vaibhav Jain, ICF PCC coach in Mumbai." />
+<meta name="robots" content="noindex, follow" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Page not found | Clearhead" />
+<meta property="og:description" content="That page isn't here. Find your way back to the writing, the free tools, or a conversation." />
+<meta property="og:url" content="https://clearhead.in/404.html" />
+<meta property="og:locale" content="en_IN" />
+<meta property="og:site_name" content="Clearhead" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav" role="banner">
+  <a href="index.html" class="brand" aria-label="Clearhead home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span>Clearhead</span>
+  </a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false');document.querySelector('.nav nav').classList.toggle('nav-open');">
+    <span></span><span></span><span></span>
+  </button>
+  <nav aria-label="Primary">
+    <a href="index.html#what">What this is</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="tools.html">Free tools</a>
+    <a href="blog.html">Blog</a>
+    <a href="https://cal.com/vaibhavjain/30min" target="_blank" rel="noopener noreferrer" class="cta-ghost">Book a free call</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="blog-index-hero">
+    <p class="eyebrow">404</p>
+    <h1>This page isn't here.</h1>
+    <p class="lede">Either the link is old, or it was never a page. Nothing you did. Here's the way back.</p>
+    <nav class="blog-cat-nav" aria-label="Suggested pages">
+      <a href="blog.html">Read the writing</a>
+      <a href="tools.html">Try a free tool</a>
+      <a href="pricing.html">See pricing</a>
+      <a href="index.html#contact">Say hello</a>
+    </nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="footer-name">Clearhead</span>
+      <p class="footer-tagline">Coaching &amp; Counselling for working professionals</p>
+    </div>
+    <div class="foot-links">
+      <a href="index.html#what">What this is</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Say hello</a>
+    </div>
+    <div class="footer-contact">
+      <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
+      <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
+      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Clearhead · Vaibhav Jain · All rights reserved</span>
+    <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+(function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
+</script>
+<script src="anim.js" defer></script>
+</body>
+</html>
