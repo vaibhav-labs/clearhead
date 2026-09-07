@@ -12,6 +12,7 @@ Clearhead is the private coaching practice of Vaibhav Jain (ICF PCC). Sessions a
 
 ## Free interactive tools
 Self-contained two-to-six-minute assessments, free, no signup required — each a standalone answer to a specific question.
+- [All free tools](https://clearhead.in/tools.html): Index of the free calculators and assessments for working professionals — bandwidth, career friction, AI exposure, and financial runway.
 - [Abundance Runway Calculator](https://clearhead.in/runway.html): How long your finances could sustain you if income stopped today.
 - [Cognitive Overload / Mental Bandwidth Calculator](https://clearhead.in/bandwidth.html): Scores mental bandwidth across open loops, context switching, system dependency, and recovery.
 - [Career Alignment Test](https://clearhead.in/career-friction.html): Plots where you sit — Aligned, Hard but Right, Drift, or Golden Handcuffs — and what staying costs.
