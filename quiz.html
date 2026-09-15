@@ -177,6 +177,10 @@
               <input type="radio" name="q4" value="d">
               <span>I've been referred to a therapist or psychiatrist by a doctor</span>
             </label>
+            <label class="quiz-opt">
+              <input type="radio" name="q4" value="e">
+              <span>I'm in crisis right now, or having thoughts of harming myself</span>
+            </label>
           </div>
           <div class="quiz-nav">
             <button class="btn-primary quiz-btn-next" disabled>See result →</button>
@@ -201,10 +205,10 @@
           </div>
 
           <div class="quiz-book-wrap">
-            <h3>Pick your package &amp; pay to book</h3>
-            <p class="quiz-book-sub">Choose a package and complete payment. Your booking link appears once payment is confirmed.</p>
+            <h3>Book your free 30-minute conversation</h3>
+            <p class="quiz-book-sub">No payment, no obligation. Pick a time that works and we'll take it from there.</p>
             <div class="quiz-book-grid">
-              <a class="btn-primary" href="index.html#pay">Choose your package &rarr;</a>
+              <a class="btn-primary" href="https://cal.com/vaibhavjain/30min" target="_blank" rel="noopener noreferrer" id="book-call-link">Book the free 30-minute call &rarr;</a>
             </div>
             <p class="quiz-book-or">or</p>
           </div>
@@ -275,6 +279,24 @@
           </div>
         </div>
 
+        <!-- ✗ CRISIS -->
+        <div class="quiz-result-block" id="result-crisis" hidden>
+          <div class="result-card caution">
+            <div class="result-icon">◎</div>
+            <h2>Please reach out to one of these right now.</h2>
+            <p>Thank you for saying that honestly. What you're carrying needs more immediate support than a scheduled coaching conversation can offer, and there are people trained for exactly this, available right now.</p>
+            <p><strong>If you're in India:</strong></p>
+            <ul class="result-list">
+              <li><strong>Tele-MANAS</strong> (Government of India, 24/7, free, 20+ languages): <a href="tel:14416">14416</a> or <a href="tel:18008914416">1800-89-14416</a></li>
+              <li><strong>Emergency services</strong>: <a href="tel:112">112</a></li>
+              <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
+              <li><strong>iCall</strong> (Tata Institute of Social Sciences): <a href="tel:9152987821">9152987821</a></li>
+            </ul>
+            <p style="margin-top:0.75rem;">If you're not in India, please contact your local emergency number or a crisis line where you are. You don't have to carry this alone right now, and reaching out is the right next step, not a failure.</p>
+          </div>
+          <p class="result-nav-links"><a href="index.html">← Back to Clearhead</a></p>
+        </div>
+
         <!-- ✗ MEDICAL -->
         <div class="quiz-result-block" id="result-medical" hidden>
           <div class="result-card caution">
@@ -285,6 +307,7 @@
             <p><strong>A few places to start in India:</strong></p>
             <ul class="result-list">
               <li>Your GP or a hospital psychiatry department</li>
+              <li><strong>Tele-MANAS</strong> (Government of India, 24/7, free, 20+ languages): <a href="tel:14416">14416</a> or <a href="tel:18008914416">1800-89-14416</a></li>
               <li><strong>iCall</strong> (Tata Institute of Social Sciences): <a href="tel:9152987821">9152987821</a></li>
               <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
               <li><strong>NIMHANS</strong>: <a href="https://nimhans.ac.in" target="_blank" rel="noopener noreferrer">nimhans.ac.in</a></li>
@@ -423,7 +446,9 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
     // Evaluate
     var which;
-    if (answers.q1 === 'c' || answers.q4 === 'c' || answers.q4 === 'd') {
+    if (answers.q4 === 'e') {
+      which = 'crisis';
+    } else if (answers.q1 === 'c' || answers.q4 === 'c' || answers.q4 === 'd') {
       which = 'medical';
     } else if (answers.q3 === 'c') {
       which = 'privacy';
@@ -449,6 +474,25 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       var el = document.getElementById('h-' + k);
       if (el) el.value = answers[k] || '';
     });
+
+    // For a good fit: prefill the Cal.com booking notes with a short summary
+    // of the quiz answers, so they arrive with the appointment.
+    if (which === 'good') {
+      var q1Text = {
+        a: "Wants a thinking partner, to find their own answers",
+        b: "Wants honest advice and clear direction",
+        d: "Not sure yet, just knows something needs to shift"
+      }[answers.q1] || '';
+      var q4Text = {
+        a: "Managing fine, wants to think something through properly",
+        b: "Things are genuinely hard, needs space to process"
+      }[answers.q4] || '';
+      var summary = 'From the "Is this the right fit?" quiz — Looking for: ' + q1Text + '. Where they are: ' + q4Text + '.';
+      var bookLink = document.getElementById('book-call-link');
+      if (bookLink) {
+        bookLink.href = 'https://cal.com/vaibhavjain/30min?notes=' + encodeURIComponent(summary);
+      }
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
