@@ -27,3 +27,10 @@ Thumbs.db
 
 # Growth-skill source copies — strategy docs, must never deploy (Netlify publishes the repo root)
 *.skill
+
+# Brand assets and data exports that live in the working tree but must never deploy.
+# CLAUDE.md's deploy instruction is `git add -A`, so anything left untracked here would
+# otherwise be published at clearhead.in/<name> on the next commit.
+brand-kit/
+clearhead-brand-kit.pdf
+*.xlsx

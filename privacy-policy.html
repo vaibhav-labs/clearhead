@@ -56,7 +56,7 @@
 
     <p class="post-eyebrow">Legal</p>
     <h1>Privacy Policy</h1>
-    <p class="post-meta">Last updated: 2 May 2026</p>
+    <p class="post-meta">Last updated: 20 September 2026</p>
 
     <div class="post-body">
 
@@ -96,7 +96,9 @@
 
       <p><strong>Netlify</strong> is used as the hosting provider for clearhead.in. Standard server logs (IP, timestamp, page requested) are kept for security and abuse prevention. See <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com/privacy</a>.</p>
 
-      <p>We do not currently run third-party analytics, tracking pixels, or advertising scripts on clearhead.in. If this changes, this policy will be updated accordingly.</p>
+      <p>Google Analytics is used to count page visits, and only if you agree to it. The first time you visit, you'll be asked a plain yes-or-no question. If you decline, or if your browser sends a "Do Not Track" or Global Privacy Control signal, Google is never contacted from this site at all — no script is loaded and no data leaves your browser. If you agree, Google receives anonymised page-visit data with your IP address truncated. Advertising and ad-personalisation features are switched off permanently, so this data is never used to build an advertising profile of you. Your choice is remembered for 180 days, and you can change it any time by clearing this site's data in your browser. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</p>
+
+      <p>We run no tracking pixels and no advertising scripts of any kind on clearhead.in.</p>
 
       <h2>Session confidentiality</h2>
 
@@ -116,7 +118,11 @@
 
       <h2>Cookies</h2>
 
-      <p>Clearhead.in does not use cookies for tracking, advertising, or analytics. If any essential cookies are used in the future (for example, by an embedded booking widget from Cal.com or a payment widget from Razorpay), they will be strictly functional, not for profiling or marketing. This policy will be updated if that changes.</p>
+      <p>Clearhead.in sets no cookies at all unless you accept analytics. If you do, Google Analytics sets its own measurement cookies; if you decline, or ignore the question, none are set. We use no advertising or profiling cookies in either case, and we never will.</p>
+
+      <p>A small record of your yes-or-no answer is stored in your own browser so you aren't asked again on every page. It stays on your device, and is never sent anywhere.</p>
+
+      <p>Other essential cookies may be set by the services that handle booking and payment (Cal.com and Razorpay) at the point you use them. Those are strictly functional, not for profiling or marketing.</p>
 
       <h2>Data retention</h2>
 
@@ -205,6 +211,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 /* Email obfuscation */
 (function(){var els=document.querySelectorAll('.js-email');els.forEach(function(el){var u=el.getAttribute('data-u'),d=el.getAttribute('data-d'),addr=u+'@'+d;var a=document.createElement('a');a.href='mai'+'lto:'+addr;a.textContent=addr;el.replaceWith(a);});})();
 </script>
+<script src="analytics.js" defer></script>
 <script src="anim.js" defer></script>
 </body>
 </html>

@@ -20,7 +20,7 @@
   </url>
   <url>
     <loc>https://clearhead.in/blog.html</loc>
-    <lastmod>2026-09-14</lastmod>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -231,6 +231,18 @@
   <url>
     <loc>https://clearhead.in/post-perfectionism.html</loc>
     <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clearhead.in/post-evening-recovery.html</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://clearhead.in/post-ai-comparison-exhaustion.html</loc>
+    <lastmod>2026-09-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

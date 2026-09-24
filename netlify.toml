@@ -114,7 +114,11 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     # Report-only for now so nothing breaks silently (checkout/fonts/images are all allow-listed below).
     # Once confirmed clean in the browser console over a few days, rename to Content-Security-Policy to enforce.
-    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://checkout.razorpay.com; frame-src https://checkout.razorpay.com; base-uri 'self'; form-action 'self'"
+    # google-analytics entries added 2026-09-20 for the GA4 tag (analytics.js).
+    # gtag.js is fetched from googletagmanager.com; it then beacons to
+    # *.google-analytics.com (and *.analytics.google.com for some regions).
+    # Neither host is contacted at all unless the visitor accepts the consent banner.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com; connect-src 'self' https://checkout.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://checkout.razorpay.com; base-uri 'self'; form-action 'self'"
 
 # Long-lived caching for static assets that don't change on every deploy without a filename change.
 # Netlify still checks freshness via ETag on each deploy, so this is safe: it speeds up repeat visits
