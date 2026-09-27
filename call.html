@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Before we talk | Clearhead</title>
+  <meta name="description" content="A one-minute check before your free 30-minute conversation with Vaibhav Jain at Clearhead, Mumbai. Then pick a time." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://clearhead.in/call.html" />
+  <meta name="theme-color" content="#f2f6f8" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Figtree:wght@400;500;600&display=swap" />
+  <style>
+    /* ---- Clearhead tokens (mirrors styles.css) ---- */
+    :root {
+      --bg: #f2f6f8; --bg-alt: #e8eff3; --card: #ffffff;
+      --ink: #101d26; --ink-soft: #3d4f5c; --line: #d9e2e8;
+      --accent: #3053c4; --accent-deep: #23409e; --accent-soft: #e0e7f9;
+      --dawn: #e8b04b; --dawn-press: #d99b2e; --dawn-deep: #8a5416;
+      --caution-bg: #eef4f7; --caution-line: #d4a96a;
+      --error: #b3261e; --error-bg: #fbeeed;
+      --radius: 14px; --radius-sm: 10px;
+      --font: "Figtree", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --serif: "Bricolage Grotesque", "Figtree", ui-sans-serif, system-ui, sans-serif;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #081826; --bg-alt: #0e2234; --card: #10263a;
+        --ink: #eef3f6; --ink-soft: #b6c5cd; --line: #24384a;
+        --accent: #8fa8f2; --accent-deep: #b4c6f8; --accent-soft: #16304f;
+        --caution-bg: #13273a; --error: #ff9d95; --error-bg: #3a1a1a;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #081826; --bg-alt: #0e2234; --card: #10263a;
+      --ink: #eef3f6; --ink-soft: #b6c5cd; --line: #24384a;
+      --accent: #8fa8f2; --accent-deep: #b4c6f8; --accent-soft: #16304f;
+      --caution-bg: #13273a; --error: #ff9d95; --error-bg: #3a1a1a;
+    }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+    *, *::before, *::after { box-sizing: inherit; }
+    body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-deep); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ---- Chrome ---- */
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem clamp(1.1rem, 4vw, 2rem); }
+    .brand { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--serif); font-size: 1.08rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); box-shadow: inset 0 0 0 2px var(--bg), inset 0 0 0 3px var(--accent); }
+    .count { font-size: 0.88rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .bar { height: 3px; background: var(--line); }
+    .bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.25s ease; }
+    main { max-width: 560px; margin: 0 auto; padding: clamp(1.75rem, 6vw, 3.5rem) clamp(1.1rem, 4vw, 2rem) 3rem; }
+    .foot { max-width: 560px; margin: 0 auto; padding: 1rem clamp(1.1rem, 4vw, 2rem) 2rem; font-size: 0.8rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; }
+    .foot a { color: var(--ink-soft); }
+    .preview-note { display: none; background: var(--accent-soft); color: var(--ink); border-radius: var(--radius-sm); padding: 0.6rem 0.9rem; font-size: 0.85rem; margin-bottom: 1.25rem; }
+    .preview-note.on { display: block; }
+
+    /* ---- Steps ---- */
+    .step { display: none; }
+    .step.on { display: block; animation: rise 0.22s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .step.on { animation: none; } .bar > i { transition: none; } }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 6vw, 2.5rem); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 0.6rem; }
+    .lede { color: var(--ink-soft); margin: 0 0 1.75rem; font-size: 1.02rem; }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .q { font-family: var(--serif); font-weight: 600; font-size: clamp(1.35rem, 4.5vw, 1.6rem); line-height: 1.25; margin: 0 0 0.5rem; }
+    .hint { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 1.1rem; }
+    .q + .field, .q + .opts { margin-top: 1.1rem; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card); color: var(--ink);
+      padding: 0.85rem 1rem; font-size: 1.05rem; font-family: var(--font); -webkit-appearance: none; appearance: none; transition: border-color 0.15s;
+    }
+    textarea { min-height: 6rem; resize: vertical; line-height: 1.5; }
+    input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+    .invalid input, .invalid textarea { border-color: var(--error); }
+    .err { display: none; font-size: 0.88rem; color: var(--error); margin: 0.45rem 0 0; }
+    .invalid .err { display: block; }
+
+    .opts { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+    .opt { display: flex; align-items: center; gap: 0.85rem; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card);
+      padding: 0.95rem 1.05rem; cursor: pointer; font-size: 1.02rem; line-height: 1.35; min-height: 52px; transition: border-color 0.15s, background 0.15s; }
+    .opt input { margin: 0; width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--accent); }
+    .opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+    .opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .check { display: flex; align-items: flex-start; gap: 0.85rem; font-size: 1rem; line-height: 1.45; cursor: pointer; margin: 0 0 1.25rem; }
+    .check input { margin: 0.2rem 0 0; width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--accent); }
+
+    .row { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .btn { display: inline-block; background: var(--dawn); color: #101d26; border: 0; border-radius: 999px; padding: 0.85rem 1.5rem; font-family: inherit; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.15s; }
+    .btn:hover { background: var(--dawn-press); }
+    .btn:active { transform: translateY(1px); }
+    .btn[disabled] { opacity: 0.7; cursor: default; }
+    .btn.wide { width: 100%; text-align: center; padding: 0.95rem 1.3rem; }
+    .btn-line { display: inline-block; border: 1.5px solid var(--accent); color: var(--accent); background: transparent; border-radius: 999px; padding: 0.7rem 1.2rem; font-weight: 600; text-decoration: none; font-size: 0.96rem; }
+    .btn-line:hover { background: var(--accent-soft); }
+    .link { background: none; border: 0; padding: 0; font: inherit; font-size: 0.95rem; color: var(--ink-soft); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .link:hover { color: var(--ink); }
+    .back { display: none; margin-top: 2rem; }
+    .step.on:not(:first-of-type) .back { display: inline-block; }
+    .fine { font-size: 0.85rem; color: var(--ink-soft); margin: 0.9rem 0 0; }
+    .fine a { color: var(--ink-soft); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    /* ---- Outcomes ---- */
+    .out { display: none; }
+    .out.on { display: block; animation: rise 0.22s ease-out; }
+    .out h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 5vw, 2rem); line-height: 1.15; margin: 0 0 0.75rem; }
+    .out p { margin: 0 0 0.9rem; }
+    .card { border-radius: var(--radius); padding: 1.5rem 1.4rem; margin: 0 0 1.25rem; background: var(--card); border: 1.5px solid var(--line); }
+    .card.caution { background: var(--caution-bg); border-color: var(--caution-line); }
+    .card ul { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+    .card li { margin-bottom: 0.45rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .mark { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--dawn-deep); }
+    .out-links { font-size: 0.92rem; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="https://clearhead.in/" aria-label="Clearhead home"><span class="brand-mark" aria-hidden="true"></span><span>Clearhead</span></a>
+    <span class="count" id="count" aria-live="polite"></span>
+  </header>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+
+  <main>
+    <p class="preview-note" id="preview-note">Preview for testing. Answers aren't saved here; on clearhead.in they go to your Netlify Forms inbox.</p>
+
+    <form id="call-form" name="call-screening" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
+      <input type="hidden" name="form-name" value="call-screening" />
+      <input type="hidden" name="outcome" id="f-outcome" value="" />
+      <input type="hidden" name="source" id="f-source" value="link" />
+      <p class="hp" aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+      <!-- 1 · name -->
+      <section class="step on" data-step="name">
+        <h1>Before we talk.</h1>
+        <p class="lede">Nine quick questions. <strong>About a minute.</strong> Then you pick a time.</p>
+        <p class="q">What's your name?</p>
+        <div class="field">
+          <label class="hp" for="f-name">Your name</label>
+          <input type="text" id="f-name" name="name" autocomplete="name" enterkeyhint="next" />
+          <p class="err">Please enter your name.</p>
+        </div>
+        <div class="row"><button class="btn" type="button" data-next>Next</button></div>
+        <p class="fine">Confidential. Only Vaibhav sees this. <a href="https://clearhead.in/privacy-policy" target="_blank" rel="noopener">Privacy policy</a></p>
+      </section>
+
+      <!-- 2 · email -->
+      <section class="step" data-step="email">
+        <p class="q">Your email?</p>
+        <p class="hint">The booking confirmation goes here.</p>
+        <div class="field">
+          <label class="hp" for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" enterkeyhint="next" />
+          <p class="err">Please enter a valid email address.</p>
+        </div>
+        <div class="row"><button class="btn" type="button" data-next>Next</button></div>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 3 · whatsapp -->
+      <section class="step" data-step="whatsapp">
+        <p class="q">Your WhatsApp number?</p>
+        <p class="hint">The one you messaged from. Add the country code if you're outside India.</p>
+        <div class="field">
+          <label class="hp" for="f-whatsapp">WhatsApp number</label>
+          <input type="tel" id="f-whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" enterkeyhint="next" />
+          <p class="err">Please enter a valid number (8 to 15 digits).</p>
+        </div>
+        <div class="row"><button class="btn" type="button" data-next>Next</button></div>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 4 · looking for -->
+      <section class="step" data-step="looking">
+        <p class="q" id="q-looking">What are you hoping for from the conversation?</p>
+        <ul class="opts" role="radiogroup" aria-labelledby="q-looking">
+          <li><label class="opt"><input type="radio" name="looking_for" value="think" /><span>Someone to think with</span></label></li>
+          <li><label class="opt"><input type="radio" name="looking_for" value="advice" /><span>Honest, direct advice</span></label></li>
+          <li><label class="opt"><input type="radio" name="looking_for" value="medical" /><span>Medical advice, a diagnosis or treatment</span></label></li>
+          <li><label class="opt"><input type="radio" name="looking_for" value="unsure" /><span>Not sure yet</span></label></li>
+        </ul>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 5 · diagnosed -->
+      <section class="step" data-step="diagnosed">
+        <p class="q" id="q-diagnosed">Are you being treated for a mental health condition?</p>
+        <p class="hint">For example depression, an anxiety disorder, OCD, PTSD, bipolar disorder.</p>
+        <ul class="opts" role="radiogroup" aria-labelledby="q-diagnosed">
+          <li><label class="opt"><input type="radio" name="diagnosed" value="no" /><span>No</span></label></li>
+          <li><label class="opt"><input type="radio" name="diagnosed" value="current" /><span>Yes, currently, or I've been referred to a psychiatrist or therapist</span></label></li>
+          <li><label class="opt"><input type="radio" name="diagnosed" value="past" /><span>In the past, not now</span></label></li>
+        </ul>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 6 · self-harm -->
+      <section class="step" data-step="harm">
+        <p class="q" id="q-harm">In the last two weeks, have you had thoughts of harming yourself, or of not wanting to be here?</p>
+        <p class="hint">An honest answer helps me point you to the right support.</p>
+        <ul class="opts" role="radiogroup" aria-labelledby="q-harm">
+          <li><label class="opt"><input type="radio" name="self_harm_thoughts" value="no" /><span>No</span></label></li>
+          <li><label class="opt"><input type="radio" name="self_harm_thoughts" value="yes" /><span>Yes</span></label></li>
+        </ul>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 7 · crisis -->
+      <section class="step" data-step="crisis">
+        <p class="q" id="q-crisis">Right now, are you in a crisis, feeling unsafe or unable to cope?</p>
+        <ul class="opts" role="radiogroup" aria-labelledby="q-crisis">
+          <li><label class="opt"><input type="radio" name="in_crisis" value="no" /><span>No</span></label></li>
+          <li><label class="opt"><input type="radio" name="in_crisis" value="yes" /><span>Yes</span></label></li>
+        </ul>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 8 · topic (optional) -->
+      <section class="step" data-step="topic">
+        <p class="q">Anything you'd like me to know before we talk?</p>
+        <p class="hint">Optional. A line is plenty.</p>
+        <div class="field">
+          <label class="hp" for="f-topic">Anything you'd like me to know</label>
+          <textarea id="f-topic" name="topic" maxlength="400" rows="3"></textarea>
+        </div>
+        <div class="row"><button class="btn" type="button" data-next>Next</button><button class="link" type="button" data-next data-skip>Skip</button></div>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+
+      <!-- 9 · confirm -->
+      <section class="step" data-step="consent">
+        <p class="q">Last one.</p>
+        <div class="field" style="margin-top:1.1rem;">
+          <label class="check" for="f-consent"><input type="checkbox" id="f-consent" name="consent" value="yes" /><span>I'm 18 or older, and I understand this is coaching and counselling, not medical or emergency care.</span></label>
+          <p class="err">Please tick this to continue.</p>
+        </div>
+        <button class="btn wide" type="submit" id="submit-btn">Pick a time</button>
+        <p class="fine">Next screen is my Cal.com calendar. No fee, no obligation. <a href="https://clearhead.in/terms" target="_blank" rel="noopener">Terms</a></p>
+        <button class="link back" type="button" data-back>Back</button>
+      </section>
+    </form>
+
+    <!-- ================= OUTCOME: GOOD FIT ================= -->
+    <section class="out" id="out-good" aria-live="polite">
+      <div class="card">
+        <div class="mark" aria-hidden="true">&#10003;</div>
+        <h2>Thank you. Now pick a time.</h2>
+        <p>Your name and email are already filled in. Just choose a slot.</p>
+        <p id="good-status">Taking you there now…</p>
+        <p><a class="btn wide" id="book-link" href="https://cal.com/vaibhavjain/30min" rel="noopener">Open the calendar</a></p>
+      </div>
+      <p class="out-links"><a href="https://clearhead.in/">Back to Clearhead</a></p>
+    </section>
+
+    <!-- ================= OUTCOME: CRISIS ================= -->
+    <section class="out" id="out-crisis" aria-live="polite">
+      <div class="card caution">
+        <div class="mark" aria-hidden="true">&#9678;</div>
+        <h2>Please reach out to one of these right now.</h2>
+        <p>Thank you for saying that honestly. What you're carrying needs more immediate support than a scheduled conversation with me. These people are trained for exactly this, and available now.</p>
+        <p><strong>In India:</strong></p>
+        <ul>
+          <li><strong>Tele-MANAS</strong> (free, 24/7, 20+ languages): <a href="tel:14416">14416</a> or <a href="tel:18008914416">1800-89-14416</a></li>
+          <li><strong>Emergency</strong>: <a href="tel:112">112</a></li>
+          <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
+          <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li>
+        </ul>
+        <p>Outside India, please call your local emergency number or a crisis line where you are. You don't have to carry this alone.</p>
+      </div>
+      <p class="out-links"><a href="https://clearhead.in/">Back to Clearhead</a></p>
+    </section>
+
+    <!-- ================= OUTCOME: CLINICAL ================= -->
+    <section class="out" id="out-clinical" aria-live="polite">
+      <div class="card caution">
+        <div class="mark" aria-hidden="true">&#9678;</div>
+        <h2>This might not be the right fit right now.</h2>
+        <p>From what you've shared, clinical or psychiatric care would serve you better, and that isn't what this practice offers. That's an honest answer, not a judgment.</p>
+        <p><strong>Places to start in India:</strong></p>
+        <ul>
+          <li>Your GP, or a hospital psychiatry department</li>
+          <li><strong>Tele-MANAS</strong> (free, 24/7): <a href="tel:14416">14416</a></li>
+          <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li>
+          <li><strong>NIMHANS</strong>: <a href="https://nimhans.ac.in" target="_blank" rel="noopener">nimhans.ac.in</a></li>
+        </ul>
+        <p>If the professional treating you thinks a coaching conversation alongside your care would help, message me and I'll be honest about fit.</p>
+        <p><a class="btn-line" href="https://wa.me/919028902948?text=Hi%20Vaibhav%2C%20I%20filled%20in%20the%20pre-call%20form.%20I%27m%20under%20clinical%20care%20and%20would%20like%20to%20check%20whether%20coaching%20alongside%20it%20could%20be%20a%20fit." rel="noopener">Message Vaibhav on WhatsApp</a></p>
+      </div>
+      <p class="out-links"><a href="https://clearhead.in/">Back to Clearhead</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; <span id="yr"></span> Clearhead &middot; Vaibhav Jain</span>
+    <span><a href="https://clearhead.in/privacy-policy">Privacy Policy</a> &middot; <a href="https://clearhead.in/terms">Terms</a></span>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    var CAL    = 'https://cal.com/vaibhavjain/30min';
+    var LIVE   = /(^|\.)clearhead\.in$/.test(location.hostname);
+    var FRAMED = (function () { try { return window.self !== window.top; } catch (e) { return true; } })();
+
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    if (!LIVE) { document.getElementById('preview-note').classList.add('on'); }
+    try {
+      var via = new URLSearchParams(location.search).get('via');
+      if (via) { document.getElementById('f-source').value = via.replace(/[^\w-]/g, '').slice(0, 40); }
+    } catch (e) {}
+
+    var form  = document.getElementById('call-form');
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+    var TOTAL = steps.length;
+    var count = document.getElementById('count');
+    var bar   = document.getElementById('bar');
+    var cur   = 0;
+    var finished = false;
+
+    function val(id) { return document.getElementById(id).value.trim(); }
+    function radio(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
+    function digits(s) { return s.replace(/\D/g, ''); }
+
+    function go(i) {
+      steps.forEach(function (s, k) { s.classList.toggle('on', k === i); });
+      cur = i;
+      count.textContent = (i + 1) + ' of ' + TOTAL;
+      bar.style.width = Math.round(((i + 1) / TOTAL) * 100) + '%';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      var f = steps[i].querySelector('input[type="text"], input[type="email"], input[type="tel"], textarea');
+      if (f) { setTimeout(function () { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }, 60); }
+    }
+
+    function validStep(step) {
+      var id = step.getAttribute('data-step'), ok = true;
+      if (id === 'name')     { ok = val('f-name').length >= 2; }
+      if (id === 'email')    { ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val('f-email')); }
+      if (id === 'whatsapp') { var d = digits(val('f-whatsapp')); ok = d.length >= 8 && d.length <= 15; }
+      if (id === 'consent')  { ok = document.getElementById('f-consent').checked; }
+      step.classList.toggle('invalid', !ok);
+      if (!ok) { var f = step.querySelector('input, textarea'); if (f) { f.focus(); } }
+      return ok;
+    }
+
+    // Where to go after the current screen. Safety flags exit immediately.
+    function advance() {
+      var id = steps[cur].getAttribute('data-step');
+      if (id === 'harm' && radio('self_harm_thoughts') === 'yes') { return finish('crisis'); }
+      if (id === 'crisis') {
+        if (radio('in_crisis') === 'yes') { return finish('crisis'); }
+        if (radio('looking_for') === 'medical' || radio('diagnosed') === 'current') { return finish('clinical'); }
+      }
+      if (cur < TOTAL - 1) { go(cur + 1); } else { finish('good'); }
+    }
+
+    // Next / Skip / Back buttons
+    form.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) { return; }
+      if (b.hasAttribute('data-back')) { e.preventDefault(); if (cur > 0) { go(cur - 1); } return; }
+      if (b.hasAttribute('data-next')) {
+        e.preventDefault();
+        if (b.hasAttribute('data-skip')) { document.getElementById('f-topic').value = ''; }
+        if (validStep(steps[cur])) { advance(); }
+      }
+    });
+
+    // Tapping an answer moves on by itself
+    form.addEventListener('click', function (e) {
+      if (e.target.matches('input[type="radio"]')) { setTimeout(advance, 200); }
+    });
+
+    // Enter in a text field = Next
+    form.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.matches('input[type="text"], input[type="email"], input[type="tel"]')) {
+        e.preventDefault();
+        if (validStep(steps[cur])) { advance(); }
+      }
+    });
+
+    form.addEventListener('input', function (e) { var s = e.target.closest('.step'); if (s) { s.classList.remove('invalid'); } });
+    form.addEventListener('change', function (e) { var s = e.target.closest('.step'); if (s) { s.classList.remove('invalid'); } });
+
+    // Final screen
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (validStep(steps[cur])) { advance(); }
+    });
+
+    var LOOK = { think: 'a thinking partner', advice: 'honest, direct advice', unsure: 'not sure yet' };
+    var DIAG = { no: 'none', past: 'in the past, not now' };
+
+    function bookingUrl() {
+      var wa = val('f-whatsapp'), d = digits(wa);
+      var waFmt = (wa.charAt(0) === '+' ? '+' : (d.length === 10 ? '+91 ' : '')) + d;
+      var parts = ['Pre-call form: done', 'WhatsApp: ' + waFmt, 'Wants: ' + (LOOK[radio('looking_for')] || ''), 'Mental-health treatment: ' + (DIAG[radio('diagnosed')] || '')];
+      var topic = val('f-topic');
+      if (topic) { parts.push('Note: ' + topic.slice(0, 300)); }
+      return CAL + '?name=' + encodeURIComponent(val('f-name')) + '&email=' + encodeURIComponent(val('f-email')) + '&notes=' + encodeURIComponent(parts.join(' | '));
+    }
+
+    function show(outcome) {
+      form.style.display = 'none';
+      count.textContent = '';
+      bar.style.width = '100%';
+      document.getElementById('out-' + outcome).classList.add('on');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (outcome === 'good') {
+        var url = bookingUrl(), link = document.getElementById('book-link');
+        link.href = url;
+        if (FRAMED) { link.target = '_blank'; }
+        if (LIVE && !FRAMED) {
+          setTimeout(function () { window.location.assign(url); }, 900);
+        } else {
+          document.getElementById('good-status').textContent = 'Tap the button to open the calendar.';
+        }
+      }
+    }
+
+    function finish(outcome) {
+      if (finished) { return; }
+      finished = true;
+      document.getElementById('f-outcome').value = outcome;
+      var btn = document.getElementById('submit-btn');
+      btn.disabled = true; btn.textContent = 'One moment…';
+      var shown = false;
+      function proceed() { if (!shown) { shown = true; show(outcome); } }
+      if (LIVE) {
+        // Netlify Forms: record every response, including screened-out ones, so Vaibhav can follow up.
+        var body  = new URLSearchParams(new FormData(form)).toString();
+        var timer = setTimeout(proceed, 6000);
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+          .then(function () { clearTimeout(timer); proceed(); }, function () { clearTimeout(timer); proceed(); });
+      } else {
+        proceed();
+      }
+    }
+
+    go(0);
+  }());
+  </script>
+</body>
+</html>
