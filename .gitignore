@@ -34,3 +34,6 @@ Thumbs.db
 brand-kit/
 clearhead-brand-kit.pdf
 *.xlsx
+
+# Stray archives (e.g. files.zip handoffs) — `git add -A` would publish them at clearhead.in/<name>.zip
+*.zip
