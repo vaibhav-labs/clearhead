@@ -535,6 +535,16 @@ main { }
   color: var(--ink);
 }
 .post-body blockquote p { color: var(--ink); margin: 0; font-size: inherit; }
+/* Comparison table inside a post (first used: post-cost-of-getting-help) */
+.post-table-wrap { margin: 1.75rem 0 2rem; overflow-x: auto; }
+.post-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.55; }
+.post-table caption { text-align: left; font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 0.6rem; }
+.post-table th, .post-table td {
+  text-align: left; vertical-align: top; padding: 0.7rem 0.8rem;
+  border-top: 1px solid var(--line); color: var(--ink-soft);
+}
+.post-table thead th { color: var(--ink); font-weight: 600; border-top: none; border-bottom: 2px solid var(--line); }
+.post-table tbody th { color: var(--ink); font-weight: 600; }
 .post-footer {
   margin-top: 1.5rem; padding-top: 0;
   display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
