@@ -318,6 +318,11 @@
     try {
       var via = new URLSearchParams(location.search).get('via');
       if (via) { document.getElementById('f-source').value = via.replace(/[^\w-]/g, '').slice(0, 40); }
+      var topicParam = new URLSearchParams(location.search).get('topic');
+      if (topicParam) { document.getElementById('f-topic').value = topicParam.slice(0, 400); }
+      var calParam = new URLSearchParams(location.search).get('cal');
+      var ALLOWED_CAL = ['30min', 'starter', 'going-deeper', 'the-long-game'];
+      if (calParam && ALLOWED_CAL.indexOf(calParam) !== -1) { CAL = 'https://cal.com/vaibhavjain/' + calParam; }
     } catch (e) {}
 
     var form  = document.getElementById('call-form');

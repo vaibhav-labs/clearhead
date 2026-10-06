@@ -1,185 +1,663 @@
 # Clearhead — Project Knowledge Map
 
-> **Read this first in every session.** Single source of truth for a 360° view of the project.
-> Verified against the repo on **2026-07-14**. If the repo and this file disagree, trust the repo and update this file.
-> Companion files: `CLAUDE.md` (legacy/long-form context — partly stale), `audits/` (daily reports + `audits/clearhead.in-audit/FULL-AUDIT-REPORT.md`, the 2026-07-14 full SEO/GEO/schema/content audit that most of this session's changes came from).
+> **Version v2.0** · full rewrite 2026-10-05 · refreshed every Monday by a scheduled routine · what changed and when: §20 (Version log).
+> **Read this first in every session.** It is the single source of truth for the project. If the repo or the live site disagrees with this file, trust them and fix this file.
+> Parts between `<!-- AUTO:NAME:BEGIN -->` and `<!-- AUTO:NAME:END -->` are machine-written by `audits/knowledge_map_refresh.py`; everything else is hand-curated and edited in place.
+> Previous versions of this file live in git history (`git log -- KNOWLEDGE_MAP.md`) and in the §20 version log. Never keep copies as separate files.
 
 ---
 
-## 1. What this is
+## 0. How this map is used and maintained
 
-**clearhead.in** — the live marketing + lead-gen site for **Vaibhav Jain's** coaching & counselling practice in Mumbai. Vaibhav is an **ICF PCC** coach working with senior corporate professionals (Senior PMs, Eng Directors, VPs, Fortune 500 leaders) on AI anxiety, mid-career identity, and professional loneliness.
+### 0.1 File policy (owner rule, 2026-10-05)
 
-- **Business model:** 1:1 coaching packages paid upfront via Razorpay → booked via Cal.com after payment. Free interactive tools + blog feed top-of-funnel and capture leads via Netlify Forms.
-- **Brand/tone:** calm, mature, trustworthy advisor. No hype, no urgency tactics.
-- **Funnel:** organic/SEO + tools → email capture or "free conversation" CTA → paid package → Cal.com booking.
+**Do not create new files unless the owner explicitly asks for one.** Every recurring job updates one of the living files below, in place, and records each new version as a new dated entry or row inside that file. This binds scheduled routines too: no more `audits/site-health-YYYY-MM-DD.md`, no `KNOWLEDGE_MAP-v2.md`, no dated copies.
+
+| Living file | What it holds | Written by | Cadence |
+|---|---|---|---|
+| `KNOWLEDGE_MAP.md` (this file) | Whole-project map, open-issues register, version log, metrics history | weekly routine (see 13.1) + any session that changes structure | weekly (Mondays) |
+| `audits/SITE_HEALTH_LOG.md` | Daily health log: status board, 30-day trend table, newest-first entries, indexing tracker line | `Clearhead site monitor` routine | daily |
+| `audits/knowledge_map_refresh.py` | Fact-gatherer. `--apply` rewrites only the AUTO blocks of this file | run by the weekly routine | weekly |
+| `CLAUDE.md` | Short orientation + the file policy, for every future session | rarely | when the registry changes |
+| `growth/content-queue.md`, `growth/outreach-log.md`, `growth/design-log.md` | State files owned by the growth skills | those skills | per run |
+| `audits/` dated reports (`site-health-*.md`, `seo-audit-*.md`, ...) and `growth/reports/*` | **Read-only history.** Growth skills still write dated reports to `growth/reports/` by their own SKILL.md; the owner has not yet asked to change that (see 15, DOC-2) | skills | legacy |
+
+### 0.2 Weekly update procedure (what the Monday routine does)
+
+1. Run `cd $HOME/mnt/Zen && PYTHONDONTWRITEBYTECODE=1 python3 -B audits/knowledge_map_refresh.py --apply`. It rebuilds the AUTO blocks (§1, 5.1, 5.2, 10.5, 14) and prints a delta (added/removed pages and posts, commits since the last entry, integrity findings).
+2. Read the last 7 days of `audits/SITE_HEALTH_LOG.md`, the top of `growth/content-queue.md`, `growth/outreach-log.md`, the newest `growth/reports/*`, and `git --no-optional-locks log`.
+3. Re-verify what drifts: the file fingerprints in §1 against the previous version-log entry (a changed `netlify.toml`, function file or `styles.css` means re-read it), prices on `pricing.html`, the form list, the live probes in 13.5 (webhook secret status especially), the scheduled-task list (`list_triggers`), and any new GSC export dropped in the folder.
+4. Edit the hand-written sections **in place, only where facts changed**. Keep headings and numbering stable. Update the open-issues register (§15) with dates; add a row to the indexing tracker (10.6).
+5. Add a new `### vX.Y — YYYY-MM-DD` entry at the **top** of §20 and a row to the metrics table. Routine weekly run = minor bump (v2.1, v2.2 ...); structural rewrite = major bump. Update the Version line at the top of the file.
+6. Do not commit or push. The file is tracked in git; whoever next runs `git add -A` carries it along (it is hidden from the public by `netlify.toml`).
+7. Notify the owner only when something needs them: a new High/Critical integrity finding, an exposure or secret problem, a decision that is blocking, or the run could not finish. Otherwise stay quiet.
+
+### 0.3 Safety rules for any automated session in this folder
+
+- Never read secret **values**. `.env` may be listed for variable names only. Never print tokens.
+- Use `git --no-optional-locks ...` for every read-only git command. Plain `git status` in the device sandbox takes `.git/index.lock` and cannot delete it afterwards (deletes are blocked), which then blocks every commit until the owner removes it.
+- Never delete, move or overwrite owner files without being asked. Scheduled sessions cannot approve deletions; report instead.
+- Writes outside the living files above need the owner's explicit request.
+- Git pushes are impossible from automation (no GitHub credentials). Commit only when a skill's own rules allow it; tell the owner to push.
+- Never use LinkedIn as a recommendation or a channel (visibility-OS doctrine, see 10.8).
 
 ---
 
-## 2. Tech stack (no framework — this is deliberate)
+## 1. Snapshot
+
+<!-- AUTO:SNAPSHOT:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+| Fact | Value |
+|---|---|
+| Refreshed | 2026-10-05 (script: audits/knowledge_map_refresh.py) |
+| Repo HEAD | `911b558` 2026-10-04: content: add post-cost-of-getting-help (is coaching or counselling worth the money; the co |
+| Branch / commits | main / 90 commits total; vs origin/main: 0 behind, 0 ahead |
+| Working tree | 1 uncommitted path(s); stale locks: .git/index.lock |
+| HTML files | 75 total: 58 posts, 6 tools, 5 core, 6 utility/other |
+| Indexable pages | 69 (noindex: 404.html, call.html, privacy-policy.html, quiz.html, terms.html, thank-you.html) |
+| sitemap.xml / llms.txt | 69 URLs / 69 URLs |
+| Blog clusters | Clarity & being heard: 2; Loneliness & connection: 8; AI, work & identity: 12; Pressure & burnout: 31; Money & mental health: 5 |
+| Post words | 121,490 total, 2094 average |
+| Newest posts | post-cost-of-getting-help.html (2026-10-04), post-evening-recovery.html (2026-09-23), post-ai-comparison-exhaustion.html (2026-09-21) |
+| Freshness SLA (90d) | 4 past SLA, 11 due within 14 days |
+| Forms in HTML | 8: ai-relevance-leads, bandwidth-leads, call-screening, career-leads, contact, quiz-enquiry, readiness-leads, runway-leads |
+| Internal links | 0 broken |
+| robots.txt Disallow | /thank-you.html, /quiz.html, /api/, /.netlify/ |
+| Redirect rules (netlify.toml) | 15; headers set: Cache-Control, Content-Security-Policy-Report-Only, Permissions-Policy, Referrer-Policy, Strict-Transport-Security, X-Content-Type-Options, X-Frame-Options; CSP: report-only |
+| Local .env variable NAMES | RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET; not in local .env: RAZORPAY_WEBHOOK_SECRET, RESEND_API_KEY, RESEND_FROM_EMAIL, INTERNAL_NOTIFY_EMAIL |
+| File fingerprints (sha256/8) | netlify.toml=76ca5e3a, pricing.html=091ca835, quiz.html=5a31fbc2, call.html=85c5d708, styles.css=6ffc4f45, analytics.js=b5449720, anim.js=fed0ab96, package.json=5d2d9cd2, create-order.js=2775acdf, verify-payment.js=e549b137, razorpay-webhook.js=67721681, robots.txt=57d1f013, llms.txt=851673e1 |
+| Changes since previous refresh | no pages or posts added/removed |
+<!-- AUTO:SNAPSHOT:END -->
+
+---
+
+## 2. The business
+
+**Clearhead** is the private coaching and counselling practice of **Vaibhav Jain**, an **ICF PCC** (Professional Certified Coach), based in Lokhandwala Complex, Andheri West, Mumbai. Tagline on the homepage H1: *"Someone to actually think with."*
+
+- **Who it serves:** senior working professionals (VPs, directors, senior PMs and engineers, Fortune 500 leaders) dealing with AI-driven job anxiety, mid-career identity shifts, workplace loneliness, burnout and overwork, and money-and-mental-health tension. 1:1 only. Online across India and internationally; in person at Lokhandwala Complex (Andheri, Versova, Oshiwara, Lokhandwala).
+- **Offer ladder:** free 30-minute conversation (Cal.com event `30min`) -> one of three paid packages (all 60-minute sessions, 1:1) -> Cal.com slot picked right after payment.
+- **Tone and brand voice:** calm, mature, trustworthy. No hype, no urgency mechanics, no sales pressure. Confidentiality is part of the promise ("Names withheld. That's the rule here"). The site states plainly that it is coaching and counselling, **not medical or emergency care**.
+- **Entity and naming risk:** the word "Clearhead" collides with unrelated, better-established companies (for example a mental-health EAP platform). "Vaibhav Jain, ICF PCC" is the more defensible search identity; the homepage eyebrow was changed on 2026-07-14 to surface locality and "Executive & Life Coach".
+- **Founder's other property:** vj9.org (Substack, "The other perspective"). It is the only `Person.sameAs` link. Selected vj9 essays are cross-listed on `blog.html`.
+- **Social proof:** a homepage testimonials section with permission-based quotes; names withheld. The founder photo was removed from all on-site display on 2026-09-15; the Clearhead logo is now the social-share thumbnail and schema logo.
+
+### Packages (pricing.html; Razorpay `data-amount` is the full package in paise)
+
+| Package | Sessions | Per session | Total | `data-plan` | `data-amount` | Cal slug after payment |
+|---|---|---|---|---|---|---|
+| Starter | 4 x 60 min, one every 2 to 3 weeks | ₹6,500 | ₹26,000 | `starter` | `2600000` | `starter` |
+| Going Deeper ("Most chosen") | 6 x 60 min, about every 3 weeks | ₹6,000 | ₹36,000 | `going-deeper` | `3600000` | `going-deeper` |
+| The Long Game | 12 x 60 min, about every 3 weeks | ₹5,500 | ₹66,000 | `long-game` | `6600000` | `the-long-game` |
+
+Every package includes WhatsApp support between sessions, online or in-person (Lokhandwala), written notes on request. Wording on the pricing page: pay in full or in two halves (50% upfront, 50% at the midpoint); a package can be paused once for up to 30 days; cancellations before the second session are refunded in full; no refund after the second session (also in `terms.html`). The free 30-minute conversation is always offered first.
+
+### Safety and clinical boundary (do not weaken)
+
+Quiz and pre-call form screen out crisis and clinical cases before booking. Crisis numbers shown on those pages: Tele-MANAS **14416** (also dialled as 1800-891-4416), **112**, 1860-266-2345, 9152987821, plus a NIMHANS link. Blog posts that touch distress route to Tele-MANAS 14416 only (the long form is printed inconsistently by official sources). Never add prices, countdowns or scarcity to any screening or crisis surface.
+
+---
+
+## 3. Funnel and conversion architecture
+
+```
+discovery: Google, AI answers (llms.txt, citations), blog posts, 6 free tools, vj9.org
+   |
+   v
+"Book a free call"  (nav CTA on every page, plus in-page CTAs, all -> quiz.html; gating live since 2026-09-15)
+   |
+   v
+quiz.html  "Is this the right fit?"  noindex, disallowed in robots.txt. 4 questions:
+   Q1 what you are looking for (a think-partner / b honest advice / c medical advice or clinical support / d not sure)
+   Q2 how you would feel if something unexpected came up mid-session (c = "rather stay in control, not ready to go deep")
+   Q3 where you would want to meet (c = somewhere informal such as a cafe or park; the practice needs a private setting)
+   Q4 where you are right now (a managing fine / b genuinely hard / c may need clinical treatment / d already referred to a therapist or psychiatrist / e crisis)
+   |-- crisis   (Q4 = e)                          -> crisis resources, no booking
+   |-- medical  (Q1 = c, or Q4 = c or d)          -> pointed to clinical care instead of coaching
+   |-- privacy  (Q3 = c)                          -> explains the setting needs to be private
+   |-- notready (Q2 = c)                          -> not-ready message
+   `-- good fit (everything else; Q1 = b also sees an honesty note that this is not advice-giving)
+         primary CTA: "Book the free 30-minute call" -> call.html?via=quiz&topic=<quiz summary>  (GATED 2026-10-05; was a direct Cal.com link — that was the booking loophole)
+         optional:    "Prefer to talk first? Leave your details" -> Netlify form quiz-enquiry
+   |
+   v
+call.html  "Before we talk"  9-step pre-call screening, noindex,nofollow, Netlify form call-screening
+   steps: name, email, WhatsApp, what you hope for, treated for a condition?, self-harm thoughts (14 days), in crisis now?, optional note, 18+ consent
+   outcomes: crisis (exit to resources) · clinical (under care or wants medical advice -> WhatsApp message to Vaibhav) · good
+   every response, including screened-out ones, is POSTed to Netlify Forms so Vaibhav can follow up
+   good -> on the live domain auto-redirects (~0.9 s) to cal.com/vaibhavjain/<slug>?name=&email=&notes=  (default slug 30min; a whitelisted `cal` param — 30min/starter/going-deeper/the-long-game — overrides it for paid bookings; notes carry the screening summary)
+   |
+   v
+free 30-minute conversation  ->  pricing.html  ->  Razorpay Standard Checkout  ->  verify-payment  ->  call.html?via=paid-<plan>&cal=<plan slug>  (GATED 2026-10-05; paid buyers now pass the screening form, which then books the package slot)
+```
+
+Other entry points: homepage contact form (`contact`), WhatsApp (`wa.me/919028902948`), `tel:` link, the five scored tool pages (each with a lead form; `still-on-your-list.html` has none), the exploratory-call invite block at the end of every post, and the `quiz.html` link on `pricing.html` ("take the 4-question fit quiz"). The `via` query parameter on `call.html` (e.g. `?via=quiz`, `?via=ai-relevance`, `?via=readiness`, `?via=paid-<plan>`) is stored as `source`; `?topic=` prefills the note field; `?cal=<slug>` overrides the Cal.com event (whitelisted). **As of 2026-10-05, call.html is the ONLY path to the Cal.com calendar** — quiz, pricing (post-payment), and the ai-relevance/readiness "Book a discovery call" buttons all route through it. The ai-relevance/readiness buttons open the form in a new tab and still unlock the on-page result. Remaining non-calendar, human-screened paths left intentionally: the "or WhatsApp me directly" secondary link on index.html, the in-person WhatsApp link on coaching-andheri-west.html, and generic `wa.me` contact links sitewide (these open a chat with Vaibhav, not a calendar slot).
+
+Quiz mechanics: answers are stored in hidden fields `q1`..`q4` on the `quiz-enquiry` form. For a good fit, the Cal.com link gets prefilled notes ("From the 'Is this the right fit?' quiz — Looking for: ...; Where they are: ..."). The phone field strips non-digits and requires 10 digits.
+
+Analytics events wired in `analytics.js`: `generate_lead` (quiz-enquiry and contact submits) and `book_call_click` (any click to `cal.com/vaibhavjain`); see section 9.
+
+---
+
+## 4. Tech stack and repository layout
+
+**No framework, on purpose.** Static HTML + one global `styles.css` + vanilla JS. No React, Vite, Tailwind or build step. Any instruction that implies a build pipeline is wrong.
 
 | Layer | Choice |
 |---|---|
-| Frontend | **Static HTML + one global `styles.css` + vanilla JS.** No React/Vite/Tailwind/build step. |
-| Hosting | Netlify, auto-deploy on push to `main` (~30s) |
-| Backend | 3 Netlify Functions (Node ≥18, serverless, esbuild bundler) |
-| Payments | Razorpay Standard Checkout (`razorpay` npm dep is the only dependency) |
-| Booking | Cal.com embed popup (`cal.com/vaibhavjain`), opened after payment |
-| Lead forms | Netlify Forms (6 forms, see §6) |
+| Frontend | Hand-written HTML (one file per page), `styles.css` (about 83 KB, single stylesheet), `anim.js` (scroll-reveal text, `prefers-reduced-motion` safe), `analytics.js` (GA4 + consent), five `*-engine.js` tool engines |
+| Hosting | Netlify, auto-deploys on every push to `main` (about 30 s). Publish directory is the repo root (`publish = "."`), so **anything tracked in git is public** unless `netlify.toml` blocks it |
+| Backend | 3 Netlify Functions (Node 18+, esbuild bundler) under `netlify/functions/`, exposed as `/api/*` |
+| Payments | Razorpay Standard Checkout (`razorpay` npm package, the only dependency; two `package.json` files: root `^2.9.4`, functions folder `^2.8.2`) |
+| Booking | Cal.com (`cal.com/vaibhavjain/...`), opened after payment and from the free-call flow |
+| Leads | Netlify Forms, 8 forms (section 8) |
+| Email (planned) | Resend REST API from the webhook function; **inactive**, see 7.3 |
 | DNS | Netlify DNS |
-| Repo | `github.com/vaibhav-labs/clearhead` · branch `main` · local `~/Documents/Zen/` |
-| Netlify site | `effervescent-meerkat-1f9826` |
+| Repo | `github.com/vaibhav-labs/clearhead`, branch `main`, local `~/Documents/Zen` (the sandbox sees it as `$HOME/mnt/Zen`) |
+| Netlify site | name `effervescent-meerkat-1f9826`, id `1316f32d-6269-4699-bde6-50bf9eca7cc8` (from `.netlify/state.json`) |
 
-> Any instruction implying a framework/build pipeline is wrong — ignore it.
-
----
-
-## 3. Site map (~42 HTML pages)
-
-**Core**
-- `index.html` — homepage. Hero (VJ photo, shown on mobile too) → "You might recognise this" → free-conversation CTA with testimonial → "How it works" 3-step strip → safe space → blog preview → about → testimonials → disclaimer → FAQ → contact (address, Maps iframe embed, WhatsApp, tel: link). Nav CTA on all pages: "Book a free call" → cal.com/vaibhavjain/30min. JSON-LD merges `Person` (`#vaibhav`), `LocalBusiness`/`ProfessionalService` (`#business`), and `WebSite` as cross-referenced `@id` entities to avoid duplicate/unlinked schema.
-- `pricing.html` — coaching packages; Razorpay pay buttons on the three package cards; `Service.provider` references `#business` by `@id`.
-- `coaching-andheri-west.html` — dedicated local-intent landing page (in-person sessions, Lokhandwala/Andheri West/Versova/Oshiwara), `BreadcrumbList`+`Service`+`FAQPage` schema, Maps embed. Added 2026-07-14 to close the "everything local is folded into the homepage" gap.
-- `blog.html` — blog index, 5 category sections (AI & identity, loneliness & connection, clarity & being heard, pressure & burnout, money & mental health) + external cross-posts from vj9.org.
-- `tools.html` — free-tools hub linking the 6 calculators.
-
-**Blog posts (58, all indexed)** — organized into 5 clusters on `blog.html`. Notable/recent additions: `post-cost-of-getting-help.html` (2026-10-04, Money & mental health cluster, title tag "Is Coaching or Counselling Worth the Money?": the cost of help vs the cost of waiting — Chisholm et al. 2016 *Lancet Psychiatry* US$4 per US$1 ROI, Deloitte India 2022 and Deloitte UK 2024, WHO World Mental Health Surveys treatment delay, NMHS 84.5% treatment gap, Ghio 2014 duration-of-untreated-illness meta-analysis, de Haan & Nilsson 2023 coaching RCT meta-analysis, ICF 2009 ROI figures with their caveat; first post to use the `.post-table` comparison-table style in `styles.css`; linked from `post-money-anxiety.html` and `post-presenteeism.html` related cards; partly answers the "is coaching worth it" buyer-intent query), `post-evening-recovery.html` (2026-09-23, Pressure & burnout cluster: Grant, Shockley, Matta & Clark 2026 *Journal of Applied Psychology* two-study experience-sampling paper on evening recovery trajectories — delayed vs early steady recovery, workload OR 1.79, at-work mastery OR 1.56; cross-linked from `post-cant-switch-off.html` and `post-bedtime-procrastination.html`; published in commit `3ee32b4`), `post-ai-comparison-exhaustion.html` (2026-09-21: Savolainen et al. 2026 three-wave Finnish study in SSM - Population Health on social comparison vs AI-use frequency as predictors of exhaustion; Matias & Pinto 2026 Frontiers in AI "asymmetric buffering" study; Perlis et al. 2026 BMJ Mental Health emulated trial), `post-career-plateau.html` (2026-09-14), `post-golden-handcuffs.html` (Nov 2025 Harris Poll Income Paradox Survey — high earners, golden-handcuffs/lifestyle-inflation mechanism, added 2026-07-14), `post-perfectionism.html`, `post-languishing.html`, `post-rest-burnout.html`, `post-overwork-brain.html`, `post-mattering-at-work.html`, `post-self-compassion-work-stress.html`. Every post has a `.post-author` bio card linking to `index.html#about`, an `Article`/`BreadcrumbList`/`FAQPage` JSON-LD set (author/publisher as `@id` references), a References section, and (where the underlying research supports it) an `Article.citation` array of real, dated, DOI-linked sources — never fabricated. See `blog.html` for the full list per cluster; the **Money & mental health** cluster currently has 5 posts (`post-cost-of-getting-help.html`, `post-money-bandwidth.html`, `post-money-comparison.html`, `post-money-anxiety.html`, `post-golden-handcuffs.html`).
-
-**Interactive tools (6 — each = `*.html` view + `*-engine.js` pure-math engine, DOM-decoupled, gated by a Netlify Form)**
-- `runway.html` + `runway-engine.js` — **Abundance Runway Calculator** (7-step financial-runway sim).
-- `bandwidth.html` + `bandwidth-engine.js` — **Cognitive Load & Bandwidth Index**.
-- `career-friction.html` + `career-friction-engine.js` — **Career Friction & Alignment Audit** (surfaces "golden handcuffs" as one of 4 outcome quadrants — linked from `post-golden-handcuffs.html`).
-- `ai-relevance.html` + `ai-relevance-engine.js` — **AI Automation & Relevance Index** ("will AI replace my job").
-- `readiness.html` — **Self-Employment Readiness Index**.
-- `still-on-your-list.html` — reflection tool (things you've been quietly carrying).
-All 5 scored tools carry a scoring-methodology + "no data stored" fine-print line (added in the 2026-07-14 audit pass).
-
-**Utility (not indexed)**
-- `quiz.html` — fit quiz (disallowed in `robots.txt`, also carries `noindex`).
-- `thank-you.html` — post-form redirect (disallowed in `robots.txt`, also carries `noindex`).
-- `privacy-policy.html`, `terms.html` — legal (`noindex`, excluded from sitemap, not disallowed in `robots.txt` — deliberately crawlable-but-noindex so the tag is actually seen).
-
-**Indexed in `sitemap.xml`:** all pages above except the 4 utility pages — currently 32 URLs, `lastmod` genuinely synced to edit dates.
-
-> Run `ls post-*.html | wc -l` and diff against `blog.html`/`sitemap.xml`/`llms.txt` whenever adding a post — these three plus this file are the four places a new post must be wired into.
-
----
-
-## 4. Routing & redirects (`netlify.toml`)
-
-- **`www → non-www`**: `https://www.clearhead.in/*` → `https://clearhead.in/:splat` (301, forced).
-- **Clean URLs**: every page has a `/name → /name.html` 301. Netlify Pretty URLs also serve `/name` at 200; canonical tags point to the `.html` version, so both are fine.
-- **API paths** (200 rewrites): `/api/create-order`, `/api/verify-payment`, `/api/razorpay-webhook` → `/.netlify/functions/<name>`.
-- **Security headers** (all routes): `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: geolocation=(), microphone=(), camera=()`.
-
----
-
-## 5. Payments (Razorpay) — `netlify/functions/`
-
-| Function | Route | Role |
-|---|---|---|
-| `create-order.js` | `POST /api/create-order` | Creates Razorpay order server-side. In: `{amount(paise), currency=INR, receipt?, notes?}`. Out: `{order_id, amount, currency, key_id}`. `405` non-POST · `400` invalid/low amount · `500` if creds missing. |
-| `verify-payment.js` | `POST /api/verify-payment` | HMAC-SHA256 signature verify, timing-safe. In: `{razorpay_order_id, razorpay_payment_id, razorpay_signature}`. Out: `{verified:true}` or `400`. |
-| `razorpay-webhook.js` | `POST /api/razorpay-webhook` | Verifies webhook secret, then on `payment.captured` sends a customer confirmation + internal (`hello@clearhead.in`) notification email via the Resend REST API (native `fetch`, zero new deps). Gracefully no-ops (logs, doesn't throw) if `RESEND_API_KEY`/`RAZORPAY_WEBHOOK_SECRET` aren't set yet — **dashboard setup required, see `SETUP-DASHBOARD-STEPS.md`.** |
-
-**Flow:** pricing button → `create-order` → Razorpay modal → success → `verify-payment` → Cal.com booking shown → (once webhook secret + Resend key are set) confirmation email.
-
-**Packages** (per-session rate shown on pricing.html; `data-amount` is the full package total in paise):
-
-| Package | Sessions | Total | Per session | Paise (`data-amount`) |
-|---|---|---|---|---|
-| Starter | 4 × 60-min | ₹26,000 | ₹6,500 | `2600000` |
-| Going Deeper | 6 × 60-min | ₹36,000 | ₹6,000 | `3600000` |
-| The Long Game | 12 × 60-min | ₹66,000 | ₹5,500 | `6600000` |
-
-**Env vars** (Netlify dashboard → Site config → Environment variables; **not** in repo; local copy in gitignored `.env`):
-`RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET` (webhook only).
-
-**Credential health probe:** `POST {}` to `/api/create-order` → **400 = healthy** · **500 + "credentials" = broken**.
-
----
-
-## 6. Netlify Forms (6) — all capture to the Netlify dashboard
-
-`contact` (homepage) · `quiz-enquiry` (quiz) · `runway-leads` · `bandwidth-leads` · `career-leads` · `ai-relevance-leads`.
-All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-you.html`.
-**Email notifications are NOT configured** on any form — submissions only land in the dashboard (see TODOs).
-
----
-
-## 7. SEO
-
-- All titles ≤ 60 chars; meta descriptions 120–160; canonical + full OG tags (incl. `og:image:width/height/alt`) on every indexable page.
-- **JSON-LD:** homepage merges `LocalBusiness`/`ProfessionalService` + `Person` (`#vaibhav`) + `WebSite` as cross-referenced `@id` entities (avoids duplicate/unlinked schema entities, which AI crawlers and Google penalize). Every blog post has `Article` (author/publisher as `@id` refs to the homepage entities, `publisher.logo`) + `BreadcrumbList` + `FAQPage` matching a visible on-page FAQ. Tools carry `SoftwareApplication`. `coaching-andheri-west.html` carries `Service` + `FAQPage`.
-- **Citations:** where a post makes a research claim, it's backed by a real, dated, DOI/URL-linked source in `Article.citation` + a visible References section — verified via WebSearch/web_fetch before writing, never fabricated. Most recent: The Harris Poll's Nov 2025 Income Paradox Survey (`post-golden-handcuffs.html`).
-- Self-hosted OG images: `og-ai-loneliness.jpg`, `og-new-city-loneliness.jpg` (plus `VJ.jpg` default); most posts use topic-matched Unsplash hero images (see `blog.html` for the full de-duplicated set of ~36 photo IDs in rotation — check for reuse before picking a new hero image for a new post).
-- `robots.txt` disallows `/thank-you.html`, `/quiz.html`, `/api/`, `/.netlify/`. `llms.txt` lists all core pages, all 6 tools, and all posts by cluster — refresh it whenever a page is added.
-- `netlify.toml` sets HSTS, a report-only CSP (verify clean in-browser before promoting to enforced `Content-Security-Policy`), and cache-control headers for CSS/JS/JPG/SVG.
-- **GSC (sc-domain:clearhead.in):** new low-authority domain; pages were "Discovered — not indexed", manual indexing requested **2026-05-29**. Key lever: LinkedIn shares + 2–3 backlinks. Escalation timeline tracked by the monitor.
-
----
-
-## 8. Automation
-
-- **`clearhead-site-monitor`** (skill at `audits/clearhead-site-monitor.skill`) — daily ~8:00 AM. Checks page/redirect/image availability, the 3-step payment workflow, and SEO integrity; **auto-fixes + commits SEO drift**; reports anything needing a human. Reports → `audits/site-health-YYYY-MM-DD.md`.
-- **`clearhead-seo-audit`** — every 3 days ~9:00 AM; deeper structured-data/keyword audit → `audits/seo-audit-*.md`.
-
----
-
-## 9. Design tokens (`styles.css`) — v2 "deep-water" theme (2026-07-07)
+### Folder layout
 
 ```
---bg #f2f6f8 (cool mist) · --bg-alt #e8eff3 · --ink #101d26 · --ink-soft #3d4f5c · --line #d9e2e8
---accent #3053c4 (indigo blue) · --accent-deep #23409e · --accent-soft #e0e7f9
---ember #c2410c (warm CTA) · --ember-deep #9a3412 · --deep #081826 (night-navy bands)
---radius 14px · --maxw 1040px · body: "Figtree" · display: "Bricolage Grotesque" (Google Fonts @import in styles.css)
+Zen/                         repo root = Netlify publish dir
+  *.html                     75 pages (section 5)
+  styles.css  anim.js  analytics.js  runway-engine.js  bandwidth-engine.js  career-friction-engine.js  ai-relevance-engine.js  readiness-engine.js
+  llms.txt  robots.txt  sitemap.xml  netlify.toml  404.html  favicon.* apple-touch-icon.png
+  images: how-conversation.jpg  clearhead-logo-og.jpg  og-ai-loneliness.jpg  og-new-city-loneliness.jpg  vaibhav-jain-illustration.jpg
+          coaching-early/mid/grad.jpg  VJ.jpg   (the last five are referenced by no page any more, see 15 HYG-1)
+          peep-*.svg (23)  mix-*.svg (7)  happy.svg   (retired illustration library, unused)
+  netlify/functions/         create-order.js  verify-payment.js  razorpay-webhook.js  package.json
+  KNOWLEDGE_MAP.md  CLAUDE.md                      living docs (404'd publicly by netlify.toml)
+  AUDIT_CHANGES.md  MANUAL_PUSH_INSTRUCTIONS.md  PAYMENT_FIX_SUMMARY.md  SETUP-DASHBOARD-STEPS.md     older docs (see 19)
+  scripts/contrast.py  __pycache__/                tracked build leftovers, currently served publicly (HYG-2)
+  audits/        (gitignored)  SITE_HEALTH_LOG.md  knowledge_map_refresh.py  + legacy dated reports, 2 skills, GSC/SEO audits
+  growth/        (gitignored)  content-queue.md  outreach-log.md  design-log.md  outbox/  reports/  vj9/  brand/  tools/citability_audit.py
+  brand-kit/  clearhead-brand-kit.pdf  *.skill  *.xlsx  files.zip   (gitignored: never deploy)
+  node_modules/  .netlify/  .env  .DS_Store                          (gitignored)
+  .claude/launch.json  .claude/settings.local.json                    tracked; launch.json points at a stale path ("Zen Coaching")
 ```
-No beige or green anywhere (v2.1 removed all teal; exception: WhatsApp-green `.wa-btn` in contact). Primary CTAs are ember. Free-flowing layout: striped bands dissolved, hero navy has rounded bottom + gradient, contact band rounded top; safe-band is light with a navy quote card. v2.3 (2026-07-08): comic strip removed — "How it works" is now a numbered 3-step strip beside `how-conversation.jpg` (self-hosted); band padding tightened to `clamp(2.25rem, 5vw, 3.5rem)`; hero shows `VJ.jpg` (desktop + mobile). Scroll-reveal text animation: `anim.js` (loaded sitewide, `prefers-reduced-motion` safe).
-Illustration assets: `peep-*.svg`, `mix-*.svg`, `happy.svg` (minified, currently UNUSED — peep thumbnails were rejected; thumbnails are curated Unsplash photos again, fully de-duplicated, topic-matched); comic characters are inline SVG on index.html; photos `coaching-early/mid/grad.jpg` (1168×784), `VJ.jpg` (1200×849).
-`.post-author` bio-card and mobile touch-target CSS for `.cta-ghost` were added to `styles.css` in the 2026-07-14 audit pass.
 
----
-
-## 10. Deploy & ops
+### Git and deploy
 
 ```bash
 cd ~/Documents/Zen
-git add -A && git commit -m "msg" && git push origin main   # auto-deploys in ~30s
-
-npx netlify dev          # local run incl. functions (reads .env)
+git add -A && git commit -m "msg" && git push origin main      # auto-deploys in about 30 s
+npx netlify dev                                                 # local run incl. functions (reads .env)
 ```
 
-**Working from a Cowork sandbox session:** git commits work fine (stale `.git/*.lock` files from the mounted-folder delete restriction are resolved once per session via the `mcp__cowork__allow_cowork_file_delete` tool — no need to ask the user to manually clear locks). **`git push` does not work from the sandbox** — there's no `git-credentials` available outside the mounted project folder, so pushes fail with `could not read Username for 'https://github.com'`. The correct pattern for a Cowork session: commit locally as you go, and tell the user at the end (or when a good batch is ready) that they need to run `git push origin main` themselves from their own machine to actually publish.
+Reality of automation (see also 13.4): scheduled and sandboxed sessions can commit but **cannot push** (no GitHub credentials; pushes fail with `could not read Username`), and they cannot delete stale `.git/*.lock` files without owner approval. Finished work therefore sits as local commits until the owner runs `git push origin main` from the Mac. As of 2026-10-05 `origin/main` equals local `HEAD`.
 
 ---
 
-## 11. Known issues / open TODOs
+## 5. Site inventory
 
-| Issue | Severity | Status |
+### 5.1 Pages other than blog posts
+
+<!-- AUTO:PAGES:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+| File | Role | Title | Robots | Forms | Schema types |
+|---|---|---|---|---|---|
+| `404.html` | Custom 404 | Page not found / Clearhead | noindex | - | - |
+| `ai-relevance.html` | Tool: AI Exposure / Relevance | Will AI Replace My Job? AI Exposure Calculator / Clearhead | index | ai-relevance-leads | BreadcrumbList, Organization, SoftwareApplication |
+| `bandwidth.html` | Tool: Cognitive Overload / Bandwidth | Cognitive Overload Calculator / Mental Bandwidth / Clearhead | index | bandwidth-leads | BreadcrumbList, Organization, SoftwareApplication |
+| `blog.html` | Blog index (5 clusters) | Blog / Clearhead — Clarity, Identity & Being Heard | index | - | BreadcrumbList, CollectionPage, WebSite |
+| `call.html` | Pre-call screening form | Before we talk / Clearhead | noindex | call-screening | - |
+| `career-friction.html` | Tool: Career Friction & Alignment | Should I Change Careers? Career Alignment Test / Clearhead | index | career-leads | BreadcrumbList, Organization, SoftwareApplication |
+| `coaching-andheri-west.html` | Local-intent landing page | In-Person Coaching in Andheri West, Mumbai / Clearhead | index | - | BreadcrumbList, FAQPage, LocalBusiness, Organization, Person, ProfessionalService, Service |
+| `index.html` | Homepage | Clearhead Mumbai / Vaibhav Jain — ICF PCC Coach & Counsellor | index | contact | FAQPage, LocalBusiness, Organization, Person, ProfessionalService, WebSite |
+| `pricing.html` | Packages + Razorpay pay buttons | Pricing / Clearhead — Coaching Packages, Mumbai | index | - | BreadcrumbList, Service |
+| `privacy-policy.html` | Legal | Privacy Policy / Clearhead Mumbai | noindex | - | - |
+| `quiz.html` | Fit quiz (gates call booking) | Is this the right fit? / Clearhead Mumbai | noindex | quiz-enquiry | - |
+| `readiness.html` | Tool: Self-Employment Readiness | Should I Quit My Job? Self-Employment Readiness / Clearhead | index | readiness-leads | BreadcrumbList, Organization, SoftwareApplication |
+| `runway.html` | Tool: Abundance Runway Calculator | Abundance Runway Calculator / Clearhead | index | runway-leads | BreadcrumbList, Organization, SoftwareApplication |
+| `still-on-your-list.html` | Reflection tool | What Are You Still Putting Off? / Clearhead Mumbai | index | - | BreadcrumbList, Person, Thing, WebPage, WebSite |
+| `terms.html` | Legal | Terms of Service / Clearhead Mumbai | noindex | - | - |
+| `thank-you.html` | Post-form landing | Thank you / Clearhead Mumbai | noindex | - | - |
+| `tools.html` | Free-tools hub | Free Tools for Working Professionals / Clearhead | index | - | BreadcrumbList, CollectionPage, ItemList, SoftwareApplication, WebApplication |
+<!-- AUTO:PAGES:END -->
+
+Notes: `index.html` JSON-LD is a cross-referenced `@id` graph (Person `#vaibhav`, LocalBusiness/ProfessionalService `#business` with `#business-address`, WebSite `#website`). Homepage section ids: `what`, `sessions`, `safe`, `approach`, `blog-preview`, `about`, `testimonials`, `disclaimer`, `faq`, `contact`. `coaching-andheri-west.html` carries Service + FAQPage + BreadcrumbList for local intent. `404.html` is a custom branded page (noindex, follow). `thank-you.html` and `quiz.html` are both `noindex` and disallowed in `robots.txt` (redundant but harmless: a disallowed page's noindex is never seen by Google; both stay out of the index either way). `privacy-policy.html` and `terms.html` are `noindex, follow`, crawlable on purpose, excluded from the sitemap.
+
+### 5.2 Blog posts (58) by cluster
+
+Five clusters, each a section of `blog.html` (no standalone hub pages yet, see 15 CLUSTER-1). Each post follows one house format: answer block in the first 150 words, question-phrased H2s (at least one third), a References section with real DOI/URL-linked primary sources mirrored in `Article.citation`, a 4 to 5 question FAQ whose text matches the `FAQPage` JSON-LD exactly, a `.post-author` card linking to `index.html#about`, an exploratory-call invite block, "More from the blog" related cards, `<time datetime>` equal to `dateModified`, and a robots meta with `max-snippet:-1, max-image-preview:large`.
+
+<!-- AUTO:POSTS:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+**Clarity & being heard** (2 posts on-site, 5 external vj9.org cross-posts)
+
+| # | Page | Topic (title tag) | Published | Modified | Words | Cites | FAQ | Q-H2 | In | SLA |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | `post-conversation.html` | What One Good Conversation Can Do | 2025-04-01 | 2026-09-18 | 1283 | 3 | 4 | 2/4 | 4 | due 2026-12-17 |
+| 2 | `post-unheard.html` | You're not confused. You're just unheard. | 2025-04-01 | 2026-09-18 | 1301 | 2 | 4 | 2/4 | 4 | due 2026-12-17 |
+
+**Loneliness & connection** (8 posts on-site, 1 external vj9.org cross-posts)
+
+| # | Page | Topic (title tag) | Published | Modified | Words | Cites | FAQ | Q-H2 | In | SLA |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | `post-lonely-at-the-top.html` | Lonely at the Top: Why Leaders Feel It | 2026-08-07 | 2026-08-07 | 2366 | 4 | 4 | 5/7 | 1 | due 2026-11-05 |
+| 4 | `post-workplace-loneliness-research.html` | Workplace Loneliness: Why It's Not on You | 2026-07-23 | 2026-07-23 | 1947 | 3 | 4 | 5/7 | 2 | due 2026-10-21 |
+| 5 | `post-mattering-at-work.html` | Indispensable at Work but Feeling Invisible? | 2026-07-11 | 2026-07-11 | 2126 | 3 | 4 | 6/7 | 10 | due 2026-10-09 |
+| 6 | `post-lonely-at-work.html` | Feeling Alone at Work? The Hidden Cost | 2026-06-14 | 2026-10-02 | 2127 | 5 | 4 | 3/7 | 8 | due 2026-12-31 |
+| 7 | `post-alone-at-work.html` | Lonely at Work but Not at Home? | 2026-07-20 | 2026-07-20 | 1730 | 1 | 4 | 2/5 | 1 | due 2026-10-18 |
+| 8 | `post-new-city-loneliness.html` | Moved Cities for a Job? The Loneliness Is Real | 2026-05-31 | 2026-09-27 | 2855 | 0 | 5 | 4/9 | 6 | due 2026-12-26 |
+| 9 | `post-ai-loneliness.html` | Can AI Cure Loneliness? A 2026 Study | 2026-05-15 | 2026-10-02 | 2052 | 7 | 4 | 3/7 | 9 | due 2026-12-31 |
+| 10 | `post-lonely.html` | The Loneliest Generation Has the Most Followers | 2025-04-01 | 2026-09-18 | 1329 | 2 | 4 | 2/5 | 4 | due 2026-12-17 |
+
+**AI, work & identity** (12 posts on-site, 9 external vj9.org cross-posts)
+
+| # | Page | Topic (title tag) | Published | Modified | Words | Cites | FAQ | Q-H2 | In | SLA |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 11 | `post-ai-comparison-exhaustion.html` | Everyone Else Gets AI. Why That Exhausts You | 2026-09-21 | 2026-09-21 | 3007 | 3 | 4 | 4/6 | 0 | due 2026-12-20 |
+| 12 | `post-ai-replaceable-lonely.html` | Why AI at Work Leaves You Anxious and Alone | 2026-09-07 | 2026-09-07 | 2212 | 2 | 4 | 5/7 | 1 | due 2026-12-06 |
+| 13 | `post-career-insecurity.html` | The Fear of Losing Control of Your Career | 2026-08-17 | 2026-08-17 | 2127 | 2 | 4 | 5/7 | 1 | due 2026-11-15 |
+| 14 | `post-ai-productivity-burnout.html` | AI Was Meant to Save Time, Not Burn You Out | 2026-08-10 | 2026-08-10 | 2304 | 4 | 4 | 5/7 | 0 | due 2026-11-08 |
+| 15 | `post-ai-psychological-safety.html` | Your Job's Safe. So Why Does Work Feel Unsafe? | 2026-08-01 | 2026-08-01 | 2040 | 1 | 4 | 3/7 | 1 | due 2026-10-30 |
+| 16 | `post-ai-deskilling.html` | Is AI Quietly Making You Worse at Your Job? | 2026-07-21 | 2026-07-21 | 1969 | 3 | 4 | 3/6 | 3 | due 2026-10-19 |
+| 17 | `post-ai-job-insecurity.html` | Job Insecurity Hurts Before Any Layoff | 2026-07-15 | 2026-07-15 | 1951 | 3 | 4 | 3/6 | 5 | due 2026-10-13 |
+| 18 | `post-technostress.html` | Keeping Up With AI Is Quietly Exhausting You | 2026-07-08 | 2026-07-08 | 1958 | 3 | 4 | 3/6 | 7 | due 2026-10-06 |
+| 19 | `post-ai-job-fear.html` | The Fear of AI Taking Your Job Has a Shape | 2026-06-23 | 2026-10-02 | 2584 | 7 | 4 | 3/8 | 3 | due 2026-12-31 |
+| 20 | `post-ai-work-family-exhaustion.html` | AI Job Fear Doesn't Stay at Work | 2026-06-21 | 2026-10-02 | 2185 | 7 | 4 | 3/7 | 2 | due 2026-12-31 |
+| 21 | `post-ai-replacement-dysfunction.html` | Fear of Being Replaced by AI Now Has a Name | 2026-06-10 | 2026-10-02 | 2379 | 9 | 4 | 3/7 | 7 | due 2026-12-31 |
+| 22 | `post-ai.html` | Your Job Title Is Changing. Don't Lose Yourself. | 2025-04-01 | 2026-09-18 | 1490 | 3 | 4 | 2/5 | 6 | due 2026-12-17 |
+
+**Pressure & burnout** (31 posts on-site)
+
+| # | Page | Topic (title tag) | Published | Modified | Words | Cites | FAQ | Q-H2 | In | SLA |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 23 | `post-evening-recovery.html` | The First Hour After Work Decides Your Next Day | 2026-09-23 | 2026-09-23 | 2937 | 1 | 4 | 4/6 | 2 | due 2026-12-22 |
+| 24 | `post-career-plateau.html` | Career Plateau: Why Being Stuck Hurts So Much | 2026-09-14 | 2026-09-14 | 2712 | 2 | 4 | 5/7 | 2 | due 2026-12-13 |
+| 25 | `post-underused-at-work.html` | You're Not Overworked. You're Underused. | 2026-08-30 | 2026-09-14 | 2069 | 4 | 4 | 3/6 | 1 | due 2026-12-13 |
+| 26 | `post-workaholism.html` | Workaholism: When Work Won't Let You Go | 2026-08-29 | 2026-08-29 | 2030 | 3 | 4 | 5/7 | 0 | due 2026-11-27 |
+| 27 | `post-workplace-incivility.html` | The Hidden Cost of Rudeness at Work | 2026-08-26 | 2026-08-26 | 2067 | 2 | 4 | 5/7 | 0 | due 2026-11-24 |
+| 28 | `post-boreout.html` | Bored at Work Isn't Harmless. It's Boreout | 2026-08-14 | 2026-08-14 | 2021 | 2 | 4 | 3/6 | 2 | due 2026-11-12 |
+| 29 | `post-return-to-office-mandate.html` | Return-to-Office Mandate: Why It Hurts So Much | 2026-08-11 | 2026-08-11 | 2037 | 3 | 4 | 2/5 | 0 | due 2026-11-09 |
+| 30 | `post-surface-acting.html` | The Quiet Cost of Faking It at Work | 2026-08-23 | 2026-08-23 | 2216 | 2 | 4 | 6/8 | 1 | due 2026-11-21 |
+| 31 | `post-presenteeism.html` | Showing Up at Work When You're Not Okay | 2026-08-05 | 2026-08-05 | 1823 | 2 | 4 | 3/6 | 2 | due 2026-11-03 |
+| 32 | `post-hybrid-work-recovery.html` | Working From Home but Never Recovering | 2026-08-02 | 2026-08-02 | 2498 | 3 | 4 | 5/7 | 2 | due 2026-10-31 |
+| 33 | `post-job-control-depression.html` | Low Job Control and Depression Risk | 2026-07-29 | 2026-07-29 | 2160 | 2 | 4 | 5/7 | 2 | due 2026-10-27 |
+| 34 | `post-sleep-mental-health.html` | What Too Little Sleep Does to Your Mind | 2026-07-28 | 2026-07-28 | 1990 | 2 | 4 | 5/7 | 1 | due 2026-10-26 |
+| 35 | `post-allostatic-load.html` | Your Body Is Keeping Score of Work Stress | 2026-07-27 | 2026-07-27 | 2057 | 3 | 4 | 6/8 | 6 | due 2026-10-25 |
+| 36 | `post-after-hours-messages.html` | Why Your After-Hours Messages Exhaust Your Team | 2026-07-26 | 2026-07-26 | 1942 | 1 | 4 | 5/7 | 3 | due 2026-10-24 |
+| 37 | `post-layoff-survivor-guilt.html` | Layoff Survivor Guilt: Why Staying Hurts Too | 2026-07-25 | 2026-07-25 | 1885 | 2 | 4 | 3/6 | 0 | due 2026-10-23 |
+| 38 | `post-flourishing-research.html` | Why Success Doesn't Feel Like Enough | 2026-07-24 | 2026-07-24 | 1875 | 2 | 4 | 5/7 | 2 | due 2026-10-22 |
+| 39 | `post-mid-career-crisis.html` | Mid-Career Slump: Real, But Not for Everyone | 2026-07-19 | 2026-09-14 | 1901 | 1 | 4 | 3/6 | 6 | due 2026-12-13 |
+| 40 | `post-effort-reward-imbalance.html` | Giving More Than You Get Back at Work | 2026-07-16 | 2026-07-16 | 1998 | 3 | 4 | 3/6 | 3 | due 2026-10-14 |
+| 41 | `post-perfectionism.html` | Perfectionism: Why Nothing Ever Feels Enough | 2026-07-12 | 2026-07-12 | 2089 | 3 | 4 | 3/6 | 3 | due 2026-10-10 |
+| 42 | `post-self-compassion-work-stress.html` | Is Self-Criticism Fueling Your Work Anxiety? | 2026-07-10 | 2026-07-10 | 2041 | 1 | 4 | 3/6 | 3 | due 2026-10-08 |
+| 43 | `post-manager-burnout.html` | Why Managers Burn Out First | 2026-07-09 | 2026-07-09 | 2023 | 2 | 4 | 3/6 | 7 | due 2026-10-07 |
+| 44 | `post-bedtime-procrastination.html` | Why You Stay Up Late When You're Exhausted | 2026-07-07 | 2026-07-07 | 2200 | 3 | 4 | 3/8 | 5 | due 2026-10-05 |
+| 45 | `post-languishing.html` | You're Not Burned Out. You're Languishing. | 2026-07-06 | 2026-07-06 | 2022 | 2 | 4 | 3/8 | 5 | PAST by 1d |
+| 46 | `post-holding-it-together.html` | The Quiet Cost of Always Holding It Together | 2026-07-05 | 2026-07-05 | 2121 | 3 | 4 | 3/6 | 5 | PAST by 2d |
+| 47 | `post-monday-dread.html` | Why Monday Dread Stays in Your Body for Weeks | 2026-07-04 | 2026-07-04 | 2057 | 1 | 4 | 3/6 | 2 | PAST by 3d |
+| 48 | `post-impostor-syndrome.html` | Feel Like a Fraud at Work? It Has a Name | 2026-07-03 | 2026-07-03 | 2032 | 3 | 4 | 3/6 | 6 | PAST by 4d |
+| 49 | `post-rest-burnout.html` | Why Rest Doesn't Fix Burnout | 2026-06-22 | 2026-10-02 | 2326 | 6 | 4 | 3/7 | 12 | due 2026-12-31 |
+| 50 | `post-multitasking.html` | Multitasking Is Quietly Draining You | 2026-06-15 | 2026-10-02 | 1941 | 4 | 4 | 3/6 | 3 | due 2026-12-31 |
+| 51 | `post-overwork-brain.html` | Long Work Hours Are Changing Your Brain | 2026-06-13 | 2026-10-02 | 2107 | 5 | 4 | 3/8 | 8 | due 2026-12-31 |
+| 52 | `post-quiet-cracking.html` | Quiet Cracking: When High Performers Burn Out | 2026-06-11 | 2026-10-02 | 2314 | 6 | 4 | 3/6 | 20 | due 2026-12-31 |
+| 53 | `post-cant-switch-off.html` | Why You Can't Switch Off From Work | 2026-06-12 | 2026-10-02 | 2424 | 6 | 4 | 3/6 | 17 | due 2026-12-31 |
+
+**Money & mental health** (5 posts on-site)
+
+| # | Page | Topic (title tag) | Published | Modified | Words | Cites | FAQ | Q-H2 | In | SLA |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 54 | `post-cost-of-getting-help.html` | Is Coaching or Counselling Worth the Money? | 2026-10-04 | 2026-10-04 | 2340 | 11 | 4 | 6/8 | 2 | due 2027-01-02 |
+| 55 | `post-money-bandwidth.html` | Money Stress Is Quietly Draining Your Focus | 2026-08-21 | 2026-08-21 | 1777 | 3 | 4 | 2/5 | 1 | due 2026-11-19 |
+| 56 | `post-money-comparison.html` | Earn Well But Still Feel Behind Your Peers? | 2026-07-30 | 2026-07-30 | 2000 | 1 | 4 | 3/7 | 1 | due 2026-10-28 |
+| 57 | `post-money-anxiety.html` | Why Money Feels Unsafe Even When You Earn Well | 2026-07-01 | 2026-10-02 | 2290 | 6 | 4 | 3/7 | 6 | due 2026-12-31 |
+| 58 | `post-golden-handcuffs.html` | Six Figures, Still Feels Like Survival Mode | 2026-07-14 | 2026-07-14 | 1846 | 1 | 4 | 3/6 | 7 | due 2026-10-12 |
+<!-- AUTO:POSTS:END -->
+
+Columns: Cites = `Article.citation` entries · FAQ = `FAQPage` questions · Q-H2 = question-phrased H2s / all H2s · In = inbound links from other posts · SLA = the 90-day refresh rule (see 10.5).
+
+### 5.3 Interactive tools
+
+Pattern: `*.html` view + `*-engine.js` (pure math, DOM-decoupled, exported on `window`) + a Netlify lead form. All five scored tools carry a scoring-methodology line and a "no data stored" line. Tool completions and tool-lead submissions are **not** tracked in GA4 today (`tool_complete` appears only as a usage example in `analytics.js`).
+
+| Tool | Files | Form | Purpose |
+|---|---|---|---|
+| Abundance Runway Calculator | `runway.html`, `runway-engine.js` | `runway-leads` | how long finances last if income stopped (liability and tax detail, 7 steps) |
+| Cognitive Overload / Bandwidth Index | `bandwidth.html`, `bandwidth-engine.js` | `bandwidth-leads` | open loops, context switching, system dependency, recovery |
+| Career Friction and Alignment Audit | `career-friction.html`, `career-friction-engine.js` | `career-leads` | four quadrants: Aligned, Hard but Right, Drift, Golden Handcuffs (linked from `post-golden-handcuffs`) |
+| AI Exposure / Relevance Index | `ai-relevance.html`, `ai-relevance-engine.js` | `ai-relevance-leads` | "will AI replace my job" |
+| Self-Employment Readiness Index | `readiness.html`, `readiness-engine.js` | `readiness-leads` | six-question audit before quitting to go solo |
+| Still On Your List | `still-on-your-list.html` | none | six-minute reflection on what you have been quietly carrying |
+
+`tools.html` is the hub (CollectionPage + ItemList). Its copy says "four free calculators" while six tools exist; harmless but worth correcting when that page is next edited.
+
+### 5.4 Shared scripts and assets
+
+- `analytics.js`: GA4 loader with Consent Mode v2 (section 9). `anim.js`: reveal animations. Fonts load by `<link>` in each page head (Google Fonts: Bricolage Grotesque, Figtree; Patrick Hand on the quiz).
+- Hero and card imagery: curated Unsplash photos (de-duplicated, topic-matched; check `blog.html` for reuse before picking one for a new post) plus self-hosted `how-conversation.jpg` on the homepage. Social-share image on every page: `clearhead-logo-og.jpg`. Two posts use their own OG images (`og-ai-loneliness.jpg`, `og-new-city-loneliness.jpg`).
+
+---
+
+## 6. Routing, headers and hosting (`netlify.toml`)
+
+- Build: `publish = "."`, `functions = "netlify/functions"`, `node_bundler = "esbuild"`.
+- **Redirects:** `www.clearhead.in/*` -> `https://clearhead.in/:splat` (301, forced). `/index.html` -> `/` (301, forced). `/coaching-andheri-west` -> `/coaching-andheri-west.html` (200 rewrite).
+- **Internal files hidden** with forced 404s to `/404.html`: `/audits/*`, `/CLAUDE.md`, `/KNOWLEDGE_MAP.md`, `/AUDIT_CHANGES.md`, `/MANUAL_PUSH_INSTRUCTIONS.md`, `/PAYMENT_FIX_SUMMARY.md`, `/SETUP-DASHBOARD-STEPS.md`, `/package.json`, `/package-lock.json`. Netlify only supports trailing-splat globs, so every file is enumerated on purpose. A new internal `.md` in the repo root must be added here or it becomes public. (`netlify.toml`, `.gitignore`, `.claude/*`, `.env` already return 404 live; `scripts/`, `__pycache__/` and `netlify/functions/*.js` source return 200, see HYG-2.)
+- **API rewrites (200):** `/api/create-order`, `/api/verify-payment`, `/api/razorpay-webhook` -> `/.netlify/functions/<name>`.
+- **Pretty URLs:** `/blog` and `/blog.html` both return 200; canonical tags point to the `.html` version. The explicit clean-URL 301 rules were removed on 2026-06-13 (they caused API redirect loops; commits `b2227e3`, `ce484fb`, `5c188b6`). Google Search Console lists the clean variants as "Alternative page with proper canonical tag", which is benign.
+- **Headers on `/*`:** `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` (geolocation, microphone, camera denied), `Strict-Transport-Security` (1 year, includeSubDomains, preload), and **`Content-Security-Policy-Report-Only`** (allows self, `checkout.razorpay.com`, `www.googletagmanager.com`, `*.google-analytics.com`, `*.analytics.google.com`, Google Fonts, `images.unsplash.com`, data: images; `frame-src` Razorpay; `form-action 'self'`). It was meant to be promoted to enforced after a clean week; that never happened (SEC-1).
+- **Caching:** CSS and JS 1 hour with must-revalidate; JPG and SVG 7 days with must-revalidate.
+
+---
+
+## 7. Payments and backend (`netlify/functions/`)
+
+### 7.1 Functions
+
+| Function | Route | Behaviour |
 |---|---|---|
-| No payment-confirmation email | Done (code) / **needs dashboard action** | `razorpay-webhook.js` now sends a customer confirmation + internal notification via Resend on `payment.captured` (native `fetch`, no new npm dep). Inert until `RESEND_API_KEY` is set — see **`SETUP-DASHBOARD-STEPS.md`** §1. |
-| Form email notifications off (all 6 forms) | **Needs dashboard action** | Netlify-side setting, not fixable in code — see `SETUP-DASHBOARD-STEPS.md` §3 for the exact 6-form checklist. |
-| `RAZORPAY_WEBHOOK_SECRET` may be unset | **Needs dashboard action** | Confirmed unset locally as of 2026-07-14. Webhook fails closed (500) until set — see `SETUP-DASHBOARD-STEPS.md` §2 for the Razorpay-side steps. |
-| Pages not yet indexed by Google | Medium | Requested 2026-05-29; needs backlinks + mentions (LinkedIn is a forbidden channel for this practice — see `growth/` visibility-OS skill). |
-| Zero backlinks | Medium | First `clearhead-authority-engine` run (2026-07-14) drafted 2 pitches to `growth/outbox/` (a direct pitch to a CNBC India correspondent already covering the AI/IT-jobs beat, and a guest-essay pitch to YourStory built on the new golden-handcuffs post) — both awaiting a human send. Also surfaced two unclaimed directory profiles (Board Infinity, ICF Mumbai Coach Directory) worth confirming in a future run. `growth/` is gitignored by design; check it locally, not in the repo. |
-| Pressure & Burnout pillar page | Medium | Cluster audit (2026-07-14) suggested a standalone hub page for this 13-post cluster instead of everything being flat blog posts. Deliberately deferred this session to protect quality — flagged as follow-up. |
-| Mid-career-identity content | Medium | Cluster audit flagged this as a real, underserved search intent with no dedicated content yet. Deferred, follow-up. |
-| Money & mental health cluster | Low | Now has 2 posts (was 1, effectively orphaned) as of 2026-07-14. Audit suggested a 3rd angle (e.g. "money as scorekeeping/status" or dual-income-household anxiety) — optional next addition. |
-| `quiz.html` / `thank-you.html` both `Disallow` in robots.txt AND carry `noindex` | Low | Redundant (a robots.txt disallow prevents Googlebot from ever seeing the noindex tag), not broken. Both pages are correctly kept out of the index either way. Not worth "fixing" without deciding which single mechanism to standardize on — flag to user if it matters. |
-| Razorpay checkout script not deferred | Low (intentional) | Left as-is for payment-flow reliability; skipped in the 2026-07-14 performance pass on purpose. |
-| CSS minification | Low | Skipped — single global stylesheet, low payoff for the added build complexity on a no-build-step site. |
+| `create-order.js` | `POST /api/create-order` | Creates a Razorpay order server-side. In `{amount (paise, min 100), currency=INR, receipt?, notes?}`. Out `{order_id, amount, currency, key_id}`. 405 non-POST · 400 invalid · 401 auth failed · 500 credentials missing or Razorpay error |
+| `verify-payment.js` | `POST /api/verify-payment` | HMAC-SHA256 of `order_id|payment_id` with the key secret, timing-safe compare. 200 `{verified:true}` · 400 missing fields or mismatch · 405 non-POST · 500 secret missing |
+| `razorpay-webhook.js` | `POST /api/razorpay-webhook` | Fails closed with 500 if `RAZORPAY_WEBHOOK_SECRET` is unset; 400 if the signature header is missing or wrong; verifies HMAC of the raw body. On `payment.captured`: customer confirmation email plus an internal heads-up to `INTERNAL_NOTIFY_EMAIL` (default `hello@clearhead.in`) via Resend. `payment.failed` is logged only. Never fails Razorpay's retry loop because of email errors |
+
+### 7.2 Flow
+
+pricing button -> `create-order` -> Razorpay modal (shows the Clearhead logo) -> success handler -> `verify-payment` -> "Pick a slot" link and a new tab to `cal.com/vaibhavjain/<slug>`. Payment failure is handled inline in `pricing.html` (`rzp.on('payment.failed')`). The Razorpay script is loaded without `defer` on purpose.
+
+### 7.3 Environment variables (Netlify dashboard; never in the repo)
+
+`RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` (present: the live probe returns 400), `RAZORPAY_WEBHOOK_SECRET`, `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `INTERNAL_NOTIFY_EMAIL`. A local `.env` exists (gitignored) with only the first two.
+
+**Verified live on 2026-10-05:** an unsigned `POST /api/razorpay-webhook` returned **500 "Webhook secret not configured"**, so `RAZORPAY_WEBHOOK_SECRET` is **not set on Netlify**. Consequence: the webhook cannot process anything, so **no payment confirmation emails are sent** to customers or to Vaibhav. Payments themselves work (order creation and signature verification do not depend on it). `RESEND_API_KEY` cannot be probed safely; treat it as unset until the owner confirms. Steps are in `SETUP-DASHBOARD-STEPS.md` sections 1, 2 and 4 (see 15 PAY-1).
+
+### 7.4 Health probes (safe, no side effects)
+
+| Probe | Healthy | Broken means |
+|---|---|---|
+| `POST /api/create-order` with `{}` | 400 | 500 + "credentials" = keys missing; 404 = function not deployed; 502/503 = Netlify |
+| `GET /api/verify-payment` | 405 | anything else = function missing or broken |
+| `GET https://checkout.razorpay.com/v1/checkout.js` | 200 | payment modal cannot open |
+| `POST /api/razorpay-webhook` with `{}` and no signature | 400 (secret set) | **500 = secret not set** (current state) |
 
 ---
 
-## 12. Accounts & contacts
+## 8. Forms and lead capture (Netlify Forms, 8)
 
-Owner **Vaibhav Jain** · email **hello@clearhead.in** · WhatsApp **+91-90289-02948** · office **Lokhandwala Complex, Andheri West, Mumbai 400053** · hours Mon–Sat 09:00–19:00 IST · Cal.com **vaibhavjain** · GitHub **vaibhav-labs/clearhead** · Netlify **effervescent-meerkat-1f9826** · GSC **sc-domain:clearhead.in** · geo 19.1405612, 72.8246929.
+| Form | Page | Notes |
+|---|---|---|
+| `contact` | `index.html` | homepage contact; fires `generate_lead` |
+| `quiz-enquiry` | `quiz.html` | name, 10-digit phone, email, `privacy_consent`, hidden `q1`..`q4`; fires `generate_lead` |
+| `call-screening` | `call.html` | name, email, whatsapp, `looking_for`, `diagnosed`, `self_harm_thoughts`, `in_crisis`, `topic`, `consent`, `source`, `outcome`; submitted by `fetch` on the final screen, including screened-out cases |
+| `runway-leads`, `bandwidth-leads`, `career-leads`, `ai-relevance-leads`, `readiness-leads` | the matching tool pages | one lead form per scored tool |
+
+All use `data-netlify="true"`, a `bot-field` honeypot, and redirect to `/thank-you.html`. The sitewide monitor probes every form daily with the honeypot filled (Netlify rejects those silently, so the probe leaves no record): 200 = registered, 404 = **unregistered, every submission is being lost**.
+
+**Incident (recorded 2026-09-27):** form detection had never been enabled, so every form was unregistered from launch until 2026-09-27. All contact, quiz and tool-lead submissions before that date were lost. All 8 return 200 as of 2026-10-05.
+
+**Notifications:** email notifications for form submissions were documented as **off** on 2026-07-14 (leads only land in the Netlify dashboard). Current state is unverified from here. `SETUP-DASHBOARD-STEPS.md` section 3 lists only 6 forms; the real count is 8 (`call-screening` and `readiness-leads` are missing there). If a form is added, update: the HTML, this section, `DOCUMENTED_FORMS` in `audits/knowledge_map_refresh.py`, the monitor skill's form table, and the dashboard notification setup.
 
 ---
 
-## 13. Conventions for working here
+## 9. Analytics and consent
 
-- Edit HTML/CSS/JS directly; no build. Keep new tools to the `*.html` + `*-engine.js` (pure math, DOM-free, `window`-exported) pattern, gated by a new Netlify Form.
-- Match the design tokens and calm brand voice.
-- Any new indexable page: add to `sitemap.xml`, set canonical + OG + JSON-LD, add a clean-URL 301 to `netlify.toml`.
-- Keep this file and `CLAUDE.md` in sync after structural changes.
+- **GA4** property "The Zen Life — GA4", measurement ID `G-P80E6BNSTS` (public in page source). The ID lives in exactly one place, `analytics.js`, which every page loads.
+- **Privacy posture (deliberate, counselling-adjacent):** nothing is sent to Google, not even a request for `gtag.js`, until the visitor clicks Allow. Consent Mode v2 defaults are all denied; advertising signals stay denied permanently; Do Not Track and Global Privacy Control are honoured silently (no banner); choice is stored 180 days in `localStorage` key `ch_consent_v1`; `anonymize_ip` on, Google signals off.
+- **Events:** `window.chTrack(name, params)` no-ops without consent. Auto-wired, DOM-level: `generate_lead` (forms `quiz-enquiry` and `contact` only) and `book_call_click` (any link to `cal.com/vaibhavjain`).
+- **Not measured:** `call-screening`, the five tool lead forms, and tool completions (no `chTrack` calls exist in the engines). Most visitors who decline consent are invisible to GA4, so counts are a floor.
+- Search Console property: `sc-domain:clearhead.in`. The Generative-AI performance report in GSC (launched 2026-06-03, impressions only) has not been confirmed for this property.
+
+---
+
+## 10. SEO, AEO and GEO system
+
+### 10.1 On-page standards (enforced daily by the monitor and the citability audit)
+
+- Title 30 to 60 characters (keep "Clearhead" in it); meta description 120 to 160 (measured after HTML-unescape); one `<h1>`; self-referencing canonical on every indexable page (`https://clearhead.in/<file>`, homepage `https://clearhead.in/`).
+- Open Graph: `og:image`, `og:image:width`, `og:image:height`, `og:image:alt` on every indexable page, plus `twitter:card`. The share image is the Clearhead logo (`clearhead-logo-og.jpg`), not the founder photo.
+- Robots meta on indexable pages: `index, follow, max-snippet:-1, max-image-preview:large` (preview control, an AEO factor). Noindex pages: `404`, `call`, `privacy-policy`, `quiz`, `terms`, `thank-you`.
+- Local signals: standard footer NAP on every page, `tel:` links, geo meta tags, Maps link.
+- Images: all have alt text; none over about 270 KB; author portraits and the removed founder photo no longer appear on pages.
+
+### 10.2 Structured data
+
+- **Homepage:** `Person` (`#vaibhav`, ICF PCC credential, `sameAs` = vj9.org only), `LocalBusiness` + `ProfessionalService` merged as `#business` (address with `streetAddress`, `openingHoursSpecification` Mon to Sat 09:00 to 19:00, geo, `hasMap`, `telephone`, `priceRange`, `areaServed` Mumbai/India/online), `WebSite` (`#website`), `FAQPage` (visible FAQ text must match the schema text exactly).
+- **Posts:** `Article` (author and publisher by `@id` reference, `publisher.logo`, `datePublished`, `dateModified`, `citation` array of real DOI/URL-linked sources), `BreadcrumbList`, `FAQPage`.
+- **Tools:** `SoftwareApplication` + `Offer` + `Organization` + `BreadcrumbList`; hub is `CollectionPage` + `ItemList`. **Pricing:** `Service` + `Offer`. **Andheri West page:** `Service`, `FAQPage`, `LocalBusiness`, `BreadcrumbList`. **Blog index:** `CollectionPage`, `WebSite`.
+- Zero JSON-LD parse errors site-wide is a standing invariant; the refresh script checks it.
+
+### 10.3 Crawl and discovery files
+
+- `robots.txt`: `Allow: /`; `Disallow: /thank-you.html`, `/quiz.html`, `/api/`, `/.netlify/`; sitemap line. No AI crawler is blocked (GPTBot, ClaudeBot, PerplexityBot, Google-Extended all allowed, deliberately).
+- `sitemap.xml`: every indexable page; excludes privacy-policy, terms and all noindex pages. `lastmod` should move with a genuine edit (AUTO integrity block shows drift; about two dozen posts carry a bulk-set 2026-08-01 value later than their `dateModified`).
+- `llms.txt` (about 39 KB): lists every indexable page with a one-line summary, grouped by cluster. Must be updated whenever a page is added.
+- A new post must be wired into four places: `blog.html` (cluster card), `sitemap.xml`, `llms.txt`, and at least one inbound link from another post. The map itself is refreshed weekly by the script.
+
+### 10.4 AEO rules in force (from the `clearhead-visibility-os` skill; `RULES_LAST_VERIFIED: 2026-10-01`)
+
+Preview control on all pages; machine-readable `<time datetime>` equal to `dateModified`; at least one third of H2s phrased as questions; a 40 to 60 word answer block inside the first 150 words; stat density target of about one statistic per 100 words (heuristic); at least one primary-source link and one list or table per post; FAQ text identical to schema; freshness as a system (below). Recency, topic match and URL accessibility matter more than formatting tricks. Re-research the rules every 30 days.
+
+### 10.5 Freshness SLA (90 days)
+
+<!-- AUTO:FRESHNESS:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+Posts past the 90-day refresh SLA or due within 14 days (a refresh must be substantive: new sourced stats, tightened answer block, claims re-checked; then dateModified + `<time>` + sitemap lastmod move together).
+
+| Page | Last modified | SLA due | Status |
+|---|---|---|---|
+| `post-impostor-syndrome.html` | 2026-07-03 | 2026-10-01 | PAST by 4d |
+| `post-monday-dread.html` | 2026-07-04 | 2026-10-02 | PAST by 3d |
+| `post-holding-it-together.html` | 2026-07-05 | 2026-10-03 | PAST by 2d |
+| `post-languishing.html` | 2026-07-06 | 2026-10-04 | PAST by 1d |
+| `post-bedtime-procrastination.html` | 2026-07-07 | 2026-10-05 | due in 0d |
+| `post-technostress.html` | 2026-07-08 | 2026-10-06 | due in 1d |
+| `post-manager-burnout.html` | 2026-07-09 | 2026-10-07 | due in 2d |
+| `post-self-compassion-work-stress.html` | 2026-07-10 | 2026-10-08 | due in 3d |
+| `post-mattering-at-work.html` | 2026-07-11 | 2026-10-09 | due in 4d |
+| `post-perfectionism.html` | 2026-07-12 | 2026-10-10 | due in 5d |
+| `post-golden-handcuffs.html` | 2026-07-14 | 2026-10-12 | due in 7d |
+| `post-ai-job-insecurity.html` | 2026-07-15 | 2026-10-13 | due in 8d |
+| `post-effort-reward-imbalance.html` | 2026-07-16 | 2026-10-14 | due in 9d |
+| `post-alone-at-work.html` | 2026-07-20 | 2026-10-18 | due in 13d |
+| `post-ai-deskilling.html` | 2026-07-21 | 2026-10-19 | due in 14d |
+<!-- AUTO:FRESHNESS:END -->
+
+Last wave: 11 posts refreshed on 2026-10-02 (commit `977b165`). A refresh must be substantive, never a date bump.
+
+### 10.6 Google indexing: what is actually known
+
+Tracker (add a row whenever new evidence arrives; the daily monitor's "day N" counter is a standing rule, not evidence):
+
+| Date | Evidence | Reading |
+|---|---|---|
+| 2026-05-29 | GSC: 8 pages "Discovered, currently not indexed", never crawled. Manual indexing requested | baseline |
+| 2026-07-14 | Full audit: live `site:clearhead.in` search returned nothing | zero indexed at that time |
+| 2026-09-20 | GSC Coverage Drilldown export (`clearhead.in-Coverage-Drilldown-2026-09-20.xlsx`, in the folder): issue **"Alternative page with proper canonical tag"**, 8 affected pages (6 on 06-30, 7 on 07-11, 8 on 08-15, flat to 09-14). The 8 URLs are clean-URL variants (`/tools`, `/post-new-city-loneliness`, `/coaching-andheri-west`, `/ai-relevance`, `/post-impostor-syndrome`, `/bandwidth`, `/runway`, `/career-friction`) with last-crawled dates between 2026-05-30 and 2026-08-20 | **Google has crawled the site and recognised canonicals.** The export does not say how many canonical `.html` pages are indexed |
+| 2026-09-24 to about 10-08 | Google September 2026 spam update rollout (per the visibility-OS update) | treat GSC swings in this window as noise; do not react with content changes |
+| 2026-10-05 | Monitor reports "High, day 129" (standing escalation); every tracked page returns 200 with correct canonicals | not a technical fault on the site |
+
+**Still unknown:** the GSC "Indexed" count and the list of indexed URLs. That needs the owner to open Search Console. Owner action and what to report back: see 15 IDX-1.
+
+### 10.7 Local search
+
+NAP: Lokhandwala Complex, Andheri West, Mumbai 400053 · +91 90289 02948 (standardised across footers, schema and WhatsApp links on 2026-07-14) · Mon to Sat 09:00 to 19:00 · hello@clearhead.in. The local-intent page `coaching-andheri-west.html` shipped 2026-07-14.
+
+Google Business Profile (owner-managed; `growth/outbox/2026-08-29-gbp-profile-correction.md` is the draft plan): 139 customer interactions recorded, but the profile was miscategorised ("Psychotherapist"), had no phone number, claimed 24/7 hours, and had **zero reviews**. The plan weighs asking the four already-quoted testimonial givers for reviews against the practice's confidentiality promise (ask once, never in-session, never incentivised, never gated). Whether the owner has applied the corrections is unknown.
+
+### 10.8 Off-site authority and channel doctrine
+
+Doctrine (visibility OS): on-site content and schema may be auto-published; Reddit/Quora, journalist replies, guest essays, GBP and directory work are **draft-only** into `growth/outbox/` for the owner to send; **LinkedIn is forbidden** (never draft for, suggest or post there; accepted cost); paid ads, follower buying, PBNs and AI-content spam are forbidden; no sockpuppets, no fake reviews, disclose affiliation.
+
+Status: zero known backlinks or brand mentions (searched 2026-07-14). Two pitches drafted 2026-07-14 and still awaiting a human send: a CNBC India correspondent covering the AI and IT-jobs beat, and a YourStory guest essay built on `post-golden-handcuffs`. Two unclaimed profile opportunities noted: a Board Infinity coach listing (unverified whether it is the same person) and the ICF Mumbai Chapter coach directory.
+
+### 10.9 vj9.org (founder's Substack, "The other perspective")
+
+16 posts as of 2026-09-14. Audited by the `vj9-substack-visibility` skill into `growth/vj9/reports/` and paste-ready worklists in `growth/vj9/outbox/` (batches 09-04, 09-09, 09-14). Platform floor: training crawlers blocked, search crawlers open; structured data cannot be edited; `dateModified` never updates. High findings on 2026-09-14: the About page names no one and links nowhere, no post links to clearhead.in, 6 titles carry the default publication suffix, 14 of 16 descriptions are outside 120 to 160 characters. Fixes are manual Substack edits by the owner; status unknown. clearhead.in's `sameAs` link to vj9.org resolves (fixed 2026-09-09).
+
+---
+
+## 11. Content system and queue
+
+**Pipeline:** the `clearhead-asset-factory` skill publishes and refreshes posts (one of three jobs per run: publish, refresh, stat asset); the `clearhead-citability-audit` skill keeps every page technically and citation-ready; the owner can request topics directly (for example `post-cost-of-getting-help`, 2026-10-04).
+
+**Quality rules:** every statistic is checked on its primary page before publishing and logged in `growth/content-queue.md` ("Published claims log"); never fabricate or round up a source; state study limits; prose has no em dashes or curly quotes and passes the humanize scorer; clinical boundary and Tele-MANAS 14416 on any distress topic; no urgency; no prices inside editorial posts.
+
+**Publishing checklist (new post):** copy a recent post as the template; set title (30 to 60), description (120 to 160), canonical, OG set, robots meta; Article + BreadcrumbList + FAQPage JSON-LD with real `citation` array; `<time datetime>` = `dateModified`; answer block, question H2s, References section, `.post-author` card, call invite block; pick an unused hero image; add the card to the right cluster in `blog.html`; add `sitemap.xml` URL with true `lastmod`; add the `llms.txt` entry; link it from 2 or 3 adjacent posts (and take one inbound link); add the claims log to `growth/content-queue.md`. No `netlify.toml` change is needed (clean-URL rules were removed).
+
+**Queue as of 2026-10-04 (`growth/content-queue.md`):**
+- Freshness: four posts were already past SLA (impostor-syndrome, monday-dread, holding-it-together, languishing); nine more cross it within a week or so (see 10.5 for exact dates).
+- Buyer-intent gaps (decision pages, the half of the universe that silently rots): **"is coaching worth it for VPs/directors"** (Gap: no page), **"executive coach vs therapist India"** (Weak: only a homepage FAQ; wants a comparison table), **"counsellor for work stress Mumbai"** (Weak: phrase appears on no money page).
+- Leftovers from earlier runs: `post-ai-work-family-exhaustion` mediation wording may overstate the study; `post-lonely-at-work` (turnover versus intention); older FAQ-versus-schema wording drift on some posts; `post-ai-loneliness` Folk and Dunn 2026 has no link yet; `post-money-anxiety` Fortune reference is secondary; `post-cant-switch-off` techno-stress source is a write-up; `post-cost-of-getting-help` reuses a hero photo and its new `.post-table` has not been seen rendered.
+- Strategy gaps from the 2026-07-14 audit: no pillar or hub page per cluster (Pressure and burnout is the biggest at 31 posts and bundles at least four sub-themes); mid-career identity (one of three stated content pillars) has no dedicated cluster.
+
+---
+
+## 12. Design system (`styles.css`, "deep-water" v2.x)
+
+```
+--bg #f2f6f8  --bg-alt #e8eff3  --ink #101d26  --ink-soft #3d4f5c  --line #d9e2e8
+--accent #3053c4 (indigo)  --accent-deep #23409e  --accent-soft #e0e7f9
+--dawn #e8b04b (gold, primary CTA)  --dawn-press #d99b2e  --dawn-deep #8a5416
+--deep #081826 (night-navy bands)  --dark #101d26
+--radius 14px  --radius-sm 10px  --maxw 1040px  --pad clamp(1.25rem, 4vw, 2.5rem)
+body Figtree 17px / 1.55 · headings Bricolage Grotesque 600, tracking -0.02em
+```
+
+- Primary CTA `.btn-primary` is **dawn gold with ink text** (the earlier ember-orange CTA is gone); `.cta-ghost` is the outlined nav pill. No green anywhere except the WhatsApp button. The comment block at the top of `styles.css` still says "deep teal" for `--accent`; the value is indigo.
+- Layout: free-flowing bands, rounded transitions, single-column hero and about since 2026-09-15 (founder photo removed). Homepage "How it works" is a numbered 3-step strip beside `how-conversation.jpg`.
+- Components added recently: `.post-author` bio card, `.post-table` comparison table (first used 2026-10-04), consent banner (from `analytics.js`).
+- Design-studio phase state (`growth/design-log.md`): Phase 0 (WCAG Major fixes) done; Phase 1 image system mostly done; Phase 2 tokens superseded by the owner-directed v2 theme; Phases 3 and 4 not started. Accessibility minors carried forward and not confirmed done: global `:focus-visible`, skip link, Esc closes mobile nav, 44 px nav-toggle target.
+- Brand assets: `brand-kit/brand-guide.html`, `clearhead-brand-kit.pdf`, `brand-kit/logo-and-icons/`, social logos in `growth/brand/`. The 30 peep/mix/happy SVGs are a retired illustration set.
+
+---
+
+## 13. Automation
+
+### 13.1 Scheduled tasks
+| Task | Trigger id | Schedule | Writes to |
+|---|---|---|---|
+| Clearhead site monitor (daily health check) | `trig_01R7kxNJe9hqh3gfWrej88bf` | daily | appends an entry to `audits/SITE_HEALTH_LOG.md` (no new files) |
+| Knowledge-map weekly refresh | `trig_01MYmdLUZBWyLdM6kPPjz8uF` | Mondays 09:26 IST (auto-approve, bound to the owner's computer) | updates this file in place and adds a §20 version entry |
+
+Weekly procedure: run `PYTHONDONTWRITEBYTECODE=1 python3 -B audits/knowledge_map_refresh.py --apply`, review the printed delta, hand-edit the prose sections that drifted, add a §20 entry, bump the version line. Notify the owner only if something needs them.
+
+### 13.2 Growth skills vs. evidence of output
+Growth skills (SEO audit, content, design studio, visibility OS) still write dated reports into `growth/reports/` and `audits/seo-audit-*.md`. These are legacy; do not add new dated files. Consolidation into the living files is offered to the owner (see HYG-3 in §15).
+
+### 13.3 Git pipeline reality
+The sandbox has no GitHub push credentials. Commits and pushes are done by the owner. Always call git as `git --no-optional-locks ...`. A stale `.git/index.lock` exists; the owner must run `rm -f .git/index.lock`.
+
+### 13.4 Monitor tooling gaps and probe commands
+- Probes: `curl -sI https://clearhead.in/<path>` for status; sitemap/`llms.txt` via curl; GSC property `sc-domain:clearhead.in` (needs owner auth, never ask for tokens).
+- Gaps: monitor image checks include unreferenced files; monitor text recommends LinkedIn (see DOCTRINE-1).
+
+## 14. Live snapshot blocks
+
+### 14.1 Integrity findings
+<!-- AUTO:INTEGRITY:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+7 finding(s): 1 High, 6 Low.
+
+| Severity | Area | Finding |
+|---|---|---|
+| High | Git | stale lock file .git/index.lock blocks commits; owner: rm -f .git/*.lock |
+| Low | Content | post-new-city-loneliness.html has no Article.citation entries |
+| Low | Hygiene | 37 image/svg files in the site root are referenced by no page, stylesheet or script: VJ.jpg, coaching-early.jpg, coaching-grad.jpg, coaching-mid.jpg, favicon-192x192.png, happy.svg, mix-1.svg, mix-2.svg, mix-3.svg, mix-4.svg, mix-5.svg, mix-6.svg, mix-7.svg, peep-1.svg, peep-101.svg, peep-105.svg, peep-16.svg, peep-23.svg, peep-25.svg, peep-26.svg, peep-3.svg, peep-32.svg, peep-42.svg, peep-47.svg, peep-56.svg, peep-59.svg, peep-64.svg, peep-66.svg, peep-68.svg, peep-77.svg, peep-8.svg, peep-82.svg, peep-87.svg, peep-90.svg, peep-94.svg, peep-98.svg, vaibhav-jain-illustration.jpg |
+| Low | Hygiene | internal build leftovers are tracked and therefore publicly served: __pycache__/comic-defs.cpython-310.pyc, scripts/__pycache__/contrast.cpython-310.pyc, scripts/contrast.py |
+| Low | Linking | 6 post(s) have no inbound links from other posts: post-ai-comparison-exhaustion.html, post-ai-productivity-burnout.html, post-layoff-survivor-guilt.html, post-return-to-office-mandate.html, post-workaholism.html, post-workplace-incivility.html |
+| Low | Security | CSP is report-only (never promoted to enforced) |
+| Low | Sitemap | 24 post(s) have sitemap lastmod != Article.dateModified (e.g. post-after-hours-messages.html, post-ai-deskilling.html, post-ai-job-insecurity.html, post-alone-at-work.html) |
+<!-- AUTO:INTEGRITY:END -->
+
+### 14.2 Git state
+<!-- AUTO:GIT:BEGIN -->
+_(auto-generated by `audits/knowledge_map_refresh.py`; do not hand-edit)_
+
+Last 20 commits:
+
+| Commit | Date | Subject |
+|---|---|---|
+| `911b558` | 2026-10-04 | content: add post-cost-of-getting-help (is coaching or counselling worth the money; the cost of waiting) |
+| `947faba` | 2026-10-02 | chore: gitignore *.zip so stray archives never deploy |
+| `d172a69` | 2026-10-02 | content: link the pre-call screening form (/call?via=quiz) from the quiz good-fit result |
+| `977b165` | 2026-10-02 | refresh: 11 posts past the 90-day SLA |
+| `69a1d22` | 2026-09-27 | Add pre-call screening form |
+| `cafdccc` | 2026-09-27 | audit: question-phrased H2s on 35 posts; refresh post-new-city-loneliness; fix Harris Poll fieldwork date |
+| `a69cabb` | 2026-09-24 | audit: AEO preview control + machine-readable dates, and wire the GA4 rollout |
+| `3ee32b4` | 2026-09-24 | content: publish post-ai-comparison-exhaustion + post-evening-recovery; add GA4 consent-mode loader (analytics.js) |
+| `a42cbd2` | 2026-09-18 | content: add stat density + answer blocks to post-ai, post-unheard, post-lonely, post-conversation |
+| `5ae3bf8` | 2026-09-15 | content: gate the intro-call booking behind the 'Is this the right fit?' screening quiz sitewide |
+| `02bde7b` | 2026-09-15 | content: remove founder photo from site display (homepage hero, about section, blog post bylines); collapse hero/about t |
+| `b84900a` | 2026-09-15 | content: replace founder photo with Clearhead logo as sitewide social-share thumbnail (og:image, twitter:image, schema.o |
+| `3958255` | 2026-09-15 | monitor: auto-fix SEO regression 2026-09-15 (meta description length on post-career-plateau.html) |
+| `2059e44` | 2026-09-14 | content: publish career-plateau post (Wang et al. 2026, Frontiers in Psychology; NYU SPS/Burning Glass Sidetracked 2026) |
+| `00c8438` | 2026-09-09 | audit: point the Person sameAs and the visible vj9 link at a URL that exists (www.vj9.org/human 404d on 55 pages) |
+| `6d94b6d` | 2026-09-07 | audit: list the tools index page in llms.txt (was the one sitemap URL missing) |
+| `abd5c75` | 2026-09-04 | audit: honest alt text on the 53 illustrated author portraits |
+| `f8cfcbf` | 2026-08-30 | content: publish underused-at-work post (2025 HILDA skills-underemployment study) |
+| `713b0fa` | 2026-08-29 | brand: replace photo with illustrated portrait sitewide |
+| `8758da7` | 2026-08-29 | audit: serve a real crawlable favicon so Google can show the site icon |
+
+Files changed in commits since 2026-10-05: none
+Uncommitted paths: `NOWLEDGE_MAP.md`
+<!-- AUTO:GIT:END -->
+
+## 15. Open-issues register
+
+| ID | Sev | Issue | Next action |
+|---|---|---|---|
+| GIT-1 | Med | Stale `.git/index.lock`; sandbox cannot push | Owner: `rm -f .git/index.lock`, push manually |
+| IDX-1 | High | Indexing slow (day 129 of tracker, §10.6) | Request indexing in GSC, internal links |
+| PAY-1 | High | `RAZORPAY_WEBHOOK_SECRET` unset on Netlify, webhook returns 500, no payment confirmation emails | Owner sets the env var in Netlify and redeploys |
+| FORM-1 | Low | Form detection fragile (2026-09-27 incident) | Re-probe forms after each deploy |
+| GBP-1 | Med | Google Business Profile not verified/confirmed | Owner action |
+| AUTH-1 | Low | Author/E-E-A-T signals thin on some posts | Add author cards |
+| FRESH-1 | Med | 4 posts past 90-day SLA, 11 due in 14 days (§10.5) | Refresh and bump `<time datetime>` |
+| GAP-1/2/3 | Low | Content gaps listed in §11 | Queue posts |
+| CLUSTER-1 | Low | Blog cluster imbalance | Rebalance |
+| MON-1 | Low | Monitor tooling gaps (§13.4) | Fix monitor prompt |
+| DOC-1 | Low | `SETUP-DASHBOARD-STEPS.md` lists 6 forms; real count is 8 | Update legacy doc |
+| DOC-2 | Low | Legacy docs outdated (§19) | Archive or refresh |
+| HYG-1 | Low | `netlify/functions/*.js`, `scripts/`, `__pycache__/` publicly served | Block in `netlify.toml` |
+| HYG-2 | Low | 35 unreferenced image/SVG files | Owner decides on removal |
+| HYG-3 | Low | Dated report files in `growth/reports/` and `audits/` | Consolidate on request |
+| SEC-1 | Med | Public exposure of function source | Same fix as HYG-1 |
+| SITEMAP-1 | Low | Sitemap/page set drift check | Weekly script |
+| LINK-1 | Low | Internal link checks | Weekly script |
+| CITE-1 | Low | Citation/AEO coverage | Review |
+| DOCTRINE-1 | Med | Monitor text recommends LinkedIn; doctrine forbids it | Remove from the daily prompt |
+| SPAM-1 | Low | Form spam probes | Monitor |
+| BRAND-1 | Low | Retired illustration set still in repo | Owner decides |
+
+Resolved log: (none recorded yet)
+
+## 16. House rules
+1. Do not create new files unless the owner explicitly asks. Update the living files only.
+2. Never enter or request tokens or passwords; list `.env` names only, never values.
+3. Never delete without permission; use `mv -n` into `_to_delete/` if needed.
+4. No LinkedIn in any recommendation (doctrine).
+5. Use `git --no-optional-locks`; do not commit or push unless asked.
+6. Clinical boundary: no medical claims; see §2.
+
+## 17. Runbooks
+- **Weekly map refresh:** §13.1.
+- **Daily health check:** probe pages, forms, functions, sitemap; append to `audits/SITE_HEALTH_LOG.md`; notify only on problems.
+- **Payment issue:** check Netlify env names, function logs, Razorpay dashboard webhook delivery.
+- **Deploy check:** confirm latest commit on GitHub equals live Netlify deploy.
+
+## 18. Contacts and identifiers
+- Email hello@clearhead.in; phone +91 90289 02948; Lokhandwala Complex, Andheri West, Mumbai 400053; hours Mon–Sat 09:00–19:00.
+- Cal.com `vaibhavjain`; GitHub `vaibhav-labs/clearhead`; Netlify site `effervescent-meerkat-1f9826`; GSC `sc-domain:clearhead.in`.
+
+## 19. Legacy docs index
+`AUDIT_CHANGES.md`, `MANUAL_PUSH_INSTRUCTIONS.md`, `PAYMENT_FIX_SUMMARY.md`, `SETUP-DASHBOARD-STEPS.md` (lists 6 forms, real count 8). Older dated `audits/site-health-*.md` and `seo-audit-*.md` remain as history.
+
+## 20. Version log (newest first)
+
+### v2.0.1 — 2026-10-05
+Booking-loophole fix: closed every direct Cal.com booking path. Quiz booking buttons + nav, pricing post-payment, and the ai-relevance/readiness "Book a discovery call" buttons now all route through the `call.html` screening form. Added `cal`/`topic` params to call.html. Only WhatsApp chat links (human-screened) remain outside the form. Files changed: quiz.html, call.html, pricing.html, ai-relevance.html, readiness.html. Not yet committed/pushed.
+
+### v2.0 — 2026-10-05
+Full rewrite from live repo and probes. Added file policy, AUTO blocks and the refresh script, open-issues register, weekly trigger.
+
+| Version | Date | Posts | Indexable pages | Forms | Commits | Unpushed | Health | Overdue posts | Findings |
+|---|---|---|---|---|---|---|---|---|---|
+| v2.0 | 2026-10-05 | 58 | 69 | 8 | 90 | 0 | healthy; indexing High (day 129) | 4 past SLA, 11 due in 14d | 7 (1 High, 6 Low) |

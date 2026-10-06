@@ -51,7 +51,7 @@
     <a href="pricing.html">Pricing</a>
     <a href="tools.html">Free tools</a>
     <a href="blog.html">Blog</a>
-    <a href="https://cal.com/vaibhavjain/30min" target="_blank" rel="noopener noreferrer" class="cta-ghost">Book a free call</a>
+    <a href="call.html" class="cta-ghost">Book a free call</a>
   </nav>
 </header>
 
@@ -206,11 +206,10 @@
 
           <div class="quiz-book-wrap">
             <h3>Book your free 30-minute conversation</h3>
-            <p class="quiz-book-sub">No payment, no obligation. Pick a time that works and we'll take it from there.</p>
+            <p class="quiz-book-sub">No payment, no obligation. A couple of quick questions first, then you'll pick a time.</p>
             <div class="quiz-book-grid">
-              <a class="btn-primary" href="https://cal.com/vaibhavjain/30min" target="_blank" rel="noopener noreferrer" id="book-call-link">Book the free 30-minute call &rarr;</a>
+              <a class="btn-primary" href="call.html?via=quiz" id="book-call-link">Book the free 30-minute call &rarr;</a>
             </div>
-            <p class="quiz-book-sub">Want to share a little first? <a href="call.html?via=quiz">Answer a few short questions before we talk &rarr;</a></p>
             <p class="quiz-book-or">or</p>
           </div>
 
@@ -491,7 +490,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       var summary = 'From the "Is this the right fit?" quiz — Looking for: ' + q1Text + '. Where they are: ' + q4Text + '.';
       var bookLink = document.getElementById('book-call-link');
       if (bookLink) {
-        bookLink.href = 'https://cal.com/vaibhavjain/30min?notes=' + encodeURIComponent(summary);
+        bookLink.href = 'call.html?via=quiz&topic=' + encodeURIComponent(summary);
       }
     }
 

@@ -273,13 +273,13 @@ document.getElementById('yr').textContent = new Date().getFullYear();
               if (vRes.ok && vRes.body && vRes.body.verified) {
                 var calSlugs = { 'starter': 'starter', 'going-deeper': 'going-deeper', 'long-game': 'the-long-game' };
                 var calSlug = calSlugs[plan] || 'starter';
-                var calUrl = 'https://cal.com/vaibhavjain/' + calSlug;
+                var bookUrl = 'call.html?via=paid-' + encodeURIComponent(plan) + '&cal=' + encodeURIComponent(calSlug);
                 statusEl.innerHTML =
-                  '<strong>Payment received.</strong> Now book your first session: ' +
-                  '<a href="' + calUrl + '" target="_blank" rel="noopener noreferrer" style="font-weight:500;text-decoration:underline;">Pick a slot &rarr;</a>' +
+                  '<strong>Payment received.</strong> One short step before you book: ' +
+                  '<a href="' + bookUrl + '" style="font-weight:500;text-decoration:underline;">Answer a few quick questions, then pick your slot &rarr;</a>' +
                   '<br><br><small>Payment ID: ' + response.razorpay_payment_id + ' &middot; A confirmation email will follow from hello@clearhead.in.</small>';
                 statusEl.dataset.kind = 'success';
-                try { window.open(calUrl, '_blank', 'noopener,noreferrer'); } catch (e) {}
+                try { window.open(bookUrl, '_blank', 'noopener,noreferrer'); } catch (e) {}
               } else {
                 setStatus('Payment received but verification failed. Please email hello@clearhead.in with your Payment ID: ' + response.razorpay_payment_id, 'error');
               }
