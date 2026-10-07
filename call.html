@@ -46,7 +46,14 @@
     }
     html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
     *, *::before, *::after { box-sizing: inherit; }
-    body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; position: relative; }
+    .gutter-art {
+      display: none; position: absolute; top: 50%; transform: translateY(-50%);
+      width: clamp(130px, 10vw, 230px); height: auto; pointer-events: none; z-index: 0;
+    }
+    .gutter-art.left { left: clamp(1.5rem, 3vw, 4rem); }
+    .gutter-art.right { right: clamp(1.5rem, 3vw, 4rem); }
+    @media (min-width: 1500px) { .gutter-art { display: block; } }
     a { color: var(--accent); }
     a:hover { color: var(--accent-deep); }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -126,6 +133,8 @@
   </style>
 </head>
 <body>
+  <img class="gutter-art left" src="scene-focused.png" alt="" aria-hidden="true" loading="lazy" width="674" height="688" decoding="async" />
+  <img class="gutter-art right" src="tool-reflection.png" alt="" aria-hidden="true" loading="lazy" width="486" height="480" decoding="async" />
   <header class="top">
     <a class="brand" href="https://clearhead.in/" aria-label="Clearhead home"><span class="brand-mark" aria-hidden="true"></span><span>Clearhead</span></a>
     <span class="count" id="count" aria-live="polite"></span>

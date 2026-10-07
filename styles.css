@@ -748,7 +748,7 @@ main { }
 }
 
 /* ---------- Quiz / Screener page ---------- */
-.quiz-page { background: var(--bg); min-height: 80vh; }
+.quiz-page { background: var(--bg); min-height: 80vh; position: relative; }
 .quiz-wrap {
   max-width: 640px; margin: 0 auto;
   padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad);
@@ -1217,7 +1217,7 @@ main { overflow-x: hidden; }
    ============================================================ */
 
 /* Page shell — mirrors quiz-page */
-.rw-page { background: var(--bg); min-height: 80vh; padding: clamp(2rem, 6vw, 4.5rem) var(--pad); }
+.rw-page { background: var(--bg); min-height: 80vh; padding: clamp(2rem, 6vw, 4.5rem) var(--pad); position: relative; }
 .rw-wrap { max-width: 760px; margin: 0 auto; }
 .rw-vh   { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
@@ -2313,15 +2313,19 @@ figure.tile img { margin: 0 auto; }
 .hero-band { position: relative; }
 .hero, .trust-strip { position: relative; z-index: 1; }
 
-/* --- Gutter art: ambient line-art figures in the wide-screen side margins.
-   Only appears once there's real empty space to fill; never shown below
-   1500px so laptop/tablet/mobile layouts are untouched. --- */
+/* --- Gutter art: line-art figures in the wide-screen side margins, beside
+   the content column, never on top of it. Sized relative to the fold
+   (viewport width) with a floor and ceiling so it never upscales past a
+   source image's native resolution. Full opacity — a faded wash read as
+   pixelated/grainy on fine line art, so this is plain, crisp black. Only
+   appears once there's real empty space to fill; never shown below 1500px
+   so laptop/tablet/mobile layouts are untouched. --- */
 .gutter-art {
   display: none; position: absolute; top: 50%; transform: translateY(-50%);
-  width: 150px; height: auto; opacity: 0.6; pointer-events: none; z-index: 0;
+  width: clamp(130px, 10vw, 230px); height: auto; pointer-events: none; z-index: 0;
 }
-.gutter-art.left { left: 2.5vw; }
-.gutter-art.right { right: 2.5vw; }
+.gutter-art.left { left: clamp(1.5rem, 3vw, 4rem); }
+.gutter-art.right { right: clamp(1.5rem, 3vw, 4rem); }
 @media (min-width: 1500px) { .gutter-art { display: block; } }
 
 /* --- Hero headline word reveal --- */
