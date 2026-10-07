@@ -28,6 +28,16 @@ Thumbs.db
 # Growth-skill source copies — strategy docs, must never deploy (Netlify publishes the repo root)
 *.skill
 
+# Illustration source library (2026-10-07) — 145MB of raw sheets, most off-brand/off-topic for
+# clearhead.in; never deploy. SVG/MANIFEST.md documents what's in here and how to pick from it.
+# The handful of illustrations actually used on the site are the standalone scene-*.svg files
+# at the repo root (those ARE tracked). Kept on disk for reuse by future blog posts.
+SVG/
+
+# Unrelated proposal mockup sitting in the working tree, not part of the live site or this
+# redesign — left untouched and untracked pending the owner's direction on it.
+clearhead_proposed/
+
 # Brand assets and data exports that live in the working tree but must never deploy.
 # CLAUDE.md's deploy instruction is `git add -A`, so anything left untracked here would
 # otherwise be published at clearhead.in/<name> on the next commit.
