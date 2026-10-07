@@ -612,6 +612,14 @@ main { }
   max-width: var(--maxw); margin: 0 auto;
   padding: clamp(2.5rem, 7vw, 5rem) var(--pad) 2rem;
 }
+.pricing-hero.blog-index-hero {
+  display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 2.5rem; align-items: center;
+}
+.pricing-hero-visual { width: 100%; max-width: 210px; height: auto; margin: 0 auto; display: block; }
+@media (max-width: 760px) {
+  .pricing-hero.blog-index-hero { grid-template-columns: 1fr; }
+  .pricing-hero-visual { max-width: 150px; order: -1; }
+}
 .blog-index-hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.6rem; }
 .blog-all {
   max-width: var(--maxw); margin: 0 auto;
