@@ -210,7 +210,7 @@ main { }
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
-  background: var(--bg-alt);
+  background: #ffffff;
 }
 .card-illus img, .card-illus svg {
   width: 100%;
@@ -1647,7 +1647,7 @@ main { overflow-x: hidden; }
    Same calming sage palette as the rest of the site.
    ============================================================ */
 
-.tk-page { background: var(--bg); min-height: 80vh; padding: clamp(2rem, 6vw, 4.5rem) var(--pad); }
+.tk-page { background: var(--bg); min-height: 80vh; padding: clamp(2rem, 6vw, 4.5rem) var(--pad); position: relative; }
 .tk-wrap { max-width: 760px; margin: 0 auto; }
 .tk-vh   { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
@@ -1957,6 +1957,10 @@ main { overflow-x: hidden; }
 .tk-hub-card:hover {
   border-color: var(--navy);
   background: var(--bg-alt);
+}
+.tk-hub-visual {
+  display: block; width: auto; height: 100px; max-width: 100%;
+  object-fit: contain; margin: 0 0 1rem;
 }
 .tk-hub-card .eyebrow { margin-bottom: 0.75rem; }
 .tk-hub-card h2 {
@@ -2309,6 +2313,17 @@ figure.tile img { margin: 0 auto; }
 .hero-band { position: relative; }
 .hero, .trust-strip { position: relative; z-index: 1; }
 
+/* --- Gutter art: ambient line-art figures in the wide-screen side margins.
+   Only appears once there's real empty space to fill; never shown below
+   1500px so laptop/tablet/mobile layouts are untouched. --- */
+.gutter-art {
+  display: none; position: absolute; top: 50%; transform: translateY(-50%);
+  width: 150px; height: auto; opacity: 0.6; pointer-events: none; z-index: 0;
+}
+.gutter-art.left { left: 2.5vw; }
+.gutter-art.right { right: 2.5vw; }
+@media (min-width: 1500px) { .gutter-art { display: block; } }
+
 /* --- Hero headline word reveal --- */
 .hero h1 .w { display: inline-block; animation: rise 0.6s cubic-bezier(0.2,0.6,0.2,1) backwards; }
 .hero-content h1:has(.w) { animation: none; }
@@ -2353,7 +2368,7 @@ figure.tile img { margin: 0 auto; }
 .how-visual img {
   width: 100%; height: 100%; max-height: 440px;
   object-fit: contain; border-radius: var(--radius); display: block;
-  background: var(--bg-alt); border: 1px solid var(--line);
+  background: #ffffff; border: 1px solid var(--line);
 }
 @media (max-width: 820px) {
   .how-grid { grid-template-columns: 1fr; }
