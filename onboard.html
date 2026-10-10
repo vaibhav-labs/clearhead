@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Client onboarding and agreement | Clearhead</title>
+  <meta name="description" content="Clearhead client onboarding: read the coaching agreement, share a few details, and sign online. For clients who have agreed to start working with Vaibhav Jain." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://clearhead.in/onboard.html" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" />
+  <style>
+    /* ---- Clearhead tokens (mirrors styles.css — Notion-style, 2026-10-07) ---- */
+    :root {
+      --bg: #ffffff; --bg-alt: #fafafa; --card: #ffffff;
+      --ink: #000000; --ink-soft: #40403f; --line: #000000; --line-soft: #e6e6e3;
+      --accent: #142850; --accent-deep: #1f3a6e; --accent-soft: #eef1f6;
+      --dawn: #142850; --dawn-press: #1f3a6e; --dawn-deep: #142850;
+      --caution-bg: #fafafa; --caution-line: #9a6700;
+      --error: #b42318; --error-bg: #fdf2f1;
+      --radius: 8px; --radius-sm: 4px;
+      --font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      --serif: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0a0a0a; --bg-alt: #151515; --card: #121212;
+        --ink: #f5f5f4; --ink-soft: #b8b8b5; --line: #f5f5f4; --line-soft: #2a2a28;
+        --accent: #6f8fc9; --accent-deep: #8fa8d8; --accent-soft: #1b2435;
+        --caution-bg: #151515; --error: #ff9d95; --error-bg: #2a1a18;
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0a0a0a; --bg-alt: #151515; --card: #121212;
+      --ink: #f5f5f4; --ink-soft: #b8b8b5; --line: #f5f5f4; --line-soft: #2a2a28;
+      --accent: #6f8fc9; --accent-deep: #8fa8d8; --accent-soft: #1b2435;
+      --caution-bg: #151515; --error: #ff9d95; --error-bg: #2a1a18;
+    }
+    html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+    *, *::before, *::after { box-sizing: inherit; }
+    body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5; -webkit-font-smoothing: antialiased; position: relative; }
+    .gutter-art {
+      display: none; position: absolute; top: 50%; transform: translateY(-50%);
+      width: clamp(130px, 10vw, 230px); height: auto; pointer-events: none; z-index: 0;
+    }
+    .gutter-art.left { left: clamp(1.5rem, 3vw, 4rem); }
+    .gutter-art.right { right: clamp(1.5rem, 3vw, 4rem); }
+    @media (min-width: 1500px) { .gutter-art { display: block; } }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-deep); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* ---- Chrome ---- */
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem clamp(1.1rem, 4vw, 2rem); }
+    .brand { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--serif); font-size: 1.08rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+    .brand-mark { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); box-shadow: inset 0 0 0 2px var(--bg), inset 0 0 0 3px var(--accent); }
+    .count { font-size: 0.88rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+    .bar { height: 3px; background: var(--line); }
+    .bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width 0.25s ease; }
+    main { max-width: 560px; margin: 0 auto; padding: clamp(1.75rem, 6vw, 3.5rem) clamp(1.1rem, 4vw, 2rem) 3rem; }
+    .foot { max-width: 560px; margin: 0 auto; padding: 1rem clamp(1.1rem, 4vw, 2rem) 2rem; font-size: 0.8rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; justify-content: space-between; }
+    .foot a { color: var(--ink-soft); }
+    .preview-note { display: none; background: var(--accent-soft); color: var(--ink); border-radius: var(--radius-sm); padding: 0.6rem 0.9rem; font-size: 0.85rem; margin-bottom: 1.25rem; }
+    .preview-note.on { display: block; }
+
+    /* ---- Steps ---- */
+    .step { display: none; }
+    .step.on { display: block; animation: rise 0.22s ease-out; }
+    @keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .step.on { animation: none; } .bar > i { transition: none; } }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2rem, 6vw, 2.5rem); line-height: 1.1; letter-spacing: -0.01em; margin: 0 0 0.6rem; }
+    .lede { color: var(--ink-soft); margin: 0 0 1.75rem; font-size: 1.02rem; }
+    .lede strong { color: var(--ink); font-weight: 600; }
+    .q { font-family: var(--serif); font-weight: 600; font-size: clamp(1.35rem, 4.5vw, 1.6rem); line-height: 1.25; margin: 0 0 0.5rem; }
+    .hint { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 1.1rem; }
+    .q + .field, .q + .opts { margin-top: 1.1rem; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea {
+      width: 100%; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card); color: var(--ink);
+      padding: 0.85rem 1rem; font-size: 1.05rem; font-family: var(--font); -webkit-appearance: none; appearance: none; transition: border-color 0.15s;
+    }
+    textarea { min-height: 6rem; resize: vertical; line-height: 1.5; }
+    input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+    .invalid input, .invalid textarea { border-color: var(--error); }
+    .err { display: none; font-size: 0.88rem; color: var(--error); margin: 0.45rem 0 0; }
+    .invalid .err { display: block; }
+
+    .opts { display: grid; gap: 0.6rem; margin: 0; padding: 0; list-style: none; }
+    .opt { display: flex; align-items: center; gap: 0.85rem; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card);
+      padding: 0.95rem 1.05rem; cursor: pointer; font-size: 1.02rem; line-height: 1.35; min-height: 52px; transition: border-color 0.15s, background 0.15s; }
+    .opt input { margin: 0; width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--accent); }
+    .opt:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+    .opt:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .check { display: flex; align-items: flex-start; gap: 0.85rem; font-size: 1rem; line-height: 1.45; cursor: pointer; margin: 0 0 1.25rem; }
+    .check input { margin: 0.2rem 0 0; width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--accent); }
+
+    .row { display: flex; align-items: center; gap: 1rem; margin-top: 1.25rem; flex-wrap: wrap; }
+    .btn { display: inline-block; background: var(--dawn); color: #ffffff; border: 0; border-radius: var(--radius-sm); padding: 0.85rem 1.5rem; font-family: inherit; font-weight: 600; font-size: 1rem; cursor: pointer; text-decoration: none; transition: background 0.15s, transform 0.15s; }
+    .btn:hover { background: var(--dawn-press); }
+    .btn:active { transform: translateY(1px); }
+    .btn[disabled] { opacity: 0.7; cursor: default; }
+    .btn.wide { width: 100%; text-align: center; padding: 0.95rem 1.3rem; }
+    .btn-line { display: inline-block; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; border-radius: var(--radius-sm); padding: 0.7rem 1.2rem; font-weight: 600; text-decoration: none; font-size: 0.96rem; }
+    .btn-line:hover { background: var(--accent-soft); }
+    .link { background: none; border: 0; padding: 0; font: inherit; font-size: 0.95rem; color: var(--ink-soft); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .link:hover { color: var(--ink); }
+    .back { display: none; margin-top: 2rem; }
+    .step.on:not(:first-of-type) .back { display: inline-block; }
+    .fine { font-size: 0.85rem; color: var(--ink-soft); margin: 0.9rem 0 0; }
+    .fine a { color: var(--ink-soft); }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    /* ---- Outcomes ---- */
+    .out { display: none; }
+    .out.on { display: block; animation: rise 0.22s ease-out; }
+    .out h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.6rem, 5vw, 2rem); line-height: 1.15; margin: 0 0 0.75rem; }
+    .out p { margin: 0 0 0.9rem; }
+    .card { border-radius: var(--radius); padding: 1.5rem 1.4rem; margin: 0 0 1.25rem; background: var(--card); border: 1.5px solid var(--line); }
+    .card.caution { background: var(--caution-bg); border-color: var(--caution-line); }
+    .card ul { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+    .card li { margin-bottom: 0.45rem; }
+    .card p:last-child { margin-bottom: 0; }
+    .mark { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--dawn-deep); }
+    .out-links { font-size: 0.92rem; }
+  
+    main { max-width: 680px; }
+    h2.sec { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin: 2.4rem 0 0.4rem; padding-top: 1.4rem; border-top: 1.5px solid var(--line-soft); }
+    label.lbl { display: block; font-weight: 600; font-size: 0.98rem; margin: 1.2rem 0 0.4rem; }
+    .opt-note { font-weight: 400; color: var(--ink-soft); font-size: 0.88rem; }
+    .agree { height: 22rem; overflow-y: auto; border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem 1.25rem; background: var(--bg-alt); font-size: 0.95rem; line-height: 1.55; }
+    .agree h3 { font-size: 1rem; margin: 1.1rem 0 0.3rem; font-family: var(--serif); }
+    .agree h3:first-child { margin-top: 0; }
+    .agree p, .agree ul { margin: 0 0 0.6rem; } .agree ul { padding-left: 1.2rem; }
+    .field { margin: 0; }
+    .banner { display:none; border-radius: var(--radius-sm); padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 0.95rem; }
+    .banner.err-b { background: var(--error-bg); color: var(--error); border: 1.5px solid var(--error); }
+    #done { display:none; } #done.on { display:block; animation: rise 0.22s ease-out; }
+    select { width:100%; border:1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card); color: var(--ink); padding: 0.85rem 1rem; font-size:1.05rem; font-family: var(--font); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="https://clearhead.in/" aria-label="Clearhead home"><span class="brand-mark" aria-hidden="true"></span><span>Clearhead</span></a>
+  </header>
+  <div class="bar" aria-hidden="true"><i style="width:100%"></i></div>
+
+  <main>
+    <p class="preview-note" id="preview-note">Preview for testing. Answers aren't saved here; on clearhead.in they go to your Netlify Forms inbox.</p>
+
+    <form id="onboard-form" name="client-onboarding" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" novalidate>
+      <input type="hidden" name="form-name" value="client-onboarding" />
+      <input type="hidden" name="agreement_version" value="v1-2026-10-10" />
+      <input type="hidden" name="signed_at" id="f-signed-at" value="" />
+      <p class="hp" aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+      <h1>Welcome. Let's get you started.</h1>
+      <p class="lede">Three short parts: <strong>your details</strong>, <strong>a few questions</strong>, and <strong>the agreement</strong> to read and sign. About ten minutes. Confidential, only Vaibhav sees this. <a href="https://clearhead.in/privacy-policy.html" target="_blank" rel="noopener">Privacy policy</a></p>
+
+      <h2 class="sec" style="border-top:0;margin-top:1.5rem;">1. About you</h2>
+      <div class="field"><label class="lbl" for="f-name">Full name</label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required />
+        <p class="err">Please enter your full name.</p></div>
+      <div class="field"><label class="lbl" for="f-pref">Preferred name <span class="opt-note">(optional)</span></label>
+        <input type="text" id="f-pref" name="preferred_name" /></div>
+      <div class="field"><label class="lbl" for="f-email">Email</label>
+        <input type="email" id="f-email" name="email" autocomplete="email" inputmode="email" required />
+        <p class="err">Please enter a valid email address.</p></div>
+      <div class="field"><label class="lbl" for="f-wa">WhatsApp number</label>
+        <input type="tel" id="f-wa" name="whatsapp" autocomplete="tel" inputmode="tel" required />
+        <p class="err">Please enter a valid number (8 to 15 digits, with country code if outside India).</p></div>
+      <div class="field"><label class="lbl" for="f-city">City and time zone</label>
+        <input type="text" id="f-city" name="city" autocomplete="address-level2" /></div>
+      <div class="field"><label class="lbl" for="f-role">Your role and employer <span class="opt-note">(or "independent")</span></label>
+        <input type="text" id="f-role" name="role" /></div>
+      <div class="field"><label class="lbl" for="f-emerg">Emergency contact <span class="opt-note">(name, relationship, phone)</span></label>
+        <input type="text" id="f-emerg" name="emergency_contact" required />
+        <p class="err">Please add an emergency contact.</p></div>
+
+      <h2 class="sec">2. Why you're here</h2>
+      <div class="field"><label class="lbl" for="f-why">What brings you to coaching now?</label>
+        <textarea id="f-why" name="why_now" required></textarea><p class="err">A line or two is plenty.</p></div>
+      <div class="field"><label class="lbl" for="f-good">What would a good outcome look like in three months?</label>
+        <textarea id="f-good" name="good_outcome"></textarea></div>
+      <div class="field"><label class="lbl" for="f-tried">What have you already tried? <span class="opt-note">(optional)</span></label>
+        <textarea id="f-tried" name="already_tried"></textarea></div>
+      <p class="lbl">Areas that matter most <span class="opt-note">(pick any)</span></p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="areas" value="Career" /><span>Career</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Relationships" /><span>Relationships</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Money" /><span>Money</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Identity and direction" /><span>Identity and direction</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Loneliness" /><span>Loneliness</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Burnout and stress" /><span>Burnout and stress</span></label>
+        <label class="opt"><input type="checkbox" name="areas" value="Other" /><span>Other</span></label>
+      </div>
+
+      <h2 class="sec">3. Wellbeing check</h2>
+      <p class="hint">An honest answer helps me point you to the right support. These do not affect the price.</p>
+      <p class="lbl">Are you being treated for, or have you been referred for, a mental health condition?</p>
+      <div class="opts" data-req="treated">
+        <label class="opt"><input type="radio" name="treated" value="No" /><span>No</span></label>
+        <label class="opt"><input type="radio" name="treated" value="Yes, currently or referred" /><span>Yes, currently, or I've been referred</span></label>
+        <label class="opt"><input type="radio" name="treated" value="In the past" /><span>In the past, not now</span></label>
+      </div>
+      <p class="err" data-err="treated">Please choose one.</p>
+      <p class="lbl">In the last two weeks, have you had thoughts of harming yourself, or of not wanting to be here?</p>
+      <div class="opts" data-req="self_harm_thoughts">
+        <label class="opt"><input type="radio" name="self_harm_thoughts" value="No" /><span>No</span></label>
+        <label class="opt"><input type="radio" name="self_harm_thoughts" value="Yes" /><span>Yes</span></label>
+      </div>
+      <p class="err" data-err="self_harm_thoughts">Please choose one.</p>
+      <p class="lbl">Right now, are you in a crisis, feeling unsafe or unable to cope?</p>
+      <div class="opts" data-req="in_crisis">
+        <label class="opt"><input type="radio" name="in_crisis" value="No" /><span>No</span></label>
+        <label class="opt"><input type="radio" name="in_crisis" value="Yes" /><span>Yes</span></label>
+      </div>
+      <p class="err" data-err="in_crisis">Please choose one.</p>
+      <div class="field"><label class="lbl" for="f-meds">Medication you'd like me to be aware of <span class="opt-note">(optional)</span></label>
+        <input type="text" id="f-meds" name="medication" /></div>
+      <div id="crisis-card" class="card caution" style="display:none;margin-top:1.25rem;" role="alert">
+        <p><strong>Please reach out to one of these right now.</strong> What you're carrying deserves more immediate support than a scheduled conversation. You can still submit this form, but please call first.</p>
+        <ul><li><strong>Tele-MANAS</strong> (free, 24/7): <a href="tel:14416">14416</a> or 1800-89-14416</li>
+        <li><strong>Emergency:</strong> <a href="tel:112">112</a></li>
+        <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
+        <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li></ul>
+        <p>Outside India, call your local emergency number or a crisis line near you.</p>
+      </div>
+
+      <h2 class="sec">4. Your package</h2>
+      <p class="hint">As agreed with Vaibhav. Payment is made in full, in one payment, through Razorpay after you submit this form. Part payments are not offered.</p>
+      <div class="opts" data-req="package">
+        <label class="opt"><input type="radio" name="package" value="Starter - 4 sessions - INR 26,000" /><span><strong>Starter</strong>: 4 sessions × ₹6,500 = ₹26,000</span></label>
+        <label class="opt"><input type="radio" name="package" value="Going Deeper - 6 sessions - INR 36,000" /><span><strong>Going Deeper</strong>: 6 sessions × ₹6,000 = ₹36,000</span></label>
+        <label class="opt"><input type="radio" name="package" value="The Long Game - 12 sessions - INR 66,000" /><span><strong>The Long Game</strong>: 12 sessions × ₹5,500 = ₹66,000</span></label>
+      </div>
+      <p class="err" data-err="package">Please choose your package.</p>
+      <div class="field"><label class="lbl" for="f-mode">Session format</label>
+        <select id="f-mode" name="format"><option>Online</option><option>In person (Lokhandwala, Andheri West)</option><option>A mix of both</option></select></div>
+      <div class="field"><label class="lbl" for="f-times">Preferred days and times <span class="opt-note">(optional)</span></label>
+        <input type="text" id="f-times" name="preferred_times" /></div>
+      <div class="field"><label class="lbl" for="f-more">Anything else you'd like me to know? <span class="opt-note">(optional)</span></label>
+        <textarea id="f-more" name="anything_else"></textarea></div>
+
+      <h2 class="sec">5. Coaching agreement</h2>
+      <p class="hint">Please read it fully. Scroll the box below. This agreement sits alongside the <a href="https://clearhead.in/terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="https://clearhead.in/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>; where they differ, this signed agreement applies.</p>
+      <div class="agree" tabindex="0" role="region" aria-label="Coaching agreement">
+        <h3>1. Parties</h3>
+        <p>This agreement is between Vaibhav Jain, ICF PCC, trading as Clearhead, Lokhandwala Complex, Andheri West, Mumbai 400053 ("Coach"), and the person who signs below ("Client").</p>
+        <h3>2. What this is, and what it is not</h3>
+        <ul>
+          <li>Coaching and counselling here is a confidential, structured, one-to-one conversation to help working professionals think through decisions, career, identity and wellbeing.</li>
+          <li>It is not therapy, psychiatry, psychology or medical treatment. The Coach does not diagnose or treat any mental health condition and is not a licensed therapist or medical practitioner.</li>
+          <li>It is not a crisis service and is not available 24/7. If you are in crisis or having thoughts of harming yourself, contact Tele-MANAS 14416 / 1800-89-14416, emergency 112, Vandrevala Foundation 1860-2662-345 or iCall 9152987821, or go to the nearest hospital emergency department.</li>
+          <li>No outcome is guaranteed. The Client remains responsible for their own decisions and actions.</li>
+        </ul>
+        <h3>3. Package and fees</h3>
+        <p>The Client has chosen the package selected above. Sessions are 60 minutes, one-to-one, online or in person in Lokhandwala, Andheri West. All prices are in Indian Rupees (INR) and inclusive of applicable taxes unless stated otherwise.</p>
+        <p><strong>Payment is made in full, in a single payment, before the first session. Part payments and instalments are not offered.</strong> Payments are processed through Razorpay; Clearhead does not store card or bank details. WhatsApp support between sessions is for brief logistics and short check-ins, not for in-depth coaching or emergencies.</p>
+        <h3>4. Scheduling</h3>
+        <ul>
+          <li>Sessions are booked through Cal.com.</li>
+          <li>Reschedule with at least 24 hours' notice. Less than 24 hours' notice, or a no-show, counts as a used session with no makeup.</li>
+          <li>If you arrive late, the session still ends at the scheduled time.</li>
+          <li>If the Coach has to cancel at short notice (illness, emergency, connectivity), a free makeup session is offered and nothing is deducted from your package.</li>
+          <li>A package may be paused once for up to 30 days, by notifying the Coach before the next scheduled session. Pausing does not entitle you to a refund.</li>
+        </ul>
+        <h3>5. Refunds</h3>
+        <p>All sales are final. If you cancel before the second session is completed, you will be refunded in full. After the second session is completed, no refunds are given for unused sessions, change of mind, dissatisfaction, scheduling conflicts or any other reason.</p>
+        <h3>6. Confidentiality</h3>
+        <ul>
+          <li>Nothing from our sessions is disclosed to anyone without your explicit written consent.</li>
+          <li>Limited exceptions: (a) a clear and imminent risk of serious harm to you or another identifiable person; (b) disclosure compelled by valid legal process from a court of competent jurisdiction in India.</li>
+          <li>The Coach may keep brief session notes and may discuss work anonymously, with no identifying details, in professional supervision, as part of ICF ethical practice. Your data is handled as set out in the Privacy Policy.</li>
+          <li>You agree to keep the Coach's frameworks and materials for your personal use only.</li>
+        </ul>
+        <h3>7. Client commitments</h3>
+        <ul>
+          <li>I am 18 or older and the information I have given is accurate.</li>
+          <li>I understand this is coaching and counselling, not clinical or emergency care, and I will tell the Coach if my circumstances change, for example if I begin treatment for a mental health condition.</li>
+          <li>I will engage in good faith and take responsibility for my own decisions.</li>
+          <li>I will not record, transcribe or share the content of sessions without the Coach's written consent.</li>
+        </ul>
+        <h3>8. Liability and governing law</h3>
+        <p>To the extent permitted by law, the Coach's total liability is limited to the amount paid for the package in question, and the Coach is not liable for indirect or consequential loss or for decisions made by the Client. This agreement is governed by the laws of India, with exclusive jurisdiction in the courts of Mumbai, Maharashtra.</p>
+        <h3>9. Ending the work</h3>
+        <p>Either party may end the coaching relationship at any time by telling the other. Refunds, if any, follow section 5. If the Coach believes coaching is no longer the right service, for example because clinical care would serve you better, the Coach will say so and suggest appropriate referrals.</p>
+      </div>
+
+      <h2 class="sec">6. Sign</h2>
+      <label class="check" style="margin-top:1rem;"><input type="checkbox" name="agree_terms" value="yes" id="f-agree" /><span>I have read and understood the coaching agreement above, the <a href="https://clearhead.in/terms.html" target="_blank" rel="noopener">Terms of Service</a> and the <a href="https://clearhead.in/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>, and I agree to them, including that payment is in full and refunds follow section 5.</span></label>
+      <p class="err" id="e-agree" style="margin-top:-0.8rem;margin-bottom:1rem;">Please tick to continue.</p>
+      <label class="check"><input type="checkbox" name="agree_18" value="yes" id="f-18" /><span>I am 18 or older, and I understand this is coaching and counselling, not medical or emergency care.</span></label>
+      <p class="err" id="e-18" style="margin-top:-0.8rem;margin-bottom:1rem;">Please tick to continue.</p>
+      <div class="field"><label class="lbl" for="f-sig">Type your full name as your signature</label>
+        <input type="text" id="f-sig" name="signature" autocomplete="off" required />
+        <p class="err">Please type your full name exactly as above.</p></div>
+      <p class="fine">Date: <strong id="today"></strong>. Typing your name above is your electronic signature, and the time of signing is recorded.</p>
+
+      <div id="banner" class="banner err-b" role="alert" style="display:none">Something went wrong and your form was not sent. Please try again, or message Vaibhav on WhatsApp at +91 90289 02948.</div>
+      <div class="row"><button class="btn wide" type="submit" id="submit">Sign and submit</button></div>
+    </form>
+
+    <section id="done" aria-live="polite">
+      <h1>Thank you. You're signed.</h1>
+      <div class="card">
+        <p><strong>Next step: payment.</strong> Complete your package payment in full through Razorpay. Once it is confirmed, you'll pick your first slot on the calendar.</p>
+        <p><a class="btn" href="https://clearhead.in/pricing.html#sessions">Go to payment &rarr;</a></p>
+      </div>
+      <p class="fine">Prefer to talk first? Message <a href="https://wa.me/919028902948">Vaibhav on WhatsApp</a>. <a href="https://clearhead.in/">Back to Clearhead</a></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>&copy; <span id="yr"></span> Clearhead &middot; Vaibhav Jain</span>
+    <span><a href="https://clearhead.in/privacy-policy.html">Privacy Policy</a> &middot; <a href="https://clearhead.in/terms.html">Terms</a></span>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    var form = document.getElementById('onboard-form');
+    var LIVE = /(^|\.)clearhead\.in$/.test(location.hostname);
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    document.getElementById('today').textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+    if (!LIVE) document.getElementById('preview-note').classList.add('on');
+    function val(n) { var e = form.elements[n]; return e ? (e.value || '').trim() : ''; }
+    function checked(n) { return !!form.querySelector('input[name="' + n + '"]:checked'); }
+    function bad(el, on) { var f = el.closest('.field'); if (f) f.classList.toggle('invalid', on); }
+    function showCrisis() {
+      var y = (form.querySelector('input[name="self_harm_thoughts"]:checked') || {}).value === 'Yes' ||
+              (form.querySelector('input[name="in_crisis"]:checked') || {}).value === 'Yes';
+      document.getElementById('crisis-card').style.display = y ? 'block' : 'none';
+    }
+    form.addEventListener('change', showCrisis);
+    function norm(s) { return s.toLowerCase().replace(/\s+/g, ' ').trim(); }
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var ok = true, first = null;
+      function fail(el) { ok = false; if (!first) first = el; }
+      ['name', 'whatsapp', 'email', 'emergency_contact', 'why_now', 'signature'].forEach(function (n) {
+        var el = form.elements[n], v = val(n), good = v.length > 0;
+        if (n === 'email') good = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        if (n === 'whatsapp') good = /^\d{8,15}$/.test(v.replace(/[\s+()-]/g, ''));
+        if (n === 'signature') good = norm(v) === norm(val('name')) && v.length > 0;
+        bad(el, !good); if (!good) fail(el);
+      });
+      ['treated', 'self_harm_thoughts', 'in_crisis', 'package'].forEach(function (n) {
+        var g = checked(n), box = form.querySelector('[data-req="' + n + '"]'), er = form.querySelector('[data-err="' + n + '"]');
+        er.style.display = g ? 'none' : 'block'; if (!g) fail(box);
+      });
+      [['agree_terms', 'e-agree'], ['agree_18', 'e-18']].forEach(function (p) {
+        var g = checked(p[0]), er = document.getElementById(p[1]);
+        er.style.display = g ? 'none' : 'block'; if (!g) fail(form.elements[p[0]]);
+      });
+      if (!ok) { if (first && first.scrollIntoView) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+      document.getElementById('f-signed-at').value = new Date().toISOString();
+      var btn = document.getElementById('submit'), banner = document.getElementById('banner');
+      btn.disabled = true; btn.textContent = 'Sending…'; banner.style.display = 'none';
+      if (!LIVE) { finish(); return; }
+      var body = new URLSearchParams(new FormData(form)).toString();
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); finish(); })
+        .catch(function () { banner.style.display = 'block'; btn.disabled = false; btn.textContent = 'Sign and submit'; });
+    });
+    function finish() {
+      form.style.display = 'none';
+      var d = document.getElementById('done'); d.classList.add('on'); window.scrollTo(0, 0);
+    }
+  })();
+  </script>
+</body>
+</html>
