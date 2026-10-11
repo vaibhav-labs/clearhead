@@ -34,6 +34,11 @@ Thumbs.db
 # at the repo root (those ARE tracked). Kept on disk for reuse by future blog posts.
 SVG/
 
+# Illustration working folder (2026-10-10) — Gemini-generated PNGs and raw vector sheets being
+# redrawn for the site; the chosen pieces are copied to the repo root as scene-*.svg. Same reason
+# as SVG/: `git add -A` would otherwise publish the whole folder at clearhead.in/clearhead-vector-redrawn/.
+clearhead-vector-redrawn/
+
 # Unrelated proposal mockup sitting in the working tree, not part of the live site or this
 # redesign — left untouched and untracked pending the owner's direction on it.
 clearhead_proposed/
