@@ -83,6 +83,25 @@
            window.navigator.msDoNotTrack === '1';
   }
 
+  /* --- 3b. URLs Google is allowed to see -----------------------------------
+   * The booking page (call.html) carries a quiz summary (`topic`) and, after a payment, a payment reference
+   * (`pid`) in its query string. GA4 sends the full address of every page with every event, so those would
+   * reach Google. Only the harmless `via` and `cal` labels and the standard campaign tags (utm_*, which GA4
+   * needs to attribute tagged links) are passed on; everything else is dropped, and the same goes for the
+   * referrer (a link from the booking page to another page carries its address along).
+   * ------------------------------------------------------------------------ */
+  function safeUrl(u) {
+    try {
+      var x = new URL(u, window.location.href), keep = [];
+      x.searchParams.forEach(function (v, k) {
+        if (/^(via|cal|utm_(source|medium|campaign|term|content))$/.test(k)) keep.push(k + '=' + encodeURIComponent(String(v).slice(0, 60)));
+      });
+      return x.origin + x.pathname + (keep.length ? '?' + keep.join('&') : '');
+    } catch (e) {
+      return String(u || '').split(/[?#]/)[0];
+    }
+  }
+
   /* --- 4. Load gtag.js — only ever called after an explicit "Allow" --------- */
   var loaded = false;
   function loadGtag() {
@@ -95,11 +114,14 @@
     document.head.appendChild(s);
 
     gtag('js', new Date());
-    gtag('config', MEASUREMENT_ID, {
+    var cfg = {
       anonymize_ip: true,
       allow_google_signals: false,
-      allow_ad_personalization_signals: false
-    });
+      allow_ad_personalization_signals: false,
+      page_location: safeUrl(window.location.href)
+    };
+    if (document.referrer) { cfg.page_referrer = safeUrl(document.referrer); }
+    gtag('config', MEASUREMENT_ID, cfg);
   }
 
   function grant() {
@@ -132,13 +154,15 @@
       }
     }, true);
 
-    // Booking intent — any outbound click to the Cal.com booking page.
+    // Booking intent: any click on a link into the pre-call screening page (call.html), which is the
+    // only door to the calendar. `via` records which page or tool the click came from.
     document.addEventListener('click', function (ev) {
       var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
       if (!a) return;
       var href = a.getAttribute('href') || '';
-      if (href.indexOf('cal.com/vaibhavjain') !== -1) {
-        window.chTrack('book_call_click', { location: document.title });
+      if (/(^|\/)call\.html([?#]|$)/.test(href) || href.indexOf('cal.com/vaibhavjain') !== -1) {
+        var m = /[?&]via=([\w-]{1,40})/.exec(href);
+        window.chTrack('book_call_click', { location: document.title, via: m ? m[1] : 'site' });
       }
     }, true);
   }
@@ -212,7 +236,12 @@
     yes.focus();
   }
 
-  /* --- 8. Boot -------------------------------------------------------------- */
+  /* --- 8. Boot --------------------------------------------------------------
+   * A page can set window.CH_NO_BANNER = true before this file loads (the pre-call
+   * screening form does, because a pop-up in the middle of those questions is the
+   * wrong place to ask). On such a page nothing is ever asked: a choice the visitor
+   * already made elsewhere is honoured, and with no choice on record nothing is sent.
+   * ------------------------------------------------------------------------ */
   function boot() {
     wireEvents();
 
@@ -221,6 +250,7 @@
     var choice = readChoice();
     if (choice === 'granted') { grant(); return; }
     if (choice === 'denied') return;
+    if (window.CH_NO_BANNER) return;           // no choice yet, and this page does not ask
 
     showBanner();
   }

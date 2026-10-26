@@ -2,7 +2,7 @@
 
 > 1:1 coaching and counselling with Vaibhav, an ICF PCC certified coach based in Mumbai. Clearhead helps professionals navigate AI-driven career anxiety, mid-career identity shifts, overwork, burnout, and loneliness — through clear, confidential conversation.
 
-Clearhead is the private coaching practice of Vaibhav (ICF PCC). Sessions are 1:1, online or in Lokhandwala, Andheri West, Mumbai, and focused on thinking clearly, being genuinely heard, and finding direction. Payments via Razorpay; booking via Cal.com.
+Clearhead is the private coaching practice of Vaibhav (ICF PCC). Sessions are 1:1, online or in Lokhandwala, Andheri West, Mumbai, and focused on thinking clearly, being genuinely heard, and finding direction. Payments via Razorpay; booking via Cal.com, after a short screening questionnaire.
 
 ## Core pages
 - [Home — Clearhead coaching with Vaibhav](https://clearhead.in/): Overview of the practice, approach, and how coaching works.
@@ -11,7 +11,7 @@ Clearhead is the private coaching practice of Vaibhav (ICF PCC). Sessions are 1:
 - [Blog](https://clearhead.in/blog.html): Writing on clarity, identity, loneliness, burnout, and being heard, organized into 5 themes.
 
 ## Free interactive tools
-Self-contained two-to-six-minute assessments, free, no signup required — each a standalone answer to a specific question.
+Self-contained two-to-six-minute assessments, free — each a standalone answer to a specific question. Most show the headline result on the page; the fuller breakdown opens with an email address or by booking a call.
 - [All free tools](https://clearhead.in/tools.html): Index of the free calculators and assessments for working professionals — bandwidth, career friction, AI exposure, and financial runway.
 - [Abundance Runway Calculator](https://clearhead.in/runway.html): How long your finances could sustain you if income stopped today.
 - [Cognitive Overload / Mental Bandwidth Calculator](https://clearhead.in/bandwidth.html): Scores mental bandwidth across open loops, context switching, system dependency, and recovery.
@@ -92,5 +92,6 @@ Self-contained two-to-six-minute assessments, free, no signup required — each 
 - [You out-earn most people you know. So why do you still feel behind?](https://clearhead.in/post-money-comparison.html): A 2026 Social Science & Medicine study of 200,000+ people across 22 countries found feeling poorer than peers lowers wellbeing even at the same income — relative deprivation, the salary scoreboard, and what helps.
 
 ## Contact & booking
-- Book a free 30-minute conversation via [Cal.com](https://cal.com/vaibhavjain/30min).
+- [Book a free 30-minute conversation](https://clearhead.in/call.html): nine quick screening questions (about a minute), then a calendar to pick a time. Online or in person.
+- Email: hello@clearhead.in. No phone or WhatsApp number is published.
 - Full contact details, address (Lokhandwala Complex, Andheri West, Mumbai 400053), and hours are on the [home page](https://clearhead.in/).

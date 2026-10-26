@@ -144,6 +144,13 @@
     .banner.err-b { background: var(--error-bg); color: var(--error); border: 1.5px solid var(--error); }
     #done { display:none; } #done.on { display:block; animation: rise 0.22s ease-out; }
     select { width:100%; border:1.5px solid var(--line); border-radius: var(--radius-sm); background: var(--card); color: var(--ink); padding: 0.85rem 1rem; font-size:1.05rem; font-family: var(--font); }
+
+    /* ---- Visitors who have already paid (they arrive from the pricing page or the payment email) ---- */
+    .paid-only { display: none; }
+    .is-paid .paid-only { display: block; }
+    .is-paid .free-only { display: none; }
+    .paid-banner { background: var(--accent-soft); border-radius: var(--radius-sm); padding: 0.7rem 0.95rem; font-size: 0.95rem; margin: 0 0 1.25rem; }
+    #done h1:focus { outline: none; }
   </style>
 </head>
 <body>
@@ -159,8 +166,11 @@
       <input type="hidden" name="form-name" value="client-onboarding" />
       <input type="hidden" name="agreement_version" value="v1-2026-10-10" />
       <input type="hidden" name="signed_at" id="f-signed-at" value="" />
+      <input type="hidden" name="source" id="f-source" value="link" />
+      <input type="hidden" name="payment_id" id="f-pid" value="" />
       <p class="hp" aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
+      <p class="paid-banner paid-only" id="paid-banner">Payment received for <strong id="paid-plan"></strong>. Thank you. This agreement and a few details are the last things before your first session.</p>
       <h1>Welcome. Let's get you started.</h1>
       <p class="lede">Three short parts: <strong>your details</strong>, <strong>a few questions</strong>, and <strong>the agreement</strong> to read and sign. About ten minutes. Confidential, only Vaibhav sees this. <a href="https://clearhead.in/privacy-policy.html" target="_blank" rel="noopener">Privacy policy</a></p>
 
@@ -235,7 +245,8 @@
       </div>
 
       <h2 class="sec">4. Your package</h2>
-      <p class="hint">As agreed with Vaibhav. Payment is made in full, in one payment, through Razorpay after you submit this form. Part payments are not offered.</p>
+      <p class="hint free-only">As agreed with Vaibhav. Payment is made in full, in one payment, through Razorpay after you submit this form. Part payments are not offered.</p>
+      <p class="hint paid-only">Your payment is confirmed, so your package is already chosen. Payment was made in full, in one payment. Part payments are not offered.</p>
       <div class="opts" data-req="package">
         <label class="opt"><input type="radio" name="package" value="Starter - 4 sessions - INR 26,000" /><span><strong>Starter</strong>: 4 sessions × ₹6,500 = ₹26,000</span></label>
         <label class="opt"><input type="radio" name="package" value="Going Deeper - 6 sessions - INR 36,000" /><span><strong>Going Deeper</strong>: 6 sessions × ₹6,000 = ₹36,000</span></label>
@@ -304,17 +315,47 @@
         <p class="err">Please type your full name exactly as above.</p></div>
       <p class="fine">Date: <strong id="today"></strong>. Typing your name above is your electronic signature, and the time of signing is recorded.</p>
 
-      <div id="banner" class="banner err-b" role="alert" style="display:none">Something went wrong and your form was not sent. Please try again, or message Vaibhav on WhatsApp at +91 90289 02948.</div>
+      <div id="banner" class="banner err-b" role="alert" style="display:none">Something went wrong and your form was not sent. Please try again, or email <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>.</div>
       <div class="row"><button class="btn wide" type="submit" id="submit">Sign and submit</button></div>
     </form>
 
     <section id="done" aria-live="polite">
-      <h1>Thank you. You're signed.</h1>
-      <div class="card">
-        <p><strong>Next step: payment.</strong> Complete your package payment in full through Razorpay. Once it is confirmed, you'll pick your first slot on the calendar.</p>
-        <p><a class="btn" href="https://clearhead.in/pricing.html#sessions">Go to payment &rarr;</a></p>
+      <h1 id="done-title" tabindex="-1">Thank you. You're signed.</h1>
+
+      <!-- Shown when the answers point to crisis: support first, nothing asked of them today. -->
+      <div class="card caution" id="done-crisis" style="display:none;">
+        <p><strong>Please reach out to one of these now, before anything else.</strong> You don't need to pay or book anything today. I have your form and I will message you personally.</p>
+        <ul>
+          <li><strong>Tele-MANAS</strong> (free, 24/7): <a href="tel:14416">14416</a> or 1800-89-14416</li>
+          <li><strong>Emergency:</strong> <a href="tel:112">112</a></li>
+          <li><strong>Vandrevala Foundation</strong> (24/7): <a href="tel:18602662345">1860-2662-345</a></li>
+          <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li>
+        </ul>
+        <p>Outside India, call your local emergency number or a crisis line near you.</p>
+        <p class="paid-only">About your payment: there is nothing you need to do about it today. When you are ready, write to <a href="mailto:hello@clearhead.in">hello@clearhead.in</a> and we will sort it out, whether that means a full refund or a pause. No rush.</p>
+        <p><a class="btn-line" href="mailto:hello@clearhead.in?subject=Onboarding%20form%20signed&amp;body=Hi%20Vaibhav%2C%20I%20have%20just%20signed%20the%20onboarding%20form.%20I%27d%20like%20to%20talk.">Email Vaibhav</a></p>
       </div>
-      <p class="fine">Prefer to talk first? Message <a href="https://wa.me/919028902948">Vaibhav on WhatsApp</a>. <a href="https://clearhead.in/">Back to Clearhead</a></p>
+
+      <!-- Shown when they are in treatment or have been referred: talk first, as the screening form does. -->
+      <div class="card caution" id="done-clinical" style="display:none;">
+        <p><strong>One thing before anything else.</strong> You told me you are in treatment, or have been referred. I would like us to talk before you pay or book, so I can be honest about whether coaching can sit alongside your care. I will message you, or you can email me now.</p>
+        <p class="paid-only">About your payment: unless we agree that coaching can sit alongside your care, it will be refunded in full (see <a href="https://clearhead.in/terms.html" target="_blank" rel="noopener">Terms</a>).</p>
+        <p><a class="btn-line" href="mailto:hello@clearhead.in?subject=Onboarding%20form%20signed&amp;body=Hi%20Vaibhav%2C%20I%20have%20just%20signed%20the%20onboarding%20form.%20I%27m%20in%20treatment%20and%20would%20like%20to%20talk%20about%20how%20coaching%20could%20sit%20alongside%20it.">Email Vaibhav</a></p>
+      </div>
+
+      <!-- Standard, not paid yet -->
+      <div class="card" id="done-pay" style="display:none;">
+        <p><strong>Next step: payment.</strong> Complete your <span id="done-pkg">package</span> payment in full through Razorpay. Then comes a one-minute check, and you pick your first slot on the calendar.</p>
+        <p><a class="btn" id="done-pay-link" href="https://clearhead.in/pricing.html#sessions">Go to payment &rarr;</a></p>
+      </div>
+
+      <!-- Standard, already paid -->
+      <div class="card" id="done-paid" style="display:none;">
+        <p><strong>You're all set.</strong> Your payment is confirmed and your agreement is signed. If you have not picked your first slot yet, you can do that now.</p>
+        <p><a class="btn" id="done-book-link" href="https://clearhead.in/call.html">Pick your first slot &rarr;</a></p>
+      </div>
+
+      <p class="fine">Prefer to talk first? Email <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>. <a href="https://clearhead.in/">Back to Clearhead</a></p>
     </section>
   </main>
 
@@ -323,24 +364,87 @@
     <span><a href="https://clearhead.in/privacy-policy.html">Privacy Policy</a> &middot; <a href="https://clearhead.in/terms.html">Terms</a></span>
   </footer>
 
+  <script>window.CH_NO_BANNER = true;</script>
+  <script src="analytics.js" defer></script>
   <script>
   (function () {
     'use strict';
     var form = document.getElementById('onboard-form');
     var LIVE = /(^|\.)clearhead\.in$/.test(location.hostname);
+    function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+    // Analytics is optional: this only records anything if the visitor already said yes elsewhere on the site.
+    function track(name, params) { try { if (window.chTrack) { window.chTrack(name, params || {}); } } catch (e) {} }
+
+    // The package values used in the form, and what they stand for.
+    var PKG_PLAN  = { 'Starter - 4 sessions - INR 26,000': 'starter', 'Going Deeper - 6 sessions - INR 36,000': 'going-deeper', 'The Long Game - 12 sessions - INR 66,000': 'long-game' };
+    var PLAN_NAME = { 'starter': 'Starter', 'going-deeper': 'Going Deeper', 'long-game': 'The Long Game' };
+    var PLAN_CAL  = { 'starter': 'starter', 'going-deeper': 'going-deeper', 'long-game': 'the-long-game' };
+    var PAID_PLAN = '', PAID_ID = '';
+
     document.getElementById('yr').textContent = new Date().getFullYear();
     document.getElementById('today').textContent = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
     if (!LIVE) document.getElementById('preview-note').classList.add('on');
+
+    // Someone who has already paid arrives as ?via=paid-<plan>&pid=<payment id> (pricing page or payment email).
+    try {
+      var qs  = new URLSearchParams(location.search);
+      var via = (qs.get('via') || '').replace(/[^\w-]/g, '').slice(0, 40);
+      if (via) { document.getElementById('f-source').value = via; }
+      if (via.indexOf('paid-') === 0 && has(PLAN_NAME, via.slice(5))) {
+        PAID_PLAN = via.slice(5);
+        PAID_ID   = (qs.get('pid') || '').replace(/[^\w-]/g, '').slice(0, 40);
+      }
+    } catch (e) {}
+    document.getElementById('f-pid').value = PAID_ID;
+    if (PAID_PLAN) {
+      document.body.classList.add('is-paid');
+      document.getElementById('paid-plan').textContent = PLAN_NAME[PAID_PLAN];
+      // The package is already paid for: preselect it and lock the others so the signed agreement matches the payment.
+      [].forEach.call(form.querySelectorAll('input[name="package"]'), function (r) {
+        if (PKG_PLAN[r.value] === PAID_PLAN) { r.checked = true; }
+        else { r.disabled = true; var o = r.closest('.opt'); if (o) { o.style.opacity = '0.55'; } }
+      });
+    }
+
     function val(n) { var e = form.elements[n]; return e ? (e.value || '').trim() : ''; }
     function checked(n) { return !!form.querySelector('input[name="' + n + '"]:checked'); }
+    function radioVal(n) { var r = form.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ''; }
     function bad(el, on) { var f = el.closest('.field'); if (f) f.classList.toggle('invalid', on); }
     function showCrisis() {
-      var y = (form.querySelector('input[name="self_harm_thoughts"]:checked') || {}).value === 'Yes' ||
-              (form.querySelector('input[name="in_crisis"]:checked') || {}).value === 'Yes';
+      var y = radioVal('self_harm_thoughts') === 'Yes' || radioVal('in_crisis') === 'Yes';
       document.getElementById('crisis-card').style.display = y ? 'block' : 'none';
     }
     form.addEventListener('change', showCrisis);
     function norm(s) { return s.toLowerCase().replace(/\s+/g, ' ').trim(); }
+
+    // One attempt to save the signed form. True only if the server really accepted it.
+    function sendOnce(body, ms) {
+      return new Promise(function (resolve) {
+        var done = false;
+        var ctl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () {
+          if (done) { return; }
+          done = true;
+          if (ctl) { try { ctl.abort(); } catch (e) {} }
+          resolve(false);
+        }, ms);
+        var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body };
+        if (ctl) { opts.signal = ctl.signal; }
+        try {
+          fetch('/', opts).then(
+            function (res) { if (done) { return; } done = true; clearTimeout(timer); resolve(!!res && res.ok); },
+            function ()    { if (done) { return; } done = true; clearTimeout(timer); resolve(false); }
+          );
+        } catch (e) { done = true; clearTimeout(timer); resolve(false); }
+      });
+    }
+    function record(body) {
+      return sendOnce(body, 8000).then(function (ok) {
+        if (ok) { return true; }
+        return new Promise(function (r) { setTimeout(r, 700); }).then(function () { return sendOnce(body, 8000); });
+      });
+    }
+
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var ok = true, first = null;
@@ -366,13 +470,34 @@
       btn.disabled = true; btn.textContent = 'Sending…'; banner.style.display = 'none';
       if (!LIVE) { finish(); return; }
       var body = new URLSearchParams(new FormData(form)).toString();
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
-        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); finish(); })
-        .catch(function () { banner.style.display = 'block'; btn.disabled = false; btn.textContent = 'Sign and submit'; });
+      record(body).then(function (saved) {
+        if (saved) { finish(); return; }
+        track('lead_save_failed', { form_name: 'client-onboarding' });
+        banner.style.display = 'block'; btn.disabled = false; btn.textContent = 'Sign and submit';
+      });
     });
+
+    // What they see next depends on what they told us, not just on having signed.
     function finish() {
+      var harm = radioVal('self_harm_thoughts') === 'Yes' || radioVal('in_crisis') === 'Yes';
+      var treated = radioVal('treated') === 'Yes, currently or referred';
+      var plan = PAID_PLAN || PKG_PLAN[radioVal('package')] || '';
+      var kind = harm ? 'crisis' : (treated ? 'clinical' : (PAID_PLAN ? 'paid' : 'pay'));
+
       form.style.display = 'none';
-      var d = document.getElementById('done'); d.classList.add('on'); window.scrollTo(0, 0);
+      var d = document.getElementById('done'); d.classList.add('on');
+      document.getElementById('done-' + kind).style.display = 'block';
+      if (kind === 'pay' && plan) {
+        document.getElementById('done-pkg').textContent = PLAN_NAME[plan];
+        document.getElementById('done-pay-link').href = 'https://clearhead.in/pricing.html#' + plan;
+      }
+      if (kind === 'paid') {
+        document.getElementById('done-book-link').href = 'https://clearhead.in/call.html?via=paid-' + plan + '&cal=' + PLAN_CAL[plan] + (PAID_ID ? '&pid=' + encodeURIComponent(PAID_ID) : '');
+      }
+      try { window.localStorage.setItem('ch_onboarded_v1', JSON.stringify({ at: Date.now() })); } catch (e) {}
+      track('onboarding_complete', { paid: PAID_PLAN ? 'yes' : 'no' });
+      window.scrollTo(0, 0);
+      var h = document.getElementById('done-title'); if (h) { try { h.focus({ preventScroll: true }); } catch (e) {} }
     }
   })();
   </script>

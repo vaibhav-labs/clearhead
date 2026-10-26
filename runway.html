@@ -639,14 +639,15 @@
           <input type="hidden" id="g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your number stays private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your answers are used only to reply to you.</span>
           </label>
           <div class="rw-gate-actions">
             <button type="submit" class="btn-primary">Unlock dashboard →</button>
             <span class="rw-or">or</span>
-            <a href="quiz.html" class="btn-text">Book a discovery conversation →</a>
+            <a id="rw-book-call" href="call.html?via=runway" class="btn-text" target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
           </div>
-          <p class="rw-fineprint">Submitting reveals the interactive panel below. Your numbers aren't sent until you confirm.</p>
+          <p class="rw-fineprint">Submitting sends your name, email and answers to me, and opens the dashboard below.</p>
+          <p class="rw-fineprint" id="rw-save-note" role="alert" hidden style="color:#b84040">Your results are open below, but I could not save your details just now. Press the button again to retry, or email <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>.</p>
         </form>
       </div>
 
@@ -746,7 +747,7 @@
 
           <div class="rw-dash-cta">
             <p>Want help turning this into a real plan — not just a screen?</p>
-            <a class="btn-primary" href="quiz.html">Book a discovery conversation →</a>
+            <a class="btn-primary" id="rw-book-call-2" href="call.html?via=runway" target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
             <p style="margin-top: 0.85rem; font-size: 0.92rem; color: var(--ink-soft);">
               Or email <a href="mailto:hello@clearhead.in?subject=Runway%20calculator%20%E2%80%94%20follow-up">hello@clearhead.in</a> with your number and I'll reply within a working day.
             </p>
@@ -758,7 +759,7 @@
     <!-- Start button (shown initially) -->
     <div class="rw-startwrap" id="rw-startwrap">
       <button class="btn-primary" type="button" id="rw-start">Start the 2-minute calculator →</button>
-      <p class="rw-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+      <p class="rw-fineprint">Your answers stay on this page. Nothing is sent unless you choose to unlock the dashboard with your email.</p>
       <p class="rw-fineprint">How it's calculated: your monthly expenses divided against your available savings/income gives a runway in months — a straightforward math estimate, not financial advice.</p>
     </div>
 
@@ -783,7 +784,6 @@
     <div class="footer-contact">
       <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
       <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
-      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -857,6 +857,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
   // ---- intro / start --------------------------------------------
   $('rw-start').addEventListener('click', function () {
+    track('tool_start', { tool: 'runway' });
     hide('rw-intro');
     hide('rw-startwrap');
     show('rw-phase-form');
@@ -1035,6 +1036,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       msg.innerHTML = "The math is on your side. The interesting question isn't 'will I be okay' — it's 'what am I actually here for?' Sometimes that's a different kind of conversation.";
     }
 
+    track('tool_complete', { tool: 'runway' });
     hide('rw-phase-form');
     show('rw-phase-aha');
     show('rw-phase-gate');
@@ -1052,24 +1054,55 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   });
 
   // ---- gate -----------------------------------------------------
-  // Simulate the unlock locally so the user gets the reveal instantly,
-  // while Netlify still receives the form submission in the background.
+  // ---- lead capture ---------------------------------------------
+  // The reveal never waits for the network, but a failed save is never silent:
+  // one automatic retry, then a visible note and a re-enabled button.
+  function track(n, p) { try { if (window.chTrack) { window.chTrack(n, p || {}); } } catch (e) {} }
+
+  function saveLead(form, done) {
+    var body = new URLSearchParams(new FormData(form)).toString();
+    function once() {
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function () { ctl.abort(); }, 12000) : 0;
+      var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body, keepalive: true };
+      if (ctl) { opts.signal = ctl.signal; }
+      return fetch('/', opts).then(
+        function (r) { clearTimeout(timer); return r.ok; },
+        function () { clearTimeout(timer); return false; }
+      );
+    }
+    once().then(function (ok) {
+      return ok ? true : new Promise(function (r) { setTimeout(r, 800); }).then(once);
+    }).then(done);
+  }
+
   $('rw-gate-form').addEventListener('submit', function (e) {
     var name  = $('g-name').value.trim();
     var email = $('g-email').value.trim();
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return; // let native validation handle
-    }
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
     e.preventDefault();
-    // Fire-and-forget the Netlify form post so we can reveal instantly.
-    try {
-      var fd = new FormData(e.target);
-      fetch('/', { method: 'POST', body: fd }).catch(function(){});
-    } catch (err) { /* noop */ }
-    unlockDashboard();
+
+    var btn  = e.target.querySelector('button[type="submit"]');
+    var note = $('rw-save-note');
+    if (btn) { btn.disabled = true; }
+    if (note) { note.hidden = true; }
+
+    unlockDashboard('email');
+    saveLead(e.target, function (ok) {
+      if (ok) { track('generate_lead', { form_name: 'runway-leads', tool: 'runway' }); return; }
+      track('lead_save_failed', { form_name: 'runway-leads', tool: 'runway' });
+      if (btn) { btn.disabled = false; }
+      if (note) { note.hidden = false; }
+    });
   });
 
-  function unlockDashboard() {
+  // Booking from the gate also reveals the results: the visitor keeps this tab, the call page opens in a new one.
+  var gateBook = $('rw-book-call');
+  if (gateBook) { gateBook.addEventListener('click', function () { unlockDashboard('booking'); }); }
+
+  var unlocked = false;
+  function unlockDashboard(method) {
+    if (!unlocked) { unlocked = true; track('tool_unlock', { tool: 'runway', method: method || 'email' }); }
     var card = $('rw-gate-card');
     card.classList.add('rw-gate-done');
     $('rw-dash-lock').hidden = true;

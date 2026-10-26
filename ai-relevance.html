@@ -128,7 +128,7 @@
       </p>
       <div class="tk-startwrap" id="ai-startwrap">
         <button class="btn-primary" type="button" id="ai-start">Start the 2-minute index →</button>
-        <p class="tk-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+        <p class="tk-fineprint">Your answers stay on this page. Nothing is sent unless you choose to unlock the full results with your email.</p>
         <p class="tk-fineprint">How it's scored: your answers weigh task-automatability signals against your irreplaceable-value signals — a self-report snapshot to prompt reflection, not a predictive or diagnostic instrument.</p>
       </div>
     </header>
@@ -267,16 +267,17 @@
           <input type="hidden" id="ai-g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your scores stay private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your answers are used only to reply to you.</span>
           </label>
           <div class="tk-gate-actions">
             <button type="submit" class="btn-primary">Unlock with email →</button>
             <span class="tk-or">or</span>
             <a id="ai-book-call" class="btn-primary" style="background:#10222e"
                href="call.html?via=ai-relevance"
-               target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
+               target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
           </div>
           <p class="tk-fineprint">Either path reveals the strategy below. Booking opens a short screening form in a new tab; email goes to my inbox.</p>
+          <p class="tk-fineprint" id="ai-save-note" role="alert" hidden style="color:#b84040">Your results are open below, but I could not save your details just now. Press the button again to retry, or email <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>.</p>
         </form>
       </div>
 
@@ -302,7 +303,7 @@
           <div class="tk-section">
             <h3>Why coaching is the bridge. Not another tool. Not another course.</h3>
             <p id="ai-coaching-frame"></p>
-            <p>AI automates <em>processes</em>. It cannot automate <em>executive presence</em>, <em>emotional regulation</em> under uncertainty, or the lived experience required for <em>first-principles decision-making</em>. 1:1 coaching is the structured environment to build all three. Weekly. Accountably. Sequenced. So the shift from executor to strategist becomes a real career outcome, not a vague intention.</p>
+            <p>AI automates <em>processes</em>. It cannot automate <em>executive presence</em>, <em>emotional regulation</em> under uncertainty, or the lived experience required for <em>first-principles decision-making</em>. 1:1 coaching is the structured environment to build all three. Session by session. Accountably. Sequenced. So the shift from executor to strategist becomes a real career outcome, not a vague intention.</p>
             <div class="tk-callout">
               <strong>The premise:</strong> in a world where AI commoditizes execution, the moat is judgment exercised under uncertainty. That moat is built in conversation. Coaching is the most direct form of that conversation.
             </div>
@@ -313,7 +314,7 @@
             <p>A discovery conversation is the starting point. We talk about your role, your exposure profile, and whether 1:1 coaching is the right next step. No commitment. Just clarity on what the work would look like for you specifically.</p>
             <a class="btn-primary" id="ai-book-call-2"
                href="call.html?via=ai-relevance"
-               target="_blank" rel="noopener noreferrer">Book a discovery call →</a>
+               target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
             <a class="btn-text" href="pricing.html">See coaching packages</a>
             <a class="btn-text" href="mailto:hello@clearhead.in?subject=AI%20Relevance%20audit%20%E2%80%94%20follow-up">Or email directly</a>
           </div>
@@ -342,7 +343,6 @@
     <div class="footer-contact">
       <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
       <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
-      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -399,6 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('ai-prog-label').textContent = 'Step ' + current + ' of ' + totalSteps;
   }
   $('ai-start').addEventListener('click', function () {
+    track('tool_start', { tool: 'ai-relevance' });
     $('ai-startwrap').hidden = true;
     show('ai-phase-form');
     goStep(1);
@@ -412,6 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $('ai-compute').addEventListener('click', function () {
     var result = E.compute(snapshot);
+    track('tool_complete', { tool: 'ai-relevance' });
     lastResult = result;
 
     $('ai-bignum').textContent = result.exposure;
@@ -448,7 +450,31 @@ document.addEventListener('DOMContentLoaded', function () {
     $('ai-coaching-frame').textContent = result.coachingFrame;
   }
 
-  function unlockPayload() {
+  // ---- lead capture ---------------------------------------------
+  // The reveal never waits for the network, but a failed save is never silent:
+  // one automatic retry, then a visible note and a re-enabled button.
+  function track(n, p) { try { if (window.chTrack) { window.chTrack(n, p || {}); } } catch (e) {} }
+
+  function saveLead(form, done) {
+    var body = new URLSearchParams(new FormData(form)).toString();
+    function once() {
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function () { ctl.abort(); }, 12000) : 0;
+      var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body, keepalive: true };
+      if (ctl) { opts.signal = ctl.signal; }
+      return fetch('/', opts).then(
+        function (r) { clearTimeout(timer); return r.ok; },
+        function () { clearTimeout(timer); return false; }
+      );
+    }
+    once().then(function (ok) {
+      return ok ? true : new Promise(function (r) { setTimeout(r, 800); }).then(once);
+    }).then(done);
+  }
+
+  var unlocked = false;
+  function unlockPayload(method) {
+    if (!unlocked) { unlocked = true; track('tool_unlock', { tool: 'ai-relevance', method: method || 'email' }); }
     $('ai-gate-card').classList.add('tk-gate-done');
     $('ai-payload').classList.add('unlocked');
     setTimeout(function () {
@@ -456,25 +482,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 100);
   }
 
-  // ---- Path A: email gate -----------------------------------------
+  // ---- Path A: email gate ----------------------------------------
   $('ai-gate-form').addEventListener('submit', function (e) {
     var name  = $('ai-g-name').value.trim();
     var email = $('ai-g-email').value.trim();
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
     e.preventDefault();
-    var fd = new FormData(e.target);
-    fetch('/', { method: 'POST', body: new URLSearchParams(fd).toString(),
-                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-      .catch(function(){});
-    unlockPayload();
+
+    var btn  = e.target.querySelector('button[type="submit"]');
+    var note = $('ai-save-note');
+    if (btn) { btn.disabled = true; }
+    if (note) { note.hidden = true; }
+
+    unlockPayload('email');
+    saveLead(e.target, function (ok) {
+      if (ok) { track('generate_lead', { form_name: 'ai-relevance-leads', tool: 'ai-relevance' }); return; }
+      track('lead_save_failed', { form_name: 'ai-relevance-leads', tool: 'ai-relevance' });
+      if (btn) { btn.disabled = false; }
+      if (note) { note.hidden = false; }
+    });
   });
 
-  // ---- Path B: book a call (WhatsApp) ALSO unlocks payload --------
-  // Higher intent — they get the strategy AND the conversation.
-  ['ai-book-call', 'ai-book-call-2'].forEach(function (id) {
-    var el = $(id);
-    if (el) el.addEventListener('click', function () { unlockPayload(); });
-  });
+  // ---- Path B: book a call. Also reveals the results (higher intent).
+  // Booking from the gate also reveals the results: the visitor keeps this tab, the call page opens in a new one.
+  var gateBook = $('ai-book-call');
+  if (gateBook) { gateBook.addEventListener('click', function () { unlockPayload('booking'); }); }
 });
 </script>
 

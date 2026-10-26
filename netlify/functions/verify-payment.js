@@ -34,6 +34,10 @@ exports.handler = async (event) => {
     return json(400, { error: 'Invalid JSON body' });
   }
 
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return json(400, { verified: false, error: 'Invalid request body' });
+  }
+
   const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = payload;
 
   if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {

@@ -103,6 +103,12 @@
   to = "/.netlify/functions/razorpay-webhook"
   status = 200
 
+# Where browsers send Content-Security-Policy violation reports (see the CSP header below)
+[[redirects]]
+  from = "/api/csp-report"
+  to = "/.netlify/functions/csp-report"
+  status = 200
+
 # Security headers
 [[headers]]
   for = "/*"
@@ -112,13 +118,22 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    # Report-only for now so nothing breaks silently (checkout/fonts/images are all allow-listed below).
-    # Once confirmed clean in the browser console over a few days, rename to Content-Security-Policy to enforce.
-    # google-analytics entries added 2026-09-20 for the GA4 tag (analytics.js).
-    # gtag.js is fetched from googletagmanager.com; it then beacons to
-    # *.google-analytics.com (and *.analytics.google.com for some regions).
-    # Neither host is contacted at all unless the visitor accepts the consent banner.
-    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://checkout.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com; connect-src 'self' https://checkout.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://checkout.razorpay.com; base-uri 'self'; form-action 'self'"
+    # Content-Security-Policy-Report-Only: the browser reports what it WOULD block but blocks nothing, so it cannot
+    # break the site. Reports go to /api/csp-report (netlify/functions/csp-report.js), which writes one line per
+    # violation to the function log: Netlify > Functions > csp-report, search for "[csp-report]".
+    # TO ENFORCE: read that log for a week or two. When it shows nothing (or only browser-extension noise, which the
+    # function already drops), rename this header to Content-Security-Policy. Do not rename it before there are
+    # reports to read.
+    # Tested 2026-10-25 in a real browser against the live Razorpay checkout, the Google Maps embed, Google Fonts and
+    # GA4 (consent granted): zero violations on pricing, home, Andheri, a blog post, a tool, call, quiz, onboard,
+    # thank-you and tools pages. The previous policy would have BLOCKED the Razorpay checkout frame, Razorpay's
+    # script and logging hosts, and the Google Maps iframe had it ever been enforced.
+    # Razorpay: *.razorpay.com (checkout.js; cdn. loads the risk-detection script; api. is the checkout iframe;
+    #   lumberjack. is its logging). Google Maps: www.google.com (frame, on the home and Andheri pages only).
+    # GA4: gtag.js from googletagmanager.com, beacons to *.google-analytics.com / *.analytics.google.com; neither is
+    #   contacted unless the visitor accepts the consent banner. Blog images come from images.unsplash.com.
+    # 'unsafe-inline' stays for scripts and styles because every page has inline script and style blocks.
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://*.razorpay.com; connect-src 'self' https://*.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://*.razorpay.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; report-uri /api/csp-report"
 
 # Long-lived caching for static assets that don't change on every deploy without a filename change.
 # Netlify still checks freshness via ETag on each deploy, so this is safe: it speeds up repeat visits

@@ -130,6 +130,19 @@
     .card p:last-child { margin-bottom: 0; }
     .mark { font-family: var(--serif); font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--dawn-deep); }
     .out-links { font-size: 0.92rem; }
+    .out h2:focus, .q:focus { outline: none; }
+
+    /* ---- Visitors who have just paid (they arrive from pricing.html) ---- */
+    .paid-only { display: none; }
+    .is-paid .paid-only { display: block; }
+    .is-paid .free-only { display: none; }
+    .paid-banner { background: var(--accent-soft); border-radius: var(--radius-sm); padding: 0.7rem 0.95rem; font-size: 0.95rem; margin: 0 0 1.25rem; }
+    .paid-note { border-top: 1px solid var(--line-soft); padding-top: 0.9rem; }
+    .save-note { font-size: 0.92rem; color: var(--ink-soft); }
+
+    /* ---- Keyboard users: choosing an option with the arrow keys must not jump ahead, so Continue appears instead ---- */
+    .kb-only { display: none; }
+    .kb .kb-only { display: flex; }
   </style>
 </head>
 <body>
@@ -148,10 +161,13 @@
       <input type="hidden" name="form-name" value="call-screening" />
       <input type="hidden" name="outcome" id="f-outcome" value="" />
       <input type="hidden" name="source" id="f-source" value="link" />
+      <input type="hidden" name="plan" id="f-plan" value="" />
+      <input type="hidden" name="payment_id" id="f-pid" value="" />
       <p class="hp" aria-hidden="true"><label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
       <!-- 1 · name -->
       <section class="step on" data-step="name">
+        <p class="paid-banner paid-only" id="paid-banner">Payment received for <strong id="paid-plan"></strong>. One short check first, then you pick your first session.</p>
         <h1>Before we talk.</h1>
         <p class="lede">Nine quick questions. <strong>About a minute.</strong> Then you pick a time.</p>
         <p class="q">What's your name?</p>
@@ -180,7 +196,7 @@
       <!-- 3 · whatsapp -->
       <section class="step" data-step="whatsapp">
         <p class="q">Your WhatsApp number?</p>
-        <p class="hint">The one you messaged from. Add the country code if you're outside India.</p>
+        <p class="hint">The number I can reach you on. Add the country code if you're outside India.</p>
         <div class="field">
           <label class="hp" for="f-whatsapp">WhatsApp number</label>
           <input type="tel" id="f-whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" enterkeyhint="next" />
@@ -255,7 +271,8 @@
           <p class="err">Please tick this to continue.</p>
         </div>
         <button class="btn wide" type="submit" id="submit-btn">Pick a time</button>
-        <p class="fine">Next screen is my Cal.com calendar. No fee, no obligation. <a href="https://clearhead.in/terms" target="_blank" rel="noopener">Terms</a></p>
+        <p class="fine free-only">Next screen is my Cal.com calendar. No fee, no obligation. <a href="https://clearhead.in/terms" target="_blank" rel="noopener">Terms</a></p>
+        <p class="fine paid-only">Next screen is my Cal.com calendar, where you pick your first session. Your payment is already confirmed. <a href="https://clearhead.in/terms" target="_blank" rel="noopener">Terms</a></p>
         <button class="link back" type="button" data-back>Back</button>
       </section>
     </form>
@@ -286,6 +303,7 @@
           <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li>
         </ul>
         <p>Outside India, please call your local emergency number or a crisis line where you are. You don't have to carry this alone.</p>
+        <p class="paid-only paid-note">About your payment: there is nothing you need to do about it today. When you are ready, write to <a href="mailto:hello@clearhead.in">hello@clearhead.in</a> and we will sort it out, whether that means a full refund or a pause. No rush.<span class="pid-wrap" hidden> Your payment ID is <strong class="pid-val"></strong>.</span></p>
       </div>
       <p class="out-links"><a href="https://clearhead.in/">Back to Clearhead</a></p>
     </section>
@@ -303,8 +321,10 @@
           <li><strong>iCall</strong> (TISS): <a href="tel:9152987821">9152987821</a></li>
           <li><strong>NIMHANS</strong>: <a href="https://nimhans.ac.in" target="_blank" rel="noopener">nimhans.ac.in</a></li>
         </ul>
-        <p>If the professional treating you thinks a coaching conversation alongside your care would help, message me and I'll be honest about fit.</p>
-        <p><a class="btn-line" href="https://wa.me/919028902948?text=Hi%20Vaibhav%2C%20I%20filled%20in%20the%20pre-call%20form.%20I%27m%20under%20clinical%20care%20and%20would%20like%20to%20check%20whether%20coaching%20alongside%20it%20could%20be%20a%20fit." rel="noopener">Message Vaibhav on WhatsApp</a></p>
+        <p>If the professional treating you thinks a coaching conversation alongside your care would help, email me and I'll be honest about fit.</p>
+        <p class="paid-only paid-note">About your payment: unless we agree that coaching can sit alongside your care, it will be refunded in full (see <a href="https://clearhead.in/terms" target="_blank" rel="noopener">Terms</a>). I will be in touch to arrange it, or you can write to <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>.<span class="pid-wrap" hidden> Your payment ID is <strong class="pid-val"></strong>.</span></p>
+        <p><a class="btn-line" href="mailto:hello@clearhead.in?subject=Pre-call%20form&amp;body=Hi%20Vaibhav%2C%20I%20filled%20in%20the%20pre-call%20form.%20I%27m%20under%20clinical%20care%20and%20would%20like%20to%20check%20whether%20coaching%20alongside%20it%20could%20be%20a%20fit.">Email Vaibhav</a></p>
+        <p class="save-note" id="save-note" hidden>Your answers may not have reached me. If you would like me to see them, a short email is enough.</p>
       </div>
       <p class="out-links"><a href="https://clearhead.in/">Back to Clearhead</a></p>
     </section>
@@ -315,6 +335,8 @@
     <span><a href="https://clearhead.in/privacy-policy">Privacy Policy</a> &middot; <a href="https://clearhead.in/terms">Terms</a></span>
   </footer>
 
+  <script>window.CH_NO_BANNER = true;</script>
+  <script src="analytics.js" defer></script>
   <script>
   (function () {
     'use strict';
@@ -322,17 +344,44 @@
     var LIVE   = /(^|\.)clearhead\.in$/.test(location.hostname);
     var FRAMED = (function () { try { return window.self !== window.top; } catch (e) { return true; } })();
 
+    // Someone who has just paid arrives from pricing.html as ?via=paid-<plan>&cal=<slug>&pid=<payment id>.
+    var PLAN_NAME = { 'starter': 'Starter', 'going-deeper': 'Going Deeper', 'long-game': 'The Long Game' };
+    var PLAN_CAL  = { 'starter': 'starter', 'going-deeper': 'going-deeper', 'long-game': 'the-long-game' };
+    var PAID_PLAN = '', PAID_ID = '';
+    function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+
+    // Analytics is optional: this only records anything if the visitor already said yes elsewhere on the site.
+    function track(name, params) { try { if (window.chTrack) { window.chTrack(name, params || {}); } } catch (e) {} }
+
     document.getElementById('yr').textContent = new Date().getFullYear();
     if (!LIVE) { document.getElementById('preview-note').classList.add('on'); }
     try {
-      var via = new URLSearchParams(location.search).get('via');
-      if (via) { document.getElementById('f-source').value = via.replace(/[^\w-]/g, '').slice(0, 40); }
-      var topicParam = new URLSearchParams(location.search).get('topic');
+      var qs  = new URLSearchParams(location.search);
+      var via = (qs.get('via') || '').replace(/[^\w-]/g, '').slice(0, 40);
+      if (via) { document.getElementById('f-source').value = via; }
+      if (via.indexOf('paid-') === 0 && has(PLAN_NAME, via.slice(5))) {
+        PAID_PLAN = via.slice(5);
+        PAID_ID   = (qs.get('pid') || '').replace(/[^\w-]/g, '').slice(0, 40);
+        CAL       = 'https://cal.com/vaibhavjain/' + PLAN_CAL[PAID_PLAN];
+      }
+      var topicParam = qs.get('topic');
       if (topicParam) { document.getElementById('f-topic').value = topicParam.slice(0, 400); }
-      var calParam = new URLSearchParams(location.search).get('cal');
+      var calParam = qs.get('cal');
       var ALLOWED_CAL = ['30min', 'starter', 'going-deeper', 'the-long-game'];
-      if (calParam && ALLOWED_CAL.indexOf(calParam) !== -1) { CAL = 'https://cal.com/vaibhavjain/' + calParam; }
+      // The package calendars are only ever opened for someone who has just paid.
+      if (calParam && ALLOWED_CAL.indexOf(calParam) !== -1 && (PAID_PLAN || calParam === '30min')) { CAL = 'https://cal.com/vaibhavjain/' + calParam; }
     } catch (e) {}
+
+    document.getElementById('f-plan').value = PAID_PLAN;
+    document.getElementById('f-pid').value  = PAID_ID;
+    if (PAID_PLAN) {
+      document.body.classList.add('is-paid');
+      document.getElementById('paid-plan').textContent = PLAN_NAME[PAID_PLAN];
+      if (PAID_ID) {
+        [].forEach.call(document.querySelectorAll('.pid-val'), function (el) { el.textContent = PAID_ID; });
+        [].forEach.call(document.querySelectorAll('.pid-wrap'), function (el) { el.hidden = false; });
+      }
+    }
 
     var form  = document.getElementById('call-form');
     var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
@@ -340,7 +389,19 @@
     var count = document.getElementById('count');
     var bar   = document.getElementById('bar');
     var cur   = 0;
+    var lastGo   = 0;       // when the current screen appeared
     var finished = false;
+    var saved    = true;    // becomes false if the answers could not be recorded
+
+    // Every screen of options gets a Continue button that only keyboard users ever see.
+    steps.forEach(function (s) {
+      var opts = s.querySelector('.opts');
+      if (!opts) { return; }
+      var row = document.createElement('div');
+      row.className = 'row kb-only';
+      row.innerHTML = '<button class="btn" type="button" data-next>Continue</button>';
+      opts.parentNode.insertBefore(row, opts.nextSibling);
+    });
 
     function val(id) { return document.getElementById(id).value.trim(); }
     function radio(name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; }
@@ -349,11 +410,17 @@
     function go(i) {
       steps.forEach(function (s, k) { s.classList.toggle('on', k === i); });
       cur = i;
+      lastGo = Date.now();
       count.textContent = (i + 1) + ' of ' + TOTAL;
       bar.style.width = Math.round(((i + 1) / TOTAL) * 100) + '%';
       window.scrollTo({ top: 0, behavior: 'smooth' });
       var f = steps[i].querySelector('input[type="text"], input[type="email"], input[type="tel"], textarea');
       if (f) { setTimeout(function () { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }, 60); }
+      else {
+        // No field to focus: put focus on the question so keyboard and screen-reader users start in the right place.
+        var q = steps[i].querySelector('.q');
+        if (q) { q.setAttribute('tabindex', '-1'); try { q.focus({ preventScroll: true }); } catch (e) {} }
+      }
     }
 
     function validStep(step) {
@@ -369,7 +436,11 @@
 
     // Where to go after the current screen. Safety flags exit immediately.
     function advance() {
-      var id = steps[cur].getAttribute('data-step');
+      if (finished) { return; }
+      var step = steps[cur], id = step.getAttribute('data-step');
+      // A screen of options has to be answered before we move on. This is what stops an unanswered safety question being skipped.
+      var firstRadio = step.querySelector('input[type="radio"]');
+      if (firstRadio && !radio(firstRadio.name)) { return; }
       if (id === 'harm' && radio('self_harm_thoughts') === 'yes') { return finish('crisis'); }
       if (id === 'crisis') {
         if (radio('in_crisis') === 'yes') { return finish('crisis'); }
@@ -378,10 +449,11 @@
       if (cur < TOTAL - 1) { go(cur + 1); } else { finish('good'); }
     }
 
-    // Next / Skip / Back buttons
+    // Next / Skip / Back / Continue buttons. A second click in the first moments of a new screen is ignored (double-clicks).
     form.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b) { return; }
+      if (Date.now() - lastGo < 300) { e.preventDefault(); return; }
       if (b.hasAttribute('data-back')) { e.preventDefault(); if (cur > 0) { go(cur - 1); } return; }
       if (b.hasAttribute('data-next')) {
         e.preventDefault();
@@ -390,14 +462,29 @@
       }
     });
 
-    // Tapping an answer moves on by itself
+    // Tapping an answer moves on by itself. One of these screens is a safety question, so there are three guards:
+    //  1. a tap in the first moments after a screen appears is ignored, so the second half of a double-tap
+    //     can never answer the next question before it has been read;
+    //  2. each screen moves on at most once, so two quick taps cannot skip a screen;
+    //  3. an answer chosen with the keyboard never jumps ahead: a Continue button appears instead.
+    var lastInput = 'pointer', waiting = null;
+    ['pointerdown', 'mousedown', 'touchstart'].forEach(function (t) {
+      form.addEventListener(t, function () { lastInput = 'pointer'; }, { capture: true, passive: true });
+    });
+    form.addEventListener('keydown', function () { lastInput = 'key'; }, true);
     form.addEventListener('click', function (e) {
-      if (e.target.matches('input[type="radio"]')) { setTimeout(advance, 200); }
+      if (!e.target.matches('input[type="radio"]')) { return; }
+      var stepEl = e.target.closest('.step');
+      if (stepEl !== steps[cur] || Date.now() - lastGo < 450) { e.preventDefault(); return; }
+      if (lastInput === 'key') { stepEl.classList.add('kb'); return; }
+      if (waiting === stepEl) { return; }
+      waiting = stepEl;
+      setTimeout(function () { waiting = null; if (steps[cur] === stepEl) { advance(); } }, 200);
     });
 
     // Enter in a text field = Next
     form.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && e.target.matches('input[type="text"], input[type="email"], input[type="tel"]')) {
+      if (e.key === 'Enter' && !e.repeat && e.target.matches('input[type="text"], input[type="email"], input[type="tel"]')) {
         e.preventDefault();
         if (validStep(steps[cur])) { advance(); }
       }
@@ -406,7 +493,7 @@
     form.addEventListener('input', function (e) { var s = e.target.closest('.step'); if (s) { s.classList.remove('invalid'); } });
     form.addEventListener('change', function (e) { var s = e.target.closest('.step'); if (s) { s.classList.remove('invalid'); } });
 
-    // Final screen
+    // Final screen (and Enter on a chosen option)
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (validStep(steps[cur])) { advance(); }
@@ -418,7 +505,9 @@
     function bookingUrl() {
       var wa = val('f-whatsapp'), d = digits(wa);
       var waFmt = (wa.charAt(0) === '+' ? '+' : (d.length === 10 ? '+91 ' : '')) + d;
-      var parts = ['Pre-call form: done', 'WhatsApp: ' + waFmt, 'Wants: ' + (LOOK[radio('looking_for')] || ''), 'Mental-health treatment: ' + (DIAG[radio('diagnosed')] || '')];
+      var parts = [saved ? 'Pre-call form: done' : 'Pre-call form: done, but NOT saved to my inbox'];
+      if (PAID_PLAN) { parts.push('Paid: ' + PLAN_NAME[PAID_PLAN] + (PAID_ID ? ' (' + PAID_ID + ')' : '')); }
+      parts.push('WhatsApp: ' + waFmt, 'Wants: ' + (LOOK[radio('looking_for')] || ''), 'Mental-health treatment: ' + (DIAG[radio('diagnosed')] || ''));
       var topic = val('f-topic');
       if (topic) { parts.push('Note: ' + topic.slice(0, 300)); }
       return CAL + '?name=' + encodeURIComponent(val('f-name')) + '&email=' + encodeURIComponent(val('f-email')) + '&notes=' + encodeURIComponent(parts.join(' | '));
@@ -428,18 +517,52 @@
       form.style.display = 'none';
       count.textContent = '';
       bar.style.width = '100%';
-      document.getElementById('out-' + outcome).classList.add('on');
+      var out = document.getElementById('out-' + outcome);
+      out.classList.add('on');
+      var h = out.querySelector('h2');
+      if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll: true }); } catch (e) {} }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       if (outcome === 'good') {
         var url = bookingUrl(), link = document.getElementById('book-link');
         link.href = url;
         if (FRAMED) { link.target = '_blank'; }
         if (LIVE && !FRAMED) {
+          track('booking_redirect', { paid: PAID_PLAN ? 'yes' : 'no' });
           setTimeout(function () { window.location.assign(url); }, 900);
         } else {
           document.getElementById('good-status').textContent = 'Tap the button to open the calendar.';
         }
       }
+    }
+
+    // One attempt to record the answers. Resolves true only if the server really accepted the form:
+    // a 404 or 500 reply, a network error and a timeout all count as "not saved".
+    function sendOnce(body, ms) {
+      return new Promise(function (resolve) {
+        var done = false;
+        var ctl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () {
+          if (done) { return; }
+          done = true;
+          if (ctl) { try { ctl.abort(); } catch (e) {} }
+          resolve(false);
+        }, ms);
+        var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body, keepalive: true };
+        if (ctl) { opts.signal = ctl.signal; }
+        try {
+          fetch('/', opts).then(
+            function (res) { if (done) { return; } done = true; clearTimeout(timer); resolve(!!res && res.ok); },
+            function ()    { if (done) { return; } done = true; clearTimeout(timer); resolve(false); }
+          );
+        } catch (e) { done = true; clearTimeout(timer); resolve(false); }
+      });
+    }
+    // Try twice before giving up.
+    function record(body) {
+      return sendOnce(body, 4500).then(function (ok) {
+        if (ok) { return true; }
+        return new Promise(function (r) { setTimeout(r, 600); }).then(function () { return sendOnce(body, 3500); });
+      });
     }
 
     function finish(outcome) {
@@ -448,17 +571,25 @@
       document.getElementById('f-outcome').value = outcome;
       var btn = document.getElementById('submit-btn');
       btn.disabled = true; btn.textContent = 'One moment…';
-      var shown = false;
-      function proceed() { if (!shown) { shown = true; show(outcome); } }
-      if (LIVE) {
-        // Netlify Forms: record every response, including screened-out ones, so Vaibhav can follow up.
-        var body  = new URLSearchParams(new FormData(form)).toString();
-        var timer = setTimeout(proceed, 6000);
-        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
-          .then(function () { clearTimeout(timer); proceed(); }, function () { clearTimeout(timer); proceed(); });
-      } else {
-        proceed();
+      track('screening_complete', { outcome: outcome === 'good' ? 'good' : 'screened_out', paid: PAID_PLAN ? 'yes' : 'no' });
+      if (!LIVE) { show(outcome); return; }
+      // Netlify Forms: record every response, including screened-out ones, so Vaibhav can follow up.
+      var body = new URLSearchParams(new FormData(form)).toString();
+      if (outcome !== 'good') {
+        // Someone who needs support sees it straight away; their answers are recorded in the background.
+        show(outcome);
+        record(body).then(function (ok) {
+          if (ok) { return; }
+          saved = false;
+          track('lead_save_failed', { form_name: 'call-screening' });
+          var note = document.getElementById('save-note');
+          if (note && outcome === 'clinical') { note.hidden = false; }
+        });
+        return;
       }
+      // Good fit: record first so the lead is not lost, but never keep the visitor waiting long.
+      // If it still fails, the booking notes say so and Vaibhav sees the answers there instead.
+      record(body).then(function (ok) { if (!ok) { saved = false; track('lead_save_failed', { form_name: 'call-screening' }); } show('good'); });
     }
 
     go(0);

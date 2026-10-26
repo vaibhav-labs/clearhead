@@ -129,7 +129,7 @@
       </p>
       <div class="tk-startwrap" id="cb-startwrap">
         <button class="btn-primary" type="button" id="cb-start">Start the 2-minute audit →</button>
-        <p class="tk-fineprint">Nothing is saved. Nothing is sent. Just clarity, for you.</p>
+        <p class="tk-fineprint">Your answers stay on this page. Nothing is sent unless you choose to unlock the full results with your email.</p>
         <p class="tk-fineprint">How it's scored: your answers across open loops, context switching, system dependency, and recovery are combined into one bandwidth number — a self-report snapshot to prompt reflection, not a clinical or diagnostic instrument.</p>
       </div>
     </header>
@@ -234,7 +234,7 @@
       <div class="tk-gate-card" id="cb-gate-card">
         <p class="eyebrow">The next step</p>
         <h2 id="cb-gate-h">Unlock your personalised Leak Audit & Workflow Protocol.</h2>
-        <p>The number is the first half. The second half is knowing <em>which specific leak</em> is taking the most off your day. The one workflow shift that actually closes it. I'll send your protocol straight to your inbox.</p>
+        <p>The number is the first half. The second half is knowing <em>which specific leak</em> is taking the most off your day. The one workflow shift that actually closes it. It opens on this page as soon as you unlock it.</p>
 
         <form class="tk-gate-form" id="cb-gate-form" name="bandwidth-leads" method="POST"
               data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you.html">
@@ -252,14 +252,15 @@
           <input type="hidden" id="cb-g-snapshot" name="snapshot_json" />
           <label class="consent-check">
             <input type="checkbox" name="privacy_consent" required />
-            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your scores stay private.</span>
+            <span>I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. No spam. Your answers are used only to reply to you.</span>
           </label>
           <div class="tk-gate-actions">
             <button type="submit" class="btn-primary">Unlock my Leak Audit →</button>
             <span class="tk-or">or</span>
-            <a href="index.html#contact" class="btn-text">Book a discovery conversation →</a>
+            <a id="cb-book-call" href="call.html?via=bandwidth" class="btn-text" target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
           </div>
-          <p class="tk-fineprint">Submitting reveals the audit below. Your scores aren't sent until you confirm.</p>
+          <p class="tk-fineprint">Submitting sends your name, email and answers to me, and opens the audit below.</p>
+          <p class="tk-fineprint" id="cb-save-note" role="alert" hidden style="color:#b84040">Your results are open below, but I could not save your details just now. Press the button again to retry, or email <a href="mailto:hello@clearhead.in">hello@clearhead.in</a>.</p>
         </form>
       </div>
 
@@ -289,9 +290,9 @@
 
           <div class="tk-cta-strip">
             <h3>Want to install the system, not just read about it?</h3>
-            <p>1:1 coaching is where this becomes structural. A thinking partner. Weekly accountability. The design work to rebuild the loops you've outgrown. The audit tells you the leak. Coaching helps you close it permanently.</p>
-            <a class="btn-primary" href="pricing.html">See coaching sessions →</a>
-            <a class="btn-text" href="index.html#contact">Send an enquiry</a>
+            <p>1:1 coaching is where this becomes structural. A thinking partner. Accountability between sessions. The design work to rebuild the loops you've outgrown. The audit tells you the leak. Coaching helps you close it permanently.</p>
+            <a class="btn-primary" id="cb-book-call-2" href="call.html?via=bandwidth" target="_blank" rel="noopener noreferrer">Book a free 30-minute conversation →</a>
+            <a class="btn-text" href="pricing.html">See coaching packages</a>
             <a class="btn-text" href="mailto:hello@clearhead.in?subject=Bandwidth%20audit%20%E2%80%94%20follow-up">Or email directly</a>
           </div>
         </div>
@@ -319,7 +320,6 @@
     <div class="footer-contact">
       <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
       <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
-      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -375,6 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
     $('cb-prog-label').textContent = 'Step ' + current + ' of ' + totalSteps;
   }
   $('cb-start').addEventListener('click', function () {
+    track('tool_start', { tool: 'bandwidth' });
     $('cb-startwrap').hidden = true;
     show('cb-phase-form');
     goStep(1);
@@ -389,6 +390,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ---- Compute --------------------------------------------------
   $('cb-compute').addEventListener('click', function () {
     var result = E.compute(snapshot);
+    track('tool_complete', { tool: 'bandwidth' });
     $('cb-bignum').textContent = result.bandwidth;
     $('cb-aha-msg').textContent = result.diagnosis;
     $('cb-phase-aha').setAttribute('data-tone', result.tone);
@@ -431,24 +433,56 @@ document.addEventListener('DOMContentLoaded', function () {
       '<strong>Start here: ' + top.name + '.</strong> ' + top.protocol;
   }
 
-  // ---- Gate: simulate unlock locally for instant reveal ---------
+  // ---- lead capture ---------------------------------------------
+  // The reveal never waits for the network, but a failed save is never silent:
+  // one automatic retry, then a visible note and a re-enabled button.
+  function track(n, p) { try { if (window.chTrack) { window.chTrack(n, p || {}); } } catch (e) {} }
+
+  function saveLead(form, done) {
+    var body = new URLSearchParams(new FormData(form)).toString();
+    function once() {
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = ctl ? setTimeout(function () { ctl.abort(); }, 12000) : 0;
+      var opts = { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body, keepalive: true };
+      if (ctl) { opts.signal = ctl.signal; }
+      return fetch('/', opts).then(
+        function (r) { clearTimeout(timer); return r.ok; },
+        function () { clearTimeout(timer); return false; }
+      );
+    }
+    once().then(function (ok) {
+      return ok ? true : new Promise(function (r) { setTimeout(r, 800); }).then(once);
+    }).then(done);
+  }
+
+  // ---- Gate: reveal immediately, save in the background ---------
   $('cb-gate-form').addEventListener('submit', function (e) {
-    // Let Netlify Forms also capture the POST — but unlock immediately for UX.
-    var name = $('cb-g-name').value.trim();
+    var name  = $('cb-g-name').value.trim();
     var email = $('cb-g-email').value.trim();
-    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return; // browser validates too
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
     e.preventDefault();
 
-    // Submit to Netlify in background
-    var fd = new FormData(e.target);
-    fetch('/', { method: 'POST', body: new URLSearchParams(fd).toString(),
-                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-      .catch(function(){ /* fall through silently — unlock UX should not be blocked */ });
+    var btn  = e.target.querySelector('button[type="submit"]');
+    var note = $('cb-save-note');
+    if (btn) { btn.disabled = true; }
+    if (note) { note.hidden = true; }
 
-    unlockPayload();
+    unlockPayload('email');
+    saveLead(e.target, function (ok) {
+      if (ok) { track('generate_lead', { form_name: 'bandwidth-leads', tool: 'bandwidth' }); return; }
+      track('lead_save_failed', { form_name: 'bandwidth-leads', tool: 'bandwidth' });
+      if (btn) { btn.disabled = false; }
+      if (note) { note.hidden = false; }
+    });
   });
 
-  function unlockPayload() {
+  // Booking from the gate also reveals the results: the visitor keeps this tab, the call page opens in a new one.
+  var gateBook = $('cb-book-call');
+  if (gateBook) { gateBook.addEventListener('click', function () { unlockPayload('booking'); }); }
+
+  var unlocked = false;
+  function unlockPayload(method) {
+    if (!unlocked) { unlocked = true; track('tool_unlock', { tool: 'bandwidth', method: method || 'email' }); }
     $('cb-gate-card').classList.add('tk-gate-done');
     $('cb-payload').classList.add('unlocked');
     setTimeout(function () {

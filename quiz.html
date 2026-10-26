@@ -244,13 +244,13 @@
                   type="tel"
                   id="f-phone"
                   name="phone"
-                  placeholder="10-digit number"
-                  maxlength="10"
-                  inputmode="numeric"
+                  placeholder="Mobile number"
+                  maxlength="20"
+                  inputmode="tel"
                   autocomplete="tel"
                   required
                 />
-                <span class="field-error" id="err-phone">Please enter a valid 10-digit mobile number (digits only).</span>
+                <span class="field-error" id="err-phone">Please enter a valid mobile number (8 to 15 digits). Add the country code if you are outside India.</span>
               </div>
 
               <div class="quiz-field">
@@ -324,7 +324,7 @@
           <div class="result-card warm">
             <div class="result-icon">◎</div>
             <h2>This kind of conversation needs a private space.</h2>
-            <p>Sessions at Clearhead are fully confidential, and that only works in a space where nobody can overhear. A café or public setting makes real confidentiality impossible, and it matters more than you might think.</p>
+            <p>Sessions at Clearhead are confidential, and that only works in a space where nobody can overhear. A café or public setting makes real confidentiality impossible, and it matters more than you might think.</p>
             <p>If you're open to an online session (a private video call from wherever you are) or coming in-person to Lokhandwala, Mumbai, you're very welcome. Come back and go through this again with that in mind.</p>
           </div>
           <p class="result-nav-links"><a href="quiz.html">← Try again</a> &nbsp;·&nbsp; <a href="index.html">Back to Clearhead</a></p>
@@ -364,7 +364,6 @@
     <div class="footer-contact">
       <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
       <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
-      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -389,6 +388,10 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   var resultsEl = document.getElementById('quiz-results');
   var answers   = {};
   var current   = 0;
+  var started   = false;
+
+  // Analytics (consent-gated inside analytics.js; no-op if declined). The outcome is deliberately coarse.
+  function track(name, params) { try { if (window.chTrack) { window.chTrack(name, params || {}); } } catch (e) {} }
 
   function setProgress(n) {
     var pct = Math.round(((n + 1) / steps.length) * 100);
@@ -414,6 +417,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     opts.forEach(function (opt) {
       opt.addEventListener('click', function () {
         opts.forEach(function (o) { o.classList.remove('selected'); });
+        if (!started) { started = true; track('quiz_start', {}); }
         opt.classList.add('selected');
         opt.querySelector('input[type="radio"]').checked = true;
         if (nextBtn) nextBtn.disabled = false;
@@ -465,6 +469,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       b.hidden = true;
     });
     document.getElementById('result-' + which).hidden = false;
+    track('quiz_complete', { outcome: which === 'good' ? 'good' : 'other' });
 
     // Special note for advice-seekers who still qualify
     if (which === 'good' && answers.q1 === 'b') {
@@ -499,14 +504,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Phone: strip non-digits in real time
+  // Phone: digits, spaces, hyphens and one leading + (so numbers from outside India work too)
   var phoneInput = document.getElementById('f-phone');
   if (phoneInput) {
     phoneInput.addEventListener('input', function () {
-      phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+      phoneInput.value = phoneInput.value.replace(/[^\d+\s-]/g, '').replace(/(?!^)\+/g, '').slice(0, 20);
     });
     phoneInput.addEventListener('keypress', function (e) {
-      if (!/[0-9]/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+      if (e.key && e.key.length === 1 && !/[0-9+\s-]/.test(e.key) && !e.ctrlKey && !e.metaKey) {
         e.preventDefault();
       }
     });
@@ -533,7 +538,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       }
 
       check('f-name',  'err-name',  function (v) { return v.trim().length >= 2; });
-      check('f-phone', 'err-phone', function (v) { return /^\d{10}$/.test(v.trim()); });
+      check('f-phone', 'err-phone', function (v) { var d = v.replace(/\D/g, ''); return d.length >= 8 && d.length <= 15; });
       check('f-email', 'err-email', function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); });
 
       if (!ok) e.preventDefault();

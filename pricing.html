@@ -37,6 +37,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" />
 <link rel="stylesheet" href="styles.css" />
+<style>
+  /* Payment result and the "welcome back" banner (this page only) */
+  .pay-overlay { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.25rem; overflow-y: auto; background: rgba(255, 255, 255, 0.96); }
+  .pay-overlay[hidden] { display: none; }
+  .pay-ov-card { width: 100%; max-width: 30rem; margin: auto; background: var(--bg); border: 1px solid var(--ink); border-radius: var(--radius); padding: 1.75rem 1.5rem; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12); outline: none; }
+  .pay-ov-mark { font-size: 1.6rem; line-height: 1; margin: 0 0 0.5rem; color: var(--navy); }
+  .pay-ov-card h2 { font-size: 1.5rem; line-height: 1.2; margin: 0 0 0.75rem; }
+  .pay-ov-card p { margin: 0 0 0.8rem; }
+  .pay-ov-card .pay-ov-small { font-size: 0.88rem; color: var(--ink-soft); word-break: break-word; }
+  .pay-ov-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-top: 1.25rem; }
+  .pay-linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 0.95rem; color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .pay-linkbtn:hover { color: var(--ink); }
+  .pay-returning { width: calc(100% - 2 * var(--pad)); max-width: var(--maxw); margin: 1rem auto 0; padding: 0.9rem 1.1rem; border: 1px solid var(--ink); border-radius: var(--radius); background: var(--navy-soft); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.25rem; font-size: 0.95rem; }
+  .pay-returning[hidden] { display: none; }
+  .pay-returning p { margin: 0; }
+  .pay-returning-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1rem; }
+</style>
 
 <script type="application/ld+json">
 {
@@ -86,6 +103,12 @@
 </header>
 
 <main>
+
+  <!-- Shown when this browser has a recent verified payment, so a closed tab never loses the booking step. -->
+  <div class="pay-returning" id="pay-returning" hidden>
+    <p id="pay-returning-text"></p>
+    <p class="pay-returning-actions"><a class="btn-primary" id="pay-returning-go" href="call.html">Continue to book your first session &rarr;</a> <button type="button" class="pay-linkbtn" id="pay-returning-hide">Hide</button></p>
+  </div>
 
   <div class="blog-index-hero pricing-hero">
     <div>
@@ -164,7 +187,7 @@
 
     </div>
 
-    <p class="pricing-note">Payments are handled securely by Razorpay. UPI, cards, netbanking, and wallets available. Payment is in full, in one payment. Part payments are not offered. All packages can be paused once for up to 30 days. Cancellations before the second session are refunded in full. <strong>After payment, you'll pick your first slot on the calendar right away.</strong> <br><br><strong>Not sure yet?</strong> Start with the <a href="#explore">free 30-minute conversation</a>, or <a href="quiz.html">take the 4-question fit quiz</a>.</p>
+    <p class="pricing-note">Payments are handled securely by Razorpay. UPI, cards, netbanking, and wallets available. Payment is in full, in one payment. Part payments are not offered. All packages can be paused once for up to 30 days. Cancellations before the second session are refunded in full. <strong>After payment, you'll answer a few quick questions (about a minute), then pick your first slot on the calendar.</strong> <br><br><strong>Not sure yet?</strong> Start with the <a href="#explore">free 30-minute conversation</a>, or <a href="quiz.html">take the 4-question fit quiz</a>.</p>
     <p class="pay-terms">By paying, you agree to the <a href="terms.html">Terms of Service</a> (including the no-refund policy after the second session) and <a href="privacy-policy.html">Privacy Policy</a>.</p>
     <p class="pay-status" id="pay-status" role="status" aria-live="polite"></p>
   </section>
@@ -188,7 +211,6 @@
     <div class="footer-contact">
       <p>Lokhandwala Complex, Andheri West, Mumbai 400053, Maharashtra, India</p>
       <p><span class="js-email" data-u="hello" data-d="clearhead.in"></span></p>
-      <p><a href="tel:+919028902948">+91 90289 02948</a> · <a href="https://wa.me/919028902948" rel="nofollow">WhatsApp</a></p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -196,6 +218,25 @@
     <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms.html">Terms</a></span>
   </div>
 </footer>
+
+<!-- Payment result. Filled in by the script below, so the outcome of a payment can never be left off-screen. -->
+<div class="pay-overlay" id="pay-overlay" role="dialog" aria-modal="true" aria-labelledby="pay-ov-title" hidden>
+  <div class="pay-ov-card" id="pay-ov-card" tabindex="-1">
+    <p class="pay-ov-mark" id="pay-ov-mark" aria-hidden="true"></p>
+    <h2 id="pay-ov-title"></h2>
+    <div id="pay-ov-body"></div>
+    <div class="pay-ov-actions" id="pay-ov-actions"></div>
+  </div>
+</div>
+
+<!-- A server-side record of every payment this page sees (Netlify Forms), independent of the webhook and email.
+     No card details and no personal details are sent: only the plan, amount and Razorpay IDs. -->
+<form name="payment-record" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" hidden aria-hidden="true">
+  <input type="hidden" name="form-name" value="payment-record" />
+  <p><label>Leave this empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+  <input type="hidden" name="plan" /><input type="hidden" name="payment_id" /><input type="hidden" name="order_id" />
+  <input type="hidden" name="amount_inr" /><input type="hidden" name="verified" /><input type="hidden" name="page" />
+</form>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
@@ -206,12 +247,40 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 (function () {
   'use strict';
 
+  // The server decides what is charged (create-order.js). Names and calendars live here; the
+  // amount on each button is only used to check that the page and the server agree.
+  var PLANS = {
+    'starter':      { name: 'Starter',       cal: 'starter' },
+    'going-deeper': { name: 'Going Deeper',  cal: 'going-deeper' },
+    'long-game':    { name: 'The Long Game', cal: 'the-long-game' }
+  };
+  var STORE_KEY = 'ch_paid_v1';                 // remembers a verified payment in this browser
+  var KEEP_MS   = 45 * 24 * 60 * 60 * 1000;     // for 45 days
+
   var statusEl = document.getElementById('pay-status');
+  var overlay  = document.getElementById('pay-overlay');
+  var btns     = document.querySelectorAll('.pay-btn');
+  var busy     = false;                         // one checkout at a time
+  var lastBtn  = null;                          // the package button that was pressed
+
+  function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+  function safeId(s) { return String(s == null ? '' : s).replace(/[^\w-]/g, '').slice(0, 60); }
+  function track(name, params) { try { if (window.chTrack) { window.chTrack(name, params || {}); } } catch (e) {} }
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    if (attrs) { Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); }); }
+    if (text != null) { n.textContent = text; }
+    return n;
+  }
+  function lock(on) { [].forEach.call(btns, function (b) { b.disabled = on; }); }
+  function free() { busy = false; lock(false); }
 
   function setStatus(msg, kind) {
-    if (!statusEl) return;
+    if (!statusEl) { return; }
     statusEl.textContent = msg || '';
     statusEl.dataset.kind = kind || '';
+    // The packages are stacked on a phone, so a message under them can sit far below the button. Bring it into view.
+    if (msg && (kind === 'error' || kind === 'info')) { try { statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {} }
   }
 
   function postJSON(url, data) {
@@ -228,96 +297,270 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     });
   }
 
-  document.querySelectorAll('.pay-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var amount = parseInt(btn.getAttribute('data-amount'), 10);
-      var label  = btn.getAttribute('data-label') || 'Coaching package';
-      var plan   = btn.getAttribute('data-plan')  || 'package';
+  // ---- what this browser remembers about a verified payment ----
+  function readPaid() {
+    try {
+      var r = JSON.parse(window.localStorage.getItem(STORE_KEY) || 'null');
+      if (!r || typeof r !== 'object' || !has(PLANS, r.plan) || !r.at) { return null; }
+      if (Date.now() - r.at > KEEP_MS) { window.localStorage.removeItem(STORE_KEY); return null; }
+      return { plan: r.plan, pid: safeId(r.pid), oid: safeId(r.oid), at: +r.at, hidden: !!r.hidden };
+    } catch (e) { return null; }
+  }
+  function writePaid(r) {
+    try { window.localStorage.setItem(STORE_KEY, JSON.stringify(r)); } catch (e) {}
+    var back = readPaid();
+    return !!(back && back.pid === r.pid);
+  }
+  function bookUrl(plan, pid) {
+    return 'call.html?via=paid-' + plan + '&cal=' + PLANS[plan].cal + (pid ? '&pid=' + encodeURIComponent(pid) : '');
+  }
+  function showReturning() {
+    var box = document.getElementById('pay-returning'), r = readPaid();
+    if (!box) { return; }
+    if (!r || r.hidden) { box.hidden = true; return; }
+    var when = new Date(r.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+    document.getElementById('pay-returning-text').textContent =
+      'You paid for ' + PLANS[r.plan].name + ' on ' + when + (r.pid ? ' (payment ID ' + r.pid + ')' : '') + '. Ready to book your first session?';
+    document.getElementById('pay-returning-go').setAttribute('href', bookUrl(r.plan, r.pid));
+    box.hidden = false;
+  }
+  var hideBtn = document.getElementById('pay-returning-hide');
+  if (hideBtn) {
+    hideBtn.addEventListener('click', function () {
+      var r = readPaid();
+      if (r) { r.hidden = true; writePaid(r); }
+      showReturning();
+    });
+  }
 
+  // ---- the result panel (full screen, so it can never be missed) ----
+  var lastFocus = null;
+  function setInert(on) {
+    [].forEach.call(document.querySelectorAll('body > header, body > main, body > footer'), function (n) {
+      if (on) { n.setAttribute('inert', ''); } else { n.removeAttribute('inert'); }
+    });
+  }
+  function onKey(e) { if (e.key === 'Escape') { closeOverlay(); } }
+  function closeOverlay() {
+    overlay.hidden = true;
+    setInert(false);
+    document.removeEventListener('keydown', onKey);
+    // Put focus back where it was. (A pressed button is disabled during checkout, which drops focus, so fall back to it.)
+    var back = (lastFocus && lastFocus !== document.body && lastFocus.focus) ? lastFocus : lastBtn;
+    if (back && back.focus) { try { back.focus(); } catch (e) {} }
+  }
+  // spec: { mark, title, paras: [{ text, small }], actions: [{ label, href, rel, primary, onClick }] }
+  function openOverlay(spec) {
+    var body = document.getElementById('pay-ov-body'), acts = document.getElementById('pay-ov-actions');
+    document.getElementById('pay-ov-mark').textContent = spec.mark || '';
+    document.getElementById('pay-ov-title').textContent = spec.title;
+    body.textContent = ''; acts.textContent = '';
+    spec.paras.forEach(function (p) { body.appendChild(el('p', p.small ? { 'class': 'pay-ov-small' } : null, p.text)); });
+    spec.actions.forEach(function (a) {
+      var cls = a.primary ? 'btn-primary' : 'pay-linkbtn';
+      var n = a.href ? el('a', { href: a.href, 'class': cls }, a.label) : el('button', { type: 'button', 'class': cls }, a.label);
+      if (a.rel) { n.setAttribute('rel', a.rel); }
+      if (a.onClick) { n.addEventListener('click', a.onClick); }
+      acts.appendChild(n);
+    });
+    if (overlay.hidden) { lastFocus = document.activeElement; }
+    overlay.hidden = false;
+    setInert(true);
+    document.addEventListener('keydown', onKey);
+    var card = document.getElementById('pay-ov-card');
+    try { card.focus({ preventScroll: true }); } catch (e) { card.focus(); }
+  }
+
+  function showPaid(plan, pid, remembered) {
+    // The client agreement is a follow-up step, not a gate: offered unless this browser has already signed it.
+    var signed = false;
+    try { signed = !!window.localStorage.getItem('ch_onboarded_v1'); } catch (e) {}
+    var paras = [
+      { text: 'Thank you. Your ' + PLANS[plan].name + ' package is confirmed.' },
+      { text: 'One short step before you book: a few quick questions (about a minute), then you pick your first slot.' }
+    ];
+    if (!signed) { paras.push({ text: 'Before your first session, please also sign the short client agreement (about ten minutes). Any time before then is fine.' }); }
+    paras.push({ text: 'Payment ID: ' + pid + '. Keep this for your records.' + (remembered ? ' If you close this page, you can continue from the top of the pricing page.' : ''), small: true });
+    var actions = [{ label: 'Continue to book your first session →', href: bookUrl(plan, pid), primary: true }];
+    if (!signed) { actions.push({ label: 'Sign the client agreement', href: 'onboard.html?via=paid-' + plan + '&pid=' + encodeURIComponent(pid) }); }
+    actions.push({ label: 'Not now', onClick: closeOverlay });
+    openOverlay({ mark: '✓', title: 'Payment received.', paras: paras, actions: actions });
+  }
+  function showUnconfirmed(plan, pid) {
+    var msg = 'Hi Vaibhav, my payment ID is ' + pid + ' (' + PLANS[plan].name + '). The pricing page could not confirm it. Could you confirm it on your side?';
+    openOverlay({
+      mark: '!',
+      title: 'Your payment went through, but it could not be confirmed here.',
+      paras: [
+        { text: 'The payment reached Razorpay (ID: ' + pid + '), but the confirmation step did not complete on this page. Please do not pay again.' },
+        { text: 'Email hello@clearhead.in with this ID and I will confirm it personally.' }
+      ],
+      actions: [
+        { label: 'Email with this ID', href: 'mailto:hello@clearhead.in?subject=' + encodeURIComponent('Payment ID ' + pid) + '&body=' + encodeURIComponent(msg), primary: true },
+        { label: 'Close', onClick: closeOverlay }
+      ]
+    });
+  }
+  function showAlready(prev, proceed) {
+    var when = new Date(prev.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+    openOverlay({
+      mark: 'i',
+      title: 'You already paid for ' + PLANS[prev.plan].name + '.',
+      paras: [
+        { text: 'Your payment on ' + when + (prev.pid ? ' (ID: ' + prev.pid + ')' : '') + ' went through. If you have not booked yet, you can continue now.' },
+        { text: 'Paying again would be a second, separate purchase.' }
+      ],
+      actions: [
+        { label: 'Continue to book →', href: bookUrl(prev.plan, prev.pid), primary: true },
+        { label: 'Pay again anyway', onClick: function () { closeOverlay(); proceed(); } },
+        { label: 'Close', onClick: closeOverlay }
+      ]
+    });
+  }
+
+  // ---- a server-side record of the payment (Netlify Forms), best effort ----
+  function record(fields) {
+    var data = { 'form-name': 'payment-record', page: 'pricing' };
+    Object.keys(fields).forEach(function (k) { data[k] = fields[k]; });
+    var body = new URLSearchParams(data).toString();
+    function once() {
+      try {
+        return fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body, keepalive: true })
+          .then(function (r) { return r.ok; }, function () { return false; });
+      } catch (e) { return Promise.resolve(false); }
+    }
+    return once().then(function (ok) { return ok ? true : new Promise(function (r) { setTimeout(r, 800); }).then(once); });
+  }
+
+  // ---- confirm the payment with the server, retrying if the network hiccups ----
+  // Resolves 'ok', 'rejected' (the server said the signature is wrong) or 'unreachable'.
+  function verify(response) {
+    var waits = [0, 1500, 3500], i = 0;
+    function again() {
+      i++;
+      if (i >= waits.length) { return Promise.resolve('unreachable'); }
+      return new Promise(function (r) { setTimeout(r, waits[i]); }).then(attempt);
+    }
+    function attempt() {
+      return postJSON('/api/verify-payment', {
+        razorpay_order_id:   response.razorpay_order_id,
+        razorpay_payment_id: response.razorpay_payment_id,
+        razorpay_signature:  response.razorpay_signature
+      }).then(function (r) {
+        if (r.ok && r.body && r.body.verified) { return 'ok'; }
+        if (r.status >= 500) { return again(); }
+        return 'rejected';
+      }, again);
+    }
+    return attempt();
+  }
+
+  function friendly(res) {
+    if (res.status === 400) { return 'This package could not be found. Please reload the page and try again.'; }
+    return 'Payments are not available right now (error ' + res.status + '). Please try again in a few minutes, or email hello@clearhead.in.';
+  }
+
+  function start(plan, expected, label) {
+    busy = true; lock(true);
+    setStatus('Setting up secure payment…', 'loading');
+    var item = [{ item_id: plan, item_name: PLANS[plan].name, quantity: 1, price: expected / 100 }];
+    track('begin_checkout', { currency: 'INR', value: expected / 100, items: item });
+
+    postJSON('/api/create-order', { plan: plan }).then(function (res) {
+      if (!res.ok) { throw new Error(friendly(res)); }
+      var data = res.body || {};
+      // The server set the price. If it is not the price shown on this page, stop before anyone is charged.
+      if (data.amount !== expected || data.currency !== 'INR' || !data.order_id || !data.key_id) {
+        throw new Error('The price on this page does not match the one on my side. Please reload the page, or email hello@clearhead.in.');
+      }
+      var completed = false;
+
+      var options = {
+        key: data.key_id,
+        amount: data.amount,
+        currency: data.currency,
+        order_id: data.order_id,
+        name: 'Clearhead',
+        description: label,
+        image: 'https://clearhead.in/clearhead-logo-og.jpg',
+        theme: { color: '#3053c4' },
+        retry: { enabled: true, max_count: 1 },
+        handler: function (response) {
+          completed = true;
+          var pid = safeId(response.razorpay_payment_id), oid = safeId(response.razorpay_order_id);
+          setStatus('');
+          openOverlay({ mark: '…', title: 'Confirming your payment…', paras: [{ text: 'Please keep this page open for a moment.' }], actions: [] });
+          verify(response).then(function (v) {
+            setStatus('');
+            if (v === 'ok') {
+              var remembered = writePaid({ plan: plan, pid: pid, oid: oid, at: Date.now() });
+              record({ plan: plan, payment_id: pid, order_id: oid, amount_inr: String(expected / 100), verified: 'yes' });
+              track('purchase', { transaction_id: pid, currency: 'INR', value: expected / 100, items: item });
+              showReturning();
+              free();
+              showPaid(plan, pid, remembered);
+            } else {
+              record({ plan: plan, payment_id: pid, order_id: oid, amount_inr: String(expected / 100), verified: 'no (' + v + ')' });
+              track('payment_unconfirmed', { plan: plan });
+              free();
+              showUnconfirmed(plan, pid);
+            }
+          });
+        },
+        modal: {
+          ondismiss: function () {
+            if (completed) { return; }
+            free();
+            setStatus('Payment cancelled. You can try again whenever you are ready.', 'info');
+            track('checkout_dismissed', { plan: plan });
+          }
+        },
+        notes: { plan: plan }
+      };
+
+      var rzp = new Razorpay(options);
+
+      rzp.on('payment.failed', function (resp) {
+        var desc = (resp && resp.error && resp.error.description) || 'Please try a different method, or email hello@clearhead.in.';
+        setStatus('Payment failed: ' + desc, 'error');
+        free();
+        track('payment_failed', { plan: plan, code: (resp && resp.error && resp.error.code) || '' });
+      });
+
+      rzp.open();
+    }).catch(function (err) {
+      setStatus('Could not start payment: ' + err.message, 'error');
+      free();
+    });
+  }
+
+  [].forEach.call(btns, function (btn) {
+    btn.addEventListener('click', function () {
+      if (busy) { return; }
+      var plan = btn.getAttribute('data-plan') || '';
+      var expected = parseInt(btn.getAttribute('data-amount'), 10);
+      var label = btn.getAttribute('data-label') || 'Coaching package';
+      lastBtn = btn;
+
+      if (!has(PLANS, plan) || !expected || expected < 100) {
+        setStatus('This package cannot be paid for online right now. Please email hello@clearhead.in.', 'error');
+        return;
+      }
       if (typeof Razorpay === 'undefined') {
         setStatus('Could not load Razorpay. Please check your internet connection and try again.', 'error');
         return;
       }
-      if (!amount || amount < 100) {
-        setStatus('Invalid amount for this plan. Please email hello@clearhead.in.', 'error');
-        return;
-      }
-
-      btn.disabled = true;
-      setStatus('Setting up secure payment…', 'loading');
-
-      postJSON('/api/create-order', {
-        amount: amount,
-        currency: 'INR',
-        receipt: 'plan_' + plan + '_' + Date.now()
-      }).then(function (res) {
-        if (!res.ok) {
-          throw new Error((res.body && res.body.error) || ('Server returned ' + res.status));
-        }
-        var data = res.body;
-
-        var options = {
-          key: data.key_id,
-          amount: data.amount,
-          currency: data.currency,
-          order_id: data.order_id,
-          name: 'Clearhead',
-          description: label,
-          image: 'https://clearhead.in/clearhead-logo-og.jpg',
-          theme: { color: '#3053c4' },
-          retry: { enabled: true, max_count: 1 },
-          handler: function (response) {
-            setStatus('Verifying payment…', 'loading');
-            postJSON('/api/verify-payment', {
-              razorpay_order_id:   response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature:  response.razorpay_signature
-            }).then(function (vRes) {
-              if (vRes.ok && vRes.body && vRes.body.verified) {
-                var calSlugs = { 'starter': 'starter', 'going-deeper': 'going-deeper', 'long-game': 'the-long-game' };
-                var calSlug = calSlugs[plan] || 'starter';
-                var bookUrl = 'call.html?via=paid-' + encodeURIComponent(plan) + '&cal=' + encodeURIComponent(calSlug);
-                statusEl.innerHTML =
-                  '<strong>Payment received.</strong> One short step before you book: ' +
-                  '<a href="' + bookUrl + '" style="font-weight:500;text-decoration:underline;">Answer a few quick questions, then pick your slot &rarr;</a>' +
-                  '<br><br><small>Payment ID: ' + response.razorpay_payment_id + ' &middot; A confirmation email will follow from hello@clearhead.in.</small>';
-                statusEl.dataset.kind = 'success';
-                try { window.open(bookUrl, '_blank', 'noopener,noreferrer'); } catch (e) {}
-              } else {
-                setStatus('Payment received but verification failed. Please email hello@clearhead.in with your Payment ID: ' + response.razorpay_payment_id, 'error');
-              }
-            }).catch(function () {
-              setStatus('Payment received but verification could not be completed. Please email hello@clearhead.in with your Payment ID: ' + response.razorpay_payment_id, 'error');
-            }).then(function () {
-              btn.disabled = false;
-            });
-          },
-          modal: {
-            ondismiss: function () {
-              btn.disabled = false;
-              setStatus('Payment cancelled. You can try again whenever you are ready.', 'info');
-            }
-          },
-          notes: { plan: plan }
-        };
-
-        var rzp = new Razorpay(options);
-
-        rzp.on('payment.failed', function (resp) {
-          var desc = (resp && resp.error && resp.error.description) || 'Please try a different method, or email hello@clearhead.in.';
-          setStatus('Payment failed: ' + desc, 'error');
-          btn.disabled = false;
-        });
-
-        rzp.open();
-      }).catch(function (err) {
-        setStatus('Could not start payment: ' + err.message, 'error');
-        btn.disabled = false;
-      });
+      // Someone who has already paid for this package is asked before a second charge is started.
+      var prev = readPaid();
+      if (prev && prev.plan === plan) { showAlready(prev, function () { start(plan, expected, label); }); return; }
+      start(plan, expected, label);
     });
   });
+
+  showReturning();
 })();
 </script>
+<script src="analytics.js" defer></script>
 <script src="anim.js" defer></script>
 </body>
 </html>

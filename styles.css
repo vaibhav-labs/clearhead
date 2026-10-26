@@ -2379,8 +2379,3 @@ figure.tile img { margin: 0 auto; }
   .how-visual img { max-height: 260px; }
 }
 
-/* WhatsApp primary button (contact aside) */
-.wa-btn, .band-dark .wa-btn {
-  background: #1da851; border-bottom: none; display: inline-block; margin-top: 0.25rem;
-}
-.wa-btn:hover, .band-dark .wa-btn:hover { background: #178f44; }
