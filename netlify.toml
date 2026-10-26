@@ -103,7 +103,7 @@
   to = "/.netlify/functions/razorpay-webhook"
   status = 200
 
-# Where browsers send Content-Security-Policy violation reports (see the CSP header below)
+# Where browsers send Content-Security-Policy violation reports (the enforced CSP header below names this route)
 [[redirects]]
   from = "/api/csp-report"
   to = "/.netlify/functions/csp-report"
@@ -118,22 +118,28 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    # Content-Security-Policy-Report-Only: the browser reports what it WOULD block but blocks nothing, so it cannot
-    # break the site. Reports go to /api/csp-report (netlify/functions/csp-report.js), which writes one line per
-    # violation to the function log: Netlify > Functions > csp-report, search for "[csp-report]".
-    # TO ENFORCE: read that log for a week or two. When it shows nothing (or only browser-extension noise, which the
-    # function already drops), rename this header to Content-Security-Policy. Do not rename it before there are
-    # reports to read.
-    # Tested 2026-10-25 in a real browser against the live Razorpay checkout, the Google Maps embed, Google Fonts and
-    # GA4 (consent granted): zero violations on pricing, home, Andheri, a blog post, a tool, call, quiz, onboard,
-    # thank-you and tools pages. The previous policy would have BLOCKED the Razorpay checkout frame, Razorpay's
-    # script and logging hosts, and the Google Maps iframe had it ever been enforced.
+    # Content-Security-Policy: ENFORCED since 2026-10-26 (it was report-only from 2026-10-25). The browser blocks any
+    # script, style, font, image, frame or connection from a host that is not listed below, so a NEW third-party
+    # service (a video embed, a chat widget, another font or analytics host) must be added to the matching directive
+    # here BEFORE it goes on a page, or it silently fails.
+    # ROLLBACK, one word: rename this header back to Content-Security-Policy-Report-Only and redeploy. The browser
+    # then only reports what it would block.
+    # Violations are still sent to /api/csp-report (netlify/functions/csp-report.js), which writes one line each to
+    # the function log: Netlify > Functions > csp-report, search for "[csp-report]". A line that names a real site
+    # resource (not a browser extension, which the function already drops) means something legitimate is being
+    # blocked: add its host below.
+    # Checked 2026-10-26 before enforcing: every page, stylesheet and script in the repo was scanned for third-party
+    # hosts (only Google Fonts, Google Maps, GA4, Razorpay and Unsplash images are used), and the policy was run in a
+    # real browser against the live Razorpay checkout, the Google Maps embed, Google Fonts and GA4 (consent granted)
+    # with zero violations on pricing, home, Andheri, a blog post, a tool, call, quiz, onboard, thank-you and tools.
     # Razorpay: *.razorpay.com (checkout.js; cdn. loads the risk-detection script; api. is the checkout iframe;
-    #   lumberjack. is its logging). Google Maps: www.google.com (frame, on the home and Andheri pages only).
-    # GA4: gtag.js from googletagmanager.com, beacons to *.google-analytics.com / *.analytics.google.com; neither is
-    #   contacted unless the visitor accepts the consent banner. Blog images come from images.unsplash.com.
+    #   lumberjack. is its logging; form-action allows its redirect flow). Google Maps: www.google.com (frame, on the
+    #   home and Andheri pages only).
+    # GA4: gtag.js from googletagmanager.com, beacons to *.google-analytics.com, analytics.google.com (and its regional
+    #   subdomains) and www.google.com, which are the endpoints Google documents for GA4; none is contacted unless the
+    #   visitor accepts the consent banner. Blog images come from images.unsplash.com.
     # 'unsafe-inline' stays for scripts and styles because every page has inline script and style blocks.
-    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://*.razorpay.com; connect-src 'self' https://*.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-src https://*.razorpay.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; report-uri /api/csp-report"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://*.razorpay.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://*.google-analytics.com https://*.razorpay.com; connect-src 'self' https://*.razorpay.com https://*.google-analytics.com https://*.analytics.google.com https://analytics.google.com https://www.google.com https://www.googletagmanager.com; frame-src https://*.razorpay.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://*.razorpay.com; frame-ancestors 'none'; report-uri /api/csp-report"
 
 # Long-lived caching for static assets that don't change on every deploy without a filename change.
 # Netlify still checks freshness via ETag on each deploy, so this is safe: it speeds up repeat visits

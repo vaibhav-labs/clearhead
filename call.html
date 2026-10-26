@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Before we talk | Clearhead</title>
-  <meta name="description" content="A one-minute check before your free 30-minute conversation with Vaibhav at Clearhead, Mumbai. Then pick a time." />
+  <meta name="description" content="A one-minute check before your free 15-minute conversation with Vaibhav at Clearhead, Mumbai. Then pick a time." />
   <meta name="robots" content="noindex, nofollow" />
   <link rel="canonical" href="https://clearhead.in/call.html" />
   <meta name="theme-color" content="#ffffff" />
@@ -195,10 +195,10 @@
 
       <!-- 3 · whatsapp -->
       <section class="step" data-step="whatsapp">
-        <p class="q">Your WhatsApp number?</p>
+        <p class="q">Your phone number?</p>
         <p class="hint">The number I can reach you on. Add the country code if you're outside India.</p>
         <div class="field">
-          <label class="hp" for="f-whatsapp">WhatsApp number</label>
+          <label class="hp" for="f-whatsapp">Phone number</label>
           <input type="tel" id="f-whatsapp" name="whatsapp" autocomplete="tel" inputmode="tel" enterkeyhint="next" />
           <p class="err">Please enter a valid number (8 to 15 digits).</p>
         </div>
@@ -507,7 +507,7 @@
       var waFmt = (wa.charAt(0) === '+' ? '+' : (d.length === 10 ? '+91 ' : '')) + d;
       var parts = [saved ? 'Pre-call form: done' : 'Pre-call form: done, but NOT saved to my inbox'];
       if (PAID_PLAN) { parts.push('Paid: ' + PLAN_NAME[PAID_PLAN] + (PAID_ID ? ' (' + PAID_ID + ')' : '')); }
-      parts.push('WhatsApp: ' + waFmt, 'Wants: ' + (LOOK[radio('looking_for')] || ''), 'Mental-health treatment: ' + (DIAG[radio('diagnosed')] || ''));
+      parts.push('Phone: ' + waFmt, 'Wants: ' + (LOOK[radio('looking_for')] || ''), 'Mental-health treatment: ' + (DIAG[radio('diagnosed')] || ''));
       var topic = val('f-topic');
       if (topic) { parts.push('Note: ' + topic.slice(0, 300)); }
       return CAL + '?name=' + encodeURIComponent(val('f-name')) + '&email=' + encodeURIComponent(val('f-email')) + '&notes=' + encodeURIComponent(parts.join(' | '));

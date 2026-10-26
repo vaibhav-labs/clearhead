@@ -6,7 +6,7 @@
 
 **One-line orientation:** `clearhead.in` is a plain static HTML/CSS/vanilla-JS site (no React/build step) on Netlify for Vaibhav's ICF PCC coaching practice — Razorpay payments via Netlify Functions (`create-order`, `verify-payment`, `razorpay-webhook`, plus `csp-report` for security-policy reports), Cal.com booking, and Netlify Forms for leads.
 
-Deploy: `cd ~/Documents/Zen && git add -A && git commit -m "msg" && git push origin main` (auto-deploys ~30s).
+Deploy: `cd ~/Documents/Zen && git add -A && git commit -m "msg" && git push origin main` (auto-deploys ~30s). The folder sits in iCloud Drive, which evicts files and breaks git; a move to `~/Developer/Zen` is prepared (KNOWLEDGE_MAP.md, GIT-2). After the move use the new path. Automated sessions never run `git add -A`, commit or push.
 
 Everything else: see `KNOWLEDGE_MAP.md`. Keep both files in sync after structural changes.
 
@@ -18,7 +18,7 @@ Do NOT create new files unless the owner explicitly asks. Update these living fi
 Use `git --no-optional-locks`. Never read secret values or ask for tokens. No LinkedIn recommendations.
 
 ## Contact details (owner instruction, 2026-10-25)
-Never publish a phone or WhatsApp number anywhere on the site: no `wa.me` or `tel:` links, no `telephone` in schema, and no number in llms.txt, docs or the emails the Netlify functions send. The public contact routes are hello@clearhead.in, the homepage contact form and the booking flow (`call.html`). The visitor's own WhatsApp number may still be collected by the screening and onboarding forms.
+Never publish a phone or WhatsApp number anywhere on the site: no `wa.me` or `tel:` links, no `telephone` in schema, and no number in llms.txt, docs or the emails the Netlify functions send. The public contact routes are hello@clearhead.in, the homepage contact form and the booking flow (`call.html`). The screening and onboarding forms still ask the visitor for a phone number (the label says "Phone number"; the field name `whatsapp` is kept so earlier submissions line up). There is no WhatsApp support and none may be promised anywhere on the site (owner decision 2026-10-26).
 
 ## Guardrails learned from the 2026-10-25 workflow audit
 - `call.html` is the only door to Cal.com. Never link straight to `cal.com/vaibhavjain` from a page, `llms.txt` or an email.
@@ -26,5 +26,6 @@ Never publish a phone or WhatsApp number anywhere on the site: no `wa.me` or `te
 - No personal data in URLs. `analytics.js` strips every query parameter except `via`, `cal` and `utm_*` before Google sees an address, but the booking page still carries `topic` and `pid`.
 - Confidentiality wording must match `terms.html` (two narrow exceptions: imminent serious harm, a court order). No "100%", "always" or "without exception".
 - Any copy that describes the funnel must be true: the path is blog or tool, then `quiz.html` or `call.html`, then Cal.com. Do not write "no forms".
-- The security-policy header is report-only on purpose. Read `KNOWLEDGE_MAP.md` section 6 before enforcing it.
+- The security-policy header (`Content-Security-Policy` in `netlify.toml`) has been ENFORCED since 2026-10-26. A new third-party host (video, chat, font, analytics, map) must be added to the matching directive before it goes on a page, or the browser silently blocks it. Rollback is one word: rename the header to `Content-Security-Policy-Report-Only`. Violations are logged as `[csp-report]` in the Netlify function log. Read `KNOWLEDGE_MAP.md` section 6 first.
+- The free call is 15 minutes everywhere on the site (owner decision 2026-10-26). The Cal.com slug in the code stays `30min`, and the owner must set that Cal.com event to 15 minutes and rename it (on 2026-10-26 its public page still said "30 min meeting"). Never write 30 minutes in copy.
 - Forms are saved with `fetch`; a save only counts when the reply is OK. Never show success for a failed save.
